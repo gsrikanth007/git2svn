@@ -87,7 +87,7 @@ function spaces($spaces)
 		if ($pam_no) {$pam_no=spaces($pam_no);}
 		if ($with_or_with_additional_measure) {$with_or_with_additional_measure=spaces($with_or_with_additional_measure);}
 		if ($name_pam) {$name_pam=spaces($name_pam);}
-		if ($objective_of_measure) {$objective_of_measure=spaces($objective_of_measure)}
+		if ($objective_of_measure) {$objective_of_measure=spaces($objective_of_measure);}
 		if ($description_pam) {$description_pam=spaces($description_pam);}
 		if ($Cross_cutting) {$Cross_cutting=spaces($Cross_cutting);}
 		if ($Energy_supply) {$Energy_supply=spaces($Energy_supply);}

@@ -13,8 +13,6 @@
  */
 
 if (!ini_get('short_open_tag')) {
-    phpinfo();
-    die;
     trigger_error("PHP needs to be configured with \'short_open_tag\' turned on", E_USER_ERROR);
 }
 
