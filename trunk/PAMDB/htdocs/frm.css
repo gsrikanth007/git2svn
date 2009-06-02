@@ -12,6 +12,10 @@ div.devnote {
     margin: 3px;
 }
 
+/**
+ * boxes with informational or error messages
+ */
+
 .error, .info {
     margin: auto;
     padding: 25px;
@@ -30,6 +34,10 @@ div.devnote {
     color: #000080;
 }
 
+/**
+ * alternating row colors in tables
+ */
+
 tr.odd {
     background-color: white;
 }
@@ -41,6 +49,75 @@ tr.even {
 tr.even:hover, tr.odd:hover {
     background-color: #FF6600;
 }
+
+/**
+ * minigrid layout
+ */
+
+/**
+ * wrapper
+ */
+
+#minigrid {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#minigrid .row {
+    clear: left;
+}
+
+.c1, .c2, .c3, .c4, .c8, .c12 {
+    margin-right: 17px;
+    float: left;
+}
+
+#minigrid .item {
+    float: left;
+    margin-right: 11px;
+}
+
+.c1 {
+    width: 63px;
+}
+
+.c2 {
+    width: 143px;
+}
+
+.c3 {
+    width: 223px;
+}
+
+.c4 {
+    width: 303px;
+}
+
+.c8 {
+    width: 623px;
+}
+
+.c8 .item, .c4 .item {
+    width: 300px;
+}
+
+.c12 {
+    width: 943px;
+}
+
+.c12 .item {
+    width: 926px;
+}
+
+#minigrid h3 {
+	color:green;
+	font-weight:bold;
+	font-size:larger;
+}
+
+/**
+ * legacy styles
+ */
 
 p {
 	font-family:Arial;

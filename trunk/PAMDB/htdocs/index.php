@@ -45,43 +45,44 @@ or for which cost estimates are provided.
 <p class="head_green">
 	Database Search
 </p>
-		<form action="output" method="get">
-			<table>
-				<tr>
-					<td class="filter" colspan="2">
-						<a class="big" href="sector">Switch to expert search mode</a>
-					</td>
-					<td class="filter" style="text-align:right">&nbsp;
-						<!--<a class="small" href="explain.htm">Explanation of search options</a>-->
-					</td>
-				</tr>
-				<tr>
-                    <?php
-                    View::vRenderCheckboxList(Model::rgGetMemberStates(), 'Member State', 'member_state');
-                    View::vRenderCheckboxList(Model::rgGetSectors(), 'Sector', 'sector');
-                    View::vRenderCheckboxList(Model::rgGetTypes(), 'Policy Type', 'type', true);
-                    ?>
-				</tr>
-				<tr>
-                    <?php
-                    View::vRenderCheckboxList(Model::rgGetGhgs(), 'GHG affected', 'ghg_output', true, 'id_ghg');
-                    View::vRenderCheckboxList(Model::rgGetStatusList(), 'Status', 'status', true);
-                    // NOTICE: The following call produces a different "id" attribute on the input tag than the original code
-                    View::vRenderCheckboxList(Model::rgGetScenarios(), 'Scenario', 'with_or_with_additional_measure', true);
-                    ?>
-				</tr>
-				<tr>
-					<td colspan="2" class="filter">
-						<label for="any_word" class="question">Any word</label><br/>
-						<input type="text" name="any_word" id="any_word"/>
-					</td>
-					<td class="filter" style="vertical-align:bottom">
-						<input type="submit" value="SEARCH" name="normal"/>
-						<input type="reset" value="RESET" name="reset"/>
-					</td>
-				</tr>
-			</table>
-		</form>
+<p>
+    <a class="big" href="sector">Switch to expert search mode</a>
+</p>
+        <div id="minigrid">
+            <form action="output" method="get">
+              <!-- TODO: split into rows programatically in View.php -->
+              <div class="row">
+                <div id="textsearch" class="c12">
+                    <label for="any_word" class="question">Any word</label><br/>
+                    <input type="text" name="any_word" id="any_word"/>
+                    <input type="submit" value="SEARCH" name="normal"/>
+                    <input type="reset" value="RESET" name="reset"/>
+                </div>
+              </div>
+              <div class="row">
+                <?php
+                View::vRenderCheckboxList(8, Model::rgGetMemberStates(), 'Member State', 'member_state');
+                View::vRenderCheckboxList(4, Model::rgGetSectors(), 'Sector', 'sector');
+                ?>
+              </div>
+              <div class="row">
+                <?php
+                View::vRenderCheckboxList(4, Model::rgGetTypes(), 'Policy Type', 'type', true);
+                View::vRenderCheckboxList(4, Model::rgGetGhgs(), 'GHG affected', 'ghg_output', true, 'id_ghg');
+                View::vRenderCheckboxList(4, Model::rgGetStatusList(), 'Status', 'status', true);
+                ?>
+              </div>
+              <div class="row">
+                <?php
+                // NOTICE: The following call produces a different "id" attribute on the input tag than the original code
+                View::vRenderCheckboxList(4, Model::rgGetScenarios(), 'Scenario', 'with_or_with_additional_measure', true);
+                ?>
+              </div>
+              <div class="row">
+                <!-- FIXME: this is a hack just to clear floating because grid ends here -->
+              </div>
+            </form>
+        </div>
 <?php
 } catch (Exception $e) {
     Helper::vSendCrashReport($e);

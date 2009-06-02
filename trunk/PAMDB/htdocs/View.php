@@ -72,7 +72,7 @@ class View
         }
     }
 
-    public static function vRenderCheckboxList($rgData, $sTitle, $sValueField,
+    public static function vRenderCheckboxList($cCols, $rgData, $sTitle, $sValueField,
                                                $fEmptyOption = false, $sIdField = null)
     {
         if (empty($sIdField)) {
@@ -94,7 +94,7 @@ class View
                 HtmlPicture::PicFilterListItem($htmlId, $htmlName, $htmlValue, $htmlLabel);
             }
             $htmlList = HtmlPicture::htmlFlushBuffer();
-            HtmlPicture::PicFilterConfig(Helper::htmlSanitize($sTitle), $htmlWidget, $htmlList);
+            HtmlPicture::PicFilterConfig($cCols, Helper::htmlSanitize($sTitle), $htmlWidget, $htmlList);
         } catch (Exception $e) {
             Helper::vSendCrashReport($e);
             HtmlPicture::PicErrorBox(Helper::htmlSanitize($e->getMessage()));

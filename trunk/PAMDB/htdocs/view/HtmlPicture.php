@@ -22,14 +22,14 @@ class HtmlPicture
 {
     private static $_fBuffering = false;
 
-    public static function PicFilterConfig($htmlTitle, $htmlWidget, $htmlList)
+    public static function PicFilterConfig($cCols, $htmlTitle, $htmlWidget, $htmlList)
     {
     ?>
-    <td class="filter">
-        <label class="question"><?=$htmlTitle?></label><br/>
+    <div class="c<?=$cCols?>">
+        <h3><?=$htmlTitle?></h3>
         <?=$htmlWidget?>
         <?=$htmlList?>
-    </td>
+    </div>
     <?php
     }
 
@@ -44,8 +44,10 @@ class HtmlPicture
     public static function PicFilterListItem($htmlId, $htmlName, $htmlValue, $htmlLabel)
     {
     ?>
-    <input type="checkbox" id="<?=$htmlId?>" name="<?=$htmlName?>" value="<?=$htmlValue?>" />
-    <label for="<?=$htmlId?>"><?=$htmlLabel?></label><br/>
+    <div class="item">
+      <input type="checkbox" id="<?=$htmlId?>" name="<?=$htmlName?>" value="<?=$htmlValue?>" />
+      <label for="<?=$htmlId?>"><?=$htmlLabel?></label>
+    </div>
     <?php
     }
 
