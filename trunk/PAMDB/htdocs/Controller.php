@@ -29,12 +29,22 @@ class Controller
         }
     }
 
+    public static function ixSectorFromRequest()
+    {
+        return self::_ixReadNumber('id_sector', null);
+    }
+
     public static function ixPamFromRequest()
     {
-        if (empty($_GET['id'])) {
-            return 0;
+        return self::_ixReadNumber('id', 0);
+    }
+
+    private static function _ixReadNumber($sField, $varDefault)
+    {
+        if (empty($_GET[$sField])) {
+            return $varDefault;
         } else {
-            return (int)sprintf('%d', $_GET['id']);
+            return (int)sprintf('%d', $_GET[$sField]);
         }
     }
 

@@ -71,6 +71,14 @@ class Model
         return DB::rgSelectRows($sql);
     }
 
+    public static function rgGetCcpmsBySector($ixSector)
+    {
+        $sql = Select::sqlSimpleQuery('val_related_ccpm',
+                                      array('id_related_ccpm', 'related_ccpm'),
+                                      array('id_sector'=>$ixSector));
+        return DB::rgSelectRows($sql);
+    }
+
     public static function rgGetEu15StateIds()
     {
         return self::_rgGetStateIdsByGroup('eu_15');
@@ -85,6 +93,13 @@ class Model
     {
         $sql = Select::sqlSimpleQuery('val_member_state', array('id_member_state'), array($sGroup=>'1'));
         return DB::rgSelectCol($sql);
+    }
+
+    public static function mpGetSector($ix)
+    {
+        $sql = Select::sqlSimpleQuery('val_sector', null, array('id_sector'=>$ix));
+        $mp = DB::mpSelectRow($sql);
+        return $mp;
     }
 
     public static function mpGetPamById($ix, $rgFields = null)
@@ -144,11 +159,38 @@ class Model
         return $mpPam;
     }
 
+    public static function rgGetRelatedClusters($rgPams)
+    {
+        $rgClIds = self::_rgExtractClusterIds($rgPams);
+
+        $rgClusters = self::_rgGetPamInfoByFilter(array('pam_identifier'=>$rgClIds),
+                                                  self::rgGetPamDetailFields(),
+                                                  array('Ghg', 'Implementor', 'MemberState',
+                                                        'SideEffect', 'Ccpm', 'Sector', 'Status',
+                                                        'Type', 'Scenario'));
+        $rgClusters = Helper::rgPackByKey($rgClusters, 'id');
+
+        foreach ($rgClusters as $ix=>$mp) {
+            $rgClusters[$ix]['rgCluster'] = self::_rgGetPamsInCluster($mp);
+        }
+
+        return $rgClusters;
+    }
+
     private static function _mpGetPamInfoById($ix, $rgPamFields, $rgDimensions)
+    {
+        $rgPam = self::_rgGetPamInfoByFilter(array('id'=>$ix), $rgPamFields, $rgDimensions);
+        
+        $mpPam = Helper::mpUniqCols($rgPam);
+
+        return $mpPam;
+    }
+
+    private static function _rgGetPamInfoByFilter($mpFilter, $rgPamFields, $rgDimensions)
     {
         $q = new Select('pam', $rgPamFields);
 
-        $q->vSetFilter(array('id'=>$ix));
+        $q->vSetFilter($mpFilter);
         
         foreach ($rgDimensions as $sDim) {
             self::_vStandardJoin($q, $sDim);
@@ -160,12 +202,27 @@ class Model
         $sql = $q->sqlRender();
         #View::vRenderInfoBox($sql);
         $rgRows = DB::rgSelectRows($sql);
-        $mpPam = Helper::mpUniqCols($rgRows);
         
-        $mpPam['coCluster'] = self::_coGetClusterStatus($mpPam);
-        $mpPam['fClustered'] = $mpPam['coCluster'] == self::PAM_BELONGS_TO_CLUSTER;
+        foreach ($rgRows as $ix=>$mpPam) {
+            $rgRows[$ix]['coCluster'] = self::_coGetClusterStatus($mpPam);
+            $rgRows[$ix]['fClustered'] = $rgRows[$ix]['coCluster'] == self::PAM_BELONGS_TO_CLUSTER;
+        }
 
-        return $mpPam;
+        return $rgRows;
+    }
+
+    private static function _rgExtractClusterIds($rgPams)
+    {
+        $rgClIds = array();
+        foreach ($rgPams as $mp) {
+            if ($mp['fClustered']) {
+                $sId = trim($mp['cluster']);
+                if (!empty($sId)) {
+                    $rgClIds[] = $sId;
+                }
+            }
+        }
+        return array_unique($rgClIds);
     }
 
     public static function mpGetCluster($sId)

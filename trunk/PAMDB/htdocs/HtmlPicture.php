@@ -88,7 +88,7 @@ class HtmlPicture
         <td><?=$mpRow['member_state']?></td>
         <td><?=$mpRow['sector']?></td>
         <td><?=$mpRow['with_or_with_additional_measure_output']?></td>
-        <td><a href=\"details?id=$key\"><?=$mpRow['name_pam']?></a></td>
+        <td><a href="details?id=$key"><?=$mpRow['name_pam']?></a></td>
         <td><?=$mpRow['type']?></td>
         <td><?=$mpRow['ghg_output']?></td>
         <td><?=$mpRow['status']?></td>
@@ -106,6 +106,13 @@ class HtmlPicture
     <div class="info">
       <p>No results for your search.</p>
     </div>
+    <?php
+    }
+
+    public static function PicSectorSelector($ix, $sLabel)
+    {
+    ?>
+    &nbsp;&nbsp;&bull;<a class="sector" href="expert?id_sector=<?=$ix?>"><?=$sLabel?></a><br/>
     <?php
     }
 

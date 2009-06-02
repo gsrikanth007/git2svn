@@ -1,8 +1,14 @@
 <?php
-$pos_mes = FALSE;
-include('conx/db_conx_open.php');
 require_once 'support.php';
-standard_html_header("Expert search")
+standard_html_header("Expert search");
+
+require_once 'Helper.php';
+require_once 'DB.php';
+require_once 'Model.php';
+require_once 'View.php';
+
+try {
+    DB::vInit();
 ?>
 <h1 class="documentFirstHeading">
 	Database Expert Search Mode
@@ -14,13 +20,9 @@ In the expert search mode, the user can choose additional selections for each se
 <p>
 	<h2>Select sector</h2>
 	<?php
-		include('select/select_val_sector.php');
-		if ($val_sector_num) {
-			while ($val_sector_fetch = mysql_fetch_array($val_sector)) {
-				include('fetch/fetch_val_sector.php');
-				echo "&nbsp;&nbsp;&bull;<a class=\"sector\" href=\"expert?id_sector=$id_sector\">$sector</a><br/>";
-			}
-		}
+    foreach (Model::rgGetSectors() as $mpSector) {
+        View::vRenderSectorSelector($mpSector);
+    }
 	?>
 </p>
 <p>
@@ -29,4 +31,10 @@ In the expert search mode, the user can choose additional selections for each se
 <p>
 	<a class="big" href="index">Switch to normal search mode</a>
 </p>
-<?php standard_html_footer() ?>
+<?php
+} catch (Exception $e) {
+    Helper::vSendCrashReport($e);
+    View::vRenderErrorMsg($e);
+}
+standard_html_footer();
+?>

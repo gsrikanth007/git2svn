@@ -30,6 +30,18 @@ div.devnote {
     color: #000080;
 }
 
+tr.odd {
+    background-color: white;
+}
+
+tr.even {
+    background-color: #EEFFDD;
+}
+
+tr.even:hover, tr.odd:hover {
+    background-color: #FF6600;
+}
+
 p {
 	font-family:Arial;
 	font-size:small;

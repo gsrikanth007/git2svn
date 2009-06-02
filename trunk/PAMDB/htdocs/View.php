@@ -101,6 +101,11 @@ class View
         }
     }
 
+    public static function vRenderSectorSelector($mpData)
+    {
+        HtmlPicture::PicSectorSelector($mpData['id_sector'], $mpData['sector']);
+    }
+
     public static function vRenderErrorMsg(Exception $e)
     {
         HtmlPicture::PicErrorBox(Helper::htmlSanitize($e->getMessage()));
@@ -121,12 +126,12 @@ class View
             }
             if ($mpData['fClustered']) {
                 $mpData[$sTextField] = $mpData[$sValField] = 'see cluster '.Helper::htmlSanitize($mpData['cluster']);
-                return;
+                continue;
             }
             $sVal = trim($mpData[$sValField]);
             $sText = trim($mpData[$sTextField]);
             if (empty($sText) && empty($sVal)) {
-                $mpData[$sTextField] = 'no estimate provided';
+                $mpData[$sTextField] = 'n/a';
             } else if (empty($sVal)) {
                 $mpData[$sTextField] = $sText;
             } else {
@@ -156,10 +161,10 @@ class View
     private static function _htmlFormatDetailVal($var)
     {
         if (is_array($var)) {
-            foreach ($var as $ix=>$s) {
-                $var[$ix] = Helper::htmlSanitize($s);
+            foreach ($var as $ix=>$T) {
+                $var[$ix] = Helper::htmlSanitize($T);
             }
-            return join('<br>', $var);
+            return @join('<br>', $var);
         } else {
             return Helper::htmlSanitize($var);
         }

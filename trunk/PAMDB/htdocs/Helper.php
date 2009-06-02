@@ -47,6 +47,21 @@ class Helper
 
         return $html;
     }
+    
+    public static function rgPackByKey($rgSrc, $sKey)
+    {
+        $mpDst = array();
+        foreach ($rgSrc as $mpT) {
+            if (array_key_exists($sKey, $mpT)) {
+                $mpDst[$mpT[$sKey]][] = $mpT;
+            }
+        }
+        foreach ($mpDst as $sKey=>$rgT) {
+            $mpDst[$sKey] = self::mpUniqCols($rgT);
+        }
+
+        return array_values($mpDst);
+    }
 
     public static function mpUniqCols($rg)
     {
