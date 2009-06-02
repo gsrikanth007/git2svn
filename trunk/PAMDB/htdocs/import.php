@@ -1,5 +1,6 @@
 <?php
 	include('conx/db_conx_open.php');
+    include('support.php');
 
 function spaces($spaces)
 {
