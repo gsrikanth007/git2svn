@@ -11,7 +11,7 @@
  * This class generates a MATCH() AGAINST() clause.
  */
 
-require_once 'SqlExpression.php';
+require_once 'db/SqlExpression.php';
 
 class FulltextMatch extends SqlExpression
 {

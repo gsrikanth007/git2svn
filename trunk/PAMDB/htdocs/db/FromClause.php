@@ -12,7 +12,7 @@
  * to construct more complex FROMs involving JOINs.
  */
 
-require_once 'Sql.php';
+require_once 'db/Sql.php';
 
 class FromClause
 {

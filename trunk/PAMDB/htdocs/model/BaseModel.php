@@ -12,7 +12,7 @@
  * DB entities.
  */
 
-require_once 'MapNtoM.php';
+require_once 'db/MapNtoM.php';
 
 abstract class BaseModel
 {

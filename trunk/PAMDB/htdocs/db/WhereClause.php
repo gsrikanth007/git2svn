@@ -16,7 +16,7 @@
  * methods in order to create nested expressions.
  */
 
-require_once 'SqlExpression.php';
+require_once 'db/SqlExpression.php';
 
 class WhereClause extends SqlExpression
 {

@@ -8,10 +8,10 @@ require_once 'Model.php';
 require_once 'View.php';
 require_once 'Controller.php';
 
-require_once 'StarQuery.php';
-require_once 'WhereClause.php';
-require_once 'Dimension.php';
-require_once 'FulltextMatch.php';
+require_once 'db/StarQuery.php';
+require_once 'db/WhereClause.php';
+require_once 'db/Dimension.php';
+require_once 'db/FulltextMatch.php';
 
 try {
     DB::vInit();

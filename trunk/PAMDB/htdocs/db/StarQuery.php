@@ -12,11 +12,11 @@
  * The syntax will be MySQL specific.
  */
 
-require_once 'Select.php';
-require_once 'Dimension.php';
-require_once 'SqlExpression.php';
-require_once 'WhereClause.php';
-require_once 'FromClause.php';
+require_once 'db/Select.php';
+require_once 'db/Dimension.php';
+require_once 'db/SqlExpression.php';
+require_once 'db/WhereClause.php';
+require_once 'db/FromClause.php';
 
 class StarQuery extends Select
 {

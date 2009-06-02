@@ -12,10 +12,10 @@
  * The syntax will be MySQL specific.
  */
 
-require_once 'Sql.php';
-require_once 'FromClause.php';
-require_once 'WhereClause.php';
-require_once 'MapNtoM.php';
+require_once 'db/Sql.php';
+require_once 'db/FromClause.php';
+require_once 'db/WhereClause.php';
+require_once 'db/MapNtoM.php';
 
 class Select
 {
