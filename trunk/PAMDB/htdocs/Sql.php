@@ -25,8 +25,10 @@ class Sql
             return 'NULL';
         } else if (is_numeric($var)) {
             return $var;
-        } else {
+        } else if (is_scalar($var)) {
             return '\''.mysql_real_escape_string($var).'\'';
+        } else {
+            throw new Exception("Invalid type for SQL value");
         }
     }
 
