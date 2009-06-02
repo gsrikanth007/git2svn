@@ -115,6 +115,11 @@ tr.even:hover, tr.odd:hover {
 	font-size:larger;
 }
 
+.widget label {
+	color:red;
+	font-weight:bold;
+}
+
 /**
  * legacy styles
  */

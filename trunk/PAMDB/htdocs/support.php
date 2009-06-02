@@ -88,6 +88,8 @@ function standard_html_header($page)
 			<?echo $page ?> - Policies and Measures in Europe - ECCP
 		</title>
 		<link href="frm.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="js/widgets.js" >
+        </script>
 	</head>
 	<body>
 		<div id="visual-portal-wrapper">

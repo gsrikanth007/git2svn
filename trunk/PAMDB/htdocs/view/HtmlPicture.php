@@ -33,11 +33,20 @@ class HtmlPicture
     <?php
     }
 
-    public static function PicFilterWidgetItem($htmlName, $htmlValue, $htmlLabel)
+    public static function PicFilterButton($htmlAction, $htmlLabel)
     {
     ?>
-    <input type="checkbox" name="<?=$htmlName?>" value="<?=$htmlValue?>"/>
-    <label class="specialval"><?=$htmlLabel?></label><br/>
+    <input class="widget" type="button" onclick="<?=$htmlAction?>(this)" value="<?=$htmlLabel?>"/>
+    <?php
+    }
+
+    public static function PicFilterNullCheck($htmlName, $htmlValue, $htmlLabel)
+    {
+    ?>
+    <div class="widget">
+      <input type="checkbox" name="<?=$htmlName?>" value="<?=$htmlValue?>" />
+      <label><?=$htmlLabel?></label>
+    </div>
     <?php
     }
 

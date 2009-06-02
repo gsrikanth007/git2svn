@@ -81,9 +81,9 @@ class View
         $htmlName = Helper::htmlSanitize($sIdField).'[]';
         try {
             HtmlPicture::vStartBuffer();
-            HtmlPicture::PicFilterWidgetItem($htmlName, 'select_all', 'Select all');
+            HtmlPicture::PicFilterButton('select_all', 'Select all');
             if ($fEmptyOption) {
-                HtmlPicture::PicFilterWidgetItem($htmlName, 'no_value', 'Include empty values');
+                HtmlPicture::PicFilterNullCheck($htmlName, 'no_value', 'Include empty values');
             }
             $htmlWidget = HtmlPicture::htmlFlushBuffer();
             HtmlPicture::vStartBuffer();
