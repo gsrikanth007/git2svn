@@ -519,7 +519,7 @@ while ($myrow = mysql_fetch_array($result)) {
 	$baseurl = "http://".$_SERVER['SERVER_NAME']."/".substr($_SERVER['REQUEST_URI'],1 , strrpos($_SERVER['REQUEST_URI'],"/"));
 	// LIVE MAPS
 	if ($sum_bw < 200) {
-		echo "<a title='Live Maps - ".$string_title_kml."' href='http://maps.live.com?mapurl=".$baseurl."$link_za_kml'><img src='images/livemaps.png' border='0' alt='Live Maps - ".$string_title_kml."'/></a>";
+		echo "<a title='Live Maps - ".$string_title_kml."' href='http://www.bing.com/maps/?mapurl=".$baseurl."$link_za_kml'><img src='images/livemaps.png' border='0' alt='Live Maps - ".$string_title_kml."'/></a>";
 	}
 	// GOOGLE MAPS
 	if ($sum_bw < 200) {
