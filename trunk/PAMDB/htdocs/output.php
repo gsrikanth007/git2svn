@@ -63,7 +63,7 @@ try {
     }
 
     $sql = $q->sqlRender(array('id'));
-    View::vRenderInfoBox($sql);
+    #View::vRenderInfoBox($sql);
     $rgPams = DB::rgSelectRows($sql);
     for ($c = 0, $cMax = count($rgPams); $c < $cMax; $c++) {
         // TODO: This issues two extra SQL queries per row

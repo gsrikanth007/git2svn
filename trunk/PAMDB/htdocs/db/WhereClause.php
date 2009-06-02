@@ -111,7 +111,11 @@ class WhereClause extends SqlExpression
             foreach ($this->_rgOps[1] as $sOp) {
                 $rg[] = Sql::sqlQuoteValue($sOp);
             }
-            $sql .= ($fInvert ? 'NOT ' : '').' IN('.join(', ', $rg).')';
+            if (count($rg)) {
+                $sql .= ($fInvert ? 'NOT ' : '').' IN('.join(', ', $rg).')';
+            } else {
+                $sql .= ($fInvert ? 'NOT ' : '').' IN(\'\')';
+            }
         } else {
             $sql .= ' '.($fInvert ? '!=' : '=').' ';
             $sql .= Sql::sqlQuoteValue($this->_rgOps[1]);

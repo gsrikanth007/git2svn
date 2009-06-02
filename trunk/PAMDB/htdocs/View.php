@@ -65,7 +65,8 @@ class View
             HtmlPicture::vStartBuffer();
             foreach ($sec->rgGetTranslatableFields() as $sField) {
                 $sLabel = $sec->sGetLabel($sField);
-                HtmlPicture::PicDetailRow(Helper::htmlSanitize($sLabel), self::_htmlFormatDetailVal($mpData[$sField]));
+                HtmlPicture::PicDetailRow(Helper::htmlSanitize($sLabel),
+                                          self::_htmlFormatDetailVal($mpData[$sField]));
             }
             $htmlRows = HtmlPicture::htmlFlushBuffer();
             HtmlPicture::PicDetailSection($htmlHead, $htmlRows);

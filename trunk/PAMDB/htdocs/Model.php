@@ -162,8 +162,9 @@ class Model
     public static function rgGetRelatedClusters($rgPams)
     {
         $rgClIds = self::_rgExtractClusterIds($rgPams);
+        $mpFilter = array('pam_identifier'=>$rgClIds);
 
-        $rgClusters = self::_rgGetPamInfoByFilter(array('pam_identifier'=>$rgClIds),
+        $rgClusters = self::_rgGetPamInfoByFilter($mpFilter,
                                                   self::rgGetPamDetailFields(),
                                                   array('Ghg', 'Implementor', 'MemberState',
                                                         'SideEffect', 'Ccpm', 'Sector', 'Status',

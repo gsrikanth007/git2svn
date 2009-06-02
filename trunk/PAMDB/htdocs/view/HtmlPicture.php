@@ -97,7 +97,7 @@ class HtmlPicture
         <td><?=$mpRow['member_state']?></td>
         <td><?=$mpRow['sector']?></td>
         <td><?=$mpRow['with_or_with_additional_measure_output']?></td>
-        <td><a href="details?id=$key"><?=$mpRow['name_pam']?></a></td>
+        <td><a href="details?id=<?=$mpRow['id']?>"><?=$mpRow['name_pam']?></a></td>
         <td><?=$mpRow['type']?></td>
         <td><?=$mpRow['ghg_output']?></td>
         <td><?=$mpRow['status']?></td>
