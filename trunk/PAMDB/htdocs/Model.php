@@ -17,15 +17,15 @@ require_once 'Helper.php';
 require_once 'DB.php';
 require_once 'Select.php';
 
-require_once 'Ghg.php';
-require_once 'Implementor.php';
-require_once 'MemberState.php';
-require_once 'SideEffect.php';
-require_once 'Ccpm.php';
-require_once 'Sector.php';
-require_once 'Status.php';
-require_once 'Type.php';
-require_once 'Scenario.php';
+require_once 'model/Ghg.php';
+require_once 'model/Implementor.php';
+require_once 'model/MemberState.php';
+require_once 'model/SideEffect.php';
+require_once 'model/Ccpm.php';
+require_once 'model/Sector.php';
+require_once 'model/Status.php';
+require_once 'model/Type.php';
+require_once 'model/Scenario.php';
 
 class Model
 {
