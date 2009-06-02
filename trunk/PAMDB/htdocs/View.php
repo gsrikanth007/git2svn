@@ -12,8 +12,8 @@
  */
 
 require_once 'Helper.php';
-require_once 'HtmlPicture.php';
-require_once 'DetailSection.php';
+require_once 'view/HtmlPicture.php';
+require_once 'view/DetailSection.php';
 
 class View
 {
