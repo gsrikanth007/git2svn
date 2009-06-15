@@ -69,9 +69,24 @@ echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
 $types = $db->tableInfo($res);
 
 foreach ($types as $k => $v) {
-    echo "<rdfs:Property rdf:ID=\"$v[name]\" rdfs:label=\"$v[name]\">\n";
-    echo "<rdfs:domain rdf:resource=\"#Dam\"/>\n";
-    echo "</rdfs:Property>\n";
+    $label = ucwords(strtr($v[name],"_"," "));
+    echo "<rdf:Property rdf:ID=\"$v[name]\" rdfs:label=\"$label\">\n";
+    echo "    <rdfs:domain rdf:resource=\"#Dam\"/>\n";
+    switch($v[type]) {
+    case "float8":
+	echo "    <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#double\"/>\n";
+	break;
+    case "int2":
+	echo "    <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#short\"/>\n";
+	break;
+    case "int4":
+	echo "    <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#int\"/>\n";
+	break;
+    case "bool":
+	echo "    <rdfs:range rdf:resource=\"http://www.w3.org/2001/XMLSchema#boolean\"/>\n";
+	break;
+    }
+    echo "</rdf:Property>\n";
 }
 
 ?>
