@@ -16,41 +16,61 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `bwd_regions`
+--
+
+DROP TABLE IF EXISTS `bwd_regions`;
+CREATE TABLE `bwd_regions` (
+  `cc` varchar(2) NOT NULL,
+  `Region` varchar(255) NOT NULL default '',
+  `coast_stations` int(11) NOT NULL,
+  `freshwater_stations` int(11) NOT NULL,
+  PRIMARY KEY  (`cc`,`Region`),
+  KEY `Region` (`Region`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
 -- Table structure for table `bwd_stations`
 --
 
 DROP TABLE IF EXISTS `bwd_stations`;
 CREATE TABLE `bwd_stations` (
-  `numind` varchar(255) NOT NULL default '',
-  `latitude` float default NULL,
-  `longitude` float default NULL,
-  `cc` varchar(255) default NULL,
-  `WaterType` varchar(255) default NULL,
-  `SeaWater` varchar(255) default NULL,
+  `cc` varchar(2) NOT NULL,
+  `BWID` varchar(50) default NULL,
+  `numind` varchar(50) NOT NULL,
+  `geographic` varchar(255) default NULL,
   `Region` varchar(255) default NULL,
   `Province` varchar(255) default NULL,
   `Commune` varchar(255) default NULL,
   `Prelev` varchar(255) default NULL,
-  `y1990` varchar(255) default NULL,
-  `y1991` varchar(255) default NULL,
-  `y1992` varchar(255) default NULL,
-  `y1993` varchar(255) default NULL,
-  `y1994` varchar(255) default NULL,
-  `y1995` varchar(255) default NULL,
-  `y1996` varchar(255) default NULL,
-  `y1997` varchar(255) default NULL,
-  `y1998` varchar(255) default NULL,
-  `y1999` varchar(255) default NULL,
-  `y2000` varchar(255) default NULL,
-  `y2001` varchar(255) default NULL,
-  `y2002` varchar(255) default NULL,
-  `y2003` varchar(255) default NULL,
-  `y2004` varchar(255) default NULL,
-  `y2005` varchar(255) default NULL,
-  `y2006` varchar(255) default NULL,
-  `y2007` varchar(255) default NULL,
-  `remarks_etcw` varchar(255) default NULL,
-  PRIMARY KEY  (`numind`),
+  `WaterType` varchar(10) default NULL,
+  `SeaWater` varchar(1) default NULL,
+  `Latitude` float default NULL,
+  `Longitude` float default NULL,
+  `y1990` varchar(2) default NULL,
+  `y1991` varchar(2) default NULL,
+  `y1992` varchar(2) default NULL,
+  `y1993` varchar(2) default NULL,
+  `y1994` varchar(2) default NULL,
+  `y1995` varchar(2) default NULL,
+  `y1996` varchar(2) default NULL,
+  `y1997` varchar(2) default NULL,
+  `y1998` varchar(2) default NULL,
+  `y1999` varchar(2) default NULL,
+  `y2000` varchar(2) default NULL,
+  `y2001` varchar(2) default NULL,
+  `y2002` varchar(2) default NULL,
+  `y2003` varchar(2) default NULL,
+  `y2004` varchar(2) default NULL,
+  `y2005` varchar(2) default NULL,
+  `y2006` varchar(2) default NULL,
+  `y2007` varchar(2) default NULL,
+  `y2008` varchar(2) default NULL,
+  `y2008_comment` varchar(255) default NULL,
+  `etcw_qa_problems` varchar(255) default NULL,
+  `etcw_remarks` varchar(1024) default NULL,
+  `ms_remarks` varchar(1024) default NULL,
+  PRIMARY KEY  (`numind`,`cc`),
   KEY `cc` (`cc`),
   KEY `y2000` (`y2000`),
   KEY `y2001` (`y2001`),
@@ -59,8 +79,15 @@ CREATE TABLE `bwd_stations` (
   KEY `y2004` (`y2004`),
   KEY `y2005` (`y2005`),
   KEY `y2006` (`y2006`),
-  KEY `y2007` (`y2007`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  KEY `y2007` (`y2007`),
+  KEY `Prelev` (`Prelev`),
+  KEY `Commune` (`Commune`),
+  KEY `y2008` (`y2008`),
+  KEY `bwid` (`BWID`),
+  KEY `numind` (`numind`),
+  KEY `Region` (`Region`),
+  KEY `geographic` (`geographic`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 --
 -- Table structure for table `countrycodes_iso`
@@ -80,10 +107,8 @@ CREATE TABLE `countrycodes_iso` (
 
 DROP TABLE IF EXISTS `numind_geographic`;
 CREATE TABLE `numind_geographic` (
-  `numind` varchar(18) NOT NULL default '',
-  `geographic` varchar(50) default NULL,
-  PRIMARY KEY  (`numind`),
-  KEY `geo` (`geographic`)
+  `numind` varchar(50) NOT NULL,
+  `geographic` varchar(255) default NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -95,4 +120,4 @@ CREATE TABLE `numind_geographic` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2008-05-28 13:38:55
+-- Dump completed on 2009-07-20 12:55:17

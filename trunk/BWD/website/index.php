@@ -269,6 +269,9 @@ if ($_GET['GeoRegion'] != '')
 
 $sql .= 'GROUP BY s.cc ORDER BY c.Country';
 
+if ($_GET['GeoRegion'] == '')	
+   $sql = "SELECT UPPER(c.Country) AS Country, s.cc, c.NationalName AS NationalName, sum(coast_stations) as coast_stations, sum(freshwater_stations) as freshwater_stations from bwd_regions s LEFT JOIN countrycodes_iso c ON s.cc = c.ISO2 GROUP BY s.cc ORDER BY c.Country";
+
 $result = mysql_query($sql) or die(mysql_error()."<br/>".$sql);
 
 // Initialise variables
@@ -324,6 +327,11 @@ while ($myrow = mysql_fetch_array($result)) {
           GROUP BY Region
           ORDER BY Region
 	";
+    if ($_GET['GeoRegion'] == '')
+    {
+		$sql_region = "SELECT Region, coast_stations, freshwater_stations from bwd_regions WHERE cc = '".$myrow['cc']."' ORDER BY Region";
+    }
+
 	$result_region = mysql_query($sql_region);
 	echo "<option value='' selected='selected'>--- Region ---</option>\n";
 	while ($myrow_region = mysql_fetch_array($result_region)) {

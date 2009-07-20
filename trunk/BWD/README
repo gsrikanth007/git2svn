@@ -1,4 +1,4 @@
-The Bathing Water Directive
+The Bathing Water Directive database
 
 Prerequisites:
 --------------
@@ -14,6 +14,13 @@ Installation:
 
 To install, first import the bwd.sql into MySQL. Then copy config-example.php to
 website/config.php and change the values.
+
+The bwd_regions table was created in an attempt to make BWD work under moderate
+load. Because eventhough there are only a tiny number of rows in bwd_stations,
+the design of the table is very very inefficient. It is not even 2nd normal form.
+
+NOTE: Whenever bwd_stations is repopulated with data, then you need to run the
+rebuild-tables script.
 
 License:
 --------
