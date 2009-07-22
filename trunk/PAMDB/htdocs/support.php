@@ -16,13 +16,13 @@ function build_sortqs()
 function breadcrumbs($page)
 {
   echo '<div id="portal-breadcrumbs">';
-  echo '<span dir="ltr"><a href="http://www.eea.europa.eu/" class="breadcrumbitem">Home</a></span>';
+  echo '<span dir="ltr"><a href="http://www.eea.europa.eu/" accesskey="1" class="breadcrumbitem">Home</a></span>';
   echo '<span dir="ltr"><a href="http://www.eea.europa.eu/themes" class="breadcrumbitem">Themes</a></span>';
   echo '<span dir="ltr"><a href="http://www.eea.europa.eu/themes/climate" class="breadcrumbitem">Climate change</a></span>';
   if ($page == "")
      echo "<span dir='ltr'><span class='breadcrumbitemlast'>PAM</span></span>";
   else
-     echo "<span dir='ltr'><a href='/' class='breadcrumbitem'>PAM</a></span><span dir='ltr'><span class='breadcrumbitemlast'>$page</span></span>";
+     echo "<span dir='ltr'><a href='http://www.eea.europa.eu/themes/climate/pam' class='breadcrumbitem'>PAM</a></span><span dir='ltr'><span class='breadcrumbitemlast'>$page</span></span>";
   echo '</div>';
 }
 
@@ -34,7 +34,7 @@ function left_portlet()
   <dt class="portletHeader">
     <span class="portletTopLeft"></span>
 
-    <a href="index" class="tile">PAM</a>
+    <a href="http://www.eea.europa.eu/themes/climate" class="tile">Climate change</a>
     <span class="portletTopRight"></span>
   </dt>
   <dd class="portletItem lastItem">
@@ -58,13 +58,10 @@ function left_portlet()
   <dd class="portletItem lastItem">
     <ul class="portletNavigationTree navTreeLevel0">
       <li class="navTreeItem visualNoMarker">
-        <a class="navItemLevel1" title="Introduction to PAM Database" href="introduction">Introduction</a>
+        <a class="navItemLevel1" title="Introduction to PAM Database" accesskey="2" href="introduction">Introduction</a>
       </li>
       <li class="navTreeItem visualNoMarker">
-        <a class="navItemLevel1" title="About PAM Database" href="about" accesskey="b">About PAM</a>
-      </li>
-      <li class="navTreeItem visualNoMarker">
-        <a class="navItemLevel1" href="copyright" title="Copyright and Privacy Policy for PAM Database">PAM Copyright and Disclaimer</a>
+        <a class="navItemLevel1" href="http://www.eea.europa.eu/legal/copyright" title="Copyright and Privacy Policy for PAM Database">PAM Copyright notice</a>
       </li>
       <li class="navTreeItem visualNoMarker">
         <a class="navItemLevel1" href="accessibility" title="Accessibility statement" accesskey="0">Accessibility statement</a>

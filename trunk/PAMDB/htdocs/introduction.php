@@ -10,7 +10,7 @@ Introduction - Database on Policies and Measures in Europe
 <div class="visualClear"><!--&nbsp; --></div>
 
 <p>
-This database of climate change policies and measures in Europe includes
+This database of <em>climate change policies and measures</em> in Europe includes
 policies and measures reported by European Member States to the Commission
 or under the UNFCCC. The database covers the relevant sectors energy,
 industrial processes, agriculture, forestry, waste and cross-cutting

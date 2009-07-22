@@ -22,14 +22,12 @@ try {
     }
 ?>
 		<h1>
-			Database Expert Search Mode
+			Expert Search Mode
 		</h1>
-		<p class="head_red">
+		<div class="advice-msg">
 			Sector: <?=$mpSector['sector']?>
-		</p>
-        <p>
-            <a class="big" href="sector">Select a new sector</a>
-        </p>
+            [<a href="sector">Select a new sector</a>]
+		</div>
         <div id="minigrid">
 		  <form action="output" method="get">
             <!-- TODO: split into rows programatically in View.php -->
@@ -66,9 +64,6 @@ try {
             </div>
 		  </form>
         </div>
-		<p>
-			<a class="big" href="index">Switch to normal search mode</a>
-		</p>
 <?php
 } catch (Exception $e) {
     Helper::vSendCrashReport($e);

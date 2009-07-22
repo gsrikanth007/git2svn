@@ -16,7 +16,7 @@ European Climate Change Programme (ECCP) - Database on Policies and Measures in 
 <div class="visualClear"><!--&nbsp; --></div>
 
 <p>
-This database of climate change policies and measures in Europe includes
+This database of <em>climate change policies and measures</em> in Europe includes
 policies and measures reported by European Member States to the Commission
 or under the UNFCCC. The database covers the relevant sectors energy,
 industrial processes, agriculture, forestry, waste and cross-cutting
@@ -41,13 +41,10 @@ In addition the user can choose to search exclusively for policies and
 measures for which quantitative emission reduction effects are available
 or for which cost estimates are provided.
 </p>
-<hr class="green"/>
-<p class="head_green">
-	Database Search
-</p>
-<p>
-    <a class="big" href="sector">Switch to expert search mode</a>
-</p>
+<div class="notice">
+    <a  href="sector">Switch to expert search mode</a>
+</div>
+<h2>Normal search mode</h2>
         <div id="minigrid">
             <form action="output" method="get">
               <!-- TODO: split into rows programatically in View.php -->

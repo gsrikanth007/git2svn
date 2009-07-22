@@ -19,19 +19,16 @@ website the following keyboard shortcuts are defined:</p>
 access key 1 - link to home page 
 </li>
 <li>
-access key 9 - feedback and helpdesk 
-</li>
-<li>
 access key 0 - link to accessibility statement (this page) 
 </li>
 <li>
-access key 3 - link to site map
+access key 2 - link to introduction
 </li>
 <li>
-access key g - link to glossary
+access key n - link to normal search mode
 </li>
 <li>
-access key b - link to introduction
+access key e - link to expert search mode
 </li>
 </ul>
 <h2>Standards compliance</h2>
@@ -61,7 +58,7 @@ through the <em>back</em> button from the browser</li>
 <ul>
 <li>links have <em>TITLE</em> attributes which describe the link</li>
 <li>link names make sense out of context</li>
-<li>the links' colour is chosen to contrast sufficiently 
+<li>the link's colour is chosen to contrast sufficiently 
 with the background colour, and they are distinguishable 
 by having a different text-decoration.
 </li>
@@ -71,8 +68,8 @@ by having a different text-decoration.
 <ul>
 <li>all content images used in the website include descriptive <em>ALT</em> attributes 
 </li>
-<li>purely decorative graphics include null <em>ALT</em> 
-attributes so they will not be interpreted by speech synthesizers </li>
+<li>purely decorative graphics include null <em>ALT</em> attributes
+so they will not be interpreted by speech synthesizers </li>
 </ul>
 <h2>Visual design</h2>
 <ul>
