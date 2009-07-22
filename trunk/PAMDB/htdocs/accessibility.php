@@ -16,19 +16,25 @@ press <strong>Control + an access key</strong> (this also depends on the browser
 website the following keyboard shortcuts are defined:</p>
 <ul>
 <li>
-access key 1 - link to home page 
+access key 0 - Link to accessibility statement (this page) 
 </li>
 <li>
-access key 0 - link to accessibility statement (this page) 
+access key 1 - Link to EEA home page 
 </li>
 <li>
-access key 2 - link to introduction
+access key 2 - Skip to content
 </li>
 <li>
-access key n - link to normal search mode
+access key 3 - Sitemap
 </li>
 <li>
-access key e - link to expert search mode
+access key 4 - Link to normal search mode
+</li>
+<li>
+access key 5 - Link to expert search mode
+</li>
+<li>
+access key 6 - Skip to navigation
 </li>
 </ul>
 <h2>Standards compliance</h2>

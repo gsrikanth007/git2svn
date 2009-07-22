@@ -16,7 +16,7 @@ function build_sortqs()
 function breadcrumbs($page)
 {
   echo '<div id="portal-breadcrumbs">';
-  echo '<span dir="ltr"><a href="http://www.eea.europa.eu/" accesskey="1" class="breadcrumbitem">Home</a></span>';
+  echo '<span dir="ltr"><a href="http://www.eea.europa.eu/" class="breadcrumbitem">Home</a></span>';
   echo '<span dir="ltr"><a href="http://www.eea.europa.eu/themes" class="breadcrumbitem">Themes</a></span>';
   echo '<span dir="ltr"><a href="http://www.eea.europa.eu/themes/climate" class="breadcrumbitem">Climate change</a></span>';
   if ($page == "")
@@ -40,11 +40,11 @@ function left_portlet()
   <dd class="portletItem lastItem">
     <ul class="portletNavigationTree navTreeLevel0">
       <li class="navTreeItem visualNoMarker">
-        <a class="navItemLevel1" href="sector" accesskey="e" title="Switch to expert search mode">Expert search mode</a>
+        <a class="navItemLevel1" href="sector" accesskey="5" title="Switch to expert search mode">Expert search mode</a>
       </li>
 
       <li class="navTreeItem visualNoMarker">
-        <a class="navItemLevel1" href="index" accesskey="n" title="Switch to normal search mode">Normal search mode</a>
+        <a class="navItemLevel1" href="index" accesskey="4" title="Switch to normal search mode">Normal search mode</a>
       </li>
     </ul>
 
@@ -58,7 +58,7 @@ function left_portlet()
   <dd class="portletItem lastItem">
     <ul class="portletNavigationTree navTreeLevel0">
       <li class="navTreeItem visualNoMarker">
-        <a class="navItemLevel1" title="Introduction to PAM Database" accesskey="2" href="introduction">Introduction</a>
+        <a class="navItemLevel1" title="Introduction to PAM Database" href="introduction">Introduction</a>
       </li>
       <li class="navTreeItem visualNoMarker">
         <a class="navItemLevel1" href="http://www.eea.europa.eu/legal/copyright" title="Copyright and Privacy Policy for PAM Database">PAM Copyright notice</a>
