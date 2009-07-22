@@ -1,10 +1,10 @@
 function select_all(nod)
 {
     var rgInputs = nod.parentNode.getElementsByTagName('input');
-    var fOn = nod.value == 'Select all';
-    for (var ix in rgInputs) {
-        if (rgInputs[ix]['type'] == 'checkbox' && rgInputs[ix].parentNode['className'] == 'item') {
-            rgInputs[ix]['checked'] = rgInputs[ix]['disabled'] = fOn;
+    var fOn = (nod.value == 'Select all');
+    for (ix=0; ix < rgInputs.length; ix++) {
+        if (rgInputs[ix].type == 'checkbox' && rgInputs[ix].parentNode.className == 'item') {
+            rgInputs[ix].checked = rgInputs[ix].disabled = fOn;
         }
     }
 

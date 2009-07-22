@@ -16,7 +16,9 @@ function build_sortqs()
 function breadcrumbs($page)
 {
   echo '<div id="portal-breadcrumbs">';
-  echo '<span dir="ltr"><a href="http://www.eea.europa.eu/" class="breadcrumbitem" >Home</a></span>';
+  echo '<span dir="ltr"><a href="http://www.eea.europa.eu/" class="breadcrumbitem">Home</a></span>';
+  echo '<span dir="ltr"><a href="http://www.eea.europa.eu/themes" class="breadcrumbitem">Themes</a></span>';
+  echo '<span dir="ltr"><a href="http://www.eea.europa.eu/themes/climate" class="breadcrumbitem">Climate change</a></span>';
   if ($page == "")
      echo "<span dir='ltr'><span class='breadcrumbitemlast'>PAM</span></span>";
   else
@@ -83,6 +85,7 @@ function standard_html_header($page)
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 	<head>
+	 <base href="http://www.eea.europa.eu/themes/climate/pam/" />
 <?php include_template('template/getRequiredHead.txt'); ?>
 		<title>
 			<?echo $page ?> - Policies and Measures in Europe - ECCP
