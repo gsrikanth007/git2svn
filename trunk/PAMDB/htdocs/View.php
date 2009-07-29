@@ -138,7 +138,7 @@ class View
             } else {
                 $mpData[$sTextField] = number_format((double)$sVal, 0, '.', ',');
                 if (!empty($sText)) {
-                    $mpData[$sTextField] .= "<br>".$sText;
+                    $mpData[$sTextField] .= "\n".$sText;
                 }
             }
             $mpData[$sValField] = $mpData[$sTextField];
@@ -163,7 +163,8 @@ class View
     {
         if (is_array($var)) {
             foreach ($var as $ix=>$T) {
-                $var[$ix] = Helper::htmlSanitize($T);
+                $html = Helper::htmlSanitize($T);
+                $var[$ix] = str_replace("\n", "<br/>", $html);
             }
             return @join('<br/>', $var);
         } else {
