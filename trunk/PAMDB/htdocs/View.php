@@ -163,12 +163,11 @@ class View
     {
         if (is_array($var)) {
             foreach ($var as $ix=>$T) {
-                $html = Helper::htmlSanitize($T);
-                $var[$ix] = str_replace("\n", "<br/>", $html);
+                $var[$ix] = Helper::htmlSanitize($T, true);
             }
             return @join('<br/>', $var);
         } else {
-            return Helper::htmlSanitize($var);
+            return Helper::htmlSanitize($var, true);
         }
     }
 }

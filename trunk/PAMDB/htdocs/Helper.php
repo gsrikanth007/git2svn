@@ -39,10 +39,11 @@ class Helper
         return $sMsg;
     }
 
-    public static function htmlSanitize($s)
+    public static function htmlSanitize($s, $newline_to_br = false)
     {
         $s = self::_sProtectTags($s);
         $html = self::_htmlEscape($s);
+        if ( $newline_to_br) $html = str_replace("\n", "<br/>", $html);
         $html = self::_htmlUnprotectTags($html);
 
         return $html;
