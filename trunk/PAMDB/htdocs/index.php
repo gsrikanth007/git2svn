@@ -11,36 +11,30 @@ try {
     DB::vInit();
 ?>
 <h1 class="documentFirstHeading">
-European Climate Change Programme (ECCP) - Database on Policies and Measures in Europe
+Climate change policies and measures in Europe <em>– under review by countries</em>
 </h1>
 <div class="visualClear"><!--&nbsp; --></div>
 
 <p>
-This database of <em>climate change policies and measures</em> in Europe includes
-policies and measures reported by European Member States to the Commission
-or under the UNFCCC. The database covers the relevant sectors energy,
-industrial processes, agriculture, forestry, waste and cross-cutting
-policies and provides detailed and complete information on Member States'
-actions on climate change.
+The following search engine gives access to a list of policies and
+measures (PAM) that European countries have implemented or planned to
+reduce greenhouse gas emissions. All these PAM have been officially
+reported to the European Commission or under the United Framework
+Convention on Climate Change (UNFCCC). In some cases, countries have
+provided an estimate of the expected reduction of greenhouse gas emissions
+resulting from a specific PAM.
 </p>
 <p>
-In the <span class="red">normal search mode</span>, the database is
-searchable by Member State, sector, policy type, greenhouse gas affected
-and reduction effects in sectors covered by the European emissions
-trading scheme.
+The <strong>normal search</strong> mode allows the user to search by country, status and
+policy type, sector and greenhouse gas affected.
 </p>
 <p>
-In the <span class="red">expert search mode</span>, the user can choose
-additional selections for each sector: the status of implementation,
-the category of policy and measures, related common and coordinated
-policies and measures at European level, keywords and related quantitative
-indicator.
+The <strong>expert search</strong> mode allows the user to search for the PAM related
+to specific the EU-wide policies, or common and coordinated policy
+and measure (CCPM), in addition to the search criteria of the normal
+search mode.
 </p>
-<p>
-In addition the user can choose to search exclusively for policies and
-measures for which quantitative emission reduction effects are available
-or for which cost estimates are provided.
-</p>
+
 <div class="notice">
     <a  href="sector">Switch to expert search mode</a>
 </div>
