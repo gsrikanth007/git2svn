@@ -103,11 +103,11 @@ $triplify['queries']=array(
 		"SELECT id, id_member_state FROM pam_member_state",
 		"SELECT id, id_reduces_non_ghg FROM pam_reduces_non_ghg",
 		"SELECT id, id_related_ccpm FROM pam_related_ccpm",
+		"SELECT id, id_sector FROM pam_sector",
 		"SELECT id, id_status FROM pam_status",
 		"SELECT id, id_type FROM pam_type",
 		"SELECT id, id_with_or_with_additional_measure FROM pam_with_or_with_additional_measure",
 	),
-
 	'category'=>"SELECT id_category as id, category FROM val_category",
 	'ghg'=>"SELECT id_ghg as id, ghg, ghg_output FROM val_ghg",
 	'implementing_entity'=>"SELECT id_implementing_entity as id, implementing_entity FROM val_implementing_entity",

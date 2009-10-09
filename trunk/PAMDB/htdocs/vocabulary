@@ -131,7 +131,19 @@
 		<rdfs:domain rdf:resource="#PaM"/>
 		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
 	</rdf:Property>
-	<rdf:Property rdf:ID="objective_of_measure>">
+	<rdf:Property rdf:ID="costs_documention_source">
+		<rdfs:label>Documentation/Source of cost estimation</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="costs_per_tonne">
+		<rdfs:label>Costs in EURO per tonne CO2eq reduced/sequestered</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="costs_per_year">
+		<rdfs:label>Absolute costs per year in EURO</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="objective_of_measure">
 		<rdfs:label>Objective of measure(s)</rdfs:label>
 		<rdfs:domain rdf:resource="#PaM"/>
 	</rdf:Property>
@@ -184,12 +196,33 @@
 		<rdfs:domain rdf:resource="#PaM"/>
 	</rdf:Property>
 
+
 	<rdf:Property rdf:ID="id_ghg">
 		<rdfs:label>GHG affected</rdfs:label>
 	</rdf:Property>
 
 	<rdf:Property rdf:ID="id_implementing">
 		<rdfs:label>Implementing entity or entities</rdfs:label>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="id_member_state">
+		<rdfs:label>Member state</rdfs:label>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="id_related_ccpm">
+		<rdfs:label>Common and coordinated policy and measure (CCPM)</rdfs:label>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="id_status">
+		<rdfs:label>Status of policy, measure or group</rdfs:label>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="id_type">
+		<rdfs:label>Type of instrument</rdfs:label>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="id_with_or_with_additional_measure">
+		<rdfs:label>With or with additional measure</rdfs:label>
 	</rdf:Property>
 
 </rdf:RDF>

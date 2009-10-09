@@ -40,4 +40,86 @@
 		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/instruments/513"/>
 	</rdf:Description>
 
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/3">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/3"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/4">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/5"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/5">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/9"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/6">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/10"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/7">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/11"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/8">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/12"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/9">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/13"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/10">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/14"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/11">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/15"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/12">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/16"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/13">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/17"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/14">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/20"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/15">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/19"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/16">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/21"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/17">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/22"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/18">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/23"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/19">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/25"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/20">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/27"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/21">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/29"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/22">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/30"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/23">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/33"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/24">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/34"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/25">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/35"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/26">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/36"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/27">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/40"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/28">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/7"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/member_state/29">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/spatial/31"/>
+	</rdf:Description>
+
 </rdf:RDF>
