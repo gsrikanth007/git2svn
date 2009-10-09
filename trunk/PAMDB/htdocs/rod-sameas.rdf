@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	 xmlns:owl="http://www.w3.org/2002/07/owl#"
+	 xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+	<owl:Ontology rdf:about="">
+		<rdfs:label>Links of intruments to ROD</rdfs:label>
+		<owl:versionInfo>$Id$</owl:versionInfo>
+	</owl:Ontology>
+
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/related_ccpm/9">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/instruments/511"/>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/related_ccpm/10">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/instruments/195"/>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/related_ccpm/15">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/instruments/593"/>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/related_ccpm/24">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/instruments/273"/>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/related_ccpm/32">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/instruments/273"/>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/related_ccpm/34">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/instruments/257"/>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/related_ccpm/39">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/instruments/273"/>
+	</rdf:Description>
+
+	<rdf:Description rdf:about="http://pam.eea.europa.eu/triplify/related_ccpm/49">
+		<owl:sameAs rdf:resource="http://rod.eionet.europa.eu/instruments/513"/>
+	</rdf:Description>
+
+</rdf:RDF>

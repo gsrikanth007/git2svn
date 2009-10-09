@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	 xmlns:owl="http://www.w3.org/2002/07/owl#"
+	 xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+	<owl:Ontology rdf:about="">
+		<rdfs:label>PaM schema</rdfs:label>
+		<owl:versionInfo>$Id$</owl:versionInfo>
+	</owl:Ontology>
+
+
+	<rdfs:Class rdf:ID="Category">
+		<rdfs:label>Category</rdfs:label>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="GHG">
+		<rdfs:label>Greenhouse gas</rdfs:label>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="ImplementingEntity">
+		<rdfs:label>Implementing entity</rdfs:label>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="Keywords">
+		<rdfs:label>Keywords</rdfs:label>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="MemberState">
+		<rdfs:label>Member state</rdfs:label>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="ReducesNonGHG">
+		<rdfs:label>Reduces Non GHG</rdfs:label>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="RelatedCcpm">
+		<rdfs:label>Common and coordinated policy and measure (CCPM)</rdfs:label>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="PaM">
+		<rdfs:label>Policy or Measure</rdfs:label>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="Sector">
+		<rdfs:label>Sector</rdfs:label>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="Status">
+		<rdfs:label>Status</rdfs:label>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="Type">
+		<rdfs:label>Instrument instrument</rdfs:label>
+	</rdfs:Class>
+	<rdfs:Class rdf:ID="WithOrWithAdditionalMeasure">
+		<rdfs:label>With or with additional measure</rdfs:label>
+	</rdfs:Class>
+
+	<rdf:Property rdf:ID="category">
+		<rdfs:label>Category</rdfs:label>
+		<rdfs:domain rdf:resource="#Category"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="ghg">
+		<rdfs:label>Name</rdfs:label>
+		<rdfs:domain rdf:resource="#GHG"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="implementing_entity">
+		<rdfs:label>Name</rdfs:label>
+		<rdfs:domain rdf:resource="#ImplementingEntity"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="keywords">
+		<rdfs:label>Keyword</rdfs:label>
+		<rdfs:domain rdf:resource="#Keywords"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="member_state">
+		<rdfs:label>Member state</rdfs:label>
+		<rdfs:domain rdf:resource="#MemberState"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="reduces_non_ghg">
+		<rdfs:label>Non-GHG</rdfs:label>
+		<rdfs:domain rdf:resource="#ReducesNonGHG"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="related_ccpm">
+		<rdfs:label>Name</rdfs:label>
+		<rdfs:domain rdf:resource="#RelatedCcpm"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="sector">
+		<rdfs:label>Name</rdfs:label>
+		<rdfs:domain rdf:resource="#Sector"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="status">
+		<rdfs:label>Status</rdfs:label>
+		<rdfs:domain rdf:resource="#Status"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="type">
+		<rdfs:label>Type</rdfs:label>
+		<rdfs:domain rdf:resource="#Type"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="with_or_with_additional_measure">
+		<rdfs:label>Name</rdfs:label>
+		<rdfs:domain rdf:resource="#WithOrWithAdditionalMeasure"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="with_or_with_additional_measure_output">
+		<rdfs:label>Output</rdfs:label>
+		<rdfs:domain rdf:resource="#WithOrWithAdditionalMeasure"/>
+	</rdf:Property>
+
+
+	<rdf:Property rdf:ID="pam_identifier">
+		<rdfs:label>Internal PaM identifier</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="pam_no">
+		<rdfs:label>PaM-No</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="name_pam">
+		<rdfs:label>Name of policy or measure (or group)</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+		<rdfs:subPropertyOf rdf:resource="http://www.w3.org/2000/01/rdf-schema#label"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="objective_of_measure>">
+		<rdfs:label>Objective of measure(s)</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="description_pam">
+		<rdfs:label>Description of policy or measure</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="start">
+		<rdfs:label>Start year of implementation</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="red_2010_val">
+		<rdfs:label>Reduction effect 2010</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="red_2010_text">
+		<rdfs:label>Reduction effect 2010</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="red_2015_val">
+		<rdfs:label>Reduction effect 2015</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="red_2015_text">
+		<rdfs:label>Reduction effect 2015</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="red_2020_val">
+		<rdfs:label>Reduction effect 2020</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="red_2020_text">
+		<rdfs:label>Reduction effect 2020</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="cumulative_2008_2012">
+		<rdfs:label>Cumulative emission reduction 2008-2012 (Gg CO2eq)</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="explanation_basis_of_mitigation_estimates">
+		<rdfs:label>Explanation of the basis for the mitigation estimates</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="documention_source">
+		<rdfs:label>Category</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+	<rdf:Property rdf:ID="reference">
+		<rdfs:label>Reference</rdfs:label>
+		<rdfs:domain rdf:resource="#PaM"/>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="id_ghg">
+		<rdfs:label>GHG affected</rdfs:label>
+	</rdf:Property>
+
+	<rdf:Property rdf:ID="id_implementing">
+		<rdfs:label>Implementing entity or entities</rdfs:label>
+	</rdf:Property>
+
+</rdf:RDF>
