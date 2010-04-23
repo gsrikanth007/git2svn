@@ -34,7 +34,7 @@ header('Content-Type: text/html; charset=utf-8');
 // 5=compliant to mandatory values = GREEN
 // 0,3,6 = not sampled / insufficiently sampled = ORANGE
 $compliance_values = array('CG','B','NC','CI','NS','NF');
-$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008);
+$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009);
 
 foreach($compliance_values as $key=>$val) {
   $sql = "
@@ -48,8 +48,9 @@ foreach($compliance_values as $key=>$val) {
       (COUNT(IF(y2006 = '".$val."', 1, NULL))/COUNT(IF(y2006 IS NOT NULL, 1, NULL)) )*100 AS '2006',
       (COUNT(IF(y2007 = '".$val."', 1, NULL))/COUNT(IF(y2007 IS NOT NULL, 1, NULL)) )*100 AS '2007',
       (COUNT(IF(y2008 = '".$val."', 1, NULL))/COUNT(IF(y2008 IS NOT NULL, 1, NULL)) )*100 AS '2008',
+      (COUNT(IF(y2009 = '".$val."', 1, NULL))/COUNT(IF(y2009 IS NOT NULL, 1, NULL)) )*100 AS '2009',
       COUNT(*) AS No_of_stations,													# only needed to display in title total or max. number of stations for all years
-      COUNT(IF(y2008 IS NOT NULL, 1, NULL)) AS No_of_stations_2008,		# only needed to display in title: number of stations 2008
+      COUNT(IF(y2009 IS NOT NULL, 1, NULL)) AS No_of_stations_2009,		# only needed to display in title: number of stations 2009
       Prelev,
       SeaWater
     FROM bwd_stations 
@@ -131,7 +132,7 @@ else {
     $title .= ": ".$myrow['No_of_stations']." ";
     if($_GET['type'] == 'coast')  $title .= "coastal BW";
     if($_GET['type'] == 'fresh')  $title .= "freshwater BW";
-	 $title .= " (".$myrow['No_of_stations_2008']." in 2008)";
+	 $title .= " (".$myrow['No_of_stations_2009']." in 2009)";
 
     // default graph dimensions
     $graph_width = 600; 

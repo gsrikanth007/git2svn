@@ -4,8 +4,9 @@
 
 BWD water quality data/map viewer: MAIN FILE WITH COUNTRY LISTING, MAPS, GRAPHS, ETC.
 
-21.3.2008; first version
-
+21.3.2008;	first version
+04/2009;	update for 2008 season
+21.4.2010;	update for 2009 season
 */
 
 include('config.php');
@@ -329,11 +330,13 @@ while ($myrow = mysql_fetch_array($result)) {
 	";
     if ($_GET['GeoRegion'] == '')
     {
-		$sql_region = "SELECT Region, coast_stations, freshwater_stations from bwd_regions WHERE cc = '".$myrow['cc']."' ORDER BY Region";
+		$sql_region = "SELECT Region, coast_stations, freshwater_stations FROM bwd_regions WHERE cc = '".$myrow['cc']."' ORDER BY Region";
     }
+
 
 	$result_region = mysql_query($sql_region);
 	echo "<option value='' selected='selected'>--- Region ---</option>\n";
+
 	while ($myrow_region = mysql_fetch_array($result_region)) {
 		echo "<option value='".$myrow_region['Region']."'";
 		if ($myrow['cc'] == $_GET['cc'] && $myrow_region['Region'] == $_GET['Region']) {

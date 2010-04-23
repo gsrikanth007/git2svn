@@ -66,7 +66,8 @@ CREATE TABLE `bwd_stations` (
   `y2006` varchar(2) default NULL,
   `y2007` varchar(2) default NULL,
   `y2008` varchar(2) default NULL,
-  `y2008_comment` varchar(255) default NULL,
+  `y2009` varchar(2) default NULL,
+  `y2009_comment` varchar(255) default NULL,
   `etcw_qa_problems` varchar(255) default NULL,
   `etcw_remarks` varchar(1024) default NULL,
   `ms_remarks` varchar(1024) default NULL,
@@ -83,6 +84,7 @@ CREATE TABLE `bwd_stations` (
   KEY `Prelev` (`Prelev`),
   KEY `Commune` (`Commune`),
   KEY `y2008` (`y2008`),
+  KEY `y2009` (`y2009`),
   KEY `bwid` (`BWID`),
   KEY `numind` (`numind`),
   KEY `Region` (`Region`),
@@ -100,24 +102,3 @@ CREATE TABLE `countrycodes_iso` (
   `NationalName` varchar(100) default NULL,
   PRIMARY KEY  (`ISO2`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Table structure for table `numind_geographic`
---
-
-DROP TABLE IF EXISTS `numind_geographic`;
-CREATE TABLE `numind_geographic` (
-  `numind` varchar(50) NOT NULL,
-  `geographic` varchar(255) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2009-07-20 12:55:17
