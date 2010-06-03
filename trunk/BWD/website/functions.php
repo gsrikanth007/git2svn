@@ -44,7 +44,10 @@ function complianceColor($value) {
       case 'NF':	Return "#FFAB67"; break;
       case 'NC':	Return "#FF7F7F"; break;
       case 'CI':	Return "#98FF97"; break;
-		//case 'other':	Return "#FFCB67"; break;
+	  //case 'other':	Return "#FFCB67"; break;
+
+	  // 3.6.2010; mkovacic: added new category for Greek NF data - white
+	  case 'NFC':	Return "#FFFFFF"; break;
       default:		Return "#F7F7F7"; break;
   }
 }
@@ -82,6 +85,9 @@ function complianceText($value) {
       case 'NC':	Return "Poor (Not compliant with mandatory values)"; break;
       case 'CI':	 Return "Good (Compliant to mandatory values)"; break;
 		//case 'other':	Return "Not sampled / Insufficiently sampled"; break;
+	  
+	  // 3.6.2010; mkovacic: added new category for Greek NF data - white
+	  case 'NFC':	Return "Incompletely sampled"; break;
       default: Return ""; break;	
   }
 }

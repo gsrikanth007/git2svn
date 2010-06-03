@@ -584,11 +584,18 @@ while ($myrow = mysql_fetch_array($result)) {
 
 echo "</table>\n";
 
-?>
-<p><img src='images/kml.gif' width='16' height='16' border='0'  alt='KML icon'/>&nbsp;Don't have Google Earth? Download it here:
-<a target='_NEW_WINDOW' href='http://earth.google.com/download-earth.html'>http://earth.google.com/download-earth.html</a></p>
-<?php
-//echo "<p><img src='images/PDFmala.gif' border='0' />&nbsp;Adobe Acrobat Reader - download it here: <a target='_NEW_WINDOW' href='http://www.adobe.com/products/acrobat/readstep2.html'>http://www.adobe.com/products/acrobat/readstep2.html</a></p>";
+
+// TABLE ON BOTTOM TO SHOW GOOGLE LINK AND VERSION 
+echo "<table id='banner'>";
+echo "<th style='text-align:left; width:80%'>";
+echo "<img src='images/kml.gif' width='16' height='16' border='0'  alt='KML icon'/>&nbsp;Don't have Google Earth? Download it here:
+<a target='_NEW_WINDOW' href='http://earth.google.com/download-earth.html'>http://earth.google.com/download-earth.html</a>";
+echo "</th>";
+echo "<th style='text-align:right; width:20%'>";
+echo "Last update: 3.6.2010";
+echo "</th>";
+echo "</table>\n";
+
 ?>
 
 </body>

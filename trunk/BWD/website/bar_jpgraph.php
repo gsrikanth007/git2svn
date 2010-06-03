@@ -33,7 +33,11 @@ header('Content-Type: text/html; charset=utf-8');
 // 4=not compliant = RED, 
 // 5=compliant to mandatory values = GREEN
 // 0,3,6 = not sampled / insufficiently sampled = ORANGE
-$compliance_values = array('CG','B','NC','CI','NS','NF');
+
+// 3.6.2010; mkovacic: added new category for Greek NF data - white
+// NFC = incompletely sampled
+if($_GET['cc'] == 'GR')		$compliance_values = array('CG','B','NC','CI','NS','NF','NFC');
+else						$compliance_values = array('CG','B','NC','CI','NS','NF');
 $years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009);
 
 foreach($compliance_values as $key=>$val) {
@@ -217,9 +221,18 @@ $b5plot = new BarPlot($data['NF']);
 $b5plot->SetFillColor(complianceColor('NF'));
 $b5plot->SetLegend($procent.complianceText('NF'));
 
+// 3.6.2010; mkovacic: added new category for Greek NF data - white
+// 7th BAR - incompletely sampled = WHITE
+if($_GET['cc'] == 'GR')  {
+	$b6plot = new BarPlot($data['NFC']);
+	$b6plot->SetFillColor(complianceColor('NFC'));
+	$b6plot->SetLegend($procent.complianceText('NFC'));
+}
 
 // CREATE THE GROUPED BAR PLOT
-$gbplot = new AccBarPlot(array($b0plot,$b5plot,$b1plot,$b2plot,$b3plot,$b4plot));
+if($_GET['cc'] == 'GR')		$gbplot = new AccBarPlot(array($b6plot,$b0plot,$b5plot,$b1plot,$b2plot,$b3plot,$b4plot));
+else						$gbplot = new AccBarPlot(array($b0plot,$b5plot,$b1plot,$b2plot,$b3plot,$b4plot));
+
 $gbplot->SetWidth($width_bar);
 $graph->Add($gbplot);
 

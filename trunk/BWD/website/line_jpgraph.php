@@ -47,9 +47,12 @@ foreach($compliance_values as $key=>$val) {
       (COUNT(IF(y2008 = '".$val."', 1, NULL))/COUNT(IF(y2008 IS NOT NULL, 1, NULL)) )*100 AS '2008',
       (COUNT(IF(y2009 = '".$val."', 1, NULL))/COUNT(IF(y2009 IS NOT NULL, 1, NULL)) )*100 AS '2009',
       COUNT(*) AS No_of_stations,													# only needed to display in title total or max. number of stations for all years
-      COUNT(IF(y2009 IS NOT NULL, 1, NULL)) AS No_of_stations_2009		# only needed to display in title: number of stations 2008
+      COUNT(IF(y2009 IS NOT NULL, 1, NULL)) AS No_of_stations_2009		# only needed to display in title: number of stations 20xx
     FROM bwd_stations 
 	 WHERE 1 ";
+
+// 3.6.2010; mkovacic: added new category for Greek NF data - NFC (white): these data are left out in statistics
+  $sql .= " AND y2009 != 'NFC'"; 
 
   if($_GET['GeoRegion'] != '')		$sql .= " AND geographic = '".$_GET['GeoRegion']."'";
 
@@ -150,28 +153,16 @@ $graph->legend->Pos(0.1,0.4,"left","top");
 $graph->legend->SetShadow('darkgray@0.5');
 $graph->legend->SetFillColor('lightgray@0.3');
 
-
-// 1st LINE - 1=compliance with guide values = BLUE
-$p1 = new LinePlot($data['CG']);
-$p1->mark->SetType(MARK_FILLEDCIRCLE);
-$p1->mark->SetFillColor("lightblue");
-$p1->mark->SetWidth(4);
-$p1->SetColor("lightblue");
-$p1 ->SetWeight(3);
-$p1->SetCenter();
-$p1->SetLegend("% ".complianceText('CG'));
-$graph->Add($p1);
-
-// 2nd LINE - 5=compliance with mandatory values = GREEN
-$p2 = new LinePlot($data['CI']);
-$p2->mark->SetType(MARK_FILLEDCIRCLE);
-$p2->mark->SetFillColor("lightgreen");
-$p2->mark->SetWidth(4);
-$p2->SetColor("lightgreen");
-$p2 ->SetWeight(3);
-$p2->SetCenter();
-$p2->SetLegend("% ".complianceText('CI'));
-$graph->Add($p2);
+// 4th LINE - Closed or banned /*2=prohibited throughout the season*/ = GRAY
+$p4 = new LinePlot($data['B']);
+$p4->mark->SetType(MARK_FILLEDCIRCLE);
+$p4->mark->SetFillColor("lightgray");
+$p4->mark->SetWidth(4);
+$p4->SetColor("gray");
+$p4 ->SetWeight(3);
+$p4->SetCenter();
+$p4->SetLegend("% ".complianceText('B'));
+$graph->Add($p4);
 
 // 3rd LINE - 4=not compliant with mandatory values = RED
 $p3 = new LinePlot($data['NC']);
@@ -184,16 +175,30 @@ $p3->SetCenter();
 $p3->SetLegend("% ".complianceText('NC'));
 $graph->Add($p3);
 
-// 4th LINE - Closed or banned /*2=prohibited throughout the season*/ = GRAY
-$p4 = new LinePlot($data['B']);
-$p4->mark->SetType(MARK_FILLEDCIRCLE);
-$p4->mark->SetFillColor("lightgray");
-$p4->mark->SetWidth(4);
-$p4->SetColor("gray");
-$p4 ->SetWeight(3);
-$p4->SetCenter();
-$p4->SetLegend("% ".complianceText('B'));
-$graph->Add($p4);
+// 2nd LINE - 5=compliance with mandatory values = GREEN
+$p2 = new LinePlot($data['CI']);
+$p2->mark->SetType(MARK_FILLEDCIRCLE);
+$p2->mark->SetFillColor("lightgreen");
+$p2->mark->SetWidth(4);
+$p2->SetColor("lightgreen");
+$p2 ->SetWeight(3);
+$p2->SetCenter();
+$p2->SetLegend("% ".complianceText('CI'));
+$graph->Add($p2);
+
+// 1st LINE - 1=compliance with guide values = BLUE
+$p1 = new LinePlot($data['CG']);
+$p1->mark->SetType(MARK_FILLEDCIRCLE);
+$p1->mark->SetFillColor("lightblue");
+$p1->mark->SetWidth(4);
+$p1->SetColor("lightblue");
+$p1 ->SetWeight(3);
+$p1->SetCenter();
+$p1->SetLegend("% ".complianceText('CG'));
+$graph->Add($p1);
+
+
+
 
 /*
 // 5th LINE - Insufficiently samples = ORANGE
@@ -220,17 +225,30 @@ $graph->Add($p6);
 */
 
 if($_GET['cc'] == 'DE')  {
-	$t1 = new Text("* Since type for some bathing waters has been changed from freshwater to coastal or vice versa\nand are presented here as coastal and freshwater respectively from the beginning of reporting,\nthe graph is slightly different as in the national report.");
+	$t1 = new Text("* 2008 season: Since type for some bathing waters has been changed from freshwater to coastal\nor vice versa and are presented here as coastal and freshwater respectively from the beginning\nof reporting, the graph is slightly different as in the national report.");
 	$t1->SetPos(0.05,405);
 	$t1->ParagraphAlign("left");
 	$t1->SetColor("black");
 	$graph->AddText($t1);
 }
 
-/*
 
+if($_GET['cc'] == 'GR' && $_GET['type'] == 'fresh')  {
+	$t1 = new Text("* 2009 season: 828 incompletely sampled bathing waters are not included in the total number\nof freshwater bathing waters.");
+	$t1->SetPos(0.05,405);
+	$t1->ParagraphAlign("left");
+	$t1->SetColor("black");
+	$graph->AddText($t1);
+}
 
-*/
+if($_GET['cc'] == 'GR' && $_GET['type'] == 'coast')  {
+	$t1 = new Text("* 2009 season: 2 incompletely sampled bathing waters are not included in the total number\nof coastal bathing waters.");
+	$t1->SetPos(0.05,405);
+	$t1->ParagraphAlign("left");
+	$t1->SetColor("black");
+	$graph->AddText($t1);
+}
+
 
 // OUTPUT LINE
 $graph->Stroke();
