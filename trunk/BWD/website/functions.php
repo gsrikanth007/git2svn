@@ -16,8 +16,8 @@ function changeChars($input_string, $changeTo) {
 
 // f. to change UTF8 chars (Č,Š,Ž,Ü,...) to (C,S,Z,U,...) - only for jpgraph, because default font is not UTF8
 function replaceUTFChars($input_string) {
-  $changeFrom  = array("Č","Š","Ž","Ü","Ä","Ö","ß","É","Õ","Ñ","Ű","Ø","\\'","Ş","Æ","Å","Ő","Ç","Ú","ľ","Ý","Á","Ř","Í","Ě","Ň","Ó","Ā","Ū","Ē","Ļ"); 
-  $changeTo       = array("C","S","Z","UE","AE","OE","SS","E","O","N","U","OE","'","S","AE","AA","O","C","U","L","Y","A","R","I","E","N","O","A","U","E","L"); 
+  $changeFrom  = array("Č","Š","Ž","Ü","Ä","Ö","ß","É","Õ","Ñ","Ű","Ø","\\'","Ş","Æ","Å","Ő","Ç","Ú","ľ","Ý","Á","Ř","Í","Ě","Ň","Ó","Ā","Ū","Ē","Ļ","Û","Ľ","–"); 
+  $changeTo       = array("C","S","Z","UE","AE","OE","SS","E","O","N","U","OE","'","S","AE","AA","O","C","U","L","Y","A","R","I","E","N","O","A","U","E","L","U","L","-"); 
   Return str_replace($changeFrom, $changeTo, $input_string);
 }
 

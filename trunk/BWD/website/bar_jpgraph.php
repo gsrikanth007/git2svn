@@ -65,9 +65,9 @@ foreach($compliance_values as $key=>$val) {
   // CONDITION
   if($_GET['type'] == 'coast')  $sql .= " AND SeaWater = 'O'"; 
   if($_GET['type'] == 'fresh')  $sql .= " AND SeaWater = 'N'"; 
-  if($_GET['Region'] != "")   $sql .= " AND Region LIKE '".$_GET['Region']."'";
-  if($_GET['Province'] != "") $sql .= " AND Province LIKE '".$_GET['Province']."'";
-  if($_GET['BathingPlace'] != "") $sql .= " AND Numind = '".$_GET['BathingPlace']."'";
+  if($_GET['Region'] != "")   $sql .= ' AND Region LIKE "'.$_GET['Region'].'"';
+  if($_GET['Province'] != "") $sql .= ' AND Province LIKE "'.$_GET['Province'].'"';
+  if($_GET['BathingPlace'] != "") $sql .= ' AND Numind = "'.$_GET['BathingPlace'].'"';
   
   // GROUP BY
   if($_GET['BathingPlace'] != "")   $sql .= " GROUP BY Numind";

@@ -77,6 +77,13 @@ header('Content-Type: text/html; charset=utf-8');
 <body>
 <?php
 
+//debug output
+/*
+echo "<pre>";
+print_r($_GET);
+echo "</pre>";
+*/
+
 // HELP DIV
 echo "
 <div id='help_div' onclick='document.getElementById(\"help_div\").style.display=\"none\";' >
@@ -275,6 +282,10 @@ if ($_GET['GeoRegion'] == '')
 
 $result = mysql_query($sql) or die(mysql_error()."<br/>".$sql);
 
+
+// debug
+// echo $sql;
+
 // Initialise variables
 $country_coast_stations = array();
 $country_freshwater_stations = array();
@@ -315,7 +326,7 @@ while ($myrow = mysql_fetch_array($result)) {
 
     // REGION
     echo "  <td>";
-	echo "<select style='width: 176px;' name='".$myrow['cc']."_region' id='".$myrow['cc']."_region' onchange='document.location=\"index.php?cc=".$myrow['cc']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=\" + this.value'>\n";
+	
 	$sql_region = "
           SELECT Region, COUNT(IF(SeaWater = 'O',1,NULL)) AS 'coast_stations', COUNT(IF(SeaWater = 'N',1,NULL)) AS 'freshwater_stations'
           FROM bwd_stations ";
@@ -328,56 +339,78 @@ while ($myrow = mysql_fetch_array($result)) {
           GROUP BY Region
           ORDER BY Region
 	";
-    if ($_GET['GeoRegion'] == '')
-    {
+    if ($_GET['GeoRegion'] == '')	{
 		$sql_region = "SELECT Region, coast_stations, freshwater_stations FROM bwd_regions WHERE cc = '".$myrow['cc']."' ORDER BY Region";
     }
 
-
 	$result_region = mysql_query($sql_region);
-	echo "<option value='' selected='selected'>--- Region ---</option>\n";
 
-	while ($myrow_region = mysql_fetch_array($result_region)) {
-		echo "<option value='".$myrow_region['Region']."'";
-		if ($myrow['cc'] == $_GET['cc'] && $myrow_region['Region'] == $_GET['Region']) {
-			echo " selected='selected'";
-			$region_freshwater_stations[$counter]  = $myrow_region['freshwater_stations'];
-			$region_coast_stations[$counter]  = $myrow_region['coast_stations'];
+// debug output
+// echo "<br>".$sql_region;
+	
+	// 7.6.2010; mkovacic: if there is only 1 region, select box has this region displayed and is disabled
+		echo "<select style='width: 176px;' name='".$myrow['cc']."_region' id='".$myrow['cc']."_region' onchange='document.location=\"index.php?cc=".$myrow['cc']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=\" + this.value' ";
+		if(mysql_num_rows($result_region) == 1)	echo "disabled";
+		echo ">\n";
+		echo "<option value='' selected='selected'>--- Region ---</option>\n";
+		$tmp_region = '';
+	
+		while ($myrow_region = mysql_fetch_array($result_region)) {
+			echo "<option value='".$myrow_region['Region']."'";
+			if (($myrow['cc'] == $_GET['cc'] && $myrow_region['Region'] == $_GET['Region']) || mysql_num_rows($result_region) == 1) {
+				echo " selected='selected'";
+				$region_freshwater_stations[$counter]  = $myrow_region['freshwater_stations'];
+				$region_coast_stations[$counter]  = $myrow_region['coast_stations'];
+			}
+			echo ">".($myrow_region['Region'])."</option>\n";
+			
+			// 7.6.2010; mkovacic: if there is only 1 region, it is passed on as $_GET
+			if(mysql_num_rows($result_region) == 1)		$tmp_region = $myrow_region['Region']; 
 		}
-		echo ">".$myrow_region['Region']."</option>\n";
-	}
-	echo "</select>\n";
-//  echo "&nbsp;";
-      
-	// SHOW BUTTON FOR REGION-MAP IF MAP EXISTS 
-	// set region-map position - shift from top 
-	if ($counter < 20)		$top_shift = 190+($counter*($td_height+5));
-	else					$top_shift = ($counter*($td_height+5))-585;
+		echo "</select>\n";
+		  
+		// SHOW BUTTON FOR REGION-MAP IF MAP EXISTS 
+		// set region-map position - shift from top 
+		if ($counter < 20)		$top_shift = 190+($counter*($td_height+5));
+		else					$top_shift = ($counter*($td_height+5))-585;
 
-	if (file_exists("regions/pdf_".strtolower($myrow['cc'])."_regions.png")) {
-		echo "<a title='".$myrow['Country']." region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/pdf_".strtolower($myrow['cc'])."_regions.png','".$myrow['Country']." - region map','725px','735px','150px','".$top_shift."px'); \"><img src='images/Regije.gif' alt='".$myrow['Country']." - region map'/></a>";
-	}
+		if (file_exists("regions/pdf_".strtolower($myrow['cc'])."_regions.png")) {
+			echo "<a title='".$myrow['Country']." region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/pdf_".strtolower($myrow['cc'])."_regions.png','".$myrow['Country']." - region map','725px','735px','150px','".$top_shift."px'); \"><img src='images/Regije.gif' alt='".$myrow['Country']." - region map'/></a>";
+		}
+
 	echo "</td>\n";
 
 	// PROVINCE
-	echo "  <td>";
-	if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '') {
-		echo "<select style='visibility: visible; width: 190px;' ";
-		echo "name='".$myrow['cc']."_province' id='".$myrow['cc']."_province' onchange='document.location=\"index.php?cc=".$_GET['cc']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=".$_GET['Region']."&amp;Province=\" + (this.value);'>\n";
-		echo "<option value='' selected='selected'>--- Province ---</option>\n";
+	echo "<td>";
+	
+	// 7.6.2010; mkovacic: if there is only 1 region, select box for Province is show immediately
+	if (($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '') || mysql_num_rows($result_region) == 1) {
+		
 		$sql_province = "
 			SELECT Province, COUNT(IF(SeaWater = 'O',1,NULL)) AS 'coast_stations', COUNT(IF(SeaWater = 'N',1,NULL)) AS 'freshwater_stations'
 			FROM bwd_stations ";
 		if ($_GET['GeoRegion'] != '')	$sql_province .= "WHERE geographic = '".$_GET['GeoRegion']."' AND ";
 		else
 			$sql_province .= "WHERE ";
+		
+		// 7.6.2010; mkovacic: if there is only 1 region, select box for Province is show immediately
+		if(mysql_num_rows($result_region) == 1)		$sql_province .= " cc = '".$myrow['cc']."'";
+		else										$sql_province .= " cc = '".$_GET['cc']."'";
+		if(mysql_num_rows($result_region) == 1)		$sql_province .= " AND Region LIKE '".changeChars($tmp_region,"%")."'";
+		else										$sql_province .= " AND Region LIKE '".changeChars($_GET['Region'],"%")."'";
+		
 		$sql_province .= "
-			 cc = '".$_GET['cc']."'
-			AND Region LIKE '".changeChars($_GET['Region'],"%")."'
 			GROUP BY Province
 			ORDER BY Province
 		";
 		$result_province = mysql_query($sql_province);
+
+// debug output
+// echo "<br>".$sql_province;
+		
+		echo "<select style='visibility: visible; width: 190px;' ";
+		echo "name='".$myrow['cc']."_province' id='".$myrow['cc']."_province' onchange='document.location=\"index.php?cc=".$myrow['cc']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=".((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region'])."&amp;Province=\" + (this.value);'>\n";
+		echo "<option value='' selected='selected'>--- Province ---</option>\n";
 		while ($myrow_province = mysql_fetch_array($result_province)) {
 			echo "<option value='".convertUTFtoHTML($myrow_province['Province'])."'";
 			
@@ -397,20 +430,28 @@ while ($myrow = mysql_fetch_array($result)) {
 		if ($counter < 24)		$top_shift = 190+($counter*($td_height+5));
 		else					$top_shift = ($counter*($td_height+5))-720;
 
-		if ($_GET['Region'] == $myrow['Country'])	{
+		//if ($myrow_region['Region'] == $myrow['Country'])	{
+		if ($tmp_region == $myrow['Country'])	{
 			$file_province_map = "provinces/".strtolower($myrow['cc'])."_p.png";
 		} else {
-			$file_province_map = "provinces/".strtolower($myrow['cc'])."_p_".strtolower(changeChars(replaceUTFChars($_GET['Region']),"_")).".png";
+			$file_province_map = "provinces/".strtolower($myrow['cc'])."_p_".strtolower(changeChars(replaceUTFChars((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region']),"_")).".png";
 		}
 
 // debug output
-// echo $file_province_map;
+/*
+echo "<br>".$tmp_region;
+echo "<br>".$myrow['Country'];
+echo "<br>".$myrow_region['Region'];
+echo $file_province_map;
+*/
 
-		if ($_GET['Region'] != '' && file_exists($file_province_map )) {
+		if (file_exists($file_province_map)) {
 			echo "<a id='".$myrow['cc']."_province_link' ";
-			if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '')  echo "style='visibility: visible; cursor:pointer; cursor: hand;'";
-			else                                                      echo "style='visibility: hidden; cursor:pointer; cursor: hand;'";
-			echo "title='".$myrow['Country']." province map'  onclick=\"ShowContent('map_div','map_font','map_img','".$file_province_map ."','".$myrow['Country']." - ".$_GET['Region']." - province map','725px','925px','150px','".$top_shift."px'); \"><img src='images/Regije.gif' border='0' alt='".$myrow['Country']." - province map'/></a>";
+			if (($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '') || mysql_num_rows($result_region) == 1) 
+				echo "style='visibility: visible; cursor:pointer; cursor: hand;'";
+			else                                                      
+				echo "style='visibility: hidden; cursor:pointer; cursor: hand;'";
+			echo "title='".$myrow['Country']." province map'  onclick=\"ShowContent('map_div','map_font','map_img','".$file_province_map ."','".$myrow['Country']." - ".((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region'])." - province map','725px','925px','150px','".$top_shift."px'); \"><img src='images/Regije.gif' border='0' alt='".$myrow['Country']." - province map'/></a>";
 		}
 	}
 	else
@@ -432,49 +473,64 @@ while ($myrow = mysql_fetch_array($result)) {
 	else					$top_shift = ($counter*($td_height+5))-115;
 	
 	echo "  <td id='td_".$counter."'>";
-	if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '' && $_GET['Province'] != '')
-	    echo "";
+	// 7.6.2010; mkovacic: if bathing places are less than 100, they are shown even if Region or Province is not chosen
+	//if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '' && $_GET['Province'] != '')	    echo "";
+	if (($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '' && $_GET['Province'] != '') || $sum_bw <= 100 )		echo "";
 	else {
 	    echo "<span style='color:gray'>";
-		echo "$sum_bw bathing waters ";
+		echo $sum_bw." bathing waters ";
 		if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '')        echo "in selected region";
 		echo "</span>";
 	}
+		
+	if(mysql_num_rows($result_region) == 1)							$bp_region = $tmp_region;
+	elseif($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '')	$bp_region = $_GET['Region'];
+	else															$bp_region = "";
+	if($myrow['cc'] == $_GET['cc'] && $_GET['Province'] != '')		$bp_province = $_GET['Province'];
+	else															$bp_province = "";
 
-	if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '' && $_GET['Province'] != '') {
+	$sql_bplace = '
+	  SELECT numind, Prelev 
+	  FROM bwd_stations ';
+	  if ($_GET['GeoRegion'] != '')	$sql_bplace .= 'WHERE geographic = "'.$_GET['GeoRegion'].'" AND ';
+	  else 							$sql_bplace .= 'WHERE ';
+	  $sql_bplace .= ' cc = "'.$myrow['cc'].'"';
+	  if($bp_region != "")				$sql_bplace .= ' AND Region LIKE "'.changeChars($bp_region,"%").'"';
+	  if($bp_province != "")			$sql_bplace .= ' AND Province LIKE "'.changeChars($bp_province,"%").'"';
+	  $sql_bplace .= ' ORDER BY Prelev ';
+	
+	
+	$result_bplace = mysql_query($sql_bplace);
+
+// debug 
+// echo $sql_bplace;
+
+    // 7.6.2010; mkovacic: if bathing places are <= 100, they are shown (even if Region/Province is not chosen)
+	//if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '' && $_GET['Province'] != '') {
+	if (($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '' && $_GET['Province'] != '') || $sum_bw <= 100 )		{
 		echo "<select style='display: block; width: 100%' ";
 		echo "name='".$myrow['cc']."_bplace' id='".$myrow['cc']."_bplace' ";
 		
-		echo "onchange=\"if(this.value != '') {HideContent('map_div','map_font'); ShowContent('graph_div','graph_font','graph_img','bar_jpgraph.php?cc=".$myrow['cc']."&amp;Country=".$myrow['Country']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=".convertUTFtoHTML($_GET['Region'])."&amp;Province=".convertUTFtoHTML($_GET['Province'])."&amp;BathingPlace=' + document.getElementById('".$myrow['cc']."_bplace').value,'','550px','270px','300px','".$top_shift."px'); return true;} else {HideContent('graph_div','graph_font');}\" ";
+		
+		echo "onchange=\"if(this.value != '') {HideContent('map_div','map_font'); ShowContent('graph_div','graph_font','graph_img','bar_jpgraph.php?cc=".$myrow['cc']."&amp;Country=".$myrow['Country']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=".convertUTFtoHTML($bp_region)."&amp;Province=".convertUTFtoHTML($bp_province)."&amp;BathingPlace=' + document.getElementById('".$myrow['cc']."_bplace').value,'','550px','270px','300px','".$top_shift."px'); return true;} else {HideContent('graph_div','graph_font');}\" ";
 		
 		echo ">\n";
-		echo "<option value='' selected='selected'>--- ".($province_coast_stations[$counter]+$province_freshwater_stations[$counter])." bathing waters in selected province ---</option>\n";
-		if ($_GET['cc'] == $myrow['cc']) {
-			$sql_bplace = "
-			  SELECT numind, Prelev 
-			  FROM bwd_stations ";
-			  if ($_GET['GeoRegion'] != '')	$sql_bplace .= "WHERE geographic = '".$_GET['GeoRegion']."' AND ";
-			  else 							$sql_bplace .= "WHERE ";
-			  $sql_bplace .= "
-				cc = '".$_GET['cc']."' 
-			   AND Region LIKE '".changeChars($_GET['Region'],"%")."' 
-			   AND Province LIKE '".changeChars($_GET['Province'],"%")."' 
-			   ORDER BY Prelev
-			  ";
-			$result_bplace = mysql_query($sql_bplace);
+		echo "<option value='' selected='selected'>--- ".$sum_bw." bathing waters ";
+		echo " ---</option>\n";
+		//if ($_GET['cc'] == $myrow['cc']) {
 			while ($myrow_bplace = mysql_fetch_array($result_bplace)) {
 				echo "<option value='".$myrow_bplace['numind']."'";
 				if ($myrow_bplace['numind'] == $_GET['BathingPlace'])  echo " selected='selected'";
 				echo ">".$myrow_bplace['Prelev']."</option>";           
 			}
-	    }
+	    //}
 		echo "</select>";
 	}
     else    echo "&nbsp;";
     echo "</td>\n";
 
     // VISUALISATION BUTTONS
-    echo "  <td align='right'>";
+    echo "<td align='right'>";
 
 	// GENERATES KML LINK
 	$link_za_kml = "kml_export.php?cc=".$myrow['cc'];
@@ -592,7 +648,7 @@ echo "<img src='images/kml.gif' width='16' height='16' border='0'  alt='KML icon
 <a target='_NEW_WINDOW' href='http://earth.google.com/download-earth.html'>http://earth.google.com/download-earth.html</a>";
 echo "</th>";
 echo "<th style='text-align:right; width:20%'>";
-echo "Last update: 3.6.2010";
+echo "Last update: 9.6.2010";
 echo "</th>";
 echo "</table>\n";
 
