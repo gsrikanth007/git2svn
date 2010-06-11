@@ -234,7 +234,7 @@ if($_GET['cc'] == 'DE')  {
 
 
 if($_GET['cc'] == 'GR' && $_GET['type'] == 'fresh')  {
-	$t1 = new Text("* 2009 season: 828 incompletely sampled bathing waters are not included in the total number\nof freshwater bathing waters.");
+	$t1 = new Text("* 2009 season: 2 incompletely sampled bathing waters are not included in the total number\nof freshwater bathing waters.");
 	$t1->SetPos(0.05,405);
 	$t1->ParagraphAlign("left");
 	$t1->SetColor("black");
@@ -242,7 +242,7 @@ if($_GET['cc'] == 'GR' && $_GET['type'] == 'fresh')  {
 }
 
 if($_GET['cc'] == 'GR' && $_GET['type'] == 'coast')  {
-	$t1 = new Text("* 2009 season: 2 incompletely sampled bathing waters are not included in the total number\nof coastal bathing waters.");
+	$t1 = new Text("* 2009 season: 828 incompletely sampled bathing waters are not included in the total number\nof coastal bathing waters.");
 	$t1->SetPos(0.05,405);
 	$t1->ParagraphAlign("left");
 	$t1->SetColor("black");
