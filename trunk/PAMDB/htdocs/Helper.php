@@ -13,8 +13,8 @@
 
 class Helper
 {
-    const MAIL_MAINTAINER = 'eea-pam@econemon.com';
-    const SMTP_SERVER = "econemon.com";
+    const MAIL_MAINTAINER = 'soren.roug@eea.europa.eu';
+    const SMTP_SERVER = "localhost";
 
     private static $_mpProtect = array('sub'=>'vvv', 'sup'=>'qqq');
 
@@ -22,7 +22,7 @@ class Helper
     {
         ini_set("SMTP", self::SMTP_SERVER);
         ini_set("sendmail_path", "");
-        ini_set('sendmail_from', '"PaM installation at '.$_SERVER['SERVER_NAME'].'" <noreply@example.com>');
+        ini_set('sendmail_from', '"PaM installation at '.$_SERVER['SERVER_NAME'].'" <noreply@possum.eea.europa.eu>');
 
         $sSubject = 'Automated crash report: '.$e->getMessage();
 
