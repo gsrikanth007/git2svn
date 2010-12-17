@@ -1,0 +1,161 @@
+IRIS II Data Query Tool Installation
+---------------------------------------------------------------------------------
+
+    Installation prerequisites
+    -----------------------------------------------------------------------------
+    Before starting the installation process, it is assumed that you already have
+    a web server with the following software installed:
+
+    +   Apache version 2.2.x (with mod_rewrite and allow overrides enabled)
+    +   PHP version 5.2.x
+    +   MySQL verion 5.0.x
+
+    If you do not have all of the above software installed, please install them
+    before continuing with this installation process.
+
+
+1.  Create two databases and database users.
+    -----------------------------------------------------------------------------
+    The database credentials must be set in the application configuration file
+    (see step 5).
+
+
+    Data Query Tool (DQT) Database:
+    -----------------------------------------------------------------------------
+    Create a database user with the name irisii_dqt_user or similar.
+
+    The database user will require the following privileges when importing the
+    database schema: CREATE, DROP, ALTER, INDEX, INSERT.
+
+    Once the schema has been imported, the database user will require only the
+    following privileges: SELECT, INSERT, UPDATE, DELETE, CREATE TEMPORARY TABLES.
+
+    Example grant statements can be found in the root of the application SVN
+    repository: rs_irisii_grant.sql
+
+    Import the DQT database schema and data which is located in the root of the
+    application SVN repository (rs_irisii_dqt_app.sql) using the following
+    command:
+    mysql -u irisii_dqt_user -p <password> <dqt database> < rs_irisii_dqt_app.sql
+
+
+    General Binding Rules (GBR) Query Tool Database:
+    -----------------------------------------------------------------------------
+    Create a database user with the name irisii_gbr_user or similar.
+
+    The database user will require the following privileges when importing the
+    database schema: CREATE, DROP, ALTER, INDEX, INSERT.
+
+    Once the schema has been imported, the database user will require only the
+    following privileges: SELECT, CREATE TEMPORARY TABLES.
+
+    Example grant statements can be found in the root of the application SVN
+    repository.
+
+    Import the GBR database schema and data which is located in the root of the
+    application SVN repository (rs_irisii_gbr_app.sql) using the following
+    command:
+    mysql -u irisii_gbr_user -p <password> <gbr database> < rs_irisii_gbr_app.sql
+		
+		
+2.  Checkout the application.
+    -----------------------------------------------------------------------------
+    Checkout the Data Query Tool application to the destination directory of the
+    web server using the following command:
+    svn co https://svn.eionet.europa.eu/repositories/PHP/trunk/IRIS2/app irisii_app
+
+    Create a symbolic link to the application public directory:
+    ln -s /path/to/irisii_app/public /path/to/dqt
+
+    Set the application directory to be owned by the web server user. E.g:
+    chown -R apache:apache /path/to/irisii_app
+
+    The application should be configured to be publicly accessed using this
+    symbolic link. E.g: http://iris.eionet.europa.eu/dqt
+	
+	
+3.  Create application cache directory.
+    -----------------------------------------------------------------------------
+    The application uses local files to cache the results of database queries
+    in a serialized format.
+
+    By default the application will look for a directory called 'cache' in the
+    root of the application directory. NOT the root of the application public
+    directory.
+
+    Create the cache directory using the following command:
+    mkdir /path/to/app/cache
+
+    Make sure the cache directory is writeable by the web server user. E.g:
+    chown apache:apache /path/to/irisii_app/cache
+
+    Alternatively it is possible to use any other directory for storing the
+    application cache files. The absolute path to the chosen directory must
+    be set in the application configuration file (see step 5).
+	
+	
+4.  Register application domain with ReCaptcha
+    -----------------------------------------------------------------------------
+    The application contact form implements a captcha field to prevent spam
+    messages being posted. The captcha service is provided by ReCaptcha.
+
+    The public domain under which the DQT application is installed must be
+    registered at http://www.google.com/recaptcha.
+
+    The public and private ReCaptcha keys must be set in the application
+    configuration file (see step 5).
+	
+	
+5.  Configure the application.
+    -----------------------------------------------------------------------------
+    The application configuration file can be found at the following path:
+    /path/to/irisii_app/application/configs/application.ini
+
+    This file is divided into four sections:
+    production, staging, testing and development.
+
+    Under the production section of the configuration file, complete the
+    following options:
+
+    DQT Database Credentials (lines 14 - 17)
+    resources.multidb.dqt.host = <database host>
+    resources.multidb.dqt.username = <database username>
+    resources.multidb.dqt.password = <database password>
+    resources.multidb.dqt.dbname = <database name>
+
+    GBR Database Credentials (lines 21 - 24)
+    resources.multidb.gbr.host = <database host>
+    resources.multidb.gbr.username = <database username>
+    resources.multidb.gbr.password = <database password>
+    resources.multidb.gbr.dbname = <database name>
+
+    Cache Directory (line 27)
+    options.cache.path = <absolute path to cache directory>
+
+    Contact Form (line 28 - 30)
+    options.contactEmail = <email address>
+    options.recaptcha.public = <recaptcha public key>
+    options.recaptcha.private = <recaptcha private key>
+
+    CMS Base URL
+    options.cms.baseUrl = <absolute path from domain root directory>
+	
+	
+6.  Open the application URL in a browser.
+    -----------------------------------------------------------------------------
+    If everything has been completed, a page saying the following will be shown:
+    "Welcome to the Iris II Data Query Tool"
+
+    If you are not getting the expected output, PHP errors can be enabled in the
+    configuration file:
+
+    PHP Errors (lines 2 - 3)
+    phpSettings.display_startup_errors = <0 or 1>
+    phpSettings.display_errors = <0 or 1>
+
+    Or the site can be flagged for development mode by modifying the .htaccess
+    file found at the following path:
+    /path/to/irisii_app/public/.htaccess
+
+    Add the following line at the start of the .htaccess file:
+    SetEnv APPLICATION_ENV development

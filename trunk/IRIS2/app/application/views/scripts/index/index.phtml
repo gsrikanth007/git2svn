@@ -1,0 +1,31 @@
+<div class="dqtContainer dqtFixed">
+    <div id="dqtWorkflow">
+        <div id="content">
+            <h1>Welcome to the Iris II Data Query Tool</h1>
+
+            <div id="options" class="roundedAll">
+                <h2>Please make your selection from the available options</h2>
+
+                <div id="colouredBand">
+                    <a class="optionAction roundedAll" href="<?php echo $this->url(array('controller' => 'datasheet', 'action' => 'index')); ?>" title="Datasheet">Datasheet</a>
+                    <a class="optionAction roundedAll" href="<?php echo $this->url(array('controller' => 'search', 'action' => 'index')); ?>" title="Datasheet">Search</a>
+                    <a class="optionAction roundedAll" href="<?php echo $this->url(array('controller' => 'compare', 'action' => 'index')); ?>" title="Datasheet">Compare</a>
+                </div>
+
+                <div id="optionDescriptions">
+                    <div class="option">
+                        <p class="description">The datasheet option can be used to view English translations of member state responses to each European Directive on an individual basis.</p>
+                    </div>
+
+                    <div class="option">
+                        <p class="description">The search option can be used to search member state datasheet responses for specific textual extracts, by directive, reporting period and sector.</p>
+                    </div>
+
+                    <div class="option">
+                        <p class="description">The compare option can be used to compare English translations of member state responses submitted for a single directive across one or two reporting periods.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

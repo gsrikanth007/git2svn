@@ -1,0 +1,46 @@
+<?php $form = $this->workflow->getForm(); ?>
+<?php $workflowType = $this->escape($this->workflow->getType()); ?>
+<div class="dqtContainer dqtFixed">
+    <div id="dqtWorkflow">
+        <div id="content">
+            <h1><?php echo $workflowType; ?></h1>
+
+            <div id="workflowForm" class="stageTwo roundedAll">
+                <h2><?php echo $this->escape($form->questionnaire->getDescription()); ?></h2>
+                <div id="colouredBand"></div>
+
+                <div id="formContainer">
+                    <form method="<?php echo $form->getMethod(); ?>" action="<?php echo $form->getAction(); ?>">
+                        <?php if($form->questionnaire->getMessages()): ?>
+                        <div class="errors">
+                            <ul>
+                                <?php foreach($form->questionnaire->getMessages() as $message): ?>
+                                <li><?php echo $this->escape($message); ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <?php endif; ?>
+
+                        <div class="element">
+                            <?php if('Compare' === $this->workflow->getType()): ?>
+                                <span style="display: none;">
+                                    <label for="selectAll">
+                                        <input type="checkbox" value="all" id="selectAll" name="questionnaire_all">Select All
+                                    </label>
+                                    <br />
+                                </span>
+                            <?php endif; ?>
+                            <?php echo $form->questionnaire->renderViewHelper(); ?>
+                        </div>
+
+                        <div class="element">
+                            <?php echo $this->formSubmit('submit', 'Next', array('id' => 'submitOption')); ?>
+                            <a class="resetOption" href="<?php echo $this->url(array(), strtolower($this->workflow->getType() . '_reset')); ?>" title="Reset Workflow">Reset Workflow</a>
+                        </div>
+                    </form>
+                    <br class="clear" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

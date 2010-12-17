@@ -1,0 +1,67 @@
+<?php
+
+require_once 'Iris/Controller.php';
+
+class ErrorController extends Iris_Controller {
+
+    public function init() {
+        parent::init();
+        $this->_breadcrumbs->append(array('Error', array('action' => 'error', 'controller' => 'error')));
+
+        // Pass variables to view
+        $baseUrl = $this->view->baseUrl();
+        $this->view->headLink()->appendStylesheet("{$baseUrl}/stylesheets/cms_layout.css", 'screen');
+        $this->view->showLeftNavigation = true;
+    }
+
+    public function errorAction()
+    {
+        $errors = $this->_getParam('error_handler');
+        
+        if (!$errors) {
+            $this->view->message = 'You have reached the error page';
+            return;
+        }
+        
+        switch ($errors->type) {
+            case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ROUTE:
+            case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_CONTROLLER:
+            case Zend_Controller_Plugin_ErrorHandler::EXCEPTION_NO_ACTION:
+        
+                // 404 error -- controller or action not found
+                $this->getResponse()->setHttpResponseCode(404);
+                $this->view->title = $this->view->message = 'Page not found';
+                break;
+            default:
+                // application error
+                $this->getResponse()->setHttpResponseCode(500);
+                $this->view->title = $this->view->message = 'Application error';
+                break;
+        }
+        
+        // Log exception, if logger available
+        if ($log = $this->getLog()) {
+            $log->crit($this->view->message, $errors->exception);
+        }
+        
+        // conditionally display exceptions
+        if ($this->getInvokeArg('displayExceptions') == true) {
+            $this->view->exception = $errors->exception;
+        }
+        
+        $this->view->request   = $errors->request;
+    }
+
+    public function getLog()
+    {
+        $bootstrap = $this->getInvokeArg('bootstrap');
+        if (!$bootstrap->hasResource('Log')) {
+            return false;
+        }
+        $log = $bootstrap->getResource('Log');
+        return $log;
+    }
+
+
+}
+

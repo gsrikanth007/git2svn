@@ -1,0 +1,31 @@
+/**
+ * Data Query Tool Chart Layout Stylesheet
+ * @author Rob Simpkins (AEA Technology)
+ */
+body {
+     height: 500px; width: 800px;
+     margin: 0;
+     overflow: hidden;
+}
+div.bluff-tooltip {
+    height: 26px;
+    border: 1px solid #000;
+    background-color: #fff;
+    font-family: arial, tahoma, verdana, sans-serif; font-size: 11px;
+    line-height: 26px;
+}
+div.bluff-tooltip span.color {
+    float: left; display: inline;
+    height: 26px; width: 8px;
+}
+div.bluff-tooltip span.label {
+    float: left; display: inline;
+    padding: 0 5px;
+}
+div.bluff-tooltip span.label:after {
+    content: ':';
+}
+div.bluff-tooltip span.data {
+    float: left; display: inline;
+    padding-right: 5px;
+}

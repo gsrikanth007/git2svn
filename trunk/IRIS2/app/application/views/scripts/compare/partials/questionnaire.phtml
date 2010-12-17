@@ -1,0 +1,102 @@
+<h1><?php echo $this->escape($this->directive->name); ?></h1>
+
+<div id="questionOptionsLegend" class="roundedAll">
+    <a id="expandAll" href="#" title="Expand All Questions">Expand All Questions</a>
+    <a id="collapseAll" href="#" title="Collapse All Questions">Collapse All Questions</a>
+</div>
+
+<div class="clear"></div>
+
+<?php foreach($this->compare as $comparison):
+    // Assign comparison elements to local variables
+    $questionnaire = $comparison['questionnaire'];
+    $questions = $comparison['questions'];
+?>
+    <div class="questionnaire roundedAll <?php echo $this->cycle(array('first','second'))->next(); ?>">
+        <h2><?php echo $questionnaire->getReportingPeriod(); ?></h2>
+
+        <?php if(0 < count($questions)): ?>
+            <?php foreach($questions as $question):
+                // Assign question elements to local variables
+                $responses = $question['responses'];
+                $question = $question['question'];
+            ?>
+                <div class="questionHead">
+                    <div class="questionContext collapsed">
+                        <?php if(($ancestors = $question->getAncestors())): ?>
+                            <?php foreach($ancestors as $ancestor): ?>
+                                <p>
+                                    <a class="question" href="<?php echo $this->url(array('question' => $ancestor->id), 'compare_token'); ?>" title="<?php echo $this->escape($ancestor->questionNo); ?>">
+                                        <?php echo $this->escape($ancestor->questionText); ?>
+                                    </a>
+                                </p>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="questionHeadContainer">
+                        <a class="toggle" href="#" title="Click to view"><?php echo $this->escape($question->questionText); ?></a>
+                        <div class="questionOptions">
+                            <?php if(($ancestors = $question->getAncestors())): ?>
+                                <a class="viewQuestionContext" href="#" title="View question context">View context</a>
+                            <?php endif; ?>
+                            <?php if($question->hasChart()): ?>
+                                <a class="viewQuestionChart iframe" href="<?php echo $this->url(array('token' => $this->token, 'chart' => $question->chartId), 'chart'); ?>" title="View question chart">View chart</a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="questionBody">
+                    <div class="questionBodyContainer">
+                        <?php if(($children = $question->getChildren())): ?>
+                            <div class="subQuestions">
+                                <?php foreach($children as $child): ?>
+                                    <div class="subQuestion">
+                                        <a class="question" href="<?php echo $this->url(array('question' => $child->id), 'compare_token'); ?>" title="Click to view">
+                                            <?php echo $this->escape($child->questionText); ?>
+                                        </a>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+
+                        <?php else: ?>
+                            <div class="memberStates">
+                                <?php foreach($responses as $response):
+                                    // Assign response elements to local variables
+                                    $memberState = $response['member_state'];
+                                    $answers = $response['answers'];
+                                ?>
+                                    <div class="memberStateHead">
+                                        <a class="toggle" href="#" title="Click to view"><strong><?php echo $this->escape($memberState->countryName); ?></strong></a>
+                                    </div>
+                                    <div class="memberStateBody">
+                                        <?php if(!empty($answers)): ?>
+                                            <div class="answers">
+                                                <?php foreach($answers as $index => $answer): ?>
+                                                    <div class="answerHead">
+                                                        <a class="toggle" href="#" title="Click to view"><strong>Response <?php echo $this->escape($index + 1); ?></strong></a>
+                                                    </div>
+                                                    <div class="answerBody">
+                                                        <p><?php echo $this->multiLine($this->escape($answer->answerText)); ?></p>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+
+                                        <?php else: ?>
+                                            <div class="noResponse">
+                                                <p><?php echo $this->escape($memberState->countryName); ?> did not answer this question</p>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <div class="noMappings">
+                <p>No mappings exist between the reporting periods for the selected question</p>
+            </div>
+        <?php endif; ?>
+    </div>
+<?php endforeach; ?>

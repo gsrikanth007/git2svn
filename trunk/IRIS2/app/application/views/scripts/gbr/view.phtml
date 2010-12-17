@@ -1,0 +1,82 @@
+<h2>Installation Details</h2>
+
+<?php if(!empty($this->details)): ?>
+    <table class="horizontal">
+        <tbody>
+            <tr>
+                <th width="220">Country / Region</th>
+                <td><?php echo $this->escape($this->details['region']); ?></td>
+            </tr>
+            <tr>
+                <th>IPPC - Annex I Activity</th>
+                <td><?php echo $this->escape("{$this->details['code']} - {$this->details['activity']}"); ?></td>
+            </tr>
+            <tr>
+                <th>GBR: Name and / or Legal Reference</th>
+                <td><?php echo $this->escape($this->details['gbr']); ?></td>
+            </tr>
+            <tr>
+                <th>Number of Installations</th>
+                <td><?php echo $this->escape($this->details['no_installations']); ?></td>
+            </tr>
+            <tr>
+                <th>Sectoral</th>
+                <td>
+                    <?php if(!empty($this->details['sectoral'])): ?>
+                        <img src="<?php echo $this->baseUrl('images/tick.png'); ?>" alt="True" />
+                    <?php endif;?>
+                </td>
+            </tr>
+            <tr>
+                <th>Cross Sectoral</th>
+                <td>
+                    <?php if(!empty($this->details['cross_sectoral'])): ?>
+                        <img src="<?php echo $this->baseUrl('images/tick.png'); ?>" alt="True" />
+                    <?php endif;?>
+                </td>
+            </tr>
+            <tr>
+                <th>ELV for Air</th>
+                <td>
+                    <?php if(!empty($this->details['air'])): ?>
+                        <img src="<?php echo $this->baseUrl('images/tick.png'); ?>" alt="True" />
+                    <?php endif;?>
+                </td>
+            </tr>
+            <tr>
+                <th>ELV for Water</th>
+                <td>
+                    <?php if(!empty($this->details['water'])): ?>
+                        <img src="<?php echo $this->baseUrl('images/tick.png'); ?>" alt="True" />
+                    <?php endif;?>
+                </td>
+            </tr>
+            <tr>
+                <th>Others</th>
+                <td>
+                    <?php if(!empty($this->details['other'])): ?>
+                        <img src="<?php echo $this->baseUrl('images/tick.png'); ?>" alt="True" />
+                    <?php endif;?>
+                </td>
+            </tr>
+            <tr>
+                <th>Adopted on</th>
+                <td><?php echo $this->escape($this->details['adopted']); ?></td>
+            </tr>
+            <tr>
+                <th>Last Reviewed</th>
+                <td><?php echo $this->escape($this->details['reviewed']); ?></td>
+            </tr>
+            <tr>
+                <th>Web Link</th>
+                <td><?php echo $this->escape($this->details['web_link']); ?></td>
+            </tr>
+            <tr>
+                <th>Comments</th>
+                <td><?php echo $this->multiLine($this->escape($this->details['comments'])); ?></td>
+            </tr>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p>The installation details could not be found.</p>
+<?php endif; ?>

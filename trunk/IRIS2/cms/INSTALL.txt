@@ -1,0 +1,107 @@
+IRIS II SilverStripe Installation
+---------------------------------------------------------------------------------
+
+    Installation prerequisites
+    -----------------------------------------------------------------------------
+    Before starting the installation process, it is assumed that your web
+    environment meets the server requirements specified here:
+    http://doc.silverstripe.org/server-requirements
+
+    If you do not have all of the above software installed, please install them
+    before continuing with this installation process.
+
+
+1.  Checkout SilverStripe 2.4 release
+    -----------------------------------------------------------------------------
+    Checkout the latest stable SilverStripe release from:
+    svn co http://svn.silverstripe.com/open/phpinstaller/branches/2.4/
+    /path/to/irisii_cms
+
+
+2.  Follow the SilverStripe installation process
+    -----------------------------------------------------------------------------
+    After checking out a copy of the SilverStripe source code, follow the
+    installation:
+    http://doc.silverstripe.org/installation-on-webserver
+
+    The directory structure should be as follows:
+    /path/to/irisii_cms            << Installed in root of subdomain
+        /irisii_app                << DQT application in root of subdomain
+        /dqt -> /irisii_app/public << Symlink to public directory of irisii_app
+
+    This structure will not require any links within the CMS to be updated.
+
+    Please follow the DQT installation instructions for more information about
+    how the Data Query Tool application should be configured.
+
+
+3.  Install the Eionet SilverStripe theme and assets
+    -----------------------------------------------------------------------------
+    Checkout the themes/eionet directory to the themes directory of the
+    SilverStripe installation using the following command:
+    svn co https://svn.eionet.europa.eu/repositories/PHP/trunk/IRIS2/cms/themes/eionet
+    /path/to/irisii_cms/themes/eionet
+
+    Add the assets/downloads directory to the assets directory of the SilverStripe
+    installation at the following path:
+    /path/to/irisii_cms/assets/downloads
+
+    Add the assets/images directory to the assets directory of the SilverStripe
+    installation at the following path:
+    /path/to/irisii_cms/assets/images
+
+
+4.  Install the IRIS II CMS custom code
+    -----------------------------------------------------------------------------
+    All code customisations made to a SilverStripe installation are contained
+    within a single directory. This directory is called mysite by default,
+    however it can be renamed if desired.
+
+    Within the IRIS II CMS, the mysite directory has been renamed to irisii.
+    Checkout the irisii directory to the root directory of the SilverStripe
+    installation using the following command:
+    svn co https://svn.eionet.europa.eu/repositories/PHP/trunk/IRIS2/cms/irisii
+    /path/to/irisii_cms/irisii
+
+    Within the mysite directory, the file _config.php stores the SilverStripe
+    configuration options. Copy the database credentials from the
+    mysite/_config.php file to irisii/_config.php and then proceed to delete the
+    mysite directory using the following command:
+    rm -rf /path/to/irisii_cms/mysite
+
+    It is necessary to run a build before SilverStripe will acknowledge the
+    addition of new custom code. This is achieved by appending /dev/build to the
+    end of the URL. E.g.
+    http://iris.eionet.europa.eu/dev/build
+
+    This command requires an administrator to be logged into SilverStripe.
+
+
+5.  Import the IRIS II CMS database.
+    -----------------------------------------------------------------------------
+    The CMS database has not been added to SVN because the content will continue
+    to change. A separate location to download the database will have been
+    provided with these instructions.
+
+    Import the CMS database schema and data using the following command:
+    mysql -u irisii_cms_user -p <password> <dqt database> < rs_irisii_cms.sql
+
+    At this point, the original CMS admin user will have been overwritten in the
+    database. A default administrator account has been created within the
+    database. The credentials for this account were included in with the database
+    dump file.
+
+    Re-run the /dev/build command used in step 5. E.g.
+    http://iris.eionet.europa.eu/dev/build
+
+    This command requires an administrator to be logged into SilverStripe.
+
+
+6.  Open the CMS URL in a browser.
+    -----------------------------------------------------------------------------
+    If everything has been completed, a page saying the following will be shown:
+    "Home"
+
+    If you are not getting the expected output, PHP errors can be enabled by
+    appending ?isDev=1 to the end of the URL. E.g:
+    http://iris.eionet.europa.eu/?isDev=1

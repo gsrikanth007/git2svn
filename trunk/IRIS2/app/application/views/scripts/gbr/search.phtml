@@ -1,0 +1,25 @@
+<?php $form = $this->search->getForm(); ?>
+<h2>General Binding Rules Query Tool</h2>
+<p>Detailed information of the <acronym title="General Binding Rules">GBR</acronym>s that apply to the <acronym title="Integrated Pollution Prevention and Control">IPPC</acronym> sectors.</p>
+
+<div id="irisGbrQueryTool" class="irisForm">
+    <form method="<?php echo $form->getMethod(); ?>" action="<?php echo $this->url(array('action' => 'results')); ?>">
+        <div class="element">
+            <?php echo $form->country; ?>
+        </div>
+
+        <div class="element">
+            <?php echo $form->activity; ?>
+        </div>
+
+        <div class="element">
+            <?php echo $form->elv; ?>
+        </div>
+
+        <div class="element">
+            <?php echo $this->formSubmit('submit', 'Search', array('class' => 'submitOption')); ?>
+        </div>
+
+        <div class="clear"></div>
+    </form>
+</div>

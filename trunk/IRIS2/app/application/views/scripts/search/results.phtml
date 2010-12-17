@@ -1,0 +1,46 @@
+<div class="dqtContainer dqtFixed">
+    <div id="dqtSearch">
+        <div id="content">
+            <h1>Search</h1>
+            <?php echo $this->partial('search/partials/form.phtml', array('form' => $this->search->getForm())); ?>
+
+            <div id="searchResults" class="roundedAll">
+                <h2>Search Results</h2>
+
+                <div id="colouredBand">
+                    <?php if(count($this->paginator)): ?>
+                        <p>Your search matched <?php if($this->search->getMatchCount() > 0): ?><strong><?php echo $this->search->getMatchCount(); ?></strong> keyword(s) in <?php endif; ?><strong><?php echo $this->search->getResultsCount(); ?></strong> results. Showing results <strong><?php echo $this->paginator->getPages()->firstItemNumber; ?></strong> to <strong><?php echo $this->paginator->getPages()->lastItemNumber; ?></strong>.</p>
+                    <?php else: ?>
+                        <p>Your search did not match any results</p>
+                    <?php endif; ?>
+                </div>
+
+                <div id="searchResultsContainer">
+                    <div class="innerContainer">
+                        <?php if(count($this->paginator)): ?>
+                            <table>
+                                <tbody>
+                                    <?php foreach($this->paginator as $searchResult):
+                                        // Assign result elements to local variables
+                                        $token = $searchResult['token'];
+                                    ?>
+                                        <tr>
+                                            <td class="memberState"><?php echo $this->escape($searchResult['member_state']) ?></td>
+                                            <td class="directive"><?php echo $this->escape($searchResult['directive']); ?> (<?php echo $this->escape($searchResult['questionnaire']); ?>)</td>
+                                            <td class="matches"><?php if(!is_null($searchResult['matches'])): ?><?php echo $this->escape($searchResult['matches']); ?> matches<?php endif; ?></td>
+                                            <td class="datasheet"><a href="<?php echo $this->url(array('token' => $token->token), 'datasheet_token') ?>" title="View datasheet">View datasheet</a></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+
+                            <?php echo $this->paginationControl($this->paginator, 'Sliding', 'search/partials/pagination.phtml', array('queryString' => $this->queryString)); ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <br class="clear" />
+            </div>
+        </div>
+    </div>
+</div>

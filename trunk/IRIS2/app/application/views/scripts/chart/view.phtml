@@ -1,0 +1,42 @@
+<?php if($this->chart): ?>
+<script type="text/javascript">
+    /*<![CDATA[*/
+        window.onload = function() {
+            var chart = new Bluff.<?php echo $this->escape($this->chart->type); ?>('chart', '800x500');
+            
+            // Configure chart options
+            chart.theme_keynote();
+            chart.title = '<?php echo $this->escape($this->chart->title); ?>';
+            chart.no_data_message = 'No data to display';
+            chart.bottom_margin = 10;
+
+            <?php if($this->chart->hasOptions()): ?>
+                <?php foreach($this->chart->options as $option): ?>
+                    <?php if(true == $option->beforeData): ?>
+                        chart.<?php echo $this->escape($option->name); ?> = '<?php echo $this->escape($option->value); ?>';
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            var data = <?php echo $this->chart->getData(); ?>;
+            for(i in data) {
+                var series = data[i];
+                chart.data(series[0], series[1]);
+            }
+            
+            chart.labels = <?php echo $this->chart->getLabels(); ?>;
+
+            <?php if($this->chart->hasOptions()): ?>
+                <?php foreach($this->chart->options as $option): ?>
+                    <?php if(false == $option->beforeData): ?>
+                        chart.<?php echo $this->escape($option->name); ?> = '<?php echo $this->escape($option->value); ?>';
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+
+            chart.draw();
+        };
+    /*]]>*/
+</script>
+<canvas id="chart"></canvas>
+<?php endif; ?>

@@ -1,0 +1,26 @@
+<div class="dqtContainer dqtFixed">
+    <div id="dqtSearch">
+        <div id="content">
+            <h1>Sector Definitions</h1>
+
+            <div id="sectors" class="roundedAll">
+                <h2>Please find the extended sector defintions listed below</h2>
+                <div id="colouredBand"></div>
+
+                <div id="sectorsContainer">
+                    <div id="innerContainer">
+                        <?php if(!empty($this->sectors)): ?>
+                            <?php foreach($this->sectors as $sector): ?>
+                                <p><strong><?php echo $this->escape($sector->name); ?></strong></p>
+                                <p><?php echo $this->multiLine($this->escape($sector->description)); ?></p>
+                                <br />
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <p>There are currently no sector categorisations</p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

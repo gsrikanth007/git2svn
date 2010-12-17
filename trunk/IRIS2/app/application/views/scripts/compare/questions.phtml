@@ -1,0 +1,5 @@
+<?php if(is_array($this->questions) && !empty($this->questions)): ?>
+    <?php echo $this->questionTree($this->questions, $this->token, true); ?>
+<?php elseif(!is_array($this->questions)): ?>
+    <span>Unable to find questions</span>
+<?php endif; ?>

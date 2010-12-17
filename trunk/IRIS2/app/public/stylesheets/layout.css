@@ -1,0 +1,844 @@
+/**
+ * Data Query Tool Layout Stylesheet
+ * @author Rob Simpkins (AEA Technology)
+ */
+ 
+/**
+ * Start layout structure styles
+ */
+div#menuribbon {
+    position: relative;
+    z-index: 2000;
+}
+div#contentWrapper {
+    float: left; display: inline;
+    width: 100%;
+    margin-left: -1px; border-left: 1px solid #666; border-right: 1px solid #666;
+    background: #fff url('../images/menu/left_navigation_border.jpg') repeat-y 200px 0;
+}
+* html div#contentWrapper {
+    border-right: none;
+}
+div#pagefoot {
+    border-bottom: 1px solid #666;
+}
+div#pagefoot p {
+    font-size: 0.8em;
+}
+
+
+/**
+ * Start DQT styles
+ */
+div#workarea {
+    position: relative;
+    margin-left: 0; padding: 15px 15px 15px 0; border-left: none;
+    background-color: #fff;
+}
+div.dqtContainer {
+     position: relative;
+     display: block;
+     width: 100%;
+     overflow: hidden;
+}
+div.flashMessage {
+    display: block;
+    margin: 0 0 10px 15px; padding: 5px 8px; border: 1px solid #ffd35f;
+    background-color: #fff2cf;
+    font-size: 90%;
+}
+div.flashMessage p {
+    margin: 0; padding: 0;
+}
+
+
+/**
+ * Start DQT workflow styles
+ */
+div#dqtWorkflow {
+    display: block;
+    padding: 0 15px;
+}
+div#dqtWorkflow div#content {
+    float: left; display: inline;
+    width: 100%;
+}
+div#dqtWorkflow div#content div#options, div#dqtWorkflow div#content div#workflowForm {
+    float: left; display: inline;
+    width: 100%;
+    margin-top: 10px; padding-bottom: 15px; border: 1px solid #aaa;
+}
+div#dqtWorkflow div#content h2 {
+    margin: 0; padding: 10px; border: none;
+    color: #00446a; background-color: transparent;
+    font-size: 15px;
+}
+div#dqtWorkflow div#content div#colouredBand {
+    display: block;
+    border-top: 1px solid #aaa; border-bottom: 1px solid #aaa;
+    background-color: #b5cecf;
+    clear: both;
+}
+div#dqtWorkflow div#content div#options div#colouredBand {
+    height: 70px;
+    padding: 15px;
+}
+div#dqtWorkflow div#content div#workflowForm div#colouredBand {
+    height: 10px;
+}
+div#dqtWorkflow div#content div#colouredBand a.optionAction {
+    float: left; display: inline;
+    height: 70px; width: 31%;
+    margin: 0 1%;
+    color: #fff; background-color: #00446a;
+    font-size: 140%;
+    line-height: 68px;
+    text-decoration: none; text-align: center;
+}
+div#dqtWorkflow div#content div#colouredBand a.optionAction:hover {
+    background-color: #07557f;
+}
+div#dqtWorkflow div#content div#optionDescriptions {
+    display: block;
+    padding: 10px 15px 15px;
+    clear: both;
+}
+div#dqtWorkflow div#content div#optionDescriptions div.option {
+    float: left; display: inline;
+    width: 31%;
+    margin: 0 1%;
+}
+div#dqtWorkflow div#content div#optionDescriptions div.option p.description {
+    padding: 0 5px;
+    font-size: 90%;
+}
+div#dqtWorkflow div#content div#formContainer {
+    display: block;
+    margin: 0 15px; padding: 10px 15px 10px;
+    border: 1px solid #aaa; border-top: none;
+    clear: both;
+}
+div#dqtWorkflow div#content div#formContainer form {
+    display: block;
+    width: 100%;
+    margin: 0; padding: 0;
+    clear: both;
+}
+div#dqtWorkflow div#content form div.element {
+    float: left; display: inline;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 90%;
+}
+div#dqtWorkflow div#content form div.element label {
+    padding: 5px 0;
+}
+div#dqtWorkflow div#content div.stageThree div.element label {
+    width: 49%;
+    clear: none;
+}
+div#dqtWorkflow div#content form div.element input {
+    margin: 0 10px 0 0;
+}
+div#dqtWorkflow div#content form div.element a.resetOption {
+    font-size: 90%;
+}
+div#dqtWorkflow div#content form div.errors {
+    display: block;
+    margin-bottom: 10px; padding: 5px 8px; border: 1px solid #ffd35f;
+    background-color: #fff2cf;
+    font-size: 90%;
+}
+div#dqtWorkflow div#content form div.errors ul {
+    margin: 0; padding: 0;
+    list-style: none;
+}
+div#dqtWorkflow div#content form div.errors ul li {
+    list-style: none;
+}
+
+
+/**
+ * Start DQT search styles
+ */
+div#dqtSearch {
+    display: block;
+    padding: 0 15px;
+}
+div#dqtSearch div#content {
+    float: left; display: inline;
+    width: 100%;
+}
+div#dqtSearch div#content div#searchForm {
+    float: left; display: inline;
+    width: 100%;
+    margin-top: 10px; padding-bottom: 15px; border: 1px solid #aaa;
+}
+div#dqtSearch div#content h2 {
+    margin: 0; padding: 10px; border: none;
+    color: #00446a; background-color: transparent;
+    font-size: 15px;
+}
+div#dqtSearch div#content div#colouredBand {
+    display: block;
+    border-top: 1px solid #aaa; border-bottom: 1px solid #aaa;
+    background-color: #b5cecf;
+    clear: both;
+}
+div#dqtSearch div#content div#searchForm div#colouredBand {
+    height: 52px;
+    padding: 0 30px;
+}
+div#dqtSearch div#content div#formContainer {
+    display: block;
+    margin: 0 15px; padding: 10px 15px 10px;
+    border: 1px solid #aaa; border-top: none;
+    clear: both;
+}
+div#dqtSearch div#content div.innerContainer {
+    display: block;
+    width: 100%;
+    margin: 0; padding: 0;
+    clear: both;
+}
+div#dqtSearch div#content form div.element {
+    float: left; display: inline;
+    width: 100%;
+    padding: 10px 0;
+    font-size: 90%;
+}
+div#dqtSearch div#content form div.element label {
+    float: left; display: inline;
+    width: 110px;
+}
+div#dqtSearch div#content form div.element a.sectorOption {
+    float: left; display: inline;
+    margin-left: 10px; padding: 3px 0;
+    font-size: 90%;
+}
+div#dqtSearch div#content input#q {
+    float: left; display: inline;
+    height: 22px; width: 573px;
+    padding: 2px 5px;
+    color: #333;
+}
+div#dqtSearch div#content input#submitOption {
+    float: left; display: inline;
+    height: 30px; width: 100px;
+    margin-left: 10px;
+}
+div#dqtSearch div#content select#directive, div#dqtSearch div#content select#sector {
+    float: left; display: inline;
+    height: 26px; width: 470px;
+    padding: 2px 0;
+}
+div#dqtSearch div#content select#period_start, div#dqtSearch div#content select#period_end {
+    float: left; display: inline;
+    height: 26px; width: 70px;
+    padding: 2px 0;
+}
+div#dqtSearch div#content span.spacer {
+    float: left; display: inline;
+    height: 26px; width: 30px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 24px;
+}
+div#dqtSearch div#content div#searchResults {
+    float: left; display: inline;
+    width: 100%;
+    margin-top: 20px; padding-bottom: 15px; border: 1px solid #aaa;
+}
+div#dqtSearch div#content div#searchResults div#colouredBand {
+    height: 16px;
+    padding: 10px 15px;
+}
+div#dqtSearch div#content div#searchResults div#colouredBand p {
+    margin: 0; padding: 0;
+}
+div#dqtSearch div#content div#searchResultsContainer {
+    display: block;
+    margin: 0 15px; padding: 10px 15px 10px;
+    border: 1px solid #aaa; border-top: none;
+    clear: both;
+}
+div#dqtSearch div#content div#searchResults table {
+    margin: 0 0 10px;
+}
+div#dqtSearch div#content div#searchResults table tr:hover {
+    background-color: #feffbf;
+}
+div#dqtSearch div#content div#searchResults table tr td {
+    padding: 5px;
+}
+div#dqtSearch div#content div#searchResults table tr td.datasheet {
+    width: 100px;
+    text-align: center;
+}
+div#dqtSearch div#content div#sectors {
+    float: left; display: inline;
+    width: 100%;
+    margin-top: 20px; padding-bottom: 15px; border: 1px solid #aaa;
+}
+div#dqtSearch div#content div#sectors div#colouredBand {
+    height: 10px;
+}
+div#dqtSearch div#content div#sectorsContainer {
+    display: block;
+    margin: 0 15px; padding: 10px 15px 10px;
+    border: 1px solid #aaa; border-top: none;
+    clear: both;
+}
+
+
+/**
+ * Start DQT loading and question text styles
+ */
+div#dqtLoading {
+    position: absolute; top: 5px; right: 5px;
+    float: left; display: none;
+    padding: 5px 8px; border: 1px solid #ffd35f;
+    background-color: #fff2cf;
+    z-index: 2999;
+}
+div#dqtLoading p {
+    margin: 0; padding: 0;
+    font-size: 16px; font-weight: bold;
+    line-height: 32px;
+    text-align: center;
+}
+div#dqtLoading img {
+    float: left; display: inline;
+    margin-right: 10px;
+}
+
+
+/**
+ * Start DQT comparison styles
+ */
+div.dqtContainer div#compare {
+    float: left; display: inline;
+    width: 100%;
+}
+div.dqtContainer div#dqtQuestionText {
+    position: absolute; left: 460px;
+    float: left; display: none;
+    width: 400px;
+    padding: 10px; border: 1px solid #dfc653;
+    background-color: #feffbf;
+    font-size: 90%;
+    line-height: 150%;
+    z-index: 2999;
+}
+div.dqtContainer div#compare div#content {
+    display: block;
+    height: auto;
+}
+div.dqtContainer div#compare div#content h1 {
+    float: left; display: inline;
+    padding-bottom: 13px;
+}
+div.dqtContainer div.questionnaire {
+     float: left; display: inline;
+     margin-top: 10px; padding-bottom: 10px; border: 1px solid #aaa;
+     font-size: 12px;
+     line-height: 150%;
+}
+div.dqtContainer div.questionnaire a {
+    text-decoration: none;
+}
+div.dqtContainer div.questionnaire a:hover {
+    text-decoration: underline;
+}
+div.dqtContainer div.single div.questionnaire {
+    width: 99.6%;
+}
+div.dqtContainer div.double div.questionnaire {
+    width: 49.0%;
+    width: 48.9%;
+}
+div.dqtContainer div.double div.second {
+    margin-left: 1%;
+}
+div.dqtContainer div#compare div#content div.questionnaire h2 {
+    margin: 0; padding: 10px; border: none;
+    color: #00446a; background-color: transparent;
+    font-size: 15px;
+}
+div.dqtContainer div#questionOptionsLegend {
+    float: right; display: none;
+    margin-right: 0.7%; /*0.6em;*/ padding: 5px 10px; border: 1px solid #aaa;
+    font-size: 80%;
+}
+div.dqtContainer div#questionOptionsLegend span#viewQuestionContext {
+    float: left; display: inline;
+    margin: 0 5px; padding: 5px 5px 5px 21px;
+    background: transparent url('../images/question_context.png') no-repeat left center;
+}
+div.dqtContainer div#questionOptionsLegend span#viewQuestionChart {
+    float: left; display: inline;
+    margin: 0 5px; padding: 5px 5px 5px 21px;
+    background: transparent url('../images/question_chart.png') no-repeat left center;
+}
+div.dqtContainer div.questionnaire .ui-state-hover {
+    background-color: #feffbf;
+}
+div.dqtContainer div.questionnaire div.questionHead {
+    float: left; display: inline;
+    width: 100%;
+    margin-bottom: 1px; padding: 5px 0; border-top: 1px solid #aaa; border-bottom: 1px solid #aaa;
+    background-color: #b5cecf;
+    clear: both;
+}
+div.dqtContainer div.questionnaire div.questionHead div.questionHeadContainer a {
+    float: left; display: inline;
+    padding: 5px 10px;
+    overflow: hidden;
+}
+div.dqtContainer div.questionnaire div.questionHead div.questionContext {
+    float: left; display: none;
+    width: 100%;
+    margin-bottom: 10px; padding: 0 0 5px 0; border-bottom: 1px solid #577d7f;
+}
+div.dqtContainer div.questionnaire div.questionHead div.questionContext p {
+    margin: 0; padding: 5px 10px;
+}
+div.dqtContainer div.questionnaire div.questionHead div.questionContext p a {
+    font-weight: normal;
+}
+div.dqtContainer div.questionnaire div.questionHead div.questionOptions {
+    display: block;
+    padding-right: 10px;
+    font-size: 90%;
+}
+div.dqtContainer div.questionnaire div.questionHead div.questionOptions a.viewQuestionContext {
+    float: right; display: none;
+    height: 16px; width: 16px;
+    margin: 0; padding: 5px;
+    background: transparent url('../images/question_context.png') no-repeat center center;
+    text-indent: -9999px;
+    outline: none;
+}
+div.dqtContainer div.questionnaire div.questionHead div.questionOptions a.viewQuestionChart {
+    float: right; display: none;
+    height: 16px; width: 16px;
+    margin: 0; padding: 5px;
+    background: transparent url('../images/question_chart.png') no-repeat center center;
+    text-indent: -9999px;
+    outline: none;
+}
+div.dqtContainer div.questionnaire div.questionHead a {
+    color: #444;
+}
+div.dqtContainer div.questionnaire div.ui-state-active {
+    margin-bottom: 0;
+}
+div.dqtContainer div.questionnaire div.questionBody {
+    display: block;
+    height: auto;
+    margin: 0 10px 10px; border-left: 1px solid #aaa; border-right: 1px solid #aaa;
+    clear: both;
+}
+div.dqtContainer div.questionnaire div.subQuestion {
+    display: block;
+    margin: 0; padding: 6px 10px; border-bottom: 1px solid #aaa;
+}
+div.dqtContainer div.questionnaire div.subQuestion a {
+    font-weight: normal;
+}
+div.dqtContainer div.questionnaire div.memberStates div.memberStateHead {
+    display: block;
+    padding: 6px 10px; border-bottom: 1px solid #aaa;
+    clear: both;
+}
+div.dqtContainer div.questionnaire div.memberStates div.memberStateHead a {
+    color: #444;
+}
+div.dqtContainer div.questionnaire div.memberStates div.ui-state-active {
+    margin-bottom: 0;
+}
+div.dqtContainer div.questionnaire div.memberStates div.memberStateBody {
+    display: block;
+    height: auto;
+    margin-bottom: 1px;
+    clear: both;
+}
+div.dqtContainer div.questionnaire div.answers div.answerHead {
+    display: block;
+    margin-bottom: 1px; padding: 4px 10px; border-bottom: 1px solid #aaa;
+    font-size: 10px;
+    text-transform: uppercase;
+    clear: both;
+}
+div.dqtContainer div.questionnaire div.answers div.answerHead a {
+    color: #444;
+}
+div.dqtContainer div.questionnaire div.answers div.ui-state-active {
+    margin-bottom: 0;
+}
+div.dqtContainer div.questionnaire div.answers div.answerBody {
+    display: block;
+    height: auto;
+    margin-bottom: 1px; padding: 8px 10px; border-bottom: 1px solid #aaa;
+    word-wrap: break-word;
+    clear: both;
+}
+div.dqtContainer div.questionnaire div.noMappings {
+    float: left; display: inline;
+    width: 100%;
+    margin: 0; padding: 8px 0; border-top: 1px solid #aaa; border-bottom: 1px solid #aaa;
+    color: #444; background-color: #b5cecf;
+    clear: both;
+}
+div.dqtContainer div.questionnaire div.noMappings p {
+    margin: 0; padding: 5px 10px;
+}
+div.dqtContainer div.questionnaire div.noResponse {
+    display: block;
+    height: auto;
+    margin-bottom: 1px; padding: 8px 10px; border-bottom: 1px solid #aaa;
+    clear: both;
+}
+
+
+/**
+ * Start DQT comparison tree styles
+ */
+div.dqtContainer div#tree {
+    position: relative; top: 0; left: 0;
+    float: left; display: inline;
+    height: 470px;
+    border: 5px solid #00446a;
+    color: #333; background-color: #d1dfdf;
+    z-index: 999;
+}
+div.dqtContainer div#tree div#treeHandle {
+    position: absolute; top: 50%; left: 345px;
+    float: left; display: none;
+    height: 300px; width: 30px;
+    margin-top: -150px;
+    background: transparent url('../images/treeHandle.png') no-repeat 0 0;
+    z-index: 1999;
+}
+div.dqtContainer div#tree div#treeContent {
+    position: relative; top: 0; left: 0;
+    float: left; display: inline;
+    height: 470px;
+    font-size: 11px;
+}
+div.dqtContainer div#tree div#hierarchy {
+    float: left; display: inline;
+}
+div.dqtContainer div#tree h4 {
+    display: block;
+    margin: 0 0 5px 0; padding: 5px 10px; border: none;
+    color: #fff; background-color: #00446a;
+    clear: both;
+}
+div.dqtContainer div#tree div#hierarchy div.questionTree {
+    display: block;
+}
+div.dqtContainer div#tree div#hierarchy div.questionTree ul {
+    margin: 0; padding: 0 5px;
+    list-style: none; list-style-type: none; list-style-image: none;
+}
+div.dqtContainer div#tree div#hierarchy div.questionTree ul ul {
+    padding: 0 0 0 15px;
+}
+div.dqtContainer div#tree div#hierarchy div.questionTree ul li {
+    display: block;
+    margin: 0; padding: 0;
+    clear: both;
+}
+* html div.dqtContainer div#tree div#hierarchy div.questionTree ul li {
+    float: left; display: inline;
+    width: 100%;
+}
+div.dqtContainer div#tree div#hierarchy div.questionTree ul li a.question {
+    display: block;
+    padding: 3px 5px 3px 20px;
+    color: #333;
+    text-decoration: none;
+}
+div.dqtContainer div#tree div#hierarchy div.questionTree ul li a.question:hover {
+    background-color: #b5cecf;
+}
+
+
+/**
+ * Start fixed DQT comparison styles
+ */
+div.dqtFixed div#tree {
+    width: 255px;
+}
+div.dqtFixed div#tree div#treeContent {
+    width: 255px;
+    overflow: scroll;
+}
+div.dqtFixed div#compare {
+    margin-left: -265px;
+}
+div.dqtFixed div#compare div#content {
+    margin-left: 280px;
+}
+div.dqtFixed div.questionTree ul li a.question {
+    background: transparent url('../images/arrowRight.png') no-repeat 5px center;
+}
+
+
+/**
+ * Start fluid DQT comparison styles
+ */
+div.dqtFluid div#tree {
+    position: absolute; left: -350px;
+    width: 340px;
+}
+div.dqtFluid div#tree div#treeHandle {
+    display: inline !important;
+}
+div.dqtFluid div#tree div#treeContent {
+    width: 340px;
+    overflow-y: scroll;
+}
+div.dqtFluid div#tree div#treeContent div#hierarchy {
+    width: 322px;
+}
+div.dqtFluid div#tree div#hierarchy div.questionTree ul li {
+    position: relative;
+}
+div.dqtFluid div#tree div#hierarchy div.questionTree ul li a.question {
+    position: relative; top: 0; left: 0;
+    z-index: 100;
+}
+div.dqtFluid div#tree div#hierarchy div.questionTree ul li a.showHide {
+    position: absolute; top: 7px; left: 5px;
+    float: left; display: inline;
+    height: 10px; width: 10px;
+    text-indent: -9999px;
+    outline: none;
+    z-index: 1000;
+}
+div.dqtFluid div#tree ul li.collapsed a.showHide, div.dqtFluid div#tree ul li.expanded li.collapsed a.showHide {
+    background: transparent url('../images/arrowRight.png') no-repeat 0 0;
+}
+div.dqtFluid div#tree ul li.expanded a.showHide {
+    background: transparent url('../images/arrowDown.png') no-repeat 0 0;
+}
+div.dqtFluid div#compare {
+    min-height: 500px; height: auto !important; height: 500px;
+    margin: 0 -15px 0 15px;
+}
+div.dqtFluid div#compare div#content {
+    margin-left: 30px; margin-right: 15px;
+}
+div.dqtFluid div#questionOptionsLegend {
+    display: inline !important;
+}
+div.dqtFluid div.questionnaire div.questionHead div.questionOptions a.viewQuestionContext {
+    display: inline;
+}
+
+
+/**
+ * Start generic layout styles
+ */
+div.dqtContainer p {
+    margin: 5px 0; padding: 0;
+    line-height: 150%;
+}
+div.dqtContainer div.paginationControl {
+    display: block;
+    height: 23px; width: 100%;
+    margin-top: 5px;
+    font-size: 90%;
+    clear: both;
+}
+div.dqtContainer div.paginationControl a {
+    border: 1px solid #aaa;
+    color: #333;
+    text-decoration: none;
+}
+div.dqtContainer div.paginationControl a:hover, div.dqtContainer div.paginationControl .selected {
+    border: 1px solid #aaa;
+    background-color: #b5cecf;
+}
+div.dqtContainer div.paginationControl .previousOption {
+    float: left; display: inline;
+    margin: 0 2px; padding: 3px 5px;
+}
+div.dqtContainer div.paginationControl .nextOption {
+    float: left; display: inline;
+    margin: 0 2px; padding: 3px 5px;
+}
+div.dqtContainer div.paginationControl .pageOption {
+    float: left; display: inline;
+    margin: 0 2px; padding: 3px 5px;    
+}
+div.dqtContainer div.paginationControl .disabled {
+    border: 1px solid #aaa;
+    color: #999; background-color: #ddd;
+}
+.roundedAll {
+     border-radius: 8px; -moz-border-radius: 8px; -webkit-border-radius: 8px;
+}
+.roundedTopLeft {
+    border-top-left-radius: 8px; -moz-border-radius-topleft: 8px; -webkit-border-radius-topleft: 8px;
+}
+.roundedTopRight {
+    border-top-right-radius: 8px; -moz-border-radius-topright: 8px; -webkit-border-radius-topright: 8px;
+}
+.roundedBottomLeft {
+    border-bottom-left-radius: 8px; -moz-border-radius-bottomleft: 8px; -webkit-border-radius-bottomleft: 8px;
+}
+.roundedBottomRight {
+    border-bottom-right-radius: 8px; -moz-border-radius-bottomright: 8px; -webkit-border-radius-bottomright: 8px;
+}
+.clear {
+    clear: both;
+}
+
+
+
+
+/**
+ * Data Query Tool Datasheet Layout Stylesheet
+ * @author SC (AEA Technology)
+ */
+div.dqtContainer .questionContainer{
+	margin-left: 10px; margin-bottom: 10px; padding: 10px;		
+}
+div.dqtContainer .subQuestionContainer{
+	clear: left;
+}
+div.dqtContainer label{
+	float:left;
+	padding: 3px;
+    clear: left;
+}
+div.dqtContainer legend{
+	padding: 10px; border: solid 1px #7c7b7d;
+	font-weight:bold;
+}
+div.dqtContainer .questionText{
+	padding-top: 10px;
+    font-weight: bold;
+	clear: left;
+}
+div.dqtContainer .textArea{
+	height: 20px;
+}
+div.dqtContainer .textArea{
+	height:auto; min-height:20px; width: 98%;
+	padding: 10px; border: solid 1px #7c7b7d;
+	background-color: #d7e9ea;
+    font-size: 90%;
+    line-height: 1.8em;
+	clear: left;
+}
+div.dqtContainer .textField{
+	height: auto; min-height: 20px; width: 98%;
+	padding: 10px; border: solid 1px #7c7b7d;
+	background-color:#D7E9EA;
+    font-size: 90%;
+    line-height: 1.8em;
+	clear: left;
+}
+div.dqtContainer .row label.labelheading{
+	font-weight:bold;
+}
+div.dqtContainer table{
+	width: 100%;
+	font-size: 85%;
+    table-layout: fixed;
+}
+div.dqtContainer td{
+	vertical-align: top;
+    word-wrap: break-word;
+}
+div.dqtContainer .subQuestionContainer td{
+	padding: 2px; border: solid 1px #7c7b7d;
+}
+div.dqtContainer th{
+	width: auto;
+    padding: 5px; border: solid 1px #7C7B7D;
+    background-color: #e9e9e9;
+	text-align: left; vertical-align: top;
+}
+div.dqtContainer table {
+	margin-top: 10px; border-collapse: collapse;
+    empty-cells: show;
+}
+div.dqtContainer .subQuestionContainer table tbody tr td {
+	height: 20px!important;
+}
+div.dqtContainer .subQuestionContainer table tbody tr td  {
+	height: auto; min-height:20px !important;
+}
+div.dqtContainer table .narrowColumn{
+ 	width: 60px;
+}
+div.dqtContainer table .narrowestColumn{
+ 	width: 35px;
+}
+div.dqtContainer table .mediumColumn{
+ 	width: 200px;
+}
+div.dqtContainer table td .row label{
+	width: 75%
+}
+div.dqtContainer table td .row .textField{
+	width: auto;
+}
+div.dqtContainer .radioGroup .mediumRow label{
+	width: 40%; max-width: 420px;
+}
+div.dqtContainer .radioGroup .shortRow label{
+	width: 15%; max-width: 160px;
+}
+div.dqtContainer .radioGroup .shortRow2 label{
+	width: 20%; max-width: 240px;
+}
+div.dqtContainer .radioGroup .largeRow label{
+	width: 70%; max-width: 830px;
+}
+div.dqtContainer .radioGroup .extralargeRow label{
+	width: 93%;
+}
+div.dqtContainer table .radioGroup .radioButton{
+	float: right;
+}
+div.dqtContainer table .radioGroup label{
+	clear: right;
+}
+div.dqtContainer .radioButton{
+	height: 18px; width: 35px;
+}
+div.dqtContainer .radioButton{
+    float: left;
+    height: auto; min-height: 18px; width: auto; min-width: 35px;
+	margin: 2px; padding: 2px; border: solid 1px #7c7b7d;
+	background-color: #d7e9ea;
+	font-size: 90%;
+	text-align: center;
+}	
+div.dqtContainer .subQuestionContainer .rowMargin{
+	margin-top: 20px;
+}
+div.dqtContainer .subQuestionContainer table td .radioButton{
+	float: right;
+	height: 15px; height: auto; min-height: 15px; width: 30px; width: auto; min-width: 30px; 	
+} 
+div.dqtContainer .subQuestionContainer table td label{
+	clear: both;
+} 
+div.dqtContainer .subQuestionContainer table td .textField{
+	clear: both;
+}
+div.dqtContainer .subQuestionContainer .radioGroup{
+	margin-top: 10px;
+}
+div.dqtContainer span.searchTextMatch {
+    padding: 3px 5px;
+    border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;
+    color: #fff; background-color: #ef6b00;
+}

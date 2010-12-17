@@ -1,0 +1,32 @@
+<div id="tree" class="roundedTopRight roundedBottomRight">
+    <div id="treeHandle"></div>
+    <div></div>
+    <div id="treeContent">
+        <div id="hierarchy">
+            <?php $count = 0; $actions = array(); ?>
+            <?php foreach($this->compare as $questionnaireId => $comparison):
+                // Assign comparison elements to local variables
+                $questionnaire = $comparison['questionnaire'];
+                $count += 1;
+                $actions["action{$count}"] = $this->url(array('token' => $this->token, 'questionnaire' => $questionnaireId), 'compare_question');
+            ?>
+                <h4><?php echo $this->escape($questionnaire->getReportingPeriod()); ?></h4>
+                <p><em>[M] = Question has a mapping in other reporting period</em></p>
+                <div id="questionTree<?php echo $count; ?>" class="questionTree">
+                    <?php echo $this->questionTree($questionnaire->getHierarchy(), $this->token); ?>
+                </div>
+                <div class="clear"></div>
+                <br class="clear" />
+            <?php endforeach; ?>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+/*<![CDATA[*/
+    $(function() {
+        var dqt = new IrisDqt();
+        dqt.initQuestionTree(<?php echo json_encode($actions); ?>);
+    });
+/*]]>*/
+</script>

@@ -1,0 +1,37 @@
+<?php $form = $this->form; ?>
+<div id="searchForm" class="roundedAll">
+    <h2>Please make your search selections</h2>
+
+    <form method="<?php echo $form->getMethod(); ?>" action="<?php echo $this->url(array('action' => 'results')); ?>">
+        <div id="colouredBand">
+            <div class="element">
+                <?php echo $form->q->renderViewHelper(); ?>
+                <?php echo $this->formSubmit('submit', 'Search', array('id' => 'submitOption')); ?>
+            </div>
+        </div>
+
+        <div id="formContainer">
+            <div class="innerContainer">
+                <div class="element">
+                    <?php echo $form->directive->renderLabel(); ?>
+                    <?php echo $form->directive->renderViewHelper(); ?>
+                </div>
+
+                <div class="element">
+                    <?php echo $form->period_start->renderLabel(); ?>
+                    <?php echo $form->period_start->renderViewHelper(); ?>
+                    <span class="spacer">-</span>
+                    <?php echo $form->period_end->renderViewHelper(); ?>
+                </div>
+
+                <div class="element">
+                    <?php echo $form->sector->renderLabel(); ?>
+                    <?php echo $form->sector->renderViewHelper(); ?>
+                    <a class="sectorOption" href="<?php echo $this->url(array('action' => 'sectors')); ?>" title="View sector definitions">View sector definitions</a>
+                </div>
+            </div>
+
+            <br class="clear" />
+        </div>
+    </form>
+</div>

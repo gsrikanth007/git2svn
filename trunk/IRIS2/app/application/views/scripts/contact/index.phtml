@@ -1,0 +1,33 @@
+<?php $form = $this->contact->getForm(); ?>
+<h2>Contact</h2>
+<p>If you have any questions or comments about the IRIS website, please complete the form below.</p>
+
+<div id="irisContact" class="irisForm">
+    <form method="<?php echo $form->getMethod(); ?>" action="<?php echo $this->url(array('action' => 'index')); ?>">
+        <div class="element">
+            <?php echo $form->name; ?>
+        </div>
+
+        <div class="element">
+            <?php echo $form->email; ?>
+        </div>
+
+        <div class="element">
+            <?php echo $form->subject; ?>
+        </div>
+
+        <div class="element">
+            <?php echo $form->message; ?>
+        </div>
+
+        <div class="element">
+            <?php echo $form->captcha; ?>
+        </div>
+
+        <div class="element">
+            <?php echo $this->formSubmit('submit', 'Send Message', array('class' => 'submitOption')); ?>
+        </div>
+
+        <div class="clear"></div>
+    </form>
+</div>

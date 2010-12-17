@@ -1,0 +1,71 @@
+<h2>Search Results</h2>
+
+<div id="searchResults">
+    <?php if(count($this->paginator)): ?>
+        <div id="searchResultsSummary">
+            <p>Your search matched <strong><?php echo $this->search->getResultsCount(); ?></strong> results. Showing results <strong><?php echo $this->paginator->getPages()->firstItemNumber; ?></strong> to <strong><?php echo $this->paginator->getPages()->lastItemNumber; ?></strong>.</p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2" width="70">Country / Region</th>
+                    <th rowspan="2">IPPC - Annex I Activity</th>
+                    <th rowspan="2" width="70" class="textCenter">No. of Installations</th>
+                    <th rowspan="2">GBR: Name and / or Legal Reference</th>
+                    <th rowspan="2" width="60" class="textCenter">Sectoral</th>
+                    <th rowspan="2" width="60" class="textCenter">Cross Sectoral</th>
+                    <th colspan="2" width="80" class="textCenter">ELV for</th>
+                    <th rowspan="2" width="40" class="textCenter">Other GBRs</th>
+                    <th rowspan="2" width="40" class="textCenter">Details</th>
+                </tr>
+
+                <tr>
+                    <th width="40" class="textCenter">Air</th>
+                    <th width="40" class="textCenter">Water</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php foreach($this->paginator as $searchResult): ?>
+                    <tr>
+                        <td><?php echo $this->escape($searchResult['region']); ?></td>
+                        <td><?php echo $this->escape("{$searchResult['code']} - {$searchResult['activity']}"); ?></td>
+                        <td class="textCenter"><?php echo $this->escape($searchResult['no_installations']); ?></td>
+                        <td><?php echo $this->escape($searchResult['gbr']); ?></td>
+                        <td class="textCenter">
+                            <?php if(!empty($searchResult['sectoral'])): ?>
+                                <img src="<?php echo $this->baseUrl('images/tick.png'); ?>" alt="True" />
+                            <?php endif;?>
+                        </td>
+                        <td class="textCenter">
+                            <?php if(!empty($searchResult['cross_sectoral'])): ?>
+                                <img src="<?php echo $this->baseUrl('images/tick.png'); ?>" alt="True" />
+                            <?php endif;?>
+                        </td>
+                        <td class="textCenter">
+                            <?php if(!empty($searchResult['air'])): ?>
+                                <img src="<?php echo $this->baseUrl('images/tick.png'); ?>" alt="True" />
+                            <?php endif;?>
+                        </td>
+                        <td class="textCenter">
+                            <?php if(!empty($searchResult['water'])): ?>
+                                <img src="<?php echo $this->baseUrl('images/tick.png'); ?>" alt="True" />
+                            <?php endif;?>
+                        </td>
+                        <td class="textCenter">
+                            <?php if(!empty($searchResult['other'])): ?>
+                                <img src="<?php echo $this->baseUrl('images/tick.png'); ?>" alt="True" />
+                            <?php endif;?>
+                        </td>
+                        <td class="textCenter"><a href="<?php echo $this->url(array('id' => $searchResult['installation_id']), 'gbr_view'); ?>" title="View">View</a></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php else: ?>
+        <p>Your search did not match any results</p>
+    <?php endif; ?>
+</div>
+
+<?php echo $this->paginationControl($this->paginator, 'Sliding', 'gbr/partials/pagination.phtml', array('queryString' => $this->queryString)); ?>

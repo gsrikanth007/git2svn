@@ -1,0 +1,10 @@
+<div class="dqtContainer dqtFixed">
+    <?php echo $this->partial('compare/partials/question_tree.phtml', array('compare' => $this->compare, 'token' => $this->token)); ?>
+    <div id="dqtQuestionText" class="roundedAll"></div>
+    
+    <div id="compare">
+        <div id="content" class="<?php echo $this->escape($this->layout); ?>">
+            <?php echo $this->partial('compare/partials/questionnaire.phtml', array('compare' => $this->compare, 'directive' => $this->directive, 'token' => $this->token)); ?>
+        </div>
+    </div>
+</div>

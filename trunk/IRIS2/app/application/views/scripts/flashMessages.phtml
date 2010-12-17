@@ -1,0 +1,5 @@
+<?php if($this->flashMessages): ?>
+    <?php foreach($this->flashMessages as $message): ?>
+        <div class="flashMessage roundedAll"><p><?php echo $this->escape($message); ?></p></div>
+    <?php endforeach; ?>
+<?php endif; ?>

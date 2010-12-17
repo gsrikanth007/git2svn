@@ -1,0 +1,157 @@
+/**
+ * Iris CMS Layout Stylesheet
+ * @author Rob Simpkins (AEA Technology)
+ */
+
+/**
+ * Start layout structure styles
+ */
+div#menuribbon {
+    position: relative;
+    z-index: 2000;
+}
+div#contentWrapper {
+    float: left; display: inline;
+    width: 100%;
+    margin-left: -1px; border-left: 1px solid #666; border-right: 1px solid #666;
+    background: #fff url('../images/menu/left_navigation_border.jpg') repeat-y 200px 0;
+}
+* html div#contentWrapper {
+    border-right: none;
+}
+div#leftcolumn {
+    position: relative;
+    float: left; display: inline;
+    width: 200px;
+    margin: 0 0 0 -1px; padding: 10px 0; border-left: 1px solid #666; border-right: 1px dotted #8fa771;
+    z-index: 1000;
+}
+div#workarea {
+    position: relative;
+    float: left; display: inline;
+    width: 100%;
+    margin: 0 -1px 0 -202px; padding: 0; border: none; border-left: 1px solid #666; border-right: 1px solid #666;
+    background-color: transparent;
+    z-index: 100;
+    overflow: hidden;
+}
+div#workarea div#irisContent {
+    display: block;
+    margin: 0 0 0 201px; padding: 1em;
+    background-color: transparent;
+}
+div#pagefoot {
+    border-bottom: 1px solid #666;
+}
+div#pagefoot p {
+    font-size: 0.8em;
+}
+
+
+/**
+ * Start left navigation styles
+ */
+/** Reset navigation styles */
+div#leftcolumn ul {
+    margin: 0; padding: 0; border: none;
+    list-style-type: none;
+    font-size: 13px;
+}
+div#leftcolumn ul li {
+    float: left; display: inline;
+    width: 100%;
+    margin: 0; padding: 0; border: none;
+}
+div#leftcolumn ul li a {
+    display: block;
+    margin: 0; padding: 0; border: none;
+    text-decoration: none;
+    outline: none;
+}
+div#leftcolumn ul li a:hover {
+    text-decoration: underline;
+}
+
+/** First level navigation styles */
+div#leftcolumn ul.level1 li a {
+    padding: 4px 5px 4px 20px; border-top: 1px solid #026f97;
+    color: #00446a; background: #fff url('../images/menu/level-one-inactive.jpg') no-repeat -5px 2px;
+}
+div#leftcolumn ul.level1 li.current a,
+div#leftcolumn ul.level1 li.section a {
+    border: none;
+    color: #fff; background: #026f97 url('../images/menu/level-one-active.jpg') no-repeat -5px 3px;
+    font-weight: bold;
+}
+div#leftcolumn ul.level1 li.last a {
+    border-bottom: 1px solid #026f97;
+}
+
+/** Second level navigation styles */
+div#leftcolumn ul.level2 {
+    padding-left: 16px;
+    font-size: 11px;
+}
+div#leftcolumn ul.level1 ul.level2 li a {
+    padding: 4px 5px; border-top: 1px dotted #009590;
+    color: #026f97; background: #fff;
+    font-weight: normal;
+}
+div#leftcolumn ul.level1 ul.level2 li.current a,
+div#leftcolumn ul.level1 ul.level2 li.section a {
+    color: #026f97; background: #f2fbfc;
+    font-weight: bold;
+}
+div#leftcolumn ul.level1 ul.level2 li.current a.hasChildren,
+div#leftcolumn ul.level1 ul.level2 li.section a.hasChildren {
+    border-bottom: 1px dotted #009590;
+}
+div#leftcolumn ul.level1 ul.level2 li.first a {
+    border-top: none;
+}
+div#leftcolumn ul.level1 ul.level2 li.last a {
+    border-bottom: none !important;
+}
+
+/** Third level navigation styles */
+div#leftcolumn ul.level3 {
+    padding: 0;
+    font-size: 11px;
+}
+div#leftcolumn ul.level1 ul.level2 ul.level3 li a {
+    padding-left: 20px; border: none;
+    color: #222; background: #fff url('../images/menu/level-three-inactive.jpg') no-repeat 5px 7px;
+    font-weight: normal;
+}
+div#leftcolumn ul.level1 ul.level2 ul.level3 li.current a,
+div#leftcolumn ul.level1 ul.level2 ul.level3 li.section a {
+    background: #fff url('../images/menu/level-three-active.jpg') no-repeat 5px 5px;
+    font-weight: bold;
+}
+
+/** Fourth level navigation styles */
+div#leftcolumn ul.level4 {
+    font-size: 11px;
+}
+div#leftcolumn ul.level1 ul.level2 ul.level3 ul.level4 li a {
+    color: #026f97; background: #fff;
+    font-weight: normal;
+}
+div#leftcolumn ul.level1 ul.level2 ul.level3 ul.level4 li.current a,
+div#leftcolumn ul.level1 ul.level2 ul.level3 ul.level4 li.section a {
+    font-weight: bold;
+}
+
+
+/**
+ * Other styles
+ */
+a.toTop {
+    display: block;
+    width: 70px;
+    margin: 15px 0; padding: 0 0 0 16px;
+    background: #fff url('../images/to_top.png') no-repeat 0 -1px;
+    color: #00446a;
+    font-size: 12px;
+    outline: none;
+}
