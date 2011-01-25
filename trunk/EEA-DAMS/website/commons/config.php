@@ -122,7 +122,7 @@ $paramsLogin = array (
 define('TABLE_PREFIX', '');
 $params = array(
     'langs_avail_table' => TABLE_PREFIX.'langs_avail',
-    'lang_id_col'     => 'ID',
+    'lang_id_col'     => 'id',
     'lang_name_col'   => 'name',
     'lang_meta_col'   => 'meta',
     'lang_errmsg_col' => 'error_text',
@@ -154,8 +154,8 @@ $params = array(
                                                        'tr'   => TABLE_PREFIX.'i18n',
                                                         'ss'   => TABLE_PREFIX.'i18n'
                          ),
-    'string_id_col'      => 'ID',
-    'string_page_id_col' => 'page_ID',
+    'string_id_col'      => 'id',
+    'string_page_id_col' => 'page_id',
     'string_text_col'    => '%s'  			//'%s' will be replaced by the lang code
 );
 
@@ -236,68 +236,100 @@ require_once "login.php";
  * 
  */
 function displayGoogleMapHead ($x = 4, $y = 52, $z = 13){
-return '<script type="text/javascript">
-    //<![CDATA[
-function createMarker(point, id, iconimg) {
-	var icon = new GIcon();
-	icon.image = iconimg;
-	icon.shadow = "http://www.google.com/mapfiles/shadow50.png";
-	icon.iconSize = new GSize(20, 34);
-	icon.shadowSize = new GSize(37, 34);
-	icon.iconAnchor = new GPoint(6, 20);
-	icon.infoWindowAnchor = new GPoint(5, 1);
-	
-	var marker = new GMarker(point, icon);
-	GEvent.addListener(marker, "click", function() {
-    		location.replace ("dams.php?cd="+id);
-	});
+return '
+<script type="text/javascript">
+  function createMarker(point, id, iconimg) {
+	  var icon = new GIcon();
+	  icon.image = iconimg;
+	  icon.shadow = "http://www.google.com/mapfiles/shadow50.png";
+	  icon.iconSize = new GSize(20, 34);
+	  icon.shadowSize = new GSize(37, 34);
+	  icon.iconAnchor = new GPoint(6, 20);
+	  icon.infoWindowAnchor = new GPoint(5, 1);
+	  var marker = new GMarker(point, icon);
+	  GEvent.addListener(marker, "click", function() { location.replace ("dams.php?cd="+id);});
+    return marker;
+  }
 
-  return marker;
-}
-
-//if (GBrowserIsCompatible()) {
- 	//var WMS_URL_EEA="http://dev.sandre.eaufrance.fr/eeadamsgeo?";
-	/*var WMS_URL_EEA="http://dampos-demo.eea.europa.eu/cgi-bin/wseea?";
-	var WMS_URL_EEAGEONODE="http://geonode.eea.europa.eu/wmsconnector/com.esri.wms.Esrimap?" 
-	var WMS_URL_JRC="http://wise.jrc.it/cgi-bin/mapserv?map=/home/www/utils-cgi-bin/map/wms.map&";
-	var WMS_URL_I2K="http://mapserver.jrc.it/wmsconnector/com.esri.wms.Esrimap/image2000_pan?";
-	
-    	var G_MAP_EEA = createWMSSpec(WMS_URL_EEA, "Admin.", "WMS", "SM,A7", "default", "image/png", "1.1.1", "(c) Teleatlas");
-    	var G_MAP_JRC_I2K = createWMSSpec(WMS_URL_I2K,"I2K.", "WMS", "0", "default", "image/png", "1.1.1", "(c) European Commission");
- 
-	var G_MAP_EEA_GEONODE = createWMSSpec(WMS_URL_EEAGEONODE, "EEA", "WMS", "100,200,300,Counties,Capitals,ContryBorder,RiverLarge,Riverlarge_label,RiverMedium,Coastline,Villages", "default", "image/png", "1.1.1", "(c) Teleatlas");
-
-	var G_MAP_JRC = createWMSSpec(WMS_URL_JRC, "CCM", "WMS", "RIVERSEGMENTS", "default", "image/png", "1.1.1", "CCM River and Catchment Database JRC/IES (c) European Commission - JRC, 2003");
-
-
-    	// Create a transparent overlay on a Google MapSpec
-    	var G_MAP_EEA_OVER_SAT = createWMSOverlaySpec(G_SATELLITE_TYPE, G_MAP_EEA, "Admin", "Admin");
-    	var G_MAP_JRC_OVER_SAT = createWMSOverlaySpec(G_SATELLITE_TYPE, G_MAP_JRC, "CCM", "CCM");
-        var G_MAP_EEA_OVER_I2K = createWMSOverlaySpec(G_MAP_JRC_I2K, G_MAP_EEA, "I2K", "I2K");
-	*/
-	var mapSpecs = [];
-	mapSpecs.push(G_MAP_TYPE);
-    	mapSpecs.push(G_SATELLITE_TYPE);
-    //	mapSpecs.push(G_MAP_EEA_OVER_SAT);
-    //	mapSpecs.push(G_MAP_JRC_OVER_SAT);
-    //	mapSpecs.push(G_MAP_EEA_OVER_I2K);
-	//mapSpecs.push(G_MAP_EEA_GEONODE);
-    	
-	// Setup the map
-    	var map = new GMap(document.getElementById("map"), mapSpecs);
-	//var map = new GMap(document.getElementById("map"));
-	GEvent.addListener(map, "click", function(overlay, point) {
-		document.carto_form.x.value = point.x;
-		document.carto_form.y.value = point.y;
-	});
-
-
-	 map.addControl(new GMapTypeControl());
-  	 map.addControl(new GSmallMapControl());
-	 map.setMapType(G_SATELLITE_TYPE) 
-	 map.centerAndZoom(new GPoint('.$x.', '.$y.'), '.$z.');
-    ';}
+  //if (GBrowserIsCompatible()) {
+  // WMS servers definitions
+  var WMS_URL_JRC="http://wise.jrc.it/cgi-bin/mapserv?map=/home/www/utils-cgi-bin/map/wms.map&";
     
+  //var G_MAP_EEA = createWMSSpec(WMS_URL_EEA, "Admin.", "WMS", "SM,A7", "default", "image/png", "1.1.1", "(c) Teleatlas");
+  //var G_MAP_EEA_GEONODE = createWMSSpec(WMS_URL_EEAGEONODE, "EEA", "WMS", "100,200,300,Counties,Capitals,ContryBorder,RiverLarge,Riverlarge_label,RiverMedium,Coastline,Villages", "default", "image/png", "1.1.1", "(c) Teleatlas");
+  //var G_MAP_JRC = createWMSSpec(WMS_URL_JRC, "CCM", "WMS", "RIVERSEGMENTS", "default", "image/png", "1.1.1", "CCM River and Catchment Database JRC/IES (c) European Commission - JRC, 2003");
+  //var G_MAP_JRC_I2K = createWMSSpec(WMS_URL_I2K,"I2K.", "WMS", "0", "default", "image/png", "1.1.1", "(c) European Commission");
+
+  // Create a transparent overlay on a Google MapSpec
+  //var G_MAP_EEA_OVER_SAT = createWMSOverlaySpec(G_SATELLITE_TYPE, G_MAP_EEA, "Admin", "Admin");
+  //var G_MAP_JRC_OVER_SAT = createWMSOverlaySpec(G_SATELLITE_TYPE, G_MAP_JRC, "CCM", "CCM");
+  //var G_MAP_EEA_OVER_I2K = createWMSOverlaySpec(G_MAP_JRC_I2K, G_MAP_EEA, "I2K", "I2K");
+  
+	// Setup the map
+  var map = new GMap(document.getElementById("map"));
+  
+  var tile_WMS_EEA = new GTileLayer( new GCopyrightCollection("(c) Teleatlas"), 1, 17 );
+	tile_WMS_EEA.myLayers="ERM2_rivers";
+	tile_WMS_EEA.myFormat="image/png";
+	//tile_WMS_EEA.myBaseURL="http://dev.sandre.eaufrance.fr/eeadamsgeo?";
+	tile_WMS_EEA.myBaseURL="http://dampos-demo.eea.europa.eu/cgi-bin/wseea?";
+  tile_WMS_EEA.getTileUrl=CustomGetTileUrl;
+	tile_WMS_EEA.getOpacity = function() {return 1;}
+  var layer_WMS_EEA = [G_SATELLITE_MAP.getTileLayers()[0], tile_WMS_EEA];
+  var map_WMS_EEA = new GMapType(layer_WMS_EEA, G_SATELLITE_MAP.getProjection(), "EEA WMS", G_SATELLITE_MAP);
+
+  var tile_WMS_GEONODE = new GTileLayer( new GCopyrightCollection("(c) Teleatlas"), 1, 17 );
+	tile_WMS_GEONODE.myLayers="100,200,300,Counties,Capitals,ContryBorder,RiverLarge,Riverlarge_label,RiverMedium,Coastline,Villages";
+	tile_WMS_GEONODE.myFormat="image/png";
+	tile_WMS_GEONODE.myBaseURL="http://geonode.eea.europa.eu/wmsconnector/com.esri.wms.Esrimap?";
+  tile_WMS_GEONODE.getTileUrl=CustomGetTileUrl;
+	tile_WMS_GEONODE.getOpacity = function() {return 0.5;}
+  var layer_WMS_GEONODE = [tile_WMS_GEONODE];
+  var map_WMS_GEONODE = new GMapType(layer_WMS_GEONODE, G_SATELLITE_MAP.getProjection(), "EEA Geonode", G_SATELLITE_MAP);
+
+  var tile_I2K = new GTileLayer( new GCopyrightCollection("(c) European Commission"), 1, 17 );
+	tile_I2K.myLayers="0";
+	tile_I2K.myFormat="image/png";
+	tile_I2K.myBaseURL="http://mapserver.jrc.it/wmsconnector/com.esri.wms.Esrimap/image2000_pan?";
+  tile_I2K.getTileUrl=CustomGetTileUrl;
+	tile_I2K.getOpacity = function() {return 0.5;}
+  var layer_I2K = [G_SATELLITE_MAP.getTileLayers()[0], tile_I2K];
+  var map_I2K = new GMapType(layer_I2K, G_SATELLITE_MAP.getProjection(), "I2K", G_SATELLITE_MAP);
+  
+  var tile_test = new GTileLayer( new GCopyrightCollection("(c) TEST"), 1, 17 );
+	tile_test.myLayers="gadm2";
+	tile_test.myFormat="image/gif";
+	tile_test.myBaseURL="http://bg.berkeley.edu/cgi-bin/mapserv?map=/usr/local/apache2/htdocs/gadm.map&";
+  tile_test.getTileUrl=CustomGetTileUrl;
+	tile_test.getOpacity = function() {return 0.5;}
+  var layer_tile_test = [G_SATELLITE_MAP.getTileLayers()[0], tile_test];
+  var map_tile_test = new GMapType(layer_tile_test, G_SATELLITE_MAP.getProjection(), "Test", G_SATELLITE_MAP);
+  
+  
+  var baseLayer = [G_SATELLITE_MAP.getTileLayers()[0]];
+  var baseMap   = new GMapType(baseLayer, G_SATELLITE_MAP.getProjection(), "Google", G_SATELLITE_MAP);
+  
+	GEvent.addListener(map, "click", function(overlay, point) 
+    {
+      document.carto_form.x.value = point.x;
+      document.carto_form.y.value = point.y;
+    }
+  );
+
+  map.getMapTypes().length = 0;
+  map.addMapType(baseMap);
+  map.addMapType(map_WMS_EEA);
+  map.addMapType(map_tile_test);
+  map.addMapType(map_I2K);
+  map.setMapType(G_SATELLITE_MAP);
+  
+  map.setCenter(new GLatLng(37.8,-122.4819), 11);
+	map.addControl(new GLargeMapControl());
+  map.addControl(new GMapTypeControl());  
+	map.centerAndZoom(new GPoint('.$x.', '.$y.'), '.$z.');
+'
+;}
+
 /**
  * Return Javascript footer for google map interface
  * 
