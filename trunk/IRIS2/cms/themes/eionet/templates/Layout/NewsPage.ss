@@ -1,5 +1,5 @@
-<h2>$Title</h2>
-<p id="articleDate"><strong>$Date.Nice</strong></p>
+<h1>$Title</h1>
+<div class="calendar $Date.Month.Lowercase"><span>$Date.DayOfMonth</span> $Date.Year</div>
 $Content
 $Form
 $PageComments

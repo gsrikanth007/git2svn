@@ -17,15 +17,19 @@ class NewsHolder_Controller extends Page_Controller {
 
     /**
      * Method to initialise NewsHolder_Controler instance
+     *
+     * @return void
      */
     public function init() {
-        RSSFeed::linkToFeed($this->Link() . 'rss');
+        RSSFeed::linkToFeed($this->Link() . 'rss', 'Industrial emissions Reporting Information System Latest News');
         parent::init();
     }
 
 
     /**
      * Method to create RSS feed of news items
+     *
+     * @return void
      */
     public function rss() {
         $rss = new RSSFeed($this->Children(), $this->Link(), 'Latest News');

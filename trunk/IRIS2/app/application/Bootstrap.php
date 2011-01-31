@@ -45,7 +45,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap {
 
         // Create new Zend_Cache instance
         $cache = Zend_Cache::factory('Core', 'File', array(
-            'caching' => false,
+            'caching' => true,
             'lifetime' => null,
             'automatic_serialization' => true,
         ), array(

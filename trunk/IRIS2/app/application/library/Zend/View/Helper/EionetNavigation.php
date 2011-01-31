@@ -4,6 +4,7 @@ class Zend_View_Helper_EionetNavigation extends Zend_View_Helper_Abstract {
 
     /**
      * Method to retrieve and output Eionet navigation
+     * 
      * @param string $location
      * @param integer $page
      * @return string

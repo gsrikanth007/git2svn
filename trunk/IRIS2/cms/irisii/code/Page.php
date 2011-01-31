@@ -28,6 +28,17 @@ class Page extends SiteTree {
 
 
     /**
+     *  Method to override default CMS field list
+     *
+     *  @return FieldSet $fieldSet
+     */
+    public function getCMSFields() {
+        $fieldSet = parent::getCMSFields();
+        $fieldSet->renameField('ShowInSearch', 'Show in sitemap?');
+        return $fieldSet;
+    }
+    
+    /**
      * Method to retrieve Eionet header navigation
      *
      * @return string

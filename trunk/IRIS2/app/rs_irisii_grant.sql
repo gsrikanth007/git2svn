@@ -9,7 +9,7 @@ GRANT
 -- Only required for install: GRANT
 CREATE, DROP, ALTER, INDEX,
 -- Required at all times:
-SELECT, INSERT, UPDATE, DELETE, CREATE TEMPORARY TABLES, LOCK TABLES
+SELECT, INSERT, UPDATE, DELETE, CREATE TEMPORARY TABLES
 ON irisii_dqt_app.*
 TO irisii_dqt_user@localhost IDENTIFIED BY 'dqt-dqt<>';
 
@@ -20,7 +20,7 @@ GRANT
 -- Only required for install:
 CREATE, DROP, ALTER, INDEX, INSERT,
 -- Required at all times (and for operation): GRANT
-SELECT, CREATE TEMPORARY TABLES, LOCK TABLES
+SELECT, CREATE TEMPORARY TABLES
 
 ON irisii_gbr_app.* TO irisii_gbr_user@localhost IDENTIFIED BY 'gbr-gbr><';
 

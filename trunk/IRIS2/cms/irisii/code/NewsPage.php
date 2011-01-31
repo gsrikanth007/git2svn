@@ -7,11 +7,16 @@ class NewsPage extends Page {
 
 	public static $has_one = array();
 
+    public static $defaults = array(
+        'ShowInMenus' => 0,
+    );
+
     public static $icon = 'themes/eionet/images/tree/newspaper';
 
 
     /**
      *  Method to override parent and to add Date and Category to field list
+     * 
      *  @return FieldSet
      */
     public function getCMSFields() {

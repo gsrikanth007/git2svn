@@ -76,6 +76,9 @@ class SearchController extends Iris_Controller {
      * @access public
      */
     public function sectorsAction() {
+        // Add sectors to breadcrumbs
+        $this->_breadcrumbs->append(array('Sectors', array('action' => 'sectors', 'controller' => 'search')));
+
         $sectors = Application_Model_Sector::fetchAll(null, 'name ASC');
         $this->view->sectors = $sectors;
     }

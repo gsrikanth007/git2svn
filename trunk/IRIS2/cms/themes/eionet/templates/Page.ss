@@ -41,14 +41,14 @@
                     <a href="Security/login" id="loginlink">Login</a>
                     <a id="printlink" title="Print this page" href="javascript:this.print();"><span>Print</span></a>
                     <a id="fullscreenlink" href="javascript:toggleFullScreenMode()" title="Switch to/from full screen mode"><span>Switch to/from full screen mode</span></a>
-                    <a id="acronymlink" href="/acronyms" title="Look up acronyms"><span>Acronyms</span></a>
+                    <a id="acronymlink" href="http://www.eionet.europa.eu/acronyms" title="Look up acronyms"><span>Acronyms</span></a>
                     <a id="rsslink" type="application/rss+xml" href="http://www.eionet.europa.eu/announcements.rdf" title="Eionet headlines as RSS"><span>RSS</span></a>
                     <% include Search %>
                 </div>
             </div><!-- toolribbon -->
 
             <div id="pagehead">
-                <a title="Frontpage" href="/iris/home"><img src="http://www.eionet.europa.eu/styles/eionet2007/eea-print-logo.gif" alt="Logo" id="logo" width="428" height="87" /></a>
+                <a title="Frontpage" href="/"><img src="http://www.eionet.europa.eu/styles/eionet2007/eea-print-logo.gif" alt="Logo" id="logo" width="428" height="87" /></a>
                 <div id="networktitle">Eionet</div>
                 <div id="sitetitle">Industrial emissions Reporting Information System (IRIS)</div>
                 <div id="sitetagline"></div>

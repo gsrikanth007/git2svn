@@ -15,7 +15,7 @@ class SitemapPage_Controller extends Page_Controller {
      * @return string
      */
     public function Sitemap() {
-        $pages = DataObject::get('Page', 'ParentID = 0');
+        $pages = DataObject::get('Page', 'ParentID = 0 AND ShowInSearch = 1');
         return $this->_recursiveCrawlPages($pages);
     }
 
@@ -39,7 +39,7 @@ class SitemapPage_Controller extends Page_Controller {
                 if(($page->ID <> $this->ID) && !($page instanceof ErrorPage)) {
                     $sitemapLevel .= "<li><a href='{$page->AbsoluteLink()}' title='{$page->Title}'>{$page->Title}</a>";
 
-                    $pages = DataObject::get('Page', "ParentID = {$page->ID} AND ShowInMenus = 1");
+                    $pages = DataObject::get('Page', "ParentID = {$page->ID} AND ShowInSearch = 1");
                     $sitemapLevel .= $this->_recursiveCrawlPages($pages, $depth);
 
                     $sitemapLevel .= "</li>\n";
