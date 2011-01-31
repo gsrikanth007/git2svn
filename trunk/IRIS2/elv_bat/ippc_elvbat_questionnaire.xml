@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Questionnaire xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="en">
+    <q-installation status="lcp">
+        <question id="q-test-checkbox-page1" exclude="true" />
+        
+        <!-- start LCP question set -->
+        <question id="q-1" text="1. General Information">
+            <question id="q-1-1" text="1.1 Installation name" />
+            <question id="q-1-2" text="1.2 Installation code">
+                <question id="q-1-2-Country" text="Country" />
+                <question id="q-1-2-Range" text="Category (MWth)" />
+                <question id="q-1-2-Amount" text="Number" />
+            </question>
+            <question id="q-1-4" text="1.4 Year the permit has last been updated" />
+            <question id="q-1-5" text="1.5 Status of the installation under the IPPC Diretive" />
+            <question id="q-1-5-Remarks" text="Remarks, if any" />
+            <question id="q-1-6" text="1.6 If available give a weblink to the permit" />
+        </question>
+
+        <question id="q-2" text="2. Installation level - information">
+            <question id="q-2-1" text="2.1 What is the total rated thermal input of all combustion activities at installation level in MWth?" />
+            <question id="q-2-2" text="2.2 How many emission sources to air (combustion plants) does this installation have?" />
+            <question id="q-2-2-Remarks" text="Remarks, if any" />
+            <question id="q-2-3" text="2.3 Which of these emission sources to air (combustion plants) are sharing a common stack?" />
+            <question id="q-2-4" text="2.4 How many emission sources to water, which are discharging the waste water from the flue gas cleaning, does the installation have?" />
+            <question id="q-2-4-Remarks" text="Remarks, if any" />
+        </question>
+
+        <question id="q-3-table" old_id="q-3-1-table" exclude="true">
+            <question id="q-3-row" old_id="q-3-1-row" text="3. Emission sources to air (combustion plant level)">
+                <question id="q-3-Technical-Background" text="Technical background information">
+                    <question id="q-3-1" text="3.1 Short descriptuion of the emission source (name, identification):" />
+                    <question id="q-3-2" text="3.2 What is the total rated thermal input of the combustion units connected to this emission source in MWth?" />
+                    <question id="q-3-3" text="3.3 What is their total fuel use (yearly average over the period 2006-2008 - if not in operation during all of these years, please explain in the remarks box below)?" />
+                    <question id="q-3-3-Confidential" text="Please indicate if this information should be dealt with as confidential" />
+                    <question id="q-3-3-Fuel-table" exclude="true">
+                        <question id="q-3-3-Fuel-Coal" text="Coal">
+                            <question id="q-3-3-Fuel-Coal-Fuel" old_id="q-3-3-Fuel-Fuel-Coal" text="Coal" />
+                            <question id="q-3-3-Fuel-Coal-TJTear" old_id="q-3-3-Fuel-TJYear-Coal" text="TJ/Year" />
+                            <question id="q-3-3-Fuel-Coal-AveragePS" old_id="q-3-3-Fuel-AveragePS-Coal" text="Average %S (for coal, lignite and liquid fuels)" />
+                            <question id="q-3-3-Fuel-Coal-Average-Net-Calorific-Value" old_id="q-3-3-Fuel-Average-Net-Calorific-Value-Coal" text="Average net calorific value (express in MJ/kg)" />
+                        </question>
+                        <question id="q-3-3-Fuel-Lignite" text="Lignite">
+                            <question id="q-3-3-Fuel-Lignite-Fuel" old_id="q-3-3-Fuel-Fuel-Lignite" text="Lignite" />
+                            <question id="q-3-3-Fuel-Lignite-TJTear" old_id="q-3-3-Fuel-TJYear-Lignite" text="TJ/Year" />
+                            <question id="q-3-3-Fuel-Lignite-AveragePS" old_id="q-3-3-Fuel-AveragePS-Lignite" text="Average %S (for coal, lignite and liquid fuels)" />
+                            <question id="q-3-3-Fuel-Lignite-Average-Net-Calorific-Value" old_id="q-3-3-Fuel-Average-Net-Calorific-Value-Lignite" text="Average net calorific value (express in MJ/kg)" />
+                        </question>
+                        <question id="q-3-3-Fuel-Biomass" text="Biomass">
+                            <question id="q-3-3-Fuel-Biomass-Fuel" old_id="q-3-3-Fuel-Fuel-Biomass" text="Biomass" />
+                            <question id="q-3-3-Fuel-Biomass-TJTear" old_id="q-3-3-Fuel-TJYear-Biomass" text="TJ/Year" />
+                            <question id="q-3-3-Fuel-Biomass-AveragePS" old_id="q-3-3-Fuel-AveragePS-Biomass" text="Average %S (for coal, lignite and liquid fuels)" />
+                            <question id="q-3-3-Fuel-Biomass-Average-Net-Calorific-Value" old_id="q-3-3-Fuel-Average-Net-Calorific-Value-Biomass" text="Average net calorific value (express in MJ/kg)" />
+                        </question>
+                        <question id="q-3-3-Fuel-LiquidFuels" text="Liquid fuels">
+                            <question id="q-3-3-Fuel-LiquidFuels-Fuel" old_id="q-3-3-Fuel-Fuel-Liquid" text="Liquid fuels" />
+                            <question id="q-3-3-Fuel-LiquidFuels-TJTear" old_id="q-3-3-Fuel-TJYear-Liquid" text="TJ/Year" />
+                            <question id="q-3-3-Fuel-LiquidFuels-AveragePS" old_id="q-3-3-Fuel-AveragePS-Liquid" text="Average %S (for coal, lignite and liquid fuels)" />
+                            <question id="q-3-3-Fuel-LiquidFuels-Average-Net-Calorific-Value" old_id="q-3-3-Fuel-Average-Net-Calorific-Value-Liquid" text="Average net calorific value (express in MJ/kg)" />
+                        </question>
+                        <question id="q-3-3-Fuel-Other" text="Other">
+                            <question id="q-3-3-Fuel-Other-Fuel" old_id="q-3-3-Fuel-Fuel-Other" text="Other" />
+                            <question id="q-3-3-Fuel-Other-TJTear" old_id="q-3-3-Fuel-TJYear-Other" text="TJ/Year" />
+                            <question id="q-3-3-Fuel-Other-AveragePS" old_id="q-3-3-Fuel-AveragePS-Other" text="Average %S (for coal, lignite and liquid fuels)" />
+                            <question id="q-3-3-Fuel-Other-Average-Net-Calorific-Value" old_id="q-3-3-Fuel-Average-Net-Calorific-Value-Other" text="Average net calorific value (express in MJ/kg)" />
+                        </question>
+                    </question>
+                    <question id="q-3-3-Remarks" text="Remarks, if any" />
+                    <question id="q-3-4" text="3.4 To which of these 3 categories, does the emission source belong?" />
+                    <question id="q-3-5" text="3.5 In case of solid fuel firing, what type of combustion process is used?">
+                        <question id="q-3-5-pulverised-combustion" text="Pulverised combustion" />
+                        <question id="q-3-5-fluidised-bed-combustion" text="Fluidised bed combustion" />
+                        <question id="q-3-5-grate-firing" text="Grate firing" />
+                        <question id="q-3-5-other" text="Other, please specify" />
+                        <question id="q-3-5-other-text" text="Other, please specify" />
+                    </question>
+                    <question id="q-3-6" text="3.6 Is there combined generation of heat and power at this level?" />
+                    <question id="q-3-6-Remarks" text="Remarks, if any" />
+                </question>
+                <question id="q-3-ElvBat-Information" text="ELV/BAT information">
+                    <question id="q-3-7" text="3.7 Please provide the requested permit information on the following">
+                        <question id="q-3-7-1-table" text="Emision limit values set up in permit">
+                            <question id="q-3-7-1-Pollutant-NOx" text="NOx">
+                                <question id="q-3-7-1-NOx-EmissionLimit" old_id="q-3-7-1-NOx-EmissionLimit" text="Emission limit value set in permit" />
+                                <question id="q-3-7-1-NOx-Unit" old_id="q-3-7-1-NOx-Unit" text="Unit" />
+                                <question id="q-3-7-1-NOx-ELVRelatedTimePeriod" old_id="q-3-7-1-NOx-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-3-7-1-NOx-ReferenceRemarksAndConditions" old_id="q-3-7-1-NOx-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-3-7-1-NOx-RemarksIfAny" old_id="q-3-7-1-NOx-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q-3-7-1-Pollutant-SO2" text="SO2">
+                                <question id="q-3-7-1-SO2-EmissionLimit" old_id="q-3-7-1-SO2-EmissionLimit" text="Emission limit value set in permit" />
+                                <question id="q-3-7-1-SO2-Unit" old_id="q-3-7-1-SO2-Unit" text="Unit" />
+                                <question id="q-3-7-1-SO2-ELVRelatedTimePeriod" old_id="q-3-7-1-SO2-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-3-7-1-SO2-ReferenceRemarksAndConditions" old_id="q-3-7-1-SO2-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-3-7-1-SO2-RemarksIfAny" old_id="q-3-7-1-SO2-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q-3-7-1-Pollutant-CO" text="CO2">
+                                <question id="q-3-7-1-CO-EmissionLimit" old_id="q-3-7-1-CO-EmissionLimit" text="Emission limit value set in permit" />
+                                <question id="q-3-7-1-CO-Unit" old_id="q-3-7-1-CO-Unit" text="Unit" />
+                                <question id="q-3-7-1-CO-ELVRelatedTimePeriod" old_id="q-3-7-1-CO-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-3-7-1-CO-ReferenceRemarksAndConditions" old_id="q-3-7-1-CO-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-3-7-1-CO-RemarksIfAny" old_id="q-3-7-1-CO-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q-3-7-1-Pollutant-Dust" text="Dust">
+                                <question id="q-3-7-1-Dust-EmissionLimit" old_id="q-3-7-1-dust-EmissionLimit" text="Emission limit value set in permit" />
+                                <question id="q-3-7-1-Dust-Unit" old_id="q-3-7-1-dust-Unit" text="Unit" />
+                                <question id="q-3-7-1-Dust-ELVRelatedTimePeriod" old_id="q-3-7-1-dust-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-3-7-1-Dust-ReferenceRemarksAndConditions" old_id="q-3-7-1-dust-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-3-7-1-Dust-RemarksIfAny" old_id="q-3-7-1-dust-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q-3-7-1-Pollutant-Hg" text="Hg (for coal/lignite fired)">
+                                <question id="q-3-7-1-Hg-EmissionLimit" old_id="q-3-7-1-Hg-EmissionLimit" text="Emission limit value set in permit" />
+                                <question id="q-3-7-1-Hg-Unit" old_id="q-3-7-1-Hg-Unit" text="Unit" />
+                                <question id="q-3-7-1-Hg-ELVRelatedTimePeriod" old_id="q-3-7-1-Hg-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-3-7-1-Hg-ReferenceRemarksAndConditions" old_id="q-3-7-1-Hg-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-3-7-1-Hg-RemarksIfAny" old_id="q-3-7-1-Hg-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                        </question>
+                        <question id="q-3-7-1-NotAvailable" text="If ELV is not available, please indicate here">
+                            <question id="q-3-7-1-NOx-ELV-Not-Available" text="NOx - ELV not available" />
+                            <question id="q-3-7-1-SO2-ELV-Not-Available" text="SO2 - ELV not available" />
+                            <question id="q-3-7-1-CO-ELV-Not-Available" text="CO - ELV not available" />
+                            <question id="q-3-7-1-dust-ELV-Not-Available" text="Dust - ELV not available" />
+                            <question id="q-3-7-1-Hg-ELV-Not-Available" text="Hg (for coal/lignite fired) - ELV not available" />
+                        </question>
+                        <question id="q-3-7-1-Remarks" text="Remarks, if any" />
+                        <question id="q-3-7-2-table" text="3.7.2 Monitoring requirements set in the permit">
+                            <question id="q-3-7-2-Pollutant-NOx" text="NOx">
+                                <question id="q-3-7-2-NOx-Type" old_id="q-3-7-2-NOx-Type" text="Type" />
+                                <question id="q-3-7-2-NOx-IfP-Frequency" old_id="q-3-7-2-NOx-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-3-7-2-NOx-IfP-Duration" old_id="q-3-7-2-NOx-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                            <question id="q-3-7-2-Pollutant-SO2" text="SO2">
+                                <question id="q-3-7-2-SO2-Type" old_id="q-3-7-2-SO2-Type" text="Type" />
+                                <question id="q-3-7-2-SO2-IfP-Frequency" old_id="q-3-7-2-SO2-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-3-7-2-SO2-IfP-Duration" old_id="q-3-7-2-SO2-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                            <question id="q-3-7-2-Pollutant-CO" text="CO">
+                                <question id="q-3-7-2-CO-Type" old_id="q-3-7-2-CO-Type" text="Type" />
+                                <question id="q-3-7-2-CO-IfP-Frequency" old_id="q-3-7-2-CO-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-3-7-2-CO-IfP-Duration" old_id="q-3-7-2-CO-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                            <question id="q-3-7-2-Pollutant-Dust" text="Dust">
+                                <question id="q-3-7-2-Dust-Type" old_id="q-3-7-2-dust-Type" text="Type" />
+                                <question id="q-3-7-2-Dust-IfP-Frequency" old_id="q-3-7-2-dust-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-3-7-2-Dust-IfP-Duration" old_id="q-3-7-2-dust-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                            <question id="q-3-7-2-Pollutant-Hg" text="Hg (for coal/lignite fired)">
+                                <question id="q-3-7-2-Hg-Type" old_id="q-3-7-2-Hg-Type" text="Type" />
+                                <question id="q-3-7-2-Hg-IfP-Frequency" old_id="q-3-7-2-Hg-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-3-7-2-Hg-IfP-Duration" old_id="q-3-7-2-Hg-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                        </question>
+                        <question id="q-3-7-3-MonitoredEmissions-table" text="3.7.3 Actual monitored emissions">
+                            <question id="q-3-7-3-MonitoredEmissions-NOx" text="NOx">
+                                <question id="q-3-7-3-NOx-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-3-7-3-NOx-Year-2006" old_id="q-3-7-3-NOx-Year-2006" text="2006" />
+                                    <question id="q-3-7-3-NOx-Year-2007" old_id="q-3-7-3-NOx-Year-2007" text="2007" />
+                                    <question id="q-3-7-3-NOx-Year-2008" old_id="q-3-7-3-NOx-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-3-7-3-NOx-Yearly-Average-Value" old_id="q-3-7-3-NOx-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-3-7-3-NOx-Yearly-Average-Value-NA" old_id="q-3-7-3-NOx-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-3-7-3-NOx-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-3-7-3-NOx-Minimum-Average-Monthly-Values" old_id="q-3-7-3-NOx-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-3-7-3-NOx-Minimum-Average-Monthly-Values-NA" old_id="q-3-7-3-NOx-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-NOx-Maximum-Average-Monthly-Values" old_id="q-3-7-3-NOx-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-3-7-3-NOx-Maximum-Average-Monthly-Values-NA" old_id="q-3-7-3-NOx-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-NOx-Percentile95-Hourly48-Average-Values" old_id="q-3-7-3-NOx-Percentile95-Hourly48-Average-Values" text="95% percentile of 48 hourly average values" />
+                                    <question id="q-3-7-3-NOx-Percentile95-Hourly48-Average-Values-NA" old_id="q-3-7-3-NOx-Percentile95-Hourly48-Average-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-3-7-3-NOx-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-3-7-3-NOx-Minimum-Measured-Values" old_id="q-3-7-3-NOx-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-3-7-3-NOx-Minimum-Measured-Values-NA" old_id="q-3-7-3-NOx-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-NOx-Maximum-Measured-Values" old_id="q-3-7-3-NOx-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-3-7-3-NOx-Maximum-Measured-Values-NA" old_id="q-3-7-3-NOx-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q-3-7-3-MonitoredEmissions-SO2" text="SO2">
+                                <question id="q-3-7-3-SO2-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-3-7-3-SO2-Year-2006" old_id="q-3-7-3-SO2-Year-2006" text="2006" />
+                                    <question id="q-3-7-3-SO2-Year-2007" old_id="q-3-7-3-SO2-Year-2007" text="2007" />
+                                    <question id="q-3-7-3-SO2-Year-2008" old_id="q-3-7-3-SO2-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-3-7-3-SO2-Yearly-Average-Value" old_id="q-3-7-3-SO2-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-3-7-3-SO2-Yearly-Average-Value-NA" old_id="q-3-7-3-SO2-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-3-7-3-SO2-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-3-7-3-SO2-Minimum-Average-Monthly-Values" old_id="q-3-7-3-SO2-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-3-7-3-SO2-Minimum-Average-Monthly-Values-NA" old_id="q-3-7-3-SO2-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-SO2-Maximum-Average-Monthly-Values" old_id="q-3-7-3-SO2-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-3-7-3-SO2-Maximum-Average-Monthly-Values-NA" old_id="q-3-7-3-SO2-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-SO2-Percentile95-Hourly48-Average-Values" old_id="q-3-7-3-SO2-Percentile95-Hourly48-Average-Values" text="95% percentile of 48 hourly average values" />
+                                    <question id="q-3-7-3-SO2-Percentile95-Hourly48-Average-Values-NA" old_id="q-3-7-3-SO2-Percentile95-Hourly48-Average-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-3-7-3-SO2-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-3-7-3-SO2-Minimum-Measured-Values" old_id="q-3-7-3-SO2-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-3-7-3-SO2-Minimum-Measured-Values-NA" old_id="q-3-7-3-SO2-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-SO2-Maximum-Measured-Values" old_id="q-3-7-3-SO2-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-3-7-3-SO2-Maximum-Measured-Values-NA" old_id="q-3-7-3-SO2-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q-3-7-3-MonitoredEmissions-CO" text="CO">
+                                <question id="q-3-7-3-CO-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-3-7-3-CO-Year-2006" old_id="q-3-7-3-CO-Year-2006" text="2006" />
+                                    <question id="q-3-7-3-CO-Year-2007" old_id="q-3-7-3-CO-Year-2007" text="2007" />
+                                    <question id="q-3-7-3-CO-Year-2008" old_id="q-3-7-3-CO-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-3-7-3-CO-Yearly-Average-Value" old_id="q-3-7-3-CO-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-3-7-3-CO-Yearly-Average-Value-NA" old_id="q-3-7-3-CO-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-3-7-3-CO-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-3-7-3-CO-Minimum-Average-Monthly-Values" old_id="q-3-7-3-CO-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-3-7-3-CO-Minimum-Average-Monthly-Values-NA" old_id="q-3-7-3-CO-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-CO-Maximum-Average-Monthly-Values" old_id="q-3-7-3-CO-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-3-7-3-CO-Maximum-Average-Monthly-Values-NA" old_id="q-3-7-3-CO-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-CO-Percentile95-Hourly48-Average-Values" old_id="q-3-7-3-CO-Percentile95-Hourly48-Average-Values" text="95% percentile of 48 hourly average values" />
+                                    <question id="q-3-7-3-CO-Percentile95-Hourly48-Average-Values-NA" old_id="q-3-7-3-CO-Percentile95-Hourly48-Average-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-3-7-3-CO-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-3-7-3-CO-Minimum-Measured-Values" old_id="q-3-7-3-CO-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-3-7-3-CO-Minimum-Measured-Values-NA" old_id="q-3-7-3-CO-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-CO-Maximum-Measured-Values" old_id="q-3-7-3-CO-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-3-7-3-CO-Maximum-Measured-Values-NA" old_id="q-3-7-3-CO-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q-3-7-3-MonitoredEmissions-Dust" text="Dust">
+                                <question id="q-3-7-3-Dust-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-3-7-3-Dust-Year-2006" old_id="q-3-7-3-dust-Year-2006" text="2006" />
+                                    <question id="q-3-7-3-Dust-Year-2007" old_id="q-3-7-3-dust-Year-2007" text="2007" />
+                                    <question id="q-3-7-3-Dust-Year-2008" old_id="q-3-7-3-dust-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-3-7-3-Dust-Yearly-Average-Value" old_id="q-3-7-3-dust-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-3-7-3-Dust-Yearly-Average-Value-NA" old_id="q-3-7-3-dust-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-3-7-3-Dust-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-3-7-3-Dust-Minimum-Average-Monthly-Values" old_id="q-3-7-3-dust-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-3-7-3-Dust-Minimum-Average-Monthly-Values-NA" old_id="q-3-7-3-dust-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-Dust-Maximum-Average-Monthly-Values" old_id="q-3-7-3-dust-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-3-7-3-Dust-Maximum-Average-Monthly-Values-NA" old_id="q-3-7-3-dust-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-Dust-Percentile95-Hourly48-Average-Values" old_id="q-3-7-3-dust-Percentile95-Hourly48-Average-Values" text="95% percentile of 48 hourly average values" />
+                                    <question id="q-3-7-3-Dust-Percentile95-Hourly48-Average-Values-NA" old_id="q-3-7-3-dust-Percentile95-Hourly48-Average-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-3-7-3-Dust-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-3-7-3-Dust-Minimum-Measured-Values" old_id="q-3-7-3-dust-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-3-7-3-Dust-Minimum-Measured-Values-NA" old_id="q-3-7-3-dust-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-Dust-Maximum-Measured-Values" old_id="q-3-7-3-dust-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-3-7-3-Dust-Maximum-Measured-Values-NA" old_id="q-3-7-3-dust-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q-3-7-3-Hg-MonitoredEmissions-Hg" text="Hg">
+                                <question id="q-3-7-3-Hg-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-3-7-3-Hg-Year-2006" old_id="q-3-7-3-Hg-Year-2006" text="2006" />
+                                    <question id="q-3-7-3-Hg-Year-2007" old_id="q-3-7-3-Hg-Year-2007" text="2007" />
+                                    <question id="q-3-7-3-Hg-Year-2008" old_id="q-3-7-3-Hg-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-3-7-3-Hg-Yearly-Average-Value" old_id="q-3-7-3-Hg-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-3-7-3-Hg-Yearly-Average-Value-NA" old_id="q-3-7-3-Hg-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-3-7-3-Hg-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-3-7-3-Hg-Minimum-Average-Monthly-Values" old_id="q-3-7-3-Hg-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-3-7-3-Hg-Minimum-Average-Monthly-Values-NA" old_id="q-3-7-3-Hg-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-Hg-Maximum-Average-Monthly-Values" old_id="q-3-7-3-Hg-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-3-7-3-Hg-Maximum-Average-Monthly-Values-NA" old_id="q-3-7-3-Hg-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-Hg-Percentile95-Hourly48-Average-Values" old_id="q-3-7-3-Hg-Percentile95-Hourly48-Average-Values" text="95% percentile of 48 hourly average values" />
+                                    <question id="q-3-7-3-Hg-Percentile95-Hourly48-Average-Values-NA" old_id="q-3-7-3-Hg-Percentile95-Hourly48-Average-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-3-7-3-Hg-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-3-7-3-Hg-Minimum-Measured-Values" old_id="q-3-7-3-Hg-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-3-7-3-Hg-Minimum-Measured-Values-NA" old_id="q-3-7-3-Hg-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-3-7-3-Hg-Maximum-Measured-Values" old_id="q-3-7-3-Hg-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-3-7-3-Hg-Maximum-Measured-Values-NA" old_id="q-3-7-3-Hg-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                        </question>
+                        <question id="q-3-7-3-Remarks" text="Remarks, if any" />
+                        <question id="q-3-7-3-EmissionPrevention-table" text="Emission prevention and abatement techniques applied at this permit level">
+                            <question id="q-3-7-3-EmissionPrevention-NOx" text="NOx">
+                                <question id="q-3-7-3-PreventionTechnique-NOx" text="Prevention Technique">
+                                    <question id="q-3-7-3-Emission-Prevention-Nox-AirStaging" text="air staging (OFA, ...)" />
+                                    <question id="q-3-7-3-Emission-Prevention-Nox-FuelStaging" text="fuel staging (reburning)" />
+                                    <question id="q-3-7-3-Emission-Prevention-Nox-AdvancedLowBurners" text="advanced low-Nox burners" />
+                                    <question id="q-3-7-3-Emission-Prevention-Nox-SCR" text="SCR" />
+                                    <question id="q-3-7-3-Emission-Prevention-Nox-SNCR" text="SNCR" />
+                                    <question id="q-3-7-3-Emission-Prevention-Nox-LowSCR" text="A low layer of SCR catalyst in a SNCR installation" />
+                                    <question id="q-3-7-3-Emission-Prevention-Nox-DESONOX" text="DESONOX process (combined removal of NOx and SO2)" />
+                                    <question id="q-3-7-3-Emission-Prevention-Nox-Other" text="Other" />
+                                </question>
+                                <question id="q-3-7-3-Emission-Prevention-Nox-Remarks" text="Remarks, if any" />
+                            </question>
+                            <question id="q-3-7-3-EmissionPrevention-SOx" text="SOx">
+                                <question id="q-3-7-3-PreventionTechnique-SOx" text="Prevention Technique">
+                                    <question id="q-3-7-3-Emission-Prevention-Sox-LowSulphurFuel" text="use of low sulphur fuel [indicate %S]" />
+                                    <question id="q-3-7-3-Emission-Prevention-Sox-FGDwet" text="FGD: wet scrubbers" />
+                                    <question id="q-3-7-3-Emission-Prevention-Sox-FGDsea" text="FGD: seawater scrubbers" />
+                                    <question id="q-3-7-3-Emission-Prevention-Sox-FGDspray" text="FGD: spray dry scrubbers" />
+                                    <question id="q-3-7-3-Emission-Prevention-Sox-FGDlime" text="FGD: lime/limestone (dry) scrubbers" />
+                                    <question id="q-3-7-3-Emission-Prevention-Sox-Dry" text="Dry sorbent injection" />
+                                    <question id="q-3-7-3-Emission-Prevention-Sox-DESONOX" text="DESONOX process" />
+                                    <question id="q-3-7-3-Emission-Prevention-Sox-Other" text="Other" />
+                                </question>
+                                <question id="q-3-7-3-Emission-Prevention-Sox-Remarks" text="Remarks, if any" />
+                            </question>
+                            <question id="q-3-7-3-EmissionPrevention-Dust" text="Dust">
+                                <question id="q-3-7-3-PreventionTechnique-Dust" text="Prevention Technique">
+                                    <question id="q-3-7-3-Emission-Prevention-Dust-ESP" text="Electrostatic precipitator (ESP)" />
+                                    <question id="q-3-7-3-Emission-Prevention-Dust-FabricFilter" text="Fabric filter" />
+                                    <question id="q-3-7-3-Emission-Prevention-Dust-Other" text="Other" />
+                                </question>
+                                <question id="q-3-7-3-Emission-Prevention-Dust-Remarks" text="Remarks, if any" />
+                            </question>
+                        </question>
+                    </question>
+                </question>
+            </question>
+        </question>
+
+        <question id="q-4-table" old_id="q-4-1-table" exclude="true">
+            <question id="q-4-row" old_id="q-4-1-row" text="4. Emission sources to water">
+                <question id="q-4-Technical-Background" text="Technical background information">
+                    <question id="q-4-1" text="4.1. Short description of the emission source (name, identification)" />
+                    <question id="q-4-2" text="Receptor of discharged waste water">
+                        <question id="q-4-2-sewer-system" text="Sewer system" />
+                        <question id="q-4-2-surface-water" text="Surface water" />
+                    </question>
+                    <question id="q-4-2-Remarks" text="Remarks, if any" />
+                </question>
+                <question id="q-4-ElvBat-Information" text="ELV/BAT information">
+                    <question id="q-4-3" text="Please provide the requested permit information on the following:">
+                        <question id="q-4-3-1-table" text="4.3.1. Emission limit values in permit">
+                            <question id="q-4-3-1-SuspendedSolids" text="Suspended solids">
+                                <question id="q-4-3-1-SuspendedSolids-EmissionLimit" old_id="q-4-3-1-suspendedSolids-EmissionLimit" text="Emission limit" />
+                                <question id="q-4-3-1-SuspendedSolids-Unit" old_id="q-4-3-1-suspendedSolids-Unit" text="Unit" />
+                                <question id="q-4-3-1-SuspendedSolids-ELVRelatedTimePeriod" old_id="q-4-3-1-suspendedSolids-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-4-3-1-SuspendedSolids-ReferenceRemarksAndConditions" old_id="q-4-3-1-suspendedSolids-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-4-3-1-SuspendedSolids-RemarksIfAny" old_id="q-4-3-1-suspendedSolids-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q-4-3-1-COD" text="COD">
+                                <question id="q-4-3-1-COD-EmissionLimit" old_id="q-4-3-1-COD-EmissionLimit" text="Emission limit" />
+                                <question id="q-4-3-1-COD-Unit" old_id="q-4-3-1-COD-Unit" text="Unit" />
+                                <question id="q-4-3-1-COD-ELVRelatedTimePeriod" old_id="q-4-3-1-COD-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-4-3-1-COD-ReferenceRemarksAndConditions" old_id="q-4-3-1-COD-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-4-3-1-COD-RemarksIfAny" old_id="q-4-3-1-COD-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q-4-3-1-NitrogenCompounds" text="Nitrogen compounds">
+                                <question id="q-4-3-1-NitrogenCompounds-EmissionLimit" old_id="q-4-3-1-nitrogenCompounds-EmissionLimit" text="Emission limit" />
+                                <question id="q-4-3-1-NitrogenCompounds-Unit" old_id="q-4-3-1-nitrogenCompounds-Unit" text="Unit" />
+                                <question id="q-4-3-1-NitrogenCompounds-ELVRelatedTimePeriod" old_id="q-4-3-1-nitrogenCompounds-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-4-3-1-NitrogenCompounds-ReferenceRemarksAndConditions" old_id="q-4-3-1-nitrogenCompounds-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-4-3-1-NitrogenCompounds-RemarksIfAny" old_id="q-4-3-1-nitrogenCompounds-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q-4-3-1-Sulphate" text="Sulphate">
+                                <question id="q-4-3-1-Sulphate-EmissionLimit" old_id="q-4-3-1-sulphate-EmissionLimit" text="Emission limit" />
+                                <question id="q-4-3-1-Sulphate-Unit" old_id="q-4-3-1-sulphate-Unit" text="Unit" />
+                                <question id="q-4-3-1-Sulphate-ELVRelatedTimePeriod" old_id="q-4-3-1-sulphate-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-4-3-1-Sulphate-ReferenceRemarksAndConditions" old_id="q-4-3-1-sulphate-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-4-3-1-Sulphate-RemarksIfAny" old_id="q-4-3-1-sulphate-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q-4-3-1-Sulphite" text="Sulphite">
+                                <question id="q-4-3-1-Sulphite-EmissionLimit" old_id="q-4-3-1-sulphite-EmissionLimit" text="Emission limit" />
+                                <question id="q-4-3-1-Sulphite-Unit" old_id="q-4-3-1-sulphite-Unit" text="Unit" />
+                                <question id="q-4-3-1-Sulphite-ELVRelatedTimePeriod" old_id="q-4-3-1-sulphite-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-4-3-1-Sulphite-ReferenceRemarksAndConditions" old_id="q-4-3-1-sulphite-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-4-3-1-Sulphite-RemarksIfAny" old_id="q-4-3-1-sulphite-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q-4-3-1-Sulphide" text="Sulphide">
+                                <question id="q-4-3-1-Sulphide-EmissionLimit" old_id="q-4-3-1-sulphide-EmissionLimit" text="Emission limit" />
+                                <question id="q-4-3-1-Sulphide-Unit" old_id="q-4-3-1-sulphide-Unit" text="Unit" />
+                                <question id="q-4-3-1-Sulphide-ELVRelatedTimePeriod" old_id="q-4-3-1-sulphide-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-4-3-1-Sulphide-ReferenceRemarksAndConditions" old_id="q-4-3-1-sulphide-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-4-3-1-Sulphide-RemarksIfAny" old_id="q-4-3-1-sulphide-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q-4-3-1-Hg" text="Hg and compounds (for coal/lignite fired)">
+                                <question id="q-4-3-1-Hg-EmissionLimit" old_id="q-4-3-1-hg-EmissionLimit" text="Emission limit" />
+                                <question id="q-4-3-1-Hg-Unit" old_id="q-4-3-1-hg-Unit" text="Unit" />
+                                <question id="q-4-3-1-Hg-ELVRelatedTimePeriod" old_id="q-4-3-1-hg-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q-4-3-1-Hg-ReferenceRemarksAndConditions" old_id="q-4-3-1-hg-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q-4-3-1-Hg-RemarksIfAny" old_id="q-4-3-1-hg-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                        </question>
+                        <question id="q-4-3-1-NotAvailable" text="If ELV is not available, please indicate here">
+                            <question id="q-4-3-1-suspendedSolids-ELV-Not-Available" text="Suspended solids - ELV not available" />
+                            <question id="q-4-3-1-COD-ELV-Not-Available" text="COD - ELV not available" />
+                            <question id="q-4-3-1-nitrogenCompounds-ELV-Not-Available" text="Nitrogen compounds - ELV not available" />
+                            <question id="q-4-3-1-sulphate-ELV-Not-Available" text="Sulphate - ELV not available" />
+                            <question id="q-4-3-1-sulphite-ELV-Not-Available" text="Sulphite - ELV not available" />
+                            <question id="q-4-3-1-sulphide-ELV-Not-Available" text="Sulphide - ELV not available" />
+                            <question id="q-4-3-1-Hg-ELV-Not-Available" old_id="q-4-3-1-hg-ELV-Not-Available" text="Hg and compounds (for coal/lignite fired) - ELV not available" />
+                        </question>
+                        <question id="q-4-3-1-Remarks" text="Remarks, if any" />
+                        <question id="q-4-3-2-table" text="4.3.2 Monitoring frequency and duration requirements as set in the permit">
+                            <question id="q-4-3-2-SuspendedSolids" text="Suspended solids">
+                                <question id="q-4-3-2-SuspendedSolids-Type" old_id="q-4-3-2-suspendedSolids-Type" text="Type" />
+                                <question id="q-4-3-2-SuspendedSolids-IfP-Frequency" old_id="q-4-3-2-suspendedSolids-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-4-3-2-SuspendedSolids-IfP-Duration" old_id="q-4-3-2-suspendedSolids-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                            <question id="q-4-3-2-COD" text="COD">
+                                <question id="q-4-3-2-COD-Type" old_id="q-4-3-2-COD-Type" text="Type" />
+                                <question id="q-4-3-2-COD-IfP-Frequency" old_id="q-4-3-2-COD-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-4-3-2-COD-IfP-Duration" old_id="q-4-3-2-COD-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                            <question id="q-4-3-2-NitrogenCompounds" text="Nitrogen compounds">
+                                <question id="q-4-3-2-NitrogenCompounds-Type" old_id="q-4-3-2-nitrogenCompounds-Type" text="Type" />
+                                <question id="q-4-3-2-NitrogenCompounds-IfP-Frequency" old_id="q-4-3-2-nitrogenCompounds-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-4-3-2-NitrogenCompounds-IfP-Duration" old_id="q-4-3-2-nitrogenCompounds-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                            <question id="q-4-3-2-Sulphate" text="Sulphate">
+                                <question id="q-4-3-2-Sulphate-Type" old_id="q-4-3-2-sulphate-Type" text="Type" />
+                                <question id="q-4-3-2-Sulphate-IfP-Frequency" old_id="q-4-3-2-sulphate-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-4-3-2-Sulphate-IfP-Duration" old_id="q-4-3-2-sulphate-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                            <question id="q-4-3-2-Sulphite" text="Sulphite">
+                                <question id="q-4-3-2-Sulphite-Type" old_id="q-4-3-2-sulphite-Type" text="Type" />
+                                <question id="q-4-3-2-Sulphite-IfP-Frequency" old_id="q-4-3-2-sulphite-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-4-3-2-Sulphite-IfP-Duration" old_id="q-4-3-2-sulphite-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                            <question id="q-4-3-2-Sulphide" text="Sulphide">
+                                <question id="q-4-3-2-Sulphide-Type" old_id="q-4-3-2-sulphide-Type" text="Type" />
+                                <question id="q-4-3-2-Sulphide-IfP-Frequency" old_id="q-4-3-2-sulphide-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-4-3-2-Sulphide-IfP-Duration" old_id="q-4-3-2-sulphide-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                            <question id="q-4-3-2-Hg" text="Hg and compounds (for coal/lignite fired)">
+                                <question id="q-4-3-2-Hg-Type" old_id="q-4-3-2-hg-Type" text="Type" />
+                                <question id="q-4-3-2-Hg-IfP-Frequency" old_id="q-4-3-2-hg-IfP-Frequency" text="Frequency (if Period is selected)" />
+                                <question id="q-4-3-2-Hg-IfP-Duration" old_id="q-4-3-2-hg-IfP-Duration" text="Duration (if Period is selected)" />
+                            </question>
+                        </question>
+                        <question id="q-4-3-3-MonitoredEmissions-table" text="4.3.3 Actual monitored emissions at the permitted level">
+                            <question id="q-4-3-3-MonitoredEmissions-SuspendedSolids" text="Suspended solids">
+                                <question id="q-4-3-3-SuspendedSolids-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-4-3-3-SuspendedSolids-Year-2006" old_id="q-4-3-3-suspendedSolids-Year-2006" text="2006" />
+                                    <question id="q-4-3-3-SuspendedSolids-Year-2007" old_id="q-4-3-3-suspendedSolids-Year-2007" text="2007" />
+                                    <question id="q-4-3-3-SuspendedSolids-Year-2008" old_id="q-4-3-3-suspendedSolids-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-4-3-3-SuspendedSolids-Yearly-Average-Value" old_id="q-4-3-3-suspendedSolids-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-4-3-3-SuspendedSolids-Yearly-Average-Value-NA" old_id="q-4-3-3-suspendedSolids-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-4-3-3-SuspendedSolids-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-4-3-3-SuspendedSolids-Minimum-Average-Monthly-Values" old_id="q-4-3-3-suspendedSolids-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-4-3-3-SuspendedSolids-Minimum-Average-Monthly-Values-NA" old_id="q-4-3-3-suspendedSolids-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-SuspendedSolids-Maximum-Average-Monthly-Values" old_id="q-4-3-3-suspendedSolids-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-4-3-3-SuspendedSolids-Maximum-Average-Monthly-Values-NA" old_id="q-4-3-3-suspendedSolids-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-4-3-3-SuspendedSolids-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-4-3-3-SuspendedSolids-Minimum-Measured-Values" old_id="q-4-3-3-suspendedSolids-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-SuspendedSolids-Minimum-Measured-Values-NA" old_id="q-4-3-3-suspendedSolids-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-SuspendedSolids-Maximum-Measured-Values" old_id="q-4-3-3-suspendedSolids-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-SuspendedSolids-Maximum-Measured-Values-NA" old_id="q-4-3-3-suspendedSolids-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q-4-3-3-MonitoredEmissions-COD" text="COD">
+                                <question id="q-4-3-3-COD-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-4-3-3-COD-Year-2006" old_id="q-4-3-3-COD-Year-2006" text="2006" />
+                                    <question id="q-4-3-3-COD-Year-2007" old_id="q-4-3-3-COD-Year-2007" text="2007" />
+                                    <question id="q-4-3-3-COD-Year-2008" old_id="q-4-3-3-COD-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-4-3-3-COD-Yearly-Average-Value" old_id="q-4-3-3-COD-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-4-3-3-COD-Yearly-Average-Value-NA" old_id="q-4-3-3-COD-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-4-3-3-COD-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-4-3-3-COD-Minimum-Average-Monthly-Values" old_id="q-4-3-3-COD-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-4-3-3-COD-Minimum-Average-Monthly-Values-NA" old_id="q-4-3-3-COD-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-COD-Maximum-Average-Monthly-Values" old_id="q-4-3-3-COD-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-4-3-3-COD-Maximum-Average-Monthly-Values-NA" old_id="q-4-3-3-COD-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-4-3-3-COD-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-4-3-3-COD-Minimum-Measured-Values" old_id="q-4-3-3-COD-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-COD-Minimum-Measured-Values-NA" old_id="q-4-3-3-COD-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-COD-Maximum-Measured-Values" old_id="q-4-3-3-COD-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-COD-Maximum-Measured-Values-NA" old_id="q-4-3-3-COD-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q-4-3-3-MonitoredEmissions-NitrogenCompounds" text="Nitrogen compounds">
+                                <question id="q-4-3-3-NitrogenCompounds-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-4-3-3-NitrogenCompounds-Year-2006" old_id="q-4-3-3-nitrogenCompounds-Year-2006" text="2006" />
+                                    <question id="q-4-3-3-NitrogenCompounds-Year-2007" old_id="q-4-3-3-nitrogenCompounds-Year-2007" text="2007" />
+                                    <question id="q-4-3-3-NitrogenCompounds-Year-2008" old_id="q-4-3-3-nitrogenCompounds-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-4-3-3-NitrogenCompounds-Yearly-Average-Value" old_id="q-4-3-3-nitrogenCompounds-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-4-3-3-NitrogenCompounds-Yearly-Average-Value-NA" old_id="q-4-3-3-nitrogenCompounds-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-4-3-3-NitrogenCompounds-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-4-3-3-NitrogenCompounds-Minimum-Average-Monthly-Values" old_id="q-4-3-3-nitrogenCompounds-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-4-3-3-NitrogenCompounds-Minimum-Average-Monthly-Values-NA" old_id="q-4-3-3-nitrogenCompounds-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-NitrogenCompounds-Maximum-Average-Monthly-Values" old_id="q-4-3-3-nitrogenCompounds-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-4-3-3-NitrogenCompounds-Maximum-Average-Monthly-Values-NA" old_id="q-4-3-3-nitrogenCompounds-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-4-3-3-NitrogenCompounds-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-4-3-3-NitrogenCompounds-Minimum-Measured-Values" old_id="q-4-3-3-nitrogenCompounds-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-NitrogenCompounds-Minimum-Measured-Values-NA" old_id="q-4-3-3-nitrogenCompounds-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-NitrogenCompounds-Maximum-Measured-Values" old_id="q-4-3-3-nitrogenCompounds-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-NitrogenCompounds-Maximum-Measured-Values-NA" old_id="q-4-3-3-nitrogenCompounds-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q-4-3-3-MonitoredEmissions-Sulphate" text="Sulphate">
+                                <question id="q-4-3-3-Sulphate-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-4-3-3-Sulphate-Year-2006" old_id="q-4-3-3-sulphate-Year-2006" text="2006" />
+                                    <question id="q-4-3-3-Sulphate-Year-2007" old_id="q-4-3-3-sulphate-Year-2007" text="2007" />
+                                    <question id="q-4-3-3-Sulphate-Year-2008" old_id="q-4-3-3-sulphate-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-4-3-3-Sulphate-Yearly-Average-Value" old_id="q-4-3-3-sulphate-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-4-3-3-Sulphate-Yearly-Average-Value-NA" old_id="q-4-3-3-sulphate-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-4-3-3-Sulphate-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-4-3-3-Sulphate-Minimum-Average-Monthly-Values" old_id="q-4-3-3-sulphate-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-4-3-3-Sulphate-Minimum-Average-Monthly-Values-NA" old_id="q-4-3-3-sulphate-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-Sulphate-Maximum-Average-Monthly-Values" old_id="q-4-3-3-sulphate-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-4-3-3-Sulphate-Maximum-Average-Monthly-Values-NA" old_id="q-4-3-3-sulphate-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-4-3-3-Sulphate-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-4-3-3-Sulphate-Minimum-Measured-Values" old_id="q-4-3-3-sulphate-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-Sulphate-Minimum-Measured-Values-NA" old_id="q-4-3-3-sulphate-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-Sulphate-Maximum-Measured-Values" old_id="q-4-3-3-sulphate-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-Sulphate-Maximum-Measured-Values-NA" old_id="q-4-3-3-sulphate-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q-4-3-3-MonitoredEmissions-Sulphite" text="Sulphite">
+                                <question id="q-4-3-3-Sulphite-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-4-3-3-Sulphite-Year-2006" old_id="q-4-3-3-sulphite-Year-2006" text="2006" />
+                                    <question id="q-4-3-3-Sulphite-Year-2007" old_id="q-4-3-3-sulphite-Year-2007" text="2007" />
+                                    <question id="q-4-3-3-Sulphite-Year-2008" old_id="q-4-3-3-sulphite-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-4-3-3-Sulphite-Yearly-Average-Value" old_id="q-4-3-3-sulphite-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-4-3-3-Sulphite-Yearly-Average-Value-NA" old_id="q-4-3-3-sulphite-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-4-3-3-Sulphite-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-4-3-3-Sulphite-Minimum-Average-Monthly-Values" old_id="q-4-3-3-sulphite-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-4-3-3-Sulphite-Minimum-Average-Monthly-Values-NA" old_id="q-4-3-3-sulphite-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-Sulphite-Maximum-Average-Monthly-Values" old_id="q-4-3-3-sulphite-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-4-3-3-Sulphite-Maximum-Average-Monthly-Values-NA" old_id="q-4-3-3-sulphite-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-4-3-3-Sulphite-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-4-3-3-Sulphite-Minimum-Measured-Values" old_id="q-4-3-3-sulphite-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-Sulphite-Minimum-Measured-Values-NA" old_id="q-4-3-3-sulphite-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-Sulphite-Maximum-Measured-Values" old_id="q-4-3-3-sulphite-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-Sulphite-Maximum-Measured-Values-NA" old_id="q-4-3-3-sulphite-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q-4-3-3-MonitoredEmissions-Sulphide" text="Sulphide">
+                                <question id="q-4-3-3-Sulphide-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-4-3-3-Sulphide-Year-2006" old_id="q-4-3-3-sulphide-Year-2006" text="2006" />
+                                    <question id="q-4-3-3-Sulphide-Year-2007" old_id="q-4-3-3-sulphide-Year-2007" text="2007" />
+                                    <question id="q-4-3-3-Sulphide-Year-2008" old_id="q-4-3-3-sulphide-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-4-3-3-Sulphide-Yearly-Average-Value" old_id="q-4-3-3-sulphide-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-4-3-3-Sulphide-Yearly-Average-Value-NA" old_id="q-4-3-3-sulphide-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-4-3-3-Sulphide-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-4-3-3-Sulphide-Minimum-Average-Monthly-Values" old_id="q-4-3-3-sulphide-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-4-3-3-Sulphide-Minimum-Average-Monthly-Values-NA" old_id="q-4-3-3-sulphide-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-Sulphide-Maximum-Average-Monthly-Values" old_id="q-4-3-3-sulphide-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-4-3-3-Sulphide-Maximum-Average-Monthly-Values-NA" old_id="q-4-3-3-sulphide-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-4-3-3-Sulphide-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-4-3-3-Sulphide-Minimum-Measured-Values" old_id="q-4-3-3-sulphide-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-Sulphide-Minimum-Measured-Values-NA" old_id="q-4-3-3-sulphide-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-Sulphide-Maximum-Measured-Values" old_id="q-4-3-3-sulphide-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-Sulphide-Maximum-Measured-Values-NA" old_id="q-4-3-3-sulphide-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q-4-3-3-MonitoredEmissions-Hg" text="Hg and compounds (for coal/lignite fired)">
+                                <question id="q-4-3-3-Hg-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q-4-3-3-Hg-Year-2006" old_id="q-4-3-3-hg-Year-2006" text="2006" />
+                                    <question id="q-4-3-3-Hg-Year-2007" old_id="q-4-3-3-hg-Year-2007" text="2007" />
+                                    <question id="q-4-3-3-Hg-Year-2008" old_id="q-4-3-3-hg-Year-2008" text="2008" />
+                                </question>
+                                <question id="q-4-3-3-Hg-Yearly-Average-Value" old_id="q-4-3-3-hg-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q-4-3-3-Hg-Yearly-Average-Value-NA" old_id="q-4-3-3-hg-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q-4-3-3-Hg-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q-4-3-3-Hg-Minimum-Average-Monthly-Values" old_id="q-4-3-3-hg-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q-4-3-3-Hg-Minimum-Average-Monthly-Values-NA" old_id="q-4-3-3-hg-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-Hg-Maximum-Average-Monthly-Values" old_id="q-4-3-3-hg-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q-4-3-3-Hg-Maximum-Average-Monthly-Values-NA" old_id="q-4-3-3-hg-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q-4-3-3-Hg-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q-4-3-3-Hg-Minimum-Measured-Values" old_id="q-4-3-3-hg-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-Hg-Minimum-Measured-Values-NA" old_id="q-4-3-3-hg-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q-4-3-3-Hg-Maximum-Measured-Values" old_id="q-4-3-3-hg-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q-4-3-3-Hg-Maximum-Measured-Values-NA" old_id="q-4-3-3-hg-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                        </question>
+                        <question id="q-4-3-3-Remarks" text="Remarks, if any" />
+                        <question id="q-4-3-3-PreventionTechnique-table" exclude="true">
+                            <question id="q-4-3-3-PreventionTechnique-SuspendedSolids" text="Suspended solids">
+                                <question id="q-4-3-3-SuspendedSolids-Emission-Prevention" old_id="q-4-3-3-suspendedSolids-Emission-Prevention" text="Emission prevention and abatement techniques applied at the plant for waste water from FGD" />
+                            </question>
+                            <question id="q-4-3-3-PreventionTechnique-COD" text="COD">
+                                <question id="q-4-3-3-COD-Emission-Prevention" old_id="q-4-3-3-COD-Emission-Prevention" text="Emission prevention and abatement techniques applied at the plant for waste water from FGD" />
+                            </question>
+                            <question id="q-4-3-3-PreventionTechnique-NitrogenCompounds" text="Nitrogen compounds">
+                                <question id="q-4-3-3-NitrogenCompounds-Emission-Prevention" old_id="q-4-3-3-nitrogenCompounds-Emission-Prevention" text="Emission prevention and abatement techniques applied at the plant for waste water from FGD" />
+                            </question>
+                            <question id="q-4-3-3-PreventionTechnique-Sulphate" text="Sulphate">
+                                <question id="q-4-3-3-Sulphate-Emission-Prevention" old_id="q-4-3-3-sulphate-Emission-Prevention" text="Emission prevention and abatement techniques applied at the plant for waste water from FGD" />
+                            </question>
+                            <question id="q-4-3-3-PreventionTechnique-Sulphite" text="Sulphite">
+                                <question id="q-4-3-3-Sulphite-Emission-Prevention" old_id="q-4-3-3-sulphite-Emission-Prevention" text="Emission prevention and abatement techniques applied at the plant for waste water from FGD" />
+                            </question>
+                            <question id="q-4-3-3-PreventionTechnique-Sulphide" text="Sulphide">
+                                <question id="q-4-3-3-Sulphide-Emission-Prevention" old_id="q-4-3-3-sulphide-Emission-Prevention" text="Emission prevention and abatement techniques applied at the plant for waste water from FGD" />
+                            </question>
+                            <question id="q-4-3-3-PreventionTechnique-Hg" text="Hg and compounds (for coal/lignite fired)">
+                                <question id="q-4-3-3-Hg-Emission-Prevention" old_id="q-4-3-3-hg-Emission-Prevention" text="Emission prevention and abatement techniques applied at the plant for waste water from FGD" />
+                            </question>
+                        </question>
+                    </question>
+                </question>
+            </question>
+        </question>
+        <!-- end LCP question set -->
+    </q-installation>
+	
+	<q2-installation status="chlor-alkali">
+        <!-- start Chlor-Alkali question set -->
+        <question id="q2-1" text="1. General Information">
+            <question id="q2-1-1" text="1.1 Installation name" />
+            <question id="q2-1-2" text="1.2 Installation code">
+                <question id="q2-1-2-Country" text="Country" />
+                <question id="q2-1-2-Number" text="Number" />
+            </question>
+            <question id="q2-1-4" text="1.4 Year the permit has last been updated" /><!--  -->
+            <question id="q2-1-5" text="Status of the installation under the IPPC Directive" /><!--  -->
+            <question id="q2-1-5-Remarks" text="Remarks, if any" /><!--  -->
+            <question id="q2-1-6" text="1.6 If available give a weblink to the permit" /><!--  -->
+        </question>
+
+        <question id="q2-2" text="2. Installation level - information">
+            <question id="q2-2-1-table" exclude="true">
+                <question id="q2-2-1-row" text="2.1 Please complete the following table on the configuration of this installation and its production units at the end of 2008">
+                    <question id="q2-2-1-numberUnit" text="Number units" />
+                    <question id="q2-2-1-productionType" text="Type of production unit">
+                        <question id="q2-2-1-productionType-diaphragm" text="Diaphragm cell process" />
+                        <question id="q2-2-1-productionType-asbestos" text="Asbestos diaphragm cell process" />
+                        <question id="q2-2-1-productionType-membrane" text="Membrane cell process" />
+                        <question id="q2-2-1-productionType-mercury" text="Mercury cell process" />
+                    </question>
+                    <question id="q2-2-1-capacityUnit" text="Capacity of the unit (ton/year)" />
+                    <question id="q2-2-1-IfAsbestos" text="If asbestos diaphragm or mercury cell process, please complete">
+                        <question id="q2-2-1-ifAsbestosYearExpected" text="Year of expected conversion/closure" />
+                        <question id="q2-2-1-ConversionType" text="Type of conversion/closure">
+                            <question id="q2-2-1-ifAsbestosConversionType-membrane" text="Membrane cell process" />
+                            <question id="q2-2-1-ifAsbestosConversionType-closure" text="Closure" />
+                            <question id="q2-2-1-ifAsbestosConversionType-Other" text="Other" />
+                            <question id="q2-2-1-ifAsbestosConversionType-OtherText" text="Other" />
+                        </question>
+                    </question>
+                    <question id="q2-2-1-IfMembraneCellProcess" text="If membrane cell process, please complete">
+                        <question id="q2-2-1-ifMembraneCellProcess-conversionEarlier" text="Has there been a conversion earlier on from a mercury cell process?" />
+                        <question id="q2-2-1-ifMembraneCellProcess-ifYesYear" text="If Yes, year of conversion" />
+                    </question>
+                </question>
+            </question>
+            <question id="q2-2-1-1" text="2.1.1 Have mercury cell units been closed at this installation?" />
+            <question id="q2-2-1-1-Remarks" text="Remarks, if any" />
+            <question id="q2-2-1-2" text="2.1.2 Please indicate on which basis the planning for the conversion has been decided by the competent authorities or the operator" />
+            <question id="q2-2-2" text="2.2 How many emission sources to air, linked with the process, does this installation have?" />
+            <question id="q2-2-2-Remarks" text="Remarks, if any" />
+            <question id="q2-2-3" text="2.3 How many emission sources to water, linked with the process, does this installation have?" />
+            <question id="q2-2-3-Remarks" text="Remarks, if any" />
+        </question>
+
+        <question id="q2-3-table" exclude="true">
+            <question id="q2-3-row" text="3. Emission sources to air">
+                <question id="q2-3-Technical-Background" text="Technical background information">
+                    <question id="q2-3-1" text="3.1 Short description of the emission source (name, identification):" />
+                    <question id="q2-3-2" text="3.2 Which units are considered in this source? Please make reference to the unit numebrs (see quesiton 2.1)" />
+                </question>
+                <question id="q2-3-ElvBat-Information" text="ELV/BAT information">
+                    <question id="q2-3-3" text="3.3 Please prodive the requested information on the following:">
+                        <question id="q2-3-3-1-Pollutant-table" text="3.3.1 Emission limit values in permit">
+                            <question id="q2-3-3-1-Pollutant-Chlorine" text="Chlorine">
+                                <question id="q2-3-3-1-Chlorine-EmissionLimit" old_id="q2-3-3-1-Chlorine-EmissionLimit" text="Emission limit" />
+                                <question id="q2-3-3-1-Chlorine-Unit" old_id="q2-3-3-1-Chlorine-Unit" text="Unit" />
+                                <question id="q2-3-3-1-Chlorine-ELVRelatedTimePeriod" old_id="q2-3-3-1-Chlorine-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q2-3-3-1-Chlorine-ReferenceRemarksAndConditions" old_id="q2-3-3-1-Chlorine-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q2-3-3-1-Chlorine-RemarksIfAny" old_id="q2-3-3-1-Chlorine-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q2-3-3-1-Pollutant-Hg" text="Hg">
+                                <question id="q2-3-3-1-Hg-EmissionLimit" old_id="q2-3-3-1-Hg-EmissionLimit" text="Emission limit" />
+                                <question id="q2-3-3-1-Hg-Unit" old_id="q2-3-3-1-Hg-Unit" text="Unit" />
+                                <question id="q2-3-3-1-Hg-ELVRelatedTimePeriod" old_id="q2-3-3-1-Hg-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q2-3-3-1-Hg-ReferenceRemarksAndConditions" old_id="q2-3-3-1-Hg-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q2-3-3-1-Hg-RemarksIfAny" old_id="q2-3-3-1-Hg-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                        </question>
+                        <question id="q2-3-3-1-NotAvailable" text="If ELV is not available, please indicate here">
+                            <question id="q2-3-3-1-NOx-ELV-Not-Available" text="Chlorine - ELV not available" />
+                            <question id="q2-3-3-1-Hg-ELV-Not-Available" text="Hg - ELV not available" />
+                        </question>
+                        <question id="q2-3-3-1-Remarks" text="Remarks, if any" />
+                        <question id="q2-3-3-2-table" text="Monitoring frequency and duration requirements as set in the permit">
+                            <question id="q2-3-3-2-Chlorine" text="Chlorine">
+                                <question id="q2-3-3-2-Chlorine-Type" old_id="q2-3-3-2-Chlorine-Type" text="Type" />
+                                <question id="q2-3-3-2-Chlorine-IfP-Frequency" old_id="q2-3-3-2-Chlorine-IfP-Frequency" text="Frequency (if Periodic is selected)" />
+                                <question id="q2-3-3-2-Chlorine-IfP-Duration" old_id="q2-3-3-2-Chlorine-IfP-Duration" text="Duration (if Periodic is selected)" />
+                                <question id="q2-3-3-2-Chlorine-IfP-Duration-Unit" old_id="q2-3-3-2-Chlorine-IfP-Duration-Unit" text="Duration Unit (if Periodic is selected)" />
+                            </question>
+                            <question id="q2-3-3-2-Hg" text="Hg">
+                                <question id="q2-3-3-2-Hg-Type" old_id="q2-3-3-2-Hg-Type" text="Type" />
+                                <question id="q2-3-3-2-Hg-IfP-Frequency" old_id="q2-3-3-2-Hg-IfP-Frequency" text="Frequency (if Periodic is selected)" />
+                                <question id="q2-3-3-2-Hg-IfP-Duration" old_id="q2-3-3-2-Hg-IfP-Duration" text="Duration (if Periodic is selected)" />
+                                <question id="q2-3-3-2-Hg-IfP-Duration-Unit" old_id="q2-3-3-2-Hg-IfP-Duration-Unit" text="Duration Unit (if Periodic is selected)" />
+                            </question>
+                        </question>
+                        <question id="q2-3-3-3-MonitoredEmissions-table" text="3.3.3 Actual monitored emissions at permitted level">
+                            <question id="q2-3-3-3-MonitoredEmissions-Chlorine" text="Chlorine">
+                                <question id="q2-3-3-3-Chlorine-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q2-3-3-3-Chlorine-Year-2006" old_id="q2-3-3-3-Chlorine-Year-2006" text="2006" />
+                                    <question id="q2-3-3-3-Chlorine-Year-2007" old_id="q2-3-3-3-Chlorine-Year-2007" text="2007" />
+                                    <question id="q2-3-3-3-Chlorine-Year-2008" old_id="q2-3-3-3-Chlorine-Year-2008" text="2008" />
+                                </question>
+                                <question id="q2-3-3-3-Chlorine-Yearly-Average-Value" old_id="q2-3-3-3-Chlorine-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q2-3-3-3-Chlorine-Yearly-Average-Value-NA" old_id="q2-3-3-3-Chlorine-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q2-3-3-3-Chlorine-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q2-3-3-3-Chlorine-Minimum-Average-Monthly-Values" old_id="q2-3-3-3-Chlorine-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q2-3-3-3-Chlorine-Minimum-Average-Monthly-Values-NA" old_id="q2-3-3-3-Chlorine-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q2-3-3-3-Chlorine-Maximum-Average-Monthly-Values" old_id="q2-3-3-3-Chlorine-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q2-3-3-3-Chlorine-Maximum-Average-Monthly-Values-NA" old_id="q2-3-3-3-Chlorine-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q2-3-3-3-Chlorine-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q2-3-3-3-Chlorine-Minimum-Measured-Values" old_id="q2-3-3-3-Chlorine-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q2-3-3-3-Chlorine-Minimum-Measured-Values-NA" old_id="q2-3-3-3-Chlorine-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q2-3-3-3-Chlorine-Maximum-Measured-Values" old_id="q2-3-3-3-Chlorine-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q2-3-3-3-Chlorine-Maximum-Measured-Values-NA" old_id="q2-3-3-3-Chlorine-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q2-3-3-3-MonitoredEmissions-Hg" text="Hg">
+                                <question id="q2-3-3-3-Hg-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q2-3-3-3-Hg-Year-2006" old_id="q2-3-3-3-Hg-Year-2006" text="2006" />
+                                    <question id="q2-3-3-3-Hg-Year-2007" old_id="q2-3-3-3-Hg-Year-2007" text="2007" />
+                                    <question id="q2-3-3-3-Hg-Year-2008" old_id="q2-3-3-3-Hg-Year-2008" text="2008" />
+                                </question>
+                                <question id="q2-3-3-3-Hg-Yearly-Average-Value" old_id="q2-3-3-3-Hg-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q2-3-3-3-Hg-Yearly-Average-Value-NA" old_id="q2-3-3-3-Hg-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q2-3-3-3-Hg-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q2-3-3-3-Hg-Minimum-Average-Monthly-Values" old_id="q2-3-3-3-Hg-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q2-3-3-3-Hg-Minimum-Average-Monthly-Values-NA" old_id="q2-3-3-3-Hg-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q2-3-3-3-Hg-Maximum-Average-Monthly-Values" old_id="q2-3-3-3-Hg-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q2-3-3-3-Hg-Maximum-Average-Monthly-Values-NA" old_id="q2-3-3-3-Hg-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q2-3-3-3-Hg-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q2-3-3-3-Hg-Minimum-Measured-Values" old_id="q2-3-3-3-Hg-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q2-3-3-3-Hg-Minimum-Measured-Values-NA" old_id="q2-3-3-3-Hg-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q2-3-3-3-Hg-Maximum-Measured-Values" old_id="q2-3-3-3-Hg-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q2-3-3-3-Hg-Maximum-Measured-Values-NA" old_id="q2-3-3-3-Hg-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                        </question>
+                        <question id="q2-3-3-3-Remarks" text="Remarks, if any" />
+                    </question>
+                    <question id="q2-3-4" text="3.4 If available, please provide information on the abatement techniques applied:" />
+                </question>
+            </question>
+        </question>
+
+        <question id="q2-4-table" exclude="true">
+            <question id="q2-4-row" text="4. Emission sources to water">
+                <question id="q2-4-Technical-Background" text="Technical background information">
+                    <question id="q2-4-1" text="4.1 Short description of the permitted level (name, idenfication):" />
+                    <question id="q2-4-2" text="4.2 Which units are considered in this source? Please make reference to the unit numbers (see question 2.1)" />
+                    <question id="q2-4-3" text="4.3 Receptor of discharged waste water">
+                        <question id="q2-4-3-sewer-system" text="Sewer system" />
+                        <question id="q2-4-3-surface-water" text="Surface water" />
+                    </question>
+                </question>
+                <question id="q2-4-ElvBat-Information" text="ELV/BAT information">
+                    <question id="q2-4-4" text="4.4 Please provide the requested permit information on the following">
+                        <question id="q2-4-4-1-Pollutant-table" text="4.4.1 Emission limit values in permit">
+                            <question id="q2-4-4-1-Pollutant-Hg" text="Hg">
+                                <question id="q2-4-4-1-Hg-EmissionLimit" old_id="q2-4-4-1-Hg-EmissionLimit" text="Emission Limit" />
+                                <question id="q2-4-4-1-Hg-Unit" old_id="q2-4-4-1-Hg-Unit" text="Unit" />
+                                <question id="q2-4-4-1-Hg-ELVRelatedTimePeriod" old_id="q2-4-4-1-Hg-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q2-4-4-1-Hg-ReferenceRemarksAndConditions" old_id="q2-4-4-1-Hg-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q2-4-4-1-Hg-RemarksIfAny" old_id="q2-4-4-1-Hg-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q2-4-4-1-Pollutant-Chlorine" text="Chlorine">
+                                <question id="q2-4-4-1-Chlorine-EmissionLimit" old_id="q2-4-4-1-Chlorine-EmissionLimit" text="Emission Limit" />
+                                <question id="q2-4-4-1-Chlorine-Unit" old_id="q2-4-4-1-Chlorine-Unit" text="Unit" />
+                                <question id="q2-4-4-1-Chlorine-ELVRelatedTimePeriod" old_id="q2-4-4-1-Chlorine-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q2-4-4-1-Chlorine-ReferenceRemarksAndConditions" old_id="q2-4-4-1-Chlorine-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q2-4-4-1-Chlorine-RemarksIfAny" old_id="q2-4-4-1-Chlorine-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                            <question id="q2-4-4-1-Pollutant-AOX" text="AOX">
+                                <question id="q2-4-4-1-AOX-EmissionLimit" old_id="q2-4-4-1-AOX-EmissionLimit" text="Emission Limit" />
+                                <question id="q2-4-4-1-AOX-Unit" old_id="q2-4-4-1-AOX-Unit" text="Unit" />
+                                <question id="q2-4-4-1-AOX-ELVRelatedTimePeriod" old_id="q2-4-4-1-AOX-ELVRelatedTimePeriod" text="ELV related time period" />
+                                <question id="q2-4-4-1-AOX-ReferenceRemarksAndConditions" old_id="q2-4-4-1-AOX-ReferenceRemarksAndConditions" text="Reference conditions and remarks" />
+                                <question id="q2-4-4-1-AOX-RemarksIfAny" old_id="q2-4-4-1-AOX-RemarksIfAny" text="Remarks, if any" />
+                            </question>
+                        </question>
+                        <question id="q2-4-4-1-NotAvailable" text="If ELV is not available, please indicate here">
+                            <question id="q2-4-4-1-Hg-ELV-Not-Available" text="Hg - ELV not available" />
+                            <question id="q2-4-4-1-Chlorine-ELV-Not-Available" text="Chlorine - ELV not available" />
+                            <question id="q2-4-4-1-AOX-ELV-Not-Available" text="AOX - ELV not available" />
+                        </question>
+                        <question id="q2-4-4-1-Remarks" text="Remarks, if any" />
+                        <question id="q2-4-4-2-table" text="Monitoring frequency and duration requirements as set in the permit">
+                            <question id="q2-4-4-2-Hg" text="Hg">
+                                <question id="q2-4-4-2-Hg-Type" old_id="q2-4-4-2-Hg-Type" text="Type" />
+                                <question id="q2-4-4-2-Hg-IfP-Frequency" old_id="q2-4-4-2-Hg-IfP-Frequency" text="Frequency (if Periodic is selected)" />
+                                <question id="q2-4-4-2-Hg-IfP-Duration" old_id="q2-4-4-2-Hg-IfP-Duration" text="Duration (if Periodic is selected)" />
+                            </question>
+                            <question id="q2-4-4-2-Chlorine" text="Chlorine">
+                                <question id="q2-4-4-2-Chlorine-Type" old_id="q2-4-4-2-Chlorine-Type" text="Type" />
+                                <question id="q2-4-4-2-Chlorine-IfP-Frequency" old_id="q2-4-4-2-Chlorine-IfP-Frequency" text="Frequency (if Periodic is selected)" />
+                                <question id="q2-4-4-2-Chlorine-IfP-Duration" old_id="q2-4-4-2-Chlorine-IfP-Duration" text="Duration (if Periodic is selected)" />
+                            </question>
+                            <question id="q2-4-4-2-AOX" text="AOX">
+                                <question id="q2-4-4-2-AOX-Type" old_id="q2-4-4-2-AOX-Type" text="Type" />
+                                <question id="q2-4-4-2-AOX-IfP-Frequency" old_id="q2-4-4-2-AOX-IfP-Frequency" text="Frequency (if Periodic is selected)" />
+                                <question id="q2-4-4-2-AOX-IfP-Duration" old_id="q2-4-4-2-AOX-IfP-Duration" text="Duration (if Periodic is selected)" />
+                            </question>
+                        </question>
+                        <question id="q2-4-4-3-MonitoredEmissions-table" text="3.3.3 Actual monitored emissions at permitted level">
+                            <question id="q2-4-4-3-MonitoredEmissions-Hg" text="Hg">
+                                <question id="q2-4-4-3-Hg-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q2-4-4-3-Hg-Year-2006" old_id="q2-4-4-3-Hg-Year-2006" text="2006" />
+                                    <question id="q2-4-4-3-Hg-Year-2007" old_id="q2-4-4-3-Hg-Year-2007" text="2007" />
+                                    <question id="q2-4-4-3-Hg-Year-2008" old_id="q2-4-4-3-Hg-Year-2008" text="2008" />
+                                </question>
+                                <question id="q2-4-4-3-Hg-Yearly-Average-Value" old_id="q2-4-4-3-Hg-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q2-4-4-3-Hg-Yearly-Average-Value-NA" old_id="q2-4-4-3-Hg-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q2-4-4-3-Hg-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q2-4-4-3-Hg-Minimum-Average-Monthly-Values" old_id="q2-4-4-3-Hg-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q2-4-4-3-Hg-Minimum-Average-Monthly-Values-NA" old_id="q2-4-4-3-Hg-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q2-4-4-3-Hg-Maximum-Average-Monthly-Values" old_id="q2-4-4-3-Hg-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q2-4-4-3-Hg-Maximum-Average-Monthly-Values-NA" old_id="q2-4-4-3-Hg-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q2-4-4-3-Hg-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q2-4-4-3-Hg-Minimum-Measured-Values" old_id="q2-4-4-3-Hg-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q2-4-4-3-Hg-Minimum-Measured-Values-NA" old_id="q2-4-4-3-Hg-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q2-4-4-3-Hg-Maximum-Measured-Values" old_id="q2-4-4-3-Hg-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q2-4-4-3-Hg-Maximum-Measured-Values-NA" old_id="q2-4-4-3-Hg-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q2-4-4-3-MonitoredEmissions-Chlorine" text="Chlorine">
+                                <question id="q2-4-4-3-Chlorine-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q2-4-4-3-Chlorine-Year-2006" old_id="q2-4-4-3-Chlorine-Year-2006" text="2006" />
+                                    <question id="q2-4-4-3-Chlorine-Year-2007" old_id="q2-4-4-3-Chlorine-Year-2007" text="2007" />
+                                    <question id="q2-4-4-3-Chlorine-Year-2008" old_id="q2-4-4-3-Chlorine-Year-2008" text="2008" />
+                                </question>
+                                <question id="q2-4-4-3-Chlorine-Yearly-Average-Value" old_id="q2-4-4-3-Chlorine-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q2-4-4-3-Chlorine-Yearly-Average-Value-NA" old_id="q2-4-4-3-Chlorine-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q2-4-4-3-Chlorine-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q2-4-4-3-Chlorine-Minimum-Average-Monthly-Values" old_id="q2-4-4-3-Chlorine-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q2-4-4-3-Chlorine-Minimum-Average-Monthly-Values-NA" old_id="q2-4-4-3-Chlorine-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q2-4-4-3-Chlorine-Maximum-Average-Monthly-Values" old_id="q2-4-4-3-Chlorine-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q2-4-4-3-Chlorine-Maximum-Average-Monthly-Values-NA" old_id="q2-4-4-3-Chlorine-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q2-4-4-3-Chlorine-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q2-4-4-3-Chlorine-Minimum-Measured-Values" old_id="q2-4-4-3-Chlorine-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q2-4-4-3-Chlorine-Minimum-Measured-Values-NA" old_id="q2-4-4-3-Chlorine-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q2-4-4-3-Chlorine-Maximum-Measured-Values" old_id="q2-4-4-3-Chlorine-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q2-4-4-3-Chlorine-Maximum-Measured-Values-NA" old_id="q2-4-4-3-Chlorine-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                            <question id="q2-4-4-3-MonitoredEmissions-AOX" text="AOX">
+                                <question id="q2-4-4-3-AOX-YearsUsed" text="Years of which data has been used to make the calculations">
+                                    <question id="q2-4-4-3-AOX-Year-2006" old_id="q2-4-4-3-AOX-Year-2006" text="2006" />
+                                    <question id="q2-4-4-3-AOX-Year-2007" old_id="q2-4-4-3-AOX-Year-2007" text="2007" />
+                                    <question id="q2-4-4-3-AOX-Year-2008" old_id="q2-4-4-3-AOX-Year-2008" text="2008" />
+                                </question>
+                                <question id="q2-4-4-3-AOX-Yearly-Average-Value" old_id="q2-4-4-3-AOX-Yearly-Average-Value" text="Yearly average value (average of all measured values over 1 year)" />
+                                <question id="q2-4-4-3-AOX-Yearly-Average-Value-NA" old_id="q2-4-4-3-AOX-Yearly-Average-Value-NA" text="N/A" />
+                                <question id="q2-4-4-3-AOX-ContinuousMonitoring" text="In case of continuous monitoring">
+                                    <question id="q2-4-4-3-AOX-Minimum-Average-Monthly-Values" old_id="q2-4-4-3-AOX-Minimum-Average-Monthly-Values" text="Minimum of average monthly values" />
+                                    <question id="q2-4-4-3-AOX-Minimum-Average-Monthly-Values-NA" old_id="q2-4-4-3-AOX-Minimum-Average-Monthly-Values-NA" text="N/A" />
+                                    <question id="q2-4-4-3-AOX-Maximum-Average-Monthly-Values" old_id="q2-4-4-3-AOX-Maximum-Average-Monthly-Values" text="Maximum of average monthly values" />
+                                    <question id="q2-4-4-3-AOX-Maximum-Average-Monthly-Values-NA" old_id="q2-4-4-3-AOX-Maximum-Average-Monthly-Values-NA" text="N/A" />
+                                </question>
+                                <question id="q2-4-4-3-AOX-NonContinuousMonitoring" text="In case of non-continuous monitoring">
+                                    <question id="q2-4-4-3-AOX-Minimum-Measured-Values" old_id="q2-4-4-3-AOX-Minimum-Measured-Values" text="Minimum of measured values (during normal operation of the plant)" />
+                                    <question id="q2-4-4-3-AOX-Minimum-Measured-Values-NA" old_id="q2-4-4-3-AOX-Minimum-Measured-Values-NA" text="N/A" />
+                                    <question id="q2-4-4-3-AOX-Maximum-Measured-Values" old_id="q2-4-4-3-AOX-Maximum-Measured-Values" text="Maximum of measured values (during normal operation of the plant)" />
+                                    <question id="q2-4-4-3-AOX-Maximum-Measured-Values-NA" old_id="q2-4-4-3-AOX-Maximum-Measured-Values-NA" text="N/A" />
+                                </question>
+                            </question>
+                        </question>
+                        <question id="q2-4-4-3-Remarks" text="Remarks, if any" />
+                    </question>
+                    <question id="q2-4-5" text="4.5 If available, please provide information on the abatement techniques applied:" />
+                </question>
+            </question>
+        </question>
+        <!-- end Chlor-Alkali question set -->
+    </q2-installation>
+</Questionnaire>

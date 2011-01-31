@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id$ -->
+<labels>
+  <itemset id="20081elvbat" xml:lang="en">
+    <!-- From WebForms/Xforms Question Helper Tool -->
+    <item id="h1">Questionnaire relating to Council Directive 96/61/EC concerning integrated pollution prevention and control (IPPC Directive: 2008/1/EC)</item>
+    <item id="q-1-h2">1. General information</item>
+    <item id="q-test-checkbox-page1">Checkbox</item>
+    <item id="q-1-1">1.1 Installation name</item>
+    <item id="q-1-2-h2">1.2. Installation code</item>
+    <item id="q-1-2-thCountry">Country</item>
+    <item id="q-1-2-thCategory">Category (MWth)</item>
+    <item id="q-1-2-thNumber">Number</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q-1-2-Country">Country</item>
+        <item id="q-1-2-Range">Category (MWth)</item>
+        <item id="q-1-2-Amount">Number</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q-1-4">1.4 Year the permit has last been updated</item>
+    <item id="q-1-5">1.5 Status of the installation under the IPPC Directive</item>
+    <item id="q-1-5-Remarks">Remarks, if any</item>
+    <item id="q-1-6">1.6 If available give a weblink to the permit</item>
+    <item id="q-1-7">1.7 If no weblink is available, please provide an electronic copy of the permit to the Commission </item>
+    <item id="q-2-h2">2. Installation level - information</item>
+    <item id="q-2-1">2.1 What is the total rated thermal input of all combustion activities at installation level in MWth?</item>
+    <item id="q-2-2">2.2 How many emission sources to air (combustion plants) does this installation have?</item>
+    <item id="q-2-2-Remarks">Remarks, if any</item>
+    
+    <item id="q-2-3">2.3 Which of these emission sources to air (combustion plants) are sharing a common stack?</item>
+    <item id="q-2-4">2.4 How many emission sources to water, which are discharging the waste water from the flue gas cleaning, does this installation have?</item>
+    <item id="q-2-4-Remarks">Remarks, if any</item>
+    <item id="q-3-h2">3. Emission sources to air (combustion plant level)</item>
+    <item id="q-3-TechnicalBackground">Technical background information</item>
+    <item id="q-3-1">3.1 Short description of the emission source (name, identification):</item>
+    <item id="q-3-2">3.2 What is the total rated thermal input of the combustion units connected to this emission source in MWth?</item>
+    <item id="q-3-3">3.3 What is their total fuel use (yearly average over the period 2006-2008 - if not in operation during all of these years, please explain in the remarks box below)? </item>
+    <item id="q-3-3-Confidential">Please indicate if this information should be dealt with as confidential.</item>
+    
+    <item id="q-3-3-Fuel-Fuel">Fuel (also co-incinerated)</item>
+    <item id="q-3-3-Fuel-TJYear">TJ/Year</item>
+    <item id="q-3-3-Fuel-AveragePS">Average %S (for coal, lignite and liquid fuels)</item>
+    <item id="q-3-3-Fuel-Average-Net-Calorific-Value">Average net calorific value (express in MJ/kg)</item>
+    <item id="q-3-3-Fuel-Fuel-Coal">coal</item>
+    <item id="q-3-3-Fuel-Fuel-Lignite">lignite</item>
+    <item id="q-3-3-Fuel-Fuel-Biomass">biomass</item>
+    <item id="q-3-3-Fuel-Fuel-Liquid">liquid fuels</item>
+    <item id="q-3-3-Fuel-Fuel-Other">other: please explain in remarks</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q-3-3-Fuel-TJYear-Coal">Coal TJ/Year</item>
+        <item id="q-3-3-Fuel-TJYear-Lignite">Lignite TJ/Year</item>
+        <item id="q-3-3-Fuel-TJYear-Biomass">Biomass TJ/Year</item>
+        <item id="q-3-3-Fuel-TJYear-Liquid">Liquid TJ/Year</item>
+        <item id="q-3-3-Fuel-TJYear-Other">Other TJ/Year</item>
+        <item id="q-3-3-Fuel-AveragePS-Coal">Coal Average %S (for coal, lignite and liquid fuels)</item>
+        <item id="q-3-3-Fuel-AveragePS-Lignite">Lignite Average %S (for coal, lignite and liquid fuels)</item>
+        <item id="q-3-3-Fuel-AveragePS-Biomass">Biomass Average %S (for coal, lignite and liquid fuels)</item>
+        <item id="q-3-3-Fuel-AveragePS-Liquid">Liquid Average %S (for coal, lignite and liquid fuels)</item>
+        <item id="q-3-3-Fuel-AveragePS-Other">Other Average %S (for coal, lignite and liquid fuels)</item>
+        <item id="q-3-3-Fuel-Average-Net-Calorific-Value-Coal">Coal Average net calorific value (express in MJ/kg)</item>
+        <item id="q-3-3-Fuel-Average-Net-Calorific-Value-Lignite">Lignite Average net calorific value (express in MJ/kg)</item>
+        <item id="q-3-3-Fuel-Average-Net-Calorific-Value-Biomass">Biomass Average net calorific value (express in MJ/kg)</item>
+        <item id="q-3-3-Fuel-Average-Net-Calorific-Value-Liquid">Liquid Average net calorific value (express in MJ/kg)</item>
+        <item id="q-3-3-Fuel-Average-Net-Calorific-Value-Other">Other Average net calorific value (express in MJ/kg)</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q-3-3-Remarks">Remarks, if any</item>
+    <item id="q-3-4">3.4 To which of these 3 categories, does the emission source belong?</item>
+    <item id="q-3-5">3.5 In case of solid fuel firing, what type of combustion process is used? </item>
+    <item id="q-3-5-pulverised-combustion">pulverised combustion</item>
+    <item id="q-3-5-fluidised-bed-combustion">fluidised bed combustion</item>
+    <item id="q-3-5-grate-firing">grate firing</item>
+    <item id="q-3-5-other">other, please specify</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q-3-5-other-text">other, please specify</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q-3-6">3.6 Is there combined generation of heat and power at this level?</item>
+    <item id="q-3-6-Remarks">Remarks, if any</item>
+    
+    <item id="q-3-7-ELV-BAT">ELV/BAT information</item>
+    <item id="q-3-7">3.7 Please provide the requested permit information on the following</item>
+    <item id="q-3-7-1">3.7.1. Emission limit values set up in permit</item>
+    <item id="q-3-7-1-thPollutant">Pollutant</item>
+    <item id="q-3-7-1-thEmissionLimit">Emission Limit value set in permit</item>
+    <item id="q-3-7-1-thUnit">Unit</item>
+    <item id="q-3-7-1-thElvrelatedtime">ELV related time period</item>
+    <item id="q-3-7-1-thReferenceRemarksAndConditions">Reference conditions and remarks</item>
+    <item id="q-3-7-1-thRemarksIfAny">Remarks if any</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q-3-7-1-NOx-EmissionLimit">NOx: Emission Limit value set in permit</item>
+        <item id="q-3-7-1-SO2-EmissionLimit">SO2: Emission Limit value set in permit</item>
+        <item id="q-3-7-1-CO-EmissionLimit">CO: Emission Limit value set in permit</item>
+        <item id="q-3-7-1-dust-EmissionLimit">dust: Emission Limit value set in permit</item>
+        <item id="q-3-7-1-Hg-EmissionLimit">Hg (for coal/lignite fired): Emission Limit value set in permit</item>
+        <item id="q-3-7-1-NOx-Unit">NOx: Unit</item>
+        <item id="q-3-7-1-SO2-Unit">SO2: Unit</item>
+        <item id="q-3-7-1-CO-Unit">CO: Unit</item>
+        <item id="q-3-7-1-dust-Unit">dust: Unit</item>
+        <item id="q-3-7-1-Hg-Unit">Hg (for coal/lignite fired): Unit</item>
+        <item id="q-3-7-1-NOx-ELVRelatedTimePeriod">NOx: ELV related time period</item>
+        <item id="q-3-7-1-SO2-ELVRelatedTimePeriod">SO2: ELV related time period</item>
+        <item id="q-3-7-1-CO-ELVRelatedTimePeriod">CO: ELV related time period</item>
+        <item id="q-3-7-1-dust-ELVRelatedTimePeriod">dust: ELV related time period</item>
+        <item id="q-3-7-1-Hg-ELVRelatedTimePeriod">Hg: ELV related time period</item>
+        <item id="q-3-7-1-NOx-ReferenceRemarksAndConditions">NOx: Reference conditions and remarks</item>
+        <item id="q-3-7-1-SO2-ReferenceRemarksAndConditions">SO2: Reference conditions and remarks</item>
+        <item id="q-3-7-1-CO-ReferenceRemarksAndConditions">CO: Reference conditions and remarks</item>
+        <item id="q-3-7-1-dust-ReferenceRemarksAndConditions">dust: Reference conditions and remarks</item>
+        <item id="q-3-7-1-Hg-ReferenceRemarksAndConditions">Hg: Reference conditions and remarks</item>
+        <item id="q-3-7-1-NOx-RemarksIfAny">NOx: Remarks if any</item>
+        <item id="q-3-7-1-SO2-RemarksIfAny">SO2: Remarks if any</item>
+        <item id="q-3-7-1-Co-RemarksIfAny">CO: Remarks if any</item>
+        <item id="q-3-7-1-dust-RemarksIfAny">dust: Remarks if any</item>
+        <item id="q-3-7-1-Hg-RemarksIfAny">Hg: Remarks if any</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q-3-7-1-NOx-Pollutant">NOx</item>
+    <item id="q-3-7-1-SO2-Pollutant">SO2</item>
+    <item id="q-3-7-1-CO-Pollutant">CO</item>
+    <item id="q-3-7-1-dust-Pollutant">dust</item>
+    <item id="q-3-7-1-Hg-Pollutant">Hg (for coal/lignite fired)</item>
+    <item id="q-3-7-1-ELV-Not-Available-Label">If ELV is not available, please indicate here.  </item>
+    <item id="q-3-7-1-NOx-ELV-Not-Available">NOx - ELV not available</item>
+    <item id="q-3-7-1-SO2-ELV-Not-Available">SO2 - ELV not available</item>
+    <item id="q-3-7-1-CO-ELV-Not-Available">CO - ELV not available</item>
+    <item id="q-3-7-1-dust-ELV-Not-Available">dust - ELV not available</item>
+    <item id="q-3-7-1-Hg-ELV-Not-Available">Hg (for coal/lignite fired) - ELV not available</item>
+    <item id="q-3-7-1-Remarks">Remarks, if any</item>
+    
+    <item id="q-3-7-2">3.7.2 Monitoring requirements set in the permit</item>
+    <item id="q-3-7-2-Pollutant-th">Pollutant</item>
+    <item id="q-3-7-2-Type-th">Type</item>
+    <item id="q-3-7-2-IfP-Frequency-th">Frequency (if Periodic is selected)</item>
+    <item id="q-3-7-2-IfP-Duration-th">Duration (if Periodic is selected)</item>
+    <item id="q-3-7-2-NOx-Pollutant">NOx</item>    
+    <item id="q-3-7-2-SO2-Pollutant">SO2</item>
+    <item id="q-3-7-2-CO-Pollutant">CO</item>
+    <item id="q-3-7-2-dust-Pollutant">dust</item>
+    <item id="q-3-7-2-Hg-Pollutant">Hg (for coal/lignite fired)</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q-3-7-2-NOx-Type">NOx Type</item>
+        <item id="q-3-7-2-SO2-Type">SO2 Type</item>
+        <item id="q-3-7-2-CO-Type">CO Type</item>
+        <item id="q-3-7-2-dust-Type">dust Type</item>
+        <item id="q-3-7-2-Hg-Type">Hg (for coal/lignite fired) Type</item>
+        <item id="q-3-7-2-NOx-IfP-Frequency">NOx Frequency (if Periodic is selected)</item>
+        <item id="q-3-7-2-SO2-IfP-Frequency">SO2 Frequency (if Periodic is selected)</item>
+        <item id="q-3-7-2-CO-IfP-Frequency">CO Frequency (if Periodic is selected)</item>
+        <item id="q-3-7-2-dust-IfP-Frequency">dust Frequency (if Periodic is selected)</item>
+        <item id="q-3-7-2-Hg-IfP-Frequency">Hg (for coal/lignite fired) Frequency (if Periodic is selected)</item>
+        <item id="q-3-7-2-NOx-IfP-Duration">NOx Duration (if Periodic is selected)</item>
+        <item id="q-3-7-2-SO2-IfP-Duration">SO2 Duration (if Periodic is selected)</item>
+        <item id="q-3-7-2-CO-IfP-Duration">CO Duration (if Periodic is selected)</item>
+        <item id="q-3-7-2-dust-IfP-Duration">dust Duration (if Periodic is selected)</item>
+        <item id="q-3-7-2-Hg-IfP-Duration">Hg (for coal/lignite fired) Duration (if Periodic is selected)</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q-3-7-3">3.7.3 Actual monitored emissions </item>
+    <item id="q-3-7-3-thValue">The value should be expressed in the same unit as the ELV</item>
+    <item id="q-3-7-3-thPollutant">Pollutant</item>
+    <item id="q-3-7-3-thYearsData">Years of which data has been used to make the calculations</item>
+    <item id="q-3-7-3-thYearsValue">Yearly average value (average of all measured values over 1 year)</item>
+    <item id="q-3-7-3-thYearsValueNa">N/A</item>
+    <item id="q-3-7-3-thContinuousMonitoring">In case of continuous monitoring</item>
+    <item id="q-3-7-3-thNonContinuousMonitoring">In case of non-continuous monitoring</item>
+    <item id="q-3-7-3-thYearsData2006">2006</item>
+    <item id="q-3-7-3-thYearsData2007">2007</item>
+    <item id="q-3-7-3-thYearsData2008">2008</item>
+    <item id="q-3-7-3-thMinimumAverageMonthlyValues">Minimum of average monthly values</item>
+    <item id="q-3-7-3-thMinimumAverageMonthlyValuesNa">N/A</item>
+    <item id="q-3-7-3-thMaximumAverageMonthlyValues">Maximum of average monthly values</item>
+    <item id="q-3-7-3-thMaximumAverageMonthlyValuesNa">N/A</item>
+    <item id="q-3-7-3-thPercentile95Hourly48AverageValues">95% percentile of 48 hourly average values</item>
+    <item id="q-3-7-3-thPercentile95Hourly48AverageValuesNa">N/A</item>
+    <item id="q-3-7-3-thMinimumMeasuredValues">Minimum of measured values (during normal operation of the plant)</item>
+    <item id="q-3-7-3-thMinimumMeasuredValuesNa">N/A</item>
+    <item id="q-3-7-3-thMaximumMeasuredValues">Maximum of measured values (during normal operation of the plant)</item>
+    <item id="q-3-7-3-thMaximumMeasuredValuesNa">N/A</item>
+    <item id="q-3-7-3-NOx-Pollutant">NOx</item>
+    <item id="q-3-7-3-SO2-Pollutant">SO2</item>
+    <item id="q-3-7-3-CO-Pollutant">CO</item>
+    <item id="q-3-7-3-dust-Pollutant">dust</item>
+    <item id="q-3-7-3-Hg-Pollutant">Hg (for coal/lignite fired)</item>
+    <item id="q-3-7-3-Remarks">Remarks, if any</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q-3-7-3-NOx-Year-2006">2006</item>
+        <item id="q-3-7-3-SO2-Year-2006">2006</item>
+        <item id="q-3-7-3-CO-Year-2006">2006</item>
+        <item id="q-3-7-3-dust-Year-2006">2006</item>
+        <item id="q-3-7-3-Hg-Year-2006">2006</item>
+        <item id="q-3-7-3-NOx-Year-2007">2007</item>
+        <item id="q-3-7-3-SO2-Year-2007">2007</item>
+        <item id="q-3-7-3-CO-Year-2007">2007</item>
+        <item id="q-3-7-3-dust-Year-2007">2007</item>
+        <item id="q-3-7-3-Hg-Year-2007">2007</item>
+        <item id="q-3-7-3-NOx-Year-2008">2008</item>
+        <item id="q-3-7-3-SO2-Year-2008">2008</item>
+        <item id="q-3-7-3-CO-Year-2008">2008</item>
+        <item id="q-3-7-3-dust-Year-2008">2008</item>
+        <item id="q-3-7-3-Hg-Year-2008">2008</item>
+        <item id="q-3-7-3-NOx-Yearly-Average-Value">NOx Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-3-7-3-SO2-Yearly-Average-Value">SO2 Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-3-7-3-CO-Yearly-Average-Value">CO Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-3-7-3-dust-Yearly-Average-Value">dust Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-3-7-3-Hg-Yearly-Average-Value">Hg Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-3-7-3-NOx-Yearly-Average-Value-NA">NOx N/A</item>
+        <item id="q-3-7-3-SO2-Yearly-Average-Value-NA">SO2 N/A</item>
+        <item id="q-3-7-3-CO-Yearly-Average-Value-NA">CO N/A</item>
+        <item id="q-3-7-3-dust-Yearly-Average-Value-NA">dust N/A</item>
+        <item id="q-3-7-3-Hg-Yearly-Average-Value-NA">Hg N/A</item>
+        <item id="q-3-7-3-NOx-Minimum-Average-Monthly-Values">NOx Minimum of average monthly values</item>
+        <item id="q-3-7-3-SO2-Minimum-Average-Monthly-Values">SO2 Minimum of average monthly values</item>
+        <item id="q-3-7-3-CO-Minimum-Average-Monthly-Values">CO Minimum of average monthly values</item>
+        <item id="q-3-7-3-dust-Minimum-Average-Monthly-Values">dust Minimum of average monthly values</item>
+        <item id="q-3-7-3-Hg-Minimum-Average-Monthly-Values">Hg Minimum of average monthly values</item>
+        <item id="q-3-7-3-NOx-Minimum-Average-Monthly-Values-NA">NOx N/A</item>
+        <item id="q-3-7-3-SO2-Minimum-Average-Monthly-Values-NA">SO2 N/A</item>
+        <item id="q-3-7-3-CO-Minimum-Average-Monthly-Values-NA">CO N/A</item>
+        <item id="q-3-7-3-dust-Minimum-Average-Monthly-Values-NA">dust N/A</item>
+        <item id="q-3-7-3-Hg-Minimum-Average-Monthly-Values-NA">Hg N/A</item>
+        <item id="q-3-7-3-NOx-Maximum-Average-Monthly-Values">NOx Maximum of average monthly values</item>
+        <item id="q-3-7-3-SO2-Maximum-Average-Monthly-Values">SO2 Maximum of average monthly values</item>
+        <item id="q-3-7-3-CO-Maximum-Average-Monthly-Values">CO Maximum of average monthly values</item>
+        <item id="q-3-7-3-dust-Maximum-Average-Monthly-Values">dust Maximum of average monthly values</item>
+        <item id="q-3-7-3-Hg-Maximum-Average-Monthly-Values">Hg Maximum of average monthly values</item>
+        <item id="q-3-7-3-NOx-Maximum-Average-Monthly-Values-NA">NOx N/A</item>
+        <item id="q-3-7-3-SO2-Maximum-Average-Monthly-Values-NA">SO2 N/A</item>
+        <item id="q-3-7-3-CO-Maximum-Average-Monthly-Values-NA">CO N/A</item>
+        <item id="q-3-7-3-dust-Maximum-Average-Monthly-Values-NA">dust N/A</item>
+        <item id="q-3-7-3-Hg-Maximum-Average-Monthly-Values-NA">Hg N/A</item>
+        <item id="q-3-7-3-NOx-Percentile95-Hourly48-Average-Values">NOx 95% percentile of 48 hourly average values</item>
+        <item id="q-3-7-3-SO2-Percentile95-Hourly48-Average-Values">SO2 95% percentile of 48 hourly average values</item>
+        <item id="q-3-7-3-CO-Percentile95-Hourly48-Average-Values">CO 95% percentile of 48 hourly average values</item>
+        <item id="q-3-7-3-dust-Percentile95-Hourly48-Average-Values">dust 95% percentile of 48 hourly average values</item>
+        <item id="q-3-7-3-Hg-Percentile95-Hourly48-Average-Values">Hg 95% percentile of 48 hourly average values</item>
+        <item id="q-3-7-3-NOx-Percentile95-Hourly48-Average-Values-NA">NOx N/A</item>
+        <item id="q-3-7-3-SO2-Percentile95-Hourly48-Average-Values-NA">SO2 N/A</item>
+        <item id="q-3-7-3-CO-Percentile95-Hourly48-Average-Values-NA">CO N/A</item>
+        <item id="q-3-7-3-dust-Percentile95-Hourly48-Average-Values-NA">dust N/A</item>
+        <item id="q-3-7-3-Hg-Percentile95-Hourly48-Average-Values-NA">Hg N/A</item>
+        <item id="q-3-7-3-NOx-Minimum-Measured-Values">NOx Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-3-7-3-SO2-Minimum-Measured-Values">SO2 Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-3-7-3-CO-Minimum-Measured-Values">CO Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-3-7-3-dust-Minimum-Measured-Values">dust Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-3-7-3-Hg-Minimum-Measured-Values">Hg Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-3-7-3-NOx-Minimum-Measured-Values-NA">NOx N/A</item>
+        <item id="q-3-7-3-SO2-Minimum-Measured-Values-NA">SO2 N/A</item>
+        <item id="q-3-7-3-CO-Minimum-Measured-Values-NA">CO N/A</item>
+        <item id="q-3-7-3-dust-Minimum-Measured-Values-NA">dust N/A</item>
+        <item id="q-3-7-3-Hg-Minimum-Measured-Values-NA">Hg N/A</item>
+        <item id="q-3-7-3-NOx-Maximum-Measured-Values">NOx Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-3-7-3-SO2-Maximum-Measured-Values">SO2 Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-3-7-3-CO-Maximum-Measured-Values">CO Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-3-7-3-dust-Maximum-Measured-Values">dust Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-3-7-3-Hg-Maximum-Measured-Values">Hg Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-3-7-3-NOx-Maximum-Measured-Values-NA">NOx N/A</item>
+        <item id="q-3-7-3-SO2-Maximum-Measured-Values-NA">SO2 N/A</item>
+        <item id="q-3-7-3-CO-Maximum-Measured-Values-NA">CO N/A</item>
+        <item id="q-3-7-3-dust-Maximum-Measured-Values-NA">dust N/A</item>
+        <item id="q-3-7-3-Hg-Maximum-Measured-Values-NA">Hg N/A</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q-3-7-3-Emission-Prevention-Label">Emission prevention and abatement techniques applied at this permit level.</item>
+    <item id="q-3-7-3-Emission-Prevention-thPollutant">Pollutant</item>
+    <item id="q-3-7-3-Emission-Prevention-thTechnique">Prevention Technique</item>
+    <item id="q-3-7-3-Emission-Prevention-thRemarks">Remarks, if any</item>
+    <item id="q-3-7-3-Emission-Prevention-Pollutant-NOx">NOx</item>
+    <item id="q-3-7-3-Emission-Prevention-Nox-AirStaging">air staging (OFA, ...)</item>
+    <item id="q-3-7-3-Emission-Prevention-Nox-FuelStaging">fuel staging (reburning)</item>
+    <item id="q-3-7-3-Emission-Prevention-Nox-AdvancedLowBurners">advanced low-Nox burners</item>
+    <item id="q-3-7-3-Emission-Prevention-Nox-SCR">SCR</item>
+    <item id="q-3-7-3-Emission-Prevention-Nox-SNCR">SNCR</item>
+    <item id="q-3-7-3-Emission-Prevention-Nox-LowSCR">A low layer of SCR catalyst in a SNCR installation.</item>
+    <item id="q-3-7-3-Emission-Prevention-Nox-DESONOX">DESONOX process (combined removal of NOx and SO2)</item>
+    <item id="q-3-7-3-Emission-Prevention-Nox-Other">Other</item>
+    <item id="q-3-7-3-Emission-Prevention-Pollutant-SOx">SOx</item>    
+    <item id="q-3-7-3-Emission-Prevention-Sox-LowSulphurFuel">use of low sulphur fuel [indicate %S]</item>
+    <item id="q-3-7-3-Emission-Prevention-Sox-FGDwet">FGD: wet scrubbers</item>
+    <item id="q-3-7-3-Emission-Prevention-Sox-FGDsea">FGD: seawater scrubbers</item>
+    <item id="q-3-7-3-Emission-Prevention-Sox-FGDspray">FGD: spray dry scrubbers</item>
+    <item id="q-3-7-3-Emission-Prevention-Sox-FGDlime">FGD: lime/limestone (dry) scrubbers</item>
+    <item id="q-3-7-3-Emission-Prevention-Sox-Dry">Dry sorbent injection</item>
+    <item id="q-3-7-3-Emission-Prevention-Sox-DESONOX">DESONOX process</item>
+    <item id="q-3-7-3-Emission-Prevention-Sox-Other">Other</item>
+    <item id="q-3-7-3-Emission-Prevention-Pollutant-Dust">Dust</item>
+    <item id="q-3-7-3-Emission-Prevention-Dust-ESP">Electrostatic precipitator (ESP)</item>
+    <item id="q-3-7-3-Emission-Prevention-Dust-FabricFilter">fabric filter</item>
+    <item id="q-3-7-3-Emission-Prevention-Dust-Other">Other</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q-3-7-3-Emission-Prevention-Nox-Remarks">NOx Remarks, if any</item>
+        <item id="q-3-7-3-Emission-Prevention-Sox-Remarks">SOx Remarks, if any</item>
+        <item id="q-3-7-3-Emission-Prevention-Dust-Remarks">Dust Remarks, if any</item>
+    <!-- end 'fake' questions -->    
+    
+    <item id="q-4-h2">4. Emission sources to water </item>
+    <item id="q-4-TechnicalBackground">Technical background information</item>
+    <item id="q-4-1">4.1. Short description of the emission source (name, identification):</item>
+    <item id="q-4-2">4.2 Receptor of discharged waste water</item>
+    <item id="q-4-2-sewer-system">sewer system</item>
+    <item id="q-4-2-surface-water">surface water</item>
+    <item id="q-4-2-Remarks">Remarks, if any</item>
+    
+    <item id="q-4-ELV-BAT">ELV/BAT information</item>
+    <item id="q-4-3">4.3. Please provide the requested permit information on the following:</item>
+    <item id="q-4-3-1">4.3.1. Emission limit values in permit</item>
+    <item id="q-4-3-1-thPollutant">Pollutant</item>
+    <item id="q-4-3-1-thEmissionLimit">Emission Limit</item>
+    <item id="q-4-3-1-thUnit">Unit</item>
+    <item id="q-4-3-1-thElvrelatedtime">ELV related time period</item>
+    <item id="q-4-3-1-thReferenceRemarksAndConditions">Reference conditions and remarks</item>
+    <item id="q-4-3-1-thRemarksIfAny">Remarks if any</item>
+    <item id="q-4-3-1-suspendedSolids-Pollutant">Suspended solids</item>
+    <item id="q-4-3-1-COD-Pollutant">COD</item>
+    <item id="q-4-3-1-nitrogenCompounds-Pollutant">Nitrogen compounds</item>
+    <item id="q-4-3-1-sulphate-Pollutant">Sulphate</item>
+    <item id="q-4-3-1-sulphite-Pollutant">Sulphite</item>
+    <item id="q-4-3-1-sulphide-Pollutant">Sulphide</item>
+    <item id="q-4-3-1-hg-Pollutant">Hg and compounds (for coal/lignite fired)</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q-4-3-1-suspendedSolids-EmissionLimit">Suspended solids Emission Limit</item>
+        <item id="q-4-3-1-COD-EmissionLimit">COD Emission Limit</item>
+        <item id="q-4-3-1-nitrogenCompounds-EmissionLimit">Nitrogen compounds Emission Limit</item>
+        <item id="q-4-3-1-sulphate-EmissionLimit">Sulphate Emission Limit</item>
+        <item id="q-4-3-1-sulphite-EmissionLimit">Sulphite Emission Limit</item>
+        <item id="q-4-3-1-sulphide-EmissionLimit">Sulphide Emission Limit</item>
+        <item id="q-4-3-1-hg-EmissionLimit">Hg and compounds (for coal/lignite fired) Emission Limit</item>
+        <item id="q-4-3-1-suspendedSolids-Unit">Suspended solids Unit</item>
+        <item id="q-4-3-1-COD-Unit">COD Unit</item>
+        <item id="q-4-3-1-nitrogenCompounds-Unit">Nitrogen compounds Unit</item>
+        <item id="q-4-3-1-sulphate-Unit">Sulphate Unit</item>
+        <item id="q-4-3-1-sulphite-Unit">Sulphite Unit</item>
+        <item id="q-4-3-1-sulphide-Unit">Sulphide Unit</item>
+        <item id="q-4-3-1-hg-Unit">Hg and compounds (for coal/lignite fired) Unit</item>
+        <item id="q-4-3-1-suspendedSolids-ELVRelatedTimePeriod">Suspended solids ELV related time period</item>
+        <item id="q-4-3-1-COD-ELVRelatedTimePeriod">COD ELV related time period</item>
+        <item id="q-4-3-1-nitrogenCompounds-ELVRelatedTimePeriod">Nitrogen compounds ELV related time period</item>
+        <item id="q-4-3-1-sulphate-ELVRelatedTimePeriod">Sulphate ELV related time period</item>
+        <item id="q-4-3-1-sulphite-ELVRelatedTimePeriod">Sulphite ELV related time period</item>
+        <item id="q-4-3-1-sulphide-ELVRelatedTimePeriod">Sulphide ELV related time period</item>
+        <item id="q-4-3-1-hg-ELVRelatedTimePeriod">Hg and compounds (for coal/lignite fired) ELV related time period</item>
+        <item id="q-4-3-1-suspendedSolids-ReferenceRemarksAndConditions">Suspended solids Reference conditions and remarks</item>
+        <item id="q-4-3-1-COD-ReferenceRemarksAndConditions">COD Reference conditions and remarks</item>
+        <item id="q-4-3-1-nitrogenCompounds-ReferenceRemarksAndConditions">Nitrogen compounds Reference conditions and remarks</item>
+        <item id="q-4-3-1-sulphate-ReferenceRemarksAndConditions">Sulphate Reference conditions and remarks</item>
+        <item id="q-4-3-1-sulphite-ReferenceRemarksAndConditions">Sulphite Reference conditions and remarks</item>
+        <item id="q-4-3-1-sulphide-ReferenceRemarksAndConditions">Sulphide Reference conditions and remarks</item>
+        <item id="q-4-3-1-hg-ReferenceRemarksAndConditions">Hg and compounds (for coal/lignite fired) Reference conditions and remarks</item>
+        <item id="q-4-3-1-suspendedSolids-RemarksIfAny">Suspended solids Remarks if any</item>
+        <item id="q-4-3-1-COD-RemarksIfAny">COD Remarks if any</item>
+        <item id="q-4-3-1-nitrogenCompounds-RemarksIfAny">Nitrogen compounds Remarks if any</item>
+        <item id="q-4-3-1-sulphate-RemarksIfAny">Sulphate Remarks if any</item>
+        <item id="q-4-3-1-sulphite-RemarksIfAny">Sulphite Remarks if any</item>
+        <item id="q-4-3-1-sulphide-RemarksIfAny">Sulphide Remarks if any</item>
+        <item id="q-4-3-1-hg-RemarksIfAny">Hg and compounds (for coal/lignite fired) Remarks if any</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q-4-3-1-ELV-Not-Available-Label">If ELV is not available, please indicate here.  </item>
+    <item id="q-4-3-1-suspendedSolids-ELV-Not-Available">Suspended solids - ELV not available</item>
+    <item id="q-4-3-1-COD-ELV-Not-Available">COD - ELV not available</item>
+    <item id="q-4-3-1-nitrogenCompounds-ELV-Not-Available">Nitrogen compounds - ELV not available</item>
+    <item id="q-4-3-1-sulphate-ELV-Not-Available">Sulphate - ELV not available</item>
+    <item id="q-4-3-1-sulphite-ELV-Not-Available">Sulphite - ELV not available</item>
+    <item id="q-4-3-1-sulphide-ELV-Not-Available">Sulphide - ELV not available</item>
+    <item id="q-4-3-1-hg-ELV-Not-Available">Hg and compounds (for coal/lignite fired) - ELV not available</item>
+    <item id="q-4-3-1-Remarks">Remarks, if any</item>
+    
+    <item id="q-4-3-2">4.3.2 Monitoring frequency and duration requirements as set in the permit</item>
+    <item id="q-4-3-2-Pollutant-th">Pollutant</item>
+    <item id="q-4-3-2-Type-th">Type</item>
+    <item id="q-4-3-2-IfP-Frequency-th">Frequency (if Periodic is selected)</item>
+    <item id="q-4-3-2-IfP-Duration-th">Duration (if Periodic is selected)</item>
+    <item id="q-4-3-2-suspendedSolids-Pollutant">Suspended solids</item>
+    <item id="q-4-3-2-COD-Pollutant">COD</item>
+    <item id="q-4-3-2-nitrogenCompounds-Pollutant">Nitrogen compounds</item>
+    <item id="q-4-3-2-sulphate-Pollutant">Sulphate</item>
+    <item id="q-4-3-2-sulphite-Pollutant">Sulphite</item>
+    <item id="q-4-3-2-sulphide-Pollutant">Sulphide</item>
+    <item id="q-4-3-2-hg-Pollutant">Hg and compounds (for coal/lignite fired)</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q-4-3-2-suspendedSolids-Type">Suspended solids Type</item>
+        <item id="q-4-3-2-COD-Type">COD Type</item>
+        <item id="q-4-3-2-nitrogenCompounds-Type">Nitrogen compounds Type</item>
+        <item id="q-4-3-2-sulphate-Type">Sulphate Type</item>
+        <item id="q-4-3-2-sulphite-Type">Sulphite Type</item>
+        <item id="q-4-3-2-sulphide-Type">Sulphide Type</item>
+        <item id="q-4-3-2-hg-Type">Hg and compounds (for coal/lignite fired) Type</item>
+        <item id="q-4-3-2-suspendedSolids-IfP-Frequency">Suspended solids Frequency (if Periodic is selected)  </item>
+        <item id="q-4-3-2-COD-IfP-Frequency">COD Frequency (if Periodic is selected)  </item>
+        <item id="q-4-3-2-nitrogenCompounds-IfP-Frequency">Nitrogen compounds Frequency (if Periodic is selected)  </item>
+        <item id="q-4-3-2-sulphate-IfP-Frequency">Sulphate Frequency (if Periodic is selected)  </item>
+        <item id="q-4-3-2-sulphite-IfP-Frequency">Sulphite Frequency (if Periodic is selected)  </item>
+        <item id="q-4-3-2-sulphide-IfP-Frequency">Sulphide Frequency (if Periodic is selected)  </item>
+        <item id="q-4-3-2-hg-IfP-Frequency">Hg and compounds (for coal/lignite fired) Frequency (if Periodic is selected)  </item>
+        <item id="q-4-3-2-suspendedSolids-IfP-Duration">Suspended solids Duration (if Periodic is selected)</item>
+        <item id="q-4-3-2-COD-IfP-Duration">COD Duration (if Periodic is selected)</item>
+        <item id="q-4-3-2-nitrogenCompounds-IfP-Duration">Nitrogen compounds Duration (if Periodic is selected)</item>
+        <item id="q-4-3-2-sulphate-IfP-Duration">Sulphate Duration (if Periodic is selected)</item>
+        <item id="q-4-3-2-sulphite-IfP-Duration">Sulphite Duration (if Periodic is selected)</item>
+        <item id="q-4-3-2-sulphide-IfP-Duration">Sulphide Duration (if Periodic is selected)</item>
+        <item id="q-4-3-2-hg-IfP-Duration">Hg and compounds (for coal/lignite fired) Duration (if Periodic is selected)</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q-4-3-3">4.3.3 Actual monitored emissions at the permitted level</item>
+    <item id="q-4-3-3-thValue">The value should be expressed in the same unit as the ELV</item>
+    <item id="q-4-3-3-thPollutant">Pollutant</item>
+    <item id="q-4-3-3-thYearsData">Years of which data has been used to make the calculations</item>
+    <item id="q-4-3-3-thYearsValue">Yearly average value (average of all measured values over 1 year)</item>
+    <item id="q-4-3-3-thYearsValueNa">N/A</item>
+    <item id="q-4-3-3-thContinuousMonitoring">In case of continuous monitoring</item>
+    <item id="q-4-3-3-thNonContinuousMonitoring">In case of non-continuous monitoring</item>
+    <item id="q-4-3-3-thYearsData2006">2006</item>
+    <item id="q-4-3-3-thYearsData2007">2007</item>
+    <item id="q-4-3-3-thYearsData2008">2008</item>
+    <item id="q-4-3-3-thMinimumAverageMonthlyValues">Minimum of average monthly values</item>
+    <item id="q-4-3-3-thMinimumAverageMonthlyValuesNa">N/A</item>
+    <item id="q-4-3-3-thMaximumAverageMonthlyValues">Maximum of average monthly values</item>
+    <item id="q-4-3-3-thMaximumAverageMonthlyValuesNa">N/A</item>
+    <item id="q-4-3-3-thMinimumMeasuredValues">Minimum of measured values (during normal operation of the plant)</item>
+    <item id="q-4-3-3-thMinimumMeasuredValuesNa">N/A</item>
+    <item id="q-4-3-3-thMaximumMeasuredValues">Maximum of measured values (during normal operation of the plant)</item>
+    <item id="q-4-3-3-thMaximumMeasuredValuesNa">N/A</item>
+    <item id="q-4-3-3-suspendedSolids-Pollutant">Suspended solids</item>
+    <item id="q-4-3-3-COD-Pollutant">COD</item>
+    <item id="q-4-3-3-nitrogenCompounds-Pollutant">Nitrogen compounds</item>
+    <item id="q-4-3-3-sulphate-Pollutant">Sulphate</item>
+    <item id="q-4-3-3-sulphite-Pollutant">Sulphite</item>
+    <item id="q-4-3-3-sulphide-Pollutant">Sulphide</item>
+    <item id="q-4-3-3-hg-Pollutant">Hg and compounds (for coal/lignite fired)</item>
+    <item id="q-4-3-3-Remarks">Remarks, if any</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q-4-3-3-suspendedSolids-Year-2006">Suspended solids 2006</item>
+        <item id="q-4-3-3-COD-Year-2006">COD solids 2006</item>
+        <item id="q-4-3-3-nitrogenCompounds-Year-2006">Nitrogen compounds 2006</item>
+        <item id="q-4-3-3-sulphate-Year-2006">Sulphate 2006</item>
+        <item id="q-4-3-3-sulphite-Year-2006">Sulphite 2006</item>
+        <item id="q-4-3-3-sulphide-Year-2006">Sulphide 2006</item>
+        <item id="q-4-3-3-hg-Year-2006">Hg and compounds (for coal/lignite fired) 2006</item>
+        <item id="q-4-3-3-suspendedSolids-Year-2007">Suspended solids 2007</item>
+        <item id="q-4-3-3-COD-Year-2007">COD solids 2007</item>
+        <item id="q-4-3-3-nitrogenCompounds-Year-2007">Nitrogen compounds 2007</item>
+        <item id="q-4-3-3-sulphate-Year-2007">Sulphate 2007</item>
+        <item id="q-4-3-3-sulphite-Year-2007">Sulphite 2007</item>
+        <item id="q-4-3-3-sulphide-Year-2007">Sulphide 2007</item>
+        <item id="q-4-3-3-hg-Year-2007">Hg and compounds (for coal/lignite fired) 2007</item>        
+        <item id="q-4-3-3-suspendedSolids-Year-2008">Suspended solids 2008</item>
+        <item id="q-4-3-3-COD-Year-2008">COD solids 2008</item>
+        <item id="q-4-3-3-nitrogenCompounds-Year-2008">Nitrogen compounds 2008</item>
+        <item id="q-4-3-3-sulphate-Year-2008">Sulphate 2008</item>
+        <item id="q-4-3-3-sulphite-Year-2008">Sulphite 2008</item>
+        <item id="q-4-3-3-sulphide-Year-2008">Sulphide 2008</item>
+        <item id="q-4-3-3-hg-Year-2008">Hg and compounds (for coal/lignite fired) 2008</item>
+        <item id="q-4-3-3-suspendedSolids-Yearly-Average-Value">Suspended solids Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-4-3-3-COD-Yearly-Average-Value">COD solids Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-4-3-3-nitrogenCompounds-Yearly-Average-Value">Nitrogen compounds Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-4-3-3-sulphate-Yearly-Average-Value">Sulphate Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-4-3-3-sulphite-Yearly-Average-Value">Sulphite Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-4-3-3-sulphide-Yearly-Average-Value">Sulphide Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-4-3-3-hg-Yearly-Average-Value">Hg and compounds (for coal/lignite fired) Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q-4-3-3-suspendedSolids-Yearly-Average-Value-NA">Suspended solids N/A</item>
+        <item id="q-4-3-3-COD-Yearly-Average-Value-NA">COD solids N/A</item>
+        <item id="q-4-3-3-nitrogenCompounds-Yearly-Average-Value-NA">Nitrogen compounds N/A</item>
+        <item id="q-4-3-3-sulphate-Yearly-Average-Value-NA">Sulphate N/A</item>
+        <item id="q-4-3-3-sulphite-Yearly-Average-Value-NA">Sulphite N/A</item>
+        <item id="q-4-3-3-sulphide-Yearly-Average-Value-NA">Sulphide N/A</item>
+        <item id="q-4-3-3-hg-Yearly-Average-Value-NA">Hg and compounds (for coal/lignite fired) N/A</item>
+        <item id="q-4-3-3-suspendedSolids-Minimum-Average-Monthly-Values">Suspended solids Minimum of average monthly values</item>
+        <item id="q-4-3-3-COD-Minimum-Average-Monthly-Values">COD solids Minimum of average monthly values</item>
+        <item id="q-4-3-3-nitrogenCompounds-Minimum-Average-Monthly-Values">Nitrogen compounds Minimum of average monthly values</item>
+        <item id="q-4-3-3-sulphate-Minimum-Average-Monthly-Values">Sulphate Minimum of average monthly values</item>
+        <item id="q-4-3-3-sulphite-Minimum-Average-Monthly-Values">Sulphite Minimum of average monthly values</item>
+        <item id="q-4-3-3-sulphide-Minimum-Average-Monthly-Values">Sulphide Minimum of average monthly values</item>
+        <item id="q-4-3-3-hg-Minimum-Average-Monthly-Values">Hg and compounds (for coal/lignite fired) Minimum of average monthly values</item>
+        <item id="q-4-3-3-suspendedSolids-Minimum-Average-Monthly-Values-NA">Suspended solids N/A</item>
+        <item id="q-4-3-3-COD-Minimum-Average-Monthly-Values-NA">COD solids N/A</item>
+        <item id="q-4-3-3-nitrogenCompounds-Minimum-Average-Monthly-Values-NA">Nitrogen compounds N/A</item>
+        <item id="q-4-3-3-sulphate-Minimum-Average-Monthly-Values-NA">Sulphate N/A</item>
+        <item id="q-4-3-3-sulphite-Minimum-Average-Monthly-Values-NA">Sulphite N/A</item>
+        <item id="q-4-3-3-sulphide-Minimum-Average-Monthly-Values-NA">Sulphide N/A</item>
+        <item id="q-4-3-3-hg-Minimum-Average-Monthly-Values-NA">Hg and compounds (for coal/lignite fired) N/A</item>
+        <item id="q-4-3-3-suspendedSolids-Maximum-Average-Monthly-Values">Suspended solids Maximum of average monthly values</item>
+        <item id="q-4-3-3-COD-Maximum-Average-Monthly-Values">COD solids Maximum of average monthly values</item>
+        <item id="q-4-3-3-nitrogenCompounds-Maximum-Average-Monthly-Values">Nitrogen compounds Maximum of average monthly values</item>
+        <item id="q-4-3-3-sulphate-Maximum-Average-Monthly-Values">Sulphate Maximum of average monthly values</item>
+        <item id="q-4-3-3-sulphite-Maximum-Average-Monthly-Values">Sulphite Maximum of average monthly values</item>
+        <item id="q-4-3-3-sulphide-Maximum-Average-Monthly-Values">Sulphide Maximum of average monthly values</item>
+        <item id="q-4-3-3-hg-Maximum-Average-Monthly-Values">Hg and compounds (for coal/lignite fired) Maximum of average monthly values</item>
+        <item id="q-4-3-3-suspendedSolids-Maximum-Average-Monthly-Values-NA">Suspended solids N/A</item>
+        <item id="q-4-3-3-COD-Maximum-Average-Monthly-Values-NA">COD solids N/A</item>
+        <item id="q-4-3-3-nitrogenCompounds-Maximum-Average-Monthly-Values-NA">Nitrogen compounds N/A</item>
+        <item id="q-4-3-3-sulphate-Maximum-Average-Monthly-Values-NA">Sulphate N/A</item>
+        <item id="q-4-3-3-sulphite-Maximum-Average-Monthly-Values-NA">Sulphite N/A</item>
+        <item id="q-4-3-3-sulphide-Maximum-Average-Monthly-Values-NA">Sulphide N/A</item>
+        <item id="q-4-3-3-hg-Maximum-Average-Monthly-Values-NA">Hg and compounds (for coal/lignite fired) N/A</item>
+        <item id="q-4-3-3-suspendedSolids-Minimum-Measured-Values">Suspended solids Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-COD-Minimum-Measured-Values">COD solids Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-nitrogenCompounds-Minimum-Measured-Values">Nitrogen compounds Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-sulphate-Minimum-Measured-Values">Sulphate Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-sulphite-Minimum-Measured-Values">Sulphite Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-sulphide-Minimum-Measured-Values">Sulphide Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-hg-Minimum-Measured-Values">Hg and compounds (for coal/lignite fired) Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-suspendedSolids-Minimum-Measured-Values-NA">Suspended solids N/A</item>
+        <item id="q-4-3-3-COD-Minimum-Measured-Values-NA">COD solids N/A</item>
+        <item id="q-4-3-3-nitrogenCompounds-Minimum-Measured-Values-NA">Nitrogen compounds N/A</item>
+        <item id="q-4-3-3-sulphate-Minimum-Measured-Values-NA">Sulphate N/A</item>
+        <item id="q-4-3-3-sulphite-Minimum-Measured-Values-NA">Sulphite N/A</item>
+        <item id="q-4-3-3-sulphide-Minimum-Measured-Values-NA">Sulphide N/A</item>
+        <item id="q-4-3-3-hg-Minimum-Measured-Values-NA">Hg and compounds (for coal/lignite fired) N/A</item>
+        <item id="q-4-3-3-suspendedSolids-Maximum-Measured-Values">Suspended solids Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-COD-Maximum-Measured-Values">COD solids Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-nitrogenCompounds-Maximum-Measured-Values">Nitrogen compounds Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-sulphate-Maximum-Measured-Values">Sulphate Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-sulphite-Maximum-Measured-Values">Sulphite Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-sulphide-Maximum-Measured-Values">Sulphide Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-hg-Maximum-Measured-Values">Hg and compounds (for coal/lignite fired) Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q-4-3-3-suspendedSolids-Maximum-Measured-Values-NA">Suspended solids N/A</item>
+        <item id="q-4-3-3-COD-Maximum-Measured-Values-NA">COD solids N/A</item>
+        <item id="q-4-3-3-nitrogenCompounds-Maximum-Measured-Values-NA">Nitrogen compounds N/A</item>
+        <item id="q-4-3-3-sulphate-Maximum-Measured-Values-NA">Sulphate N/A</item>
+        <item id="q-4-3-3-sulphite-Maximum-Measured-Values-NA">Sulphite N/A</item>
+        <item id="q-4-3-3-sulphide-Maximum-Measured-Values-NA">Sulphide N/A</item>
+        <item id="q-4-3-3-hg-Maximum-Measured-Values-NA">Hg and compounds (for coal/lignite fired) N/A</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q-4-3-3-Pollutant-th">Pollutant</item>
+    <item id="q-4-3-3-Emission-Prevention-th">Emission prevention and abatement techniques applied at the plant for waste water from FGD.</item>
+    <item id="q-4-3-3-suspendedSolids-Pollutant">Suspended solids</item>
+    <item id="q-4-3-3-COD-Pollutant">COD</item>
+    <item id="q-4-3-3-nitrogenCompounds-Pollutant">Nitrogen compounds</item>
+    <item id="q-4-3-3-sulphate-Pollutant">Sulphate</item>
+    <item id="q-4-3-3-sulphite-Pollutant">Sulphite</item>    
+    <item id="q-4-3-3-sulphide-Pollutant">Sulphide</item>
+    <item id="q-4-3-3-hg-Pollutant">Hg and compounds (for coal/lignite fired)</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q-4-3-3-suspendedSolids-Emission-Prevention">Suspended solids Emission prevention and abatement techniques applied at the plant for waste water from FGD.</item>
+        <item id="q-4-3-3-COD-Emission-Prevention">COD Emission prevention and abatement techniques applied at the plant for waste water from FGD.</item>
+        <item id="q-4-3-3-nitrogenCompounds-Emission-Prevention">Nitrogen compounds Emission prevention and abatement techniques applied at the plant for waste water from FGD.</item>
+        <item id="q-4-3-3-sulphate-Emission-Prevention">Sulphate Emission prevention and abatement techniques applied at the plant for waste water from FGD.</item>
+        <item id="q-4-3-3-sulphite-Emission-Prevention">Sulphite Emission prevention and abatement techniques applied at the plant for waste water from FGD.</item>
+        <item id="q-4-3-3-sulphide-Emission-Prevention">Sulphide Emission prevention and abatement techniques applied at the plant for waste water from FGD.</item>
+        <item id="q-4-3-3-hg-Emission-Prevention">Hg and compounds (for coal/lignite fired) Emission prevention and abatement techniques applied at the plant for waste water from FGD.</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q2-1-h2">1. General information</item>
+    <item id="q2-1-1">1.1 Installation name</item>
+    <item id="q2-1-2-h2">1.2. Installation code</item>
+    <item id="q2-1-2-thCountry">Country</item>
+    <item id="q2-1-2-thNumber">Number</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q2-1-2-Country">Country</item>
+        <item id="q2-1-2-Number">Number</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q2-1-4">1.4 Year the permit has last been updated</item>
+    <item id="q2-1-5">1.5 Status of the installation under the IPPC Directive</item>
+    <item id="q2-1-5-Remarks">Remarks, if any</item>
+    <item id="q2-1-6">1.6 If available give a weblink to the permit</item>
+    <item id="q2-1-7">1.7 If no weblink is available, please provide an electronic copy of the permit to the Commission </item>
+    
+    <item id="q2-2-h2">2. Installation level - information</item>
+    <item id="q2-2-1-h2">2.1 Please complete the following table on the configuration of this intallation and its production units at the end of 2008</item>
+    <item id="q2-2-1-th-numberUnit">Number units</item>
+    <item id="q2-2-1-th-productionType">Type of production unit</item>
+    <item id="q2-2-1-th-capacityUnit">Capacity of the unit (ton/year)</item>
+    <item id="q2-2-1-th-ifAsbestos">If asbestos diaphragm or mercury cell process, please complete</item>
+    <item id="q2-2-1-th-ifMembraneCell">If membrane cell process, please complete</item>
+    <item id="q2-2-1-th-conversionYear">Year of expected conversion/closure</item>
+    <item id="q2-2-1-th-conversionType">Type of conversion/closure</item>
+    <item id="q2-2-1-th-earlierConversion">Has there been a conversion earlier on from a mercury cell process?</item>
+    <item id="q2-2-1-th-yearOfConversion">If Yes, year of conversion</item>
+    <item id="q2-2-1-productionType-diaphragm">Diaphragm cell process</item>
+    <item id="q2-2-1-productionType-asbestos">Asbestos diaphragm cell process</item>
+    <item id="q2-2-1-productionType-membrane">Membrane cell process</item>
+    <item id="q2-2-1-productionType-mercury">Mercury cell process</item>    
+    <item id="q2-2-1-ifAsbestosConversionType-membrane">Membrane cell process</item>
+    <item id="q2-2-1-ifAsbestosConversionType-closure">Closure</item>
+    <item id="q2-2-1-ifAsbestosConversionType-Other">Other</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q2-2-1-numberUnit">Number units</item>
+        <item id="q2-2-1-capacityUnit">Capacity of the unit (ton/year)</item>
+        <item id="q2-2-1-ifAsbestosYearExpected">Year of expected conversion/closure</item>
+        <item id="q2-2-1-ifAsbestosConversionType-OtherText">Other</item>
+        <item id="q2-2-1-ifMembraneCellProcess-conversionEarlier">Has there been a conversion earlier on from a mercury cell process?</item>
+        <item id="q2-2-1-ifMembraneCellProcess-ifYesYear">If Yes, year of conversion</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q2-2-1-1">2.1.1 Have mercury cell units been closed at this installation?</item>
+    <item id="q2-2-1-1-Remarks">Remarks, if any</item>
+    <item id="q2-2-1-2">2.1.2. Please indicate on which basis the planning for the conversion has been decided by the competent authorities or the operator.</item>
+    <item id="q2-2-2">2.2. How many emission sources to air(linked with the process) does this installation have?</item>
+    <item id="q2-2-2-Remarks">Remarks, if any</item>
+    <item id="q2-2-3">2.3. How many emission sources to water, linked with the process, does this installation have?</item>
+    <item id="q2-2-3-Remarks">Remarks, if any</item>
+    
+    <item id="q2-3-h2">3. Emission sources to air</item>
+    <item id="q2-3-TechnicalBackground">Technical background information</item>
+    <item id="q2-3-1">3.1 Short description of the emission source (name, identification):</item>
+    <item id="q2-3-2">3.2 Which units are considered in this source? Please make reference to the unit numbers (see question 2.1.)</item>
+    
+    <item id="q2-3-elvBatInfo">ELV/BAT information</item>
+    <item id="q2-3-3">3.3. Please provide the requested information on the following: </item>
+    <item id="q2-3-3-1">3.3.1. Emission limit values in permit</item>
+    <item id="q2-3-3-1-thPollutant">Pollutant</item>    
+    <item id="q2-3-3-1-thEmissionLimit">Emission Limit</item>
+    <item id="q2-3-3-1-thUnit">Unit</item>
+    <item id="q2-3-3-1-thEmissionLimit">ELV related time period</item>
+    <item id="q2-3-3-1-thReferenceRemarksAndConditions">Reference conditions and remarks</item>
+    <item id="q2-3-3-1-thRemarksIfAny">Remarks if any</item>
+    <item id="q2-3-3-1-Chlorine-Pollutant">Chlorine</item>
+    <item id="q2-3-3-1-Hg-Pollutant">Hg</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q2-3-3-1-Chlorine-EmissionLimit">Chlorine Emission Limit  </item>
+        <item id="q2-3-3-1-Hg-EmissionLimit">Hg Emission Limit  </item>
+        <item id="q2-3-3-1-Chlorine-Unit">Chlorine Unit</item>
+        <item id="q2-3-3-1-Hg-Unit">Hg Unit</item>
+        <item id="q2-3-3-1-Chlorine-ELVRelatedTimePeriod">Chlorine ELV related time period  </item>
+        <item id="q2-3-3-1-Hg-ELVRelatedTimePeriod">Hg ELV related time period  </item>
+        <item id="q2-3-3-1-Chlorine-ReferenceRemarksAndConditions">Chlorine Reference conditions and remarks  </item>
+        <item id="q2-3-3-1-Hg-ReferenceRemarksAndConditions">Hg Reference conditions and remarks  </item>
+        <item id="q2-3-3-1-Chlorine-RemarksIfAny">Chlorine Remarks if any</item>
+        <item id="q2-3-3-1-Hg-RemarksIfAny">Hg Remarks if any</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q2-3-3-1-ELV-Not-Available-Label">If ELV is not available, please indicate here.  </item>
+    <item id="q2-3-3-1-NOx-ELV-Not-Available">Chlorine - ELV not available</item>    
+    <item id="q2-3-3-1-Hg-ELV-Not-Available">Hg - ELV not available</item>
+    <item id="q2-3-3-1-Remarks">Remarks, if any</item>
+    
+    <item id="q2-3-3-2">3.3.2 Monitoring frequency and duration requirements as set in the permit:</item>
+    <item id="q2-3-3-2-Pollutant-th">Pollutant</item>
+    <item id="q2-3-3-2-Type-th">Type</item>
+    <item id="q2-3-3-2-IfP-Frequency-th">Frequency (if Periodic is selected)</item>
+    <item id="q2-3-3-2-IfP-Duration-th">Duration (if Periodic is selected)</item>
+    <item id="q2-3-3-2-IfP-Duration-Unit-th">Duration Unit (if Periodic is selected)</item>
+    <item id="q2-3-3-2-Chlorine-Pollutant">Chlorine</item>
+    <item id="q2-3-3-2-Hg-Pollutant">Hg</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q2-3-3-2-Chlorine-Type">Chlorine Type</item>
+        <item id="q2-3-3-2-Hg-Type">Hg Type</item>
+        <item id="q2-3-3-2-Chlorine-IfP-Frequency">Chlorine Frequency (if Periodic is selected)</item>
+        <item id="q2-3-3-2-Hg-IfP-Frequency">Hg Frequency (if Periodic is selected)</item>
+        <item id="q2-3-3-2-Chlorine-IfP-Duration">Chlorine Duration (if Periodic is selected)</item>
+        <item id="q2-3-3-2-Hg-IfP-Duration">Hg Duration (if Periodic is selected)</item>
+        <item id="q2-3-3-2-Chlorine-IfP-Duration-Unit">Chlorine Duration Unit (if Periodic is selected)</item>
+        <item id="q2-3-3-2-Hg-IfP-Duration-Unit">Hg Duration Unit (if Periodic is selected)</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q2-3-3-3">3.3.3 Actual monitored emissions at permitted level</item>
+    <item id="q2-3-3-3-thValue">The value should be expressed in the same unit as the ELV</item>
+    <item id="q2-3-3-3-thPollutant">Pollutant</item>
+    <item id="q2-3-3-3-thYearsData">Years of which data has been used to make the calculations</item>
+    <item id="q2-3-3-3-thYearsValue">Yearly average value (average of all measured values over 1 year)</item>
+    <item id="q2-3-3-3-thYearsValueNa">N/A</item>
+    <item id="q2-3-3-3-thContinuousMonitoring">In case of continuous monitoring</item>
+    <item id="q2-3-3-3-thNonContinuousMonitoring">In case of non-continuous monitoring</item>    
+    <item id="q2-3-3-3-thYearsData2006">2006</item>
+    <item id="q2-3-3-3-thYearsData2007">2007</item>
+    <item id="q2-3-3-3-thYearsData2008">2008</item>
+    <item id="q2-3-3-3-thMinimumAverageMonthlyValues">Minimum of average monthly values</item>
+    <item id="q2-3-3-3-thMinimumAverageMonthlyValuesNa">N/A</item>
+    <item id="q2-3-3-3-thMaximumAverageMonthlyValues">Maximum of average monthly values</item>
+    <item id="q2-3-3-3-thMaximumAverageMonthlyValuesNa">N/A</item>
+    <item id="q2-3-3-3-thMinimumMeasuredValues">Minimum of measured values (during normal operation of the plant)</item>
+    <item id="q2-3-3-3-thMinimumMeasuredValuesNa">N/A</item>
+    <item id="q2-3-3-3-thMaximumMeasuredValues">Maximum of measured values (during normal operation of the plant)</item>
+    <item id="q2-3-3-3-thMaximumMeasuredValuesNa">N/A</item>
+    <item id="q2-3-3-3-Chlorine-Pollutant">Chlorine</item>
+    <item id="q2-3-3-3-Hg-Pollutant">Hg</item>
+    <item id="q2-3-3-3-Remarks">Remarks, if any</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q2-3-3-3-Chlorine-Year-2006">Chlorine 2006</item>
+        <item id="q2-3-3-3-Hg-Year-2006">Hg 2006</item>
+        <item id="q2-3-3-3-Chlorine-Year-2007">Chlorine 2007</item>
+        <item id="q2-3-3-3-Hg-Year-2007">Hg 2007</item>
+        <item id="q2-3-3-3-Chlorine-Year-2008">Chlorine 2008</item>
+        <item id="q2-3-3-3-Hg-Year-2008">Hg 2008</item>
+        <item id="q2-3-3-3-Chlorine-Yearly-Average-Value">Chlorine Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q2-3-3-3-Hg-Yearly-Average-Value">Hg Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q2-3-3-3-Chlorine-Yearly-Average-Value-NA">Chlorine N/A</item>
+        <item id="q2-3-3-3-Hg-Yearly-Average-Value-NA">Hg N/A</item>
+        <item id="q2-3-3-3-Chlorine-Minimum-Average-Monthly-Values">Chlorine Minimum of average monthly values</item>
+        <item id="q2-3-3-3-Hg-Minimum-Average-Monthly-Values">Hg Minimum of average monthly values</item>
+        <item id="q2-3-3-3-Chlorine-Minimum-Average-Monthly-Values-NA">Chlorine N/A</item>
+        <item id="q2-3-3-3-Hg-Minimum-Average-Monthly-Values-NA">Hg N/A</item>
+        <item id="q2-3-3-3-Chlorine-Maximum-Average-Monthly-Values">Chlorine Maximum of average monthly values</item>
+        <item id="q2-3-3-3-Hg-Maximum-Average-Monthly-Values">Hg Maximum of average monthly values</item>
+        <item id="q2-3-3-3-Chlorine-Maximum-Average-Monthly-Values-NA">Chlorine N/A</item>
+        <item id="q2-3-3-3-Hg-Maximum-Average-Monthly-Values-NA">Hg N/A</item>
+        <item id="q2-3-3-3-Chlorine-Minimum-Measured-Values">Chlorine Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q2-3-3-3-Hg-Minimum-Measured-Values">Hg Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q2-3-3-3-Chlorine-Minimum-Measured-Values-NA">Chlorine N/A</item>
+        <item id="q2-3-3-3-Hg-Minimum-Measured-Values-NA">Hg N/A</item>
+        <item id="q2-3-3-3-Chlorine-Maximum-Measured-Values">Chlorine Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q2-3-3-3-Hg-Maximum-Measured-Values">Hg Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q2-3-3-3-Chlorine-Maximum-Measured-Values-NA">Chlorine N/A</item>
+        <item id="q2-3-3-3-Hg-Maximum-Measured-Values-NA">Hg N/A</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q2-3-4">3.4 If available, please provide information on the abatement techniques applied:</item>
+    
+    <item id="q2-4-h2">4. Emission sources to water</item>
+    <item id="q2-4-TechnicalBackground">Technical background information</item>
+    <item id="q2-4-1">4.1 Short description of the permitted level (name, identification):</item>
+    <item id="q2-4-2">4.2 Which units are considered in this source? Please make reference to the unit numbers (see question 2.1.)</item>
+    <item id="q2-4-3">4.3 Receptor of discharged waste water</item>
+    <item id="q2-4-3-sewer-system">sewer system</item>
+    <item id="q2-4-3-surface-water">surface water</item>
+    
+    <item id="q2-4-elvBatInfo">ELV/BAT information</item>
+    <item id="q2-4-4">4.4. Please provide the requested permit information on the following: </item>
+    <item id="q2-4-4-1">4.4.1. Emission limit values in permit</item>
+    <item id="q2-4-4-1-thPollutant">Pollutant</item>
+    <item id="q2-4-4-1-thEmissionLimit">Emission Limit</item>
+    <item id="q2-4-4-1-thUnit">Unit</item>
+    <item id="q2-4-4-1-thEmissionLimit">ELV related time period</item>
+    <item id="q2-4-4-1-thReferenceRemarksAndConditions">Reference conditions and remarks</item>
+    <item id="q2-4-4-1-thRemarksIfAny">Remarks if any</item>
+    <item id="q2-4-4-1-Hg-Pollutant">Hg</item>
+    <item id="q2-4-4-1-Chlorine-Pollutant">Chlorine</item>
+    <item id="q2-4-4-1-AOX-Pollutant">AOX</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q2-4-4-1-Hg-EmissionLimit">Hg Emission Limit</item>
+        <item id="q2-4-4-1-Chlorine-EmissionLimit">Chlorine Emission Limit</item>
+        <item id="q2-4-4-1-AOX-EmissionLimit">AOX Emission Limit</item>
+        <item id="q2-4-4-1-Hg-Unit">Hg Unit</item>
+        <item id="q2-4-4-1-Chlorine-Unit">Chlorine Unit</item>
+        <item id="q2-4-4-1-AOX-Unit">AOX Unit</item>
+        <item id="q2-4-4-1-Hg-ELVRelatedTimePeriod">Hg ELV related time period</item>
+        <item id="q2-4-4-1-Chlorine-ELVRelatedTimePeriod">Chlorine ELV related time period</item>
+        <item id="q2-4-4-1-AOX-ELVRelatedTimePeriod">AOX ELV related time period</item>
+        <item id="q2-4-4-1-Hg-ReferenceRemarksAndConditions">Hg Reference conditions and remarks</item>
+        <item id="q2-4-4-1-Chlorine-ReferenceRemarksAndConditions">Chlorine Reference conditions and remarks</item>
+        <item id="q2-4-4-1-AOX-ReferenceRemarksAndConditions">AOX Reference conditions and remarks</item>
+        <item id="q2-4-4-1-Hg-RemarksIfAny">Hg Remarks if any</item>
+        <item id="q2-4-4-1-Chlorine-RemarksIfAny">Chlorine Remarks if any</item>
+        <item id="q2-4-4-1-AOX-RemarksIfAny">AOX Remarks if any</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q2-4-4-1-ELV-Not-Available-Label">If ELV is not available, please indicate here.  </item>
+    <item id="q2-4-4-1-Hg-ELV-Not-Available">Hg - ELV not available</item>    
+    <item id="q2-4-4-1-Chlorine-ELV-Not-Available">Chlorine - ELV not available</item>
+    <item id="q2-4-4-1-AOX-ELV-Not-Available">AOX - ELV not available</item>
+    <item id="q2-4-4-1-Remarks">Remarks, if any</item>
+    
+    <item id="q2-4-4-2">4.4.2 Monitoring frequency and duration requirements as set in the permit:</item>
+    <item id="q2-4-4-2-Pollutant-th">Pollutant</item>
+    <item id="q2-4-4-2-Type-th">Type</item>
+    <item id="q2-4-4-2-IfP-Frequency-th">Frequency (if Periodic is selected)</item>
+    <item id="q2-4-4-2-IfP-Duration-th">Duration (if Periodic is selected)</item>
+    <item id="q2-4-4-2-Hg-Pollutant">Hg</item>    
+    <item id="q2-4-4-2-Chlorine-Pollutant">Chlorine</item>
+    <item id="q2-4-4-2-AOX-Pollutant">AOX</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q2-4-4-2-Hg-Type">Hg Type</item>
+        <item id="q2-4-4-2-Chlorine-Type">Chlorine Type</item>
+        <item id="q2-4-4-2-AOX-Type">AOX Type</item>
+        
+        <item id="q2-4-4-2-Hg-IfP-Frequency">Hg Frequency (if Periodic is selected)</item>
+        <item id="q2-4-4-2-Chlorine-IfP-Frequency">Chlorine Frequency (if Periodic is selected)</item>
+        <item id="q2-4-4-2-AOX-IfP-Frequency">AOX Frequency (if Periodic is selected)</item>
+        
+        <item id="q2-4-4-2-Hg-IfP-Duration">Hg Duration (if Periodic is selected)</item>
+        <item id="q2-4-4-2-Chlorine-IfP-Duration">Chlorine Duration (if Periodic is selected)</item>
+        <item id="q2-4-4-2-AOX-IfP-Duration">AOX Duration (if Periodic is selected)</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q2-4-4-3">4.4.3 Actual monitored emissions at permitted level</item>
+    <item id="q2-4-4-3-thValue">The value should be expressed in the same unit as the ELV</item>
+    <item id="q2-4-4-3-thPollutant">Pollutant</item>
+    <item id="q2-4-4-3-thYearsData">Years of which data has been used to make the calculations</item>
+    <item id="q2-4-4-3-thYearsValue">Yearly average value (average of all measured values over 1 year)</item>
+    <item id="q2-4-4-3-thYearsValueNa">N/A</item>
+    <item id="q2-4-4-3-thContinuousMonitoring">In case of continuous monitoring</item>
+    <item id="q2-4-4-3-thNonContinuousMonitoring">In case of non-continuous monitoring</item>
+    <item id="q2-4-4-3-thYearsData2006">2006</item>
+    <item id="q2-4-4-3-thYearsData2007">2007</item>
+    <item id="q2-4-4-3-thYearsData2008">2008</item>
+    <item id="q2-4-4-3-thMinimumAverageMonthlyValues">Minimum of average monthly values</item>
+    <item id="q2-4-4-3-thMinimumAverageMonthlyValuesNa">N/A</item>
+    <item id="q2-4-4-3-thMaximumAverageMonthlyValues">Maximum of average monthly values</item>
+    <item id="q2-4-4-3-thMaximumAverageMonthlyValuesNa">N/A</item>
+    <item id="q2-4-4-3-thMinimumMeasuredValues">Minimum of measured values (during normal operation of the plant)</item>
+    <item id="q2-4-4-3-thMinimumMeasuredValuesNa">N/A</item>
+    <item id="q2-4-4-3-thMaximumMeasuredValues">Maximum of measured values (during normal operation of the plant)</item>
+    <item id="q2-4-4-3-thMaximumMeasuredValuesNa">N/A</item>
+    <item id="q2-4-4-3-Hg-Pollutant">Hg</item>
+    <item id="q2-4-4-3-Chlorine-Pollutant">Chlorine</item>
+    <item id="q2-4-4-3-AOX-Pollutant">AOX</item>
+    <item id="q2-4-4-3-Remarks">Remarks, if any</item>
+    
+    <!-- start 'fake' questions -->
+        <item id="q2-4-4-3-Hg-Year-2006">Hg 2006</item>
+        <item id="q2-4-4-3-Chlorine-Year-2006">Chlorine 2006</item>
+        <item id="q2-4-4-3-AOX-Year-2006">AOX 2006</item>
+        <item id="q2-4-4-3-Hg-Year-2007">Hg 2007</item>
+        <item id="q2-4-4-3-Chlorine-Year-2007">Chlorine 2007</item>
+        <item id="q2-4-4-3-AOX-Year-2007">AOX 2007</item>        
+        <item id="q2-4-4-3-Hg-Year-2008">Hg 2008</item>
+        <item id="q2-4-4-3-Chlorine-Year-2008">Chlorine 2008</item>
+        <item id="q2-4-4-3-AOX-Year-2008">AOX 2008</item>
+        <item id="q2-4-4-3-Hg-Yearly-Average-Value">Hg Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q2-4-4-3-Chlorine-Yearly-Average-Value">Chlorine Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q2-4-4-3-AOX-Yearly-Average-Value">AOX Yearly average value (average of all measured values over 1 year)</item>
+        <item id="q2-4-4-3-Hg-Yearly-Average-Value-NA">Hg N/A</item>
+        <item id="q2-4-4-3-Chlorine-Yearly-Average-Value-NA">Chlorine N/A</item>
+        <item id="q2-4-4-3-AOX-Yearly-Average-Value-NA">AOX N/A</item>
+        <item id="q2-4-4-3-Hg-Minimum-Average-Monthly-Values">Hg Minimum of average monthly values</item>
+        <item id="q2-4-4-3-Chlorine-Minimum-Average-Monthly-Values">Chlorine Minimum of average monthly values</item>
+        <item id="q2-4-4-3-AOX-Minimum-Average-Monthly-Values">AOX Minimum of average monthly values</item>
+        <item id="q2-4-4-3-Hg-Minimum-Average-Monthly-Values-NA">Hg N/A</item>
+        <item id="q2-4-4-3-Chlorine-Minimum-Average-Monthly-Values-NA">Chlorine N/A</item>
+        <item id="q2-4-4-3-AOX-Minimum-Average-Monthly-Values-NA">AOX N/A</item>
+        <item id="q2-4-4-3-Hg-Maximum-Average-Monthly-Values">Hg Maximum of average monthly values</item>
+        <item id="q2-4-4-3-Chlorine-Maximum-Average-Monthly-Values">Chlorine Maximum of average monthly values</item>
+        <item id="q2-4-4-3-AOX-Maximum-Average-Monthly-Values">AOX Maximum of average monthly values</item>
+        <item id="q2-4-4-3-Hg-Maximum-Average-Monthly-Values-NA">Hg N/A</item>
+        <item id="q2-4-4-3-Chlorine-Maximum-Average-Monthly-Values-NA">Chlorine N/A</item>
+        <item id="q2-4-4-3-AOX-Maximum-Average-Monthly-Values-NA">AOX N/A</item>
+        <item id="q2-4-4-3-Hg-Minimum-Measured-Values">Hg Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q2-4-4-3-Chlorine-Minimum-Measured-Values">Chlorine Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q2-4-4-3-AOX-Minimum-Measured-Values">AOX Minimum of measured values (during normal operation of the plant)</item>
+        <item id="q2-4-4-3-Hg-Minimum-Measured-Values-NA">Hg N/A</item>
+        <item id="q2-4-4-3-Chlorine-Minimum-Measured-Values-NA">Chlorine N/A</item>
+        <item id="q2-4-4-3-AOX-Minimum-Measured-Values-NA">AOX N/A</item>
+        <item id="q2-4-4-3-Hg-Maximum-Measured-Values">Hg Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q2-4-4-3-Chlorine-Maximum-Measured-Values">Chlorine Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q2-4-4-3-AOX-Maximum-Measured-Values">AOX Maximum of measured values (during normal operation of the plant)</item>
+        <item id="q2-4-4-3-Hg-Maximum-Measured-Values-NA">Hg N/A</item>
+        <item id="q2-4-4-3-Chlorine-Maximum-Measured-Values-NA">Chlorine N/A</item>
+        <item id="q2-4-4-3-AOX-Maximum-Measured-Values-NA">AOX N/A</item>
+    <!-- end 'fake' questions -->
+    
+    <item id="q2-4-5">4.5. If available, please provide information on the abatement techniques applied:</item>
+  </itemset>
+</labels>
