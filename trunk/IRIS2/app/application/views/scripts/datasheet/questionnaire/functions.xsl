@@ -8,7 +8,7 @@
 
             <div id="colouredBand">
                 <h3><xsl:apply-templates select="//memberState/name" /></h3>
-                <a id="viewXml" href="./xml" title="View datasheet as XML">View as XML</a>
+                <a id="viewXml" href="?format=xml" title="View datasheet as XML">View as XML</a>
             </div>
         </div>
     </xsl:template>
