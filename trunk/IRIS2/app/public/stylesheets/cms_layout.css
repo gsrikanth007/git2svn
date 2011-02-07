@@ -160,7 +160,7 @@ div#leftcolumn ul.level1 ul.level2 ul.level3 ul.level4 li.section a {
  */
 div.flashMessage {
     display: block;
-    margin: 0 0 10px 15px; padding: 5px 8px; border: 1px solid #ffd35f;
+    margin: 0 0 10px 0; padding: 5px 8px; border: 1px solid #ffd35f;
     background-color: #fff2cf;
     font-size: 90%;
 }
