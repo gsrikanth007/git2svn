@@ -3,7 +3,7 @@
     <h2>Please make your search selections</h2>
 
     <form method="<?php echo $form->getMethod(); ?>" action="<?php echo $this->url(array('action' => 'results')); ?>">
-        <div id="colouredBand">
+        <div class="colouredBand">
             <div class="element">
                 <?php echo $form->q->renderViewHelper(); ?>
                 <?php echo $this->formSubmit('submit', 'Search', array('id' => 'submitOption')); ?>

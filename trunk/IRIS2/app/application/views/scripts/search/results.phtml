@@ -7,7 +7,7 @@
             <div id="searchResults" class="roundedAll">
                 <h2>Search Results</h2>
 
-                <div id="colouredBand">
+                <div class="colouredBand">
                     <?php if(count($this->paginator)): ?>
                         <p>Your search matched <?php if($this->search->getMatchCount() > 0): ?><strong><?php echo $this->search->getMatchCount(); ?></strong> keyword(s) in <?php endif; ?><strong><?php echo $this->search->getResultsCount(); ?></strong> results. Showing results <strong><?php echo $this->paginator->getPages()->firstItemNumber; ?></strong> to <strong><?php echo $this->paginator->getPages()->lastItemNumber; ?></strong>.</p>
                     <?php else: ?>

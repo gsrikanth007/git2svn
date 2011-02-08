@@ -178,13 +178,13 @@ div#dqtSearch div#content h2 {
     color: #00446a; background-color: transparent;
     font-size: 15px;
 }
-div#dqtSearch div#content div#colouredBand {
+div#dqtSearch div#content div.colouredBand {
     display: block;
     border-top: 1px solid #aaa; border-bottom: 1px solid #aaa;
     background-color: #b5cecf;
     clear: both;
 }
-div#dqtSearch div#content div#searchForm div#colouredBand {
+div#dqtSearch div#content div#searchForm div.colouredBand {
     height: 52px;
     padding: 0 30px;
 }
@@ -248,11 +248,11 @@ div#dqtSearch div#content div#searchResults {
     width: 100%;
     margin-top: 20px; padding-bottom: 15px; border: 1px solid #aaa;
 }
-div#dqtSearch div#content div#searchResults div#colouredBand {
+div#dqtSearch div#content div#searchResults div.colouredBand {
     height: 16px;
     padding: 10px 15px;
 }
-div#dqtSearch div#content div#searchResults div#colouredBand p {
+div#dqtSearch div#content div#searchResults div.colouredBand p {
     margin: 0; padding: 0;
 }
 div#dqtSearch div#content div#searchResultsContainer {

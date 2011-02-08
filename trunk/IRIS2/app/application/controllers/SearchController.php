@@ -59,8 +59,8 @@ class SearchController extends Iris_Controller {
         // Retrieve request query string (where applicable) and remove submit and page params
         parse_str($_SERVER['QUERY_STRING'], $queryString);
         unset($queryString['submit'], $queryString['page']);
-        $queryString = '?' . http_build_query($queryString);
-
+        $queryString = urlencode('?' . http_build_query($queryString));
+        
         // Add results to breadcrumbs
         $this->_breadcrumbs->append(array('Results', array('action' => 'results', 'controller' => 'search')));
 

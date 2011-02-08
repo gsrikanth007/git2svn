@@ -1,21 +1,21 @@
 <?php if ($this->pageCount): ?>
     <div class="paginationControl">
         <?php if(isset($this->previous)): ?>
-            <a class="previousOption" href="<?php echo $this->queryString; ?>&page=<?php echo $this->previous; ?>">&lt; Previous</a>
+            <a class="previousOption" href="<?php echo $this->queryString; ?>&amp;page=<?php echo $this->previous; ?>">&lt; Previous</a>
         <?php else: ?>
             <span class="previousOption disabled">&lt; Previous</span>
         <?php endif; ?>
 
         <?php foreach($this->pagesInRange as $page): ?>
             <?php if ($page != $this->current): ?>
-                <a class="pageOption" href="<?php echo $this->queryString; ?>&page=<?php echo $page; ?>"><?php echo $page; ?></a>
+                <a class="pageOption" href="<?php echo $this->queryString; ?>&amp;page=<?php echo $page; ?>"><?php echo $page; ?></a>
             <?php else: ?>
                 <span class="pageOption selected"><?php echo $page; ?></span>
             <?php endif; ?>
         <?php endforeach; ?>
 
         <?php if (isset($this->next)): ?>
-            <a class="nextOption" href="<?php echo $this->queryString; ?>&page=<?php echo $this->next; ?>">Next &gt;</a>
+            <a class="nextOption" href="<?php echo $this->queryString; ?>&amp;page=<?php echo $this->next; ?>">Next &gt;</a>
         <?php else: ?>
             <span class="nextOption disabled">Next &gt;</span>
         <?php endif; ?>
