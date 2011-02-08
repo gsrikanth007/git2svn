@@ -3,6 +3,7 @@
     <head>
         <% base_tag %>
         $MetaTags(false)
+        <meta http-equiv="content-language" content="en" />
         <title>$Title - $SiteConfig.Title - Eionet</title>
         <link rel="stylesheet" type="text/css" href="http://www.eionet.europa.eu/styles/eionet2007/screen.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="$ThemeDir/stylesheets/layout.css" media="screen" />
