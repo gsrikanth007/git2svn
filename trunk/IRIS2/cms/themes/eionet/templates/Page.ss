@@ -34,8 +34,8 @@
             <div id="toolribbon">
                 <div id="lefttools">
                     <a id="skiplink" href="#workarea" accesskey="2"><span>Skip to content</span></a>
-                    <a id="eealink" href="http://www.eea.europa.eu/" target="_blank">EEA</a>
-                    <a id="ewlink" href="http://ew.eea.europa.eu/" target="_blank">EnviroWindows</a>
+                    <a id="eealink" href="http://www.eea.europa.eu/">EEA</a>
+                    <a id="ewlink" href="http://ew.eea.europa.eu/">EnviroWindows</a>
                 </div>
 
                 <div id="righttools">
@@ -73,7 +73,7 @@
 
                 <div id="workarea">
                     <div id="irisContent">
-                        <a name="top"></a>
+                        <a id="top"></a>
                         $Layout
                     </div>
                 </div>
@@ -82,12 +82,12 @@
 
         <div id="pagefoot">
             <p>
-                <a href="http://www.eea.europa.eu/legal/copyright" title="&copy; Copyright 1995 - 2008" target="_blank">&copy; Copyright 1995 - 2008</a>,
-                <a href="http://www.eea.europa.eu/legal/disclaimer" title="Disclaimer" target="_blank">Disclaimer</a>,
-                <a href="http://www.eea.europa.eu/legal/privacy" title="Privacy Policy" target="_blank">Privacy Policy</a>,
-                Contact <a href="http://www.eea.europa.eu/help/contact-info" title="EEA Web Team" target="_blank">EEA Web Team</a>,
+                <a href="http://www.eea.europa.eu/legal/copyright" title="&copy; Copyright 1995 - 2008">&copy; Copyright 1995 - 2008</a>,
+                <a href="http://www.eea.europa.eu/legal/disclaimer" title="Disclaimer">Disclaimer</a>,
+                <a href="http://www.eea.europa.eu/legal/privacy" title="Privacy Policy">Privacy Policy</a>,
+                Contact <a href="http://www.eea.europa.eu/help/contact-info" title="EEA Web Team">EEA Web Team</a>,
                 Contact <a href="dqt/contact" title="DG Environment">DG Environment</a>,
-                <a href="http://ec.europa.eu/environment/air/pollutants/stationary/ippc/index.htm" title="IPPC Europa" target="_blank">IPPC Europa</a>
+                <a href="http://ec.europa.eu/environment/air/pollutants/stationary/ippc/index.htm" title="IPPC Europa">IPPC Europa</a>
             </p>
         </div>
     </body>

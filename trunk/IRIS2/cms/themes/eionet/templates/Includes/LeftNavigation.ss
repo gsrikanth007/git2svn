@@ -7,7 +7,7 @@
                     <ul class="level2">
                         <% control Children %>
                             <li class="$LinkOrSection <% if First %>first<% end_if %> <% if Last %>last<% end_if %>">
-                                <a class="<% if Children %>hasChildren<% end_if %>" href="$Link" title="$Title.XML">$MenuTitle</a>
+                                <a class="<% if Children %>hasChildren<% else %>noChildren<% end_if %>" href="$Link" title="$Title.XML">$MenuTitle</a>
                                 <% if LinkOrSection = section %>
                                     <% if Children %>
                                         <ul class="level3">
