@@ -66,9 +66,10 @@ $result = mysql_query($sql) or die($sql."<br/>".mysql_error());
   // BWD places
 while ($row = @mysql_fetch_assoc($result)) {
   echo "<BathingWater rdf:about='waters/".rdfid($row['numind'])."'>\n";
+  echo "<id>".htmlspecialchars($row['numind'])."</id>\n";
   echo "<name>".htmlspecialchars($row['Prelev'])."</name>\n";
-  echo "<country rdf:resource=\"http://rdfdata.eionet.europa.eu/eea/countries/".$row['cc']."\"/>\n";
-  echo "<countryName>".htmlspecialchars($row['Country'])."</countryName>\n";
+  echo "<inCountry rdf:resource=\"http://rdfdata.eionet.europa.eu/eea/countries/".$row['cc']."\"/>\n";
+  echo "<country>".htmlspecialchars($row['Country'])."</country>\n";
   echo "<region>".htmlspecialchars($row['Region'])."</region>\n";
   echo "<province>".htmlspecialchars($row['Province'])."</province>\n";
   echo "<commune>".htmlspecialchars($row['Commune'])."</commune>\n";
