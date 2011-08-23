@@ -5,8 +5,13 @@
 BWD water quality data/map viewer: FILE TO CREATE IMAGE WITH BAR GRAPH
 
 21.3.2008; first version
+17.5.2011;	update for 2010 season
 
 */
+
+// array of years for which graph is plotted | each season, additional year should be added
+$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010);
+
 if (!isset($_GET['GeoRegion'])) $_GET['GeoRegion'] = '';
 if (!isset($_GET['type'])) $_GET['type'] = '';
 if (!isset($_GET['cc'])) $_GET['cc'] = '';
@@ -31,34 +36,34 @@ mysql_query("SET NAMES 'utf8'");
 // 4=not compliant = RDEČA, 
 // 5=compliant to mandatory values = ZELENA
 $compliance_values = array('CG','B','NC','CI','NS','NF');
-$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009);
 
 foreach($compliance_values as $key=>$val) {
   $sql = "
     SELECT
-      (COUNT(IF(y2000 = '".$val."', 1, NULL))/COUNT(IF(y2000 IS NOT NULL, 1, NULL)) )*100 AS '2000',
-      (COUNT(IF(y2001 = '".$val."', 1, NULL))/COUNT(IF(y2001 IS NOT NULL, 1, NULL)) )*100 AS '2001',
-      (COUNT(IF(y2002 = '".$val."', 1, NULL))/COUNT(IF(y2002 IS NOT NULL, 1, NULL)) )*100 AS '2002',
-      (COUNT(IF(y2003 = '".$val."', 1, NULL))/COUNT(IF(y2003 IS NOT NULL, 1, NULL)) )*100 AS '2003',
-      (COUNT(IF(y2004 = '".$val."', 1, NULL))/COUNT(IF(y2004 IS NOT NULL, 1, NULL)) )*100 AS '2004',
-      (COUNT(IF(y2005 = '".$val."', 1, NULL))/COUNT(IF(y2005 IS NOT NULL, 1, NULL)) )*100 AS '2005',
-      (COUNT(IF(y2006 = '".$val."', 1, NULL))/COUNT(IF(y2006 IS NOT NULL, 1, NULL)) )*100 AS '2006',
-      (COUNT(IF(y2007 = '".$val."', 1, NULL))/COUNT(IF(y2007 IS NOT NULL, 1, NULL)) )*100 AS '2007',
-      (COUNT(IF(y2008 = '".$val."', 1, NULL))/COUNT(IF(y2008 IS NOT NULL, 1, NULL)) )*100 AS '2008',
-      (COUNT(IF(y2009 = '".$val."', 1, NULL))/COUNT(IF(y2009 IS NOT NULL, 1, NULL)) )*100 AS '2009',
-      COUNT(*) AS No_of_stations,													# only needed to display in title total or max. number of stations for all years
-      COUNT(IF(y2009 IS NOT NULL, 1, NULL)) AS No_of_stations_2009		# only needed to display in title: number of stations 20xx
-    FROM bwd_stations 
-	 WHERE 1 ";
+  ";
+  foreach($years as $ykey=>$year) {
+	// exception for GR, 2009, NFC stations
+	if($year == 2009) {
+		$sql .= " (COUNT(IF(y".$year." = '".$val."', 1, NULL))/COUNT(IF(y".$year." IS NOT NULL AND y2009 != 'NFC', 1, NULL)) )*100 AS '".$year."',\n";
+	} else {
+		$sql .= " (COUNT(IF(y".$year." = '".$val."', 1, NULL))/COUNT(IF(y".$year." IS NOT NULL, 1, NULL)) )*100 AS '".$year."',\n";
+	}
+  }
+  $sql .= "
+     #COUNT(*) AS No_of_stations,														# was only needed to display in title total or max. number of stations for all years; not neede anymore
+     COUNT(IF(y".end($years)." IS NOT NULL, 1, NULL)) AS No_of_stations_curr_year		# only needed to display in title: number of stations 20xx
+     FROM bwd_stations 
+	 WHERE 1 
+  ";
 
-// 3.6.2010; mkovacic: added new category for Greek NF data - NFC (white): these data are left out in statistics
-  $sql .= " AND y2009 != 'NFC'"; 
+  // 3.6.2010; mkovacic: added new category for Greek NF data - NFC (white): these data are left out in statistics
+  //$sql .= " AND (y2009 IS NULL OR y2009 != 'NFC') "; 
 
   if($_GET['GeoRegion'] != '')		$sql .= " AND geographic = '".$_GET['GeoRegion']."'";
 
   if($_GET['cc'] != "")  $sql .= " AND cc = '".$_GET['cc']."'";
   if($_GET['type'] == 'coast')  $sql .= " AND SeaWater = 'O'"; 
-  if($_GET['type'] == 'fresh')  $sql .= " AND SeaWater = 'N'"; 
+  if($_GET['type'] == 'inland')  $sql .= " AND SeaWater = 'N'"; 
   if($_GET['Region'] != "")     $sql .= " AND Region LIKE '".$_GET['Region']."'";
   if($_GET['Province'] != "")   $sql .= " AND Province LIKE '".$_GET['Province']."'";
   if($_GET['BathingPlace'] != "") $sql .= " AND Numind = '".$_GET['BathingPlace']."'";
@@ -68,6 +73,8 @@ foreach($compliance_values as $key=>$val) {
   elseif($_GET['Province'] != "")   $sql .= " GROUP BY Province";
   elseif($_GET['Region'] != "")     $sql .= " GROUP BY Region";
 
+
+
   $result = mysql_query($sql) or die($sql."<br>".mysql_error());
   $myrow = mysql_fetch_array($result);
   
@@ -76,6 +83,7 @@ foreach($compliance_values as $key=>$val) {
     //$data[$val][] = ($myrow[$val1] == 0)?'':$myrow[$val1];
     $data[$val][] = $myrow[$val1];
   }
+
 }
 
 
@@ -110,8 +118,8 @@ echo "</pre>";
 die;
 */
 
-// EU27 graph is bigger
-if($_GET['Country'] == 'EU27')  {
+// EUROPE graph is bigger
+if($_GET['Country'] == 'EUROPE')  {
   $graph_width = 900; $graph_height = 700;
 } else {
   $graph_width = 600; $graph_height = 450;
@@ -125,13 +133,13 @@ $graph->SetScale("textlin",0,100);  // set lower and upper Y value of graph
 
 // TITLE 
 $title = $_GET['Country'];
-if($_GET['GeoRegion'] != "") $title .= " (".substr($_GET['GeoRegion'],29).")";
+if($_GET['GeoRegion'] != "") $title .= " (".substr($_GET['GeoRegion'],0,25).")";
 if($_GET['Region'] != "") $title .= ", ".$_GET['Region'];
 if($_GET['Province'] != "") $title .= ", ".$_GET['Province'];
-$title .= ": ".$myrow['No_of_stations']." ";
+$title .= ": ".$myrow['No_of_stations_curr_year']." ";
 if($_GET['type'] == 'coast')  $title .= "coastal BW";
-if($_GET['type'] == 'fresh')  $title .= "freshwater BW";
-$title .= " (".$myrow['No_of_stations_2009']." in 2009)";
+if($_GET['type'] == 'inland')  $title .= "inland BW";
+$title .= " in ".end($years);
 
 $graph->title->Set(replaceUTFChars($title));
 
@@ -153,16 +161,27 @@ $graph->legend->Pos(0.1,0.4,"left","top");
 $graph->legend->SetShadow('darkgray@0.5');
 $graph->legend->SetFillColor('lightgray@0.3');
 
-// 4th LINE - Closed or banned /*2=prohibited throughout the season*/ = GRAY
-$p4 = new LinePlot($data['B']);
-$p4->mark->SetType(MARK_FILLEDCIRCLE);
-$p4->mark->SetFillColor("lightgray");
-$p4->mark->SetWidth(4);
-$p4->SetColor("gray");
-$p4 ->SetWeight(3);
-$p4->SetCenter();
-$p4->SetLegend("% ".complianceText('B'));
-$graph->Add($p4);
+// 1st LINE - 5=compliance with mandatory values = GREEN
+$p2 = new LinePlot($data['CI']);
+$p2->mark->SetType(MARK_FILLEDCIRCLE);
+$p2->mark->SetFillColor("lightgreen");
+$p2->mark->SetWidth(4);
+$p2->SetColor("lightgreen");
+$p2 ->SetWeight(3);
+$p2->SetCenter();
+$p2->SetLegend("% ".complianceText('CI'));
+$graph->Add($p2);
+
+// 2nd LINE - 1=compliance with guide values = BLUE
+$p1 = new LinePlot($data['CG']);
+$p1->mark->SetType(MARK_FILLEDCIRCLE);
+$p1->mark->SetFillColor("lightblue");
+$p1->mark->SetWidth(4);
+$p1->SetColor("lightblue");
+$p1 ->SetWeight(3);
+$p1->SetCenter();
+$p1->SetLegend("% ".complianceText('CG'));
+$graph->Add($p1);
 
 // 3rd LINE - 4=not compliant with mandatory values = RED
 $p3 = new LinePlot($data['NC']);
@@ -175,30 +194,16 @@ $p3->SetCenter();
 $p3->SetLegend("% ".complianceText('NC'));
 $graph->Add($p3);
 
-// 2nd LINE - 5=compliance with mandatory values = GREEN
-$p2 = new LinePlot($data['CI']);
-$p2->mark->SetType(MARK_FILLEDCIRCLE);
-$p2->mark->SetFillColor("lightgreen");
-$p2->mark->SetWidth(4);
-$p2->SetColor("lightgreen");
-$p2 ->SetWeight(3);
-$p2->SetCenter();
-$p2->SetLegend("% ".complianceText('CI'));
-$graph->Add($p2);
-
-// 1st LINE - 1=compliance with guide values = BLUE
-$p1 = new LinePlot($data['CG']);
-$p1->mark->SetType(MARK_FILLEDCIRCLE);
-$p1->mark->SetFillColor("lightblue");
-$p1->mark->SetWidth(4);
-$p1->SetColor("lightblue");
-$p1 ->SetWeight(3);
-$p1->SetCenter();
-$p1->SetLegend("% ".complianceText('CG'));
-$graph->Add($p1);
-
-
-
+// 4th LINE - Closed or banned /*2=prohibited throughout the season*/ = GRAY
+$p4 = new LinePlot($data['B']);
+$p4->mark->SetType(MARK_FILLEDCIRCLE);
+$p4->mark->SetFillColor("lightgray");
+$p4->mark->SetWidth(4);
+$p4->SetColor("gray");
+$p4 ->SetWeight(3);
+$p4->SetCenter();
+$p4->SetLegend("% ".complianceText('B'));
+$graph->Add($p4);
 
 /*
 // 5th LINE - Insufficiently samples = ORANGE
@@ -225,7 +230,15 @@ $graph->Add($p6);
 */
 
 if($_GET['cc'] == 'DE')  {
-	$t1 = new Text("* 2008 season: Since type for some bathing waters has been changed from freshwater to coastal\nor vice versa and are presented here as coastal and freshwater respectively from the beginning\nof reporting, the graph is slightly different as in the national report.");
+	$t1 = new Text("* 2008 season: Since type for some bathing waters has been changed from inland to coastal\nor vice versa and are presented here as coastal and inland respectively from the beginning\nof reporting, the graph is slightly different as in the national report.");
+	$t1->SetPos(0.05,405);
+	$t1->ParagraphAlign("left");
+	$t1->SetColor("black");
+	$graph->AddText($t1);
+}
+
+if(in_array($_GET['cc'], array('MT','LU','HU')))  {
+	$t1 = new Text("* 2010 season: The assessment of bathing water quality is done under the new bathing water\ndirective (Directive 2006/7/EC). The quality classes under the new bathing water directive\nare transformed to harmonise them with those under the old directive. ");
 	$t1->SetPos(0.05,405);
 	$t1->ParagraphAlign("left");
 	$t1->SetColor("black");
@@ -233,8 +246,9 @@ if($_GET['cc'] == 'DE')  {
 }
 
 
-if($_GET['cc'] == 'GR' && $_GET['type'] == 'fresh')  {
-	$t1 = new Text("* 2009 season: 2 incompletely sampled bathing waters are not included in the total number\nof freshwater bathing waters.");
+/*
+if($_GET['cc'] == 'GR' && $_GET['type'] == 'inland')  {
+	$t1 = new Text("* 2009 season: 2 incompletely sampled bathing waters are not included in the total number\nof inland bathing waters.");
 	$t1->SetPos(0.05,405);
 	$t1->ParagraphAlign("left");
 	$t1->SetColor("black");
@@ -248,7 +262,7 @@ if($_GET['cc'] == 'GR' && $_GET['type'] == 'coast')  {
 	$t1->SetColor("black");
 	$graph->AddText($t1);
 }
-
+*/
 
 // OUTPUT LINE
 $graph->Stroke();

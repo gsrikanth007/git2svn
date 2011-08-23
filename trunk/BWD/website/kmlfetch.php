@@ -88,15 +88,16 @@ $array_fields = array(
   'y2006' => 'Year 2006',
   'y2007' => 'Year 2007',
   'y2008' => 'Year 2008',
-  'y2009' => 'Year 2009');
+  'y2009' => 'Year 2009',
+  'y2010' => 'Year 2010');
 
-$lastknownyear = 'y2009';
+$lastknownyear = 'y2010';
 
 $sql = "
   SELECT 
 	UPPER(c.Country) AS Country,
 	s.numind, s.latitude, s.longitude, s.WaterType AS Type, s.Region, s.Province, s.Commune, s.Prelev, 
-	s.y2000, s.y2001, s.y2002, s.y2003, s.y2004, s.y2005, s.y2006, s.y2007, s.y2008, s.y2009   
+	s.y2000, s.y2001, s.y2002, s.y2003, s.y2004, s.y2005, s.y2006, s.y2007, s.y2008, s.y2009, s.y2010
   FROM bwd_stations s
   LEFT JOIN countrycodes_iso c ON s.cc = c.ISO2 ";
 $sql .= " WHERE latitude > ".$maxs." AND latitude < ".$maxn." AND longitude > ".$maxw." AND longitude < ".$maxe;

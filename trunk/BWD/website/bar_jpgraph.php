@@ -5,8 +5,12 @@
 BWD water quality data/map viewer: FILE TO CREATE IMAGE WITH BAR GRAPH
 
 21.3.2008; first version
+17.5.2011;	update for 2010 season
 
 */
+
+// array of years for which graph is plotted | each season, additional year should be added
+$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010);
 
 
 if (!isset($_GET['GeoRegion'])) $_GET['GeoRegion'] = '';
@@ -38,33 +42,27 @@ header('Content-Type: text/html; charset=utf-8');
 // NFC = incompletely sampled
 if($_GET['cc'] == 'GR')		$compliance_values = array('CG','B','NC','CI','NS','NF','NFC');
 else						$compliance_values = array('CG','B','NC','CI','NS','NF');
-$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009);
 
 foreach($compliance_values as $key=>$val) {
   $sql = "
     SELECT
-      (COUNT(IF(y2000 = '".$val."', 1, NULL))/COUNT(IF(y2000 IS NOT NULL, 1, NULL)) )*100 AS '2000',
-      (COUNT(IF(y2001 = '".$val."', 1, NULL))/COUNT(IF(y2001 IS NOT NULL, 1, NULL)) )*100 AS '2001',
-      (COUNT(IF(y2002 = '".$val."', 1, NULL))/COUNT(IF(y2002 IS NOT NULL, 1, NULL)) )*100 AS '2002',
-      (COUNT(IF(y2003 = '".$val."', 1, NULL))/COUNT(IF(y2003 IS NOT NULL, 1, NULL)) )*100 AS '2003',
-      (COUNT(IF(y2004 = '".$val."', 1, NULL))/COUNT(IF(y2004 IS NOT NULL, 1, NULL)) )*100 AS '2004',
-      (COUNT(IF(y2005 = '".$val."', 1, NULL))/COUNT(IF(y2005 IS NOT NULL, 1, NULL)) )*100 AS '2005',
-      (COUNT(IF(y2006 = '".$val."', 1, NULL))/COUNT(IF(y2006 IS NOT NULL, 1, NULL)) )*100 AS '2006',
-      (COUNT(IF(y2007 = '".$val."', 1, NULL))/COUNT(IF(y2007 IS NOT NULL, 1, NULL)) )*100 AS '2007',
-      (COUNT(IF(y2008 = '".$val."', 1, NULL))/COUNT(IF(y2008 IS NOT NULL, 1, NULL)) )*100 AS '2008',
-      (COUNT(IF(y2009 = '".$val."', 1, NULL))/COUNT(IF(y2009 IS NOT NULL, 1, NULL)) )*100 AS '2009',
+  ";
+  foreach($years as $ykey=>$year) {
+	$sql .= " (COUNT(IF(y".$year." = '".$val."', 1, NULL))/COUNT(IF(y".$year." IS NOT NULL, 1, NULL)) )*100 AS '".$year."',\n";
+  }
+  $sql .= "
       COUNT(*) AS No_of_stations,													# only needed to display in title total or max. number of stations for all years
-      COUNT(IF(y2009 IS NOT NULL, 1, NULL)) AS No_of_stations_2009,		# only needed to display in title: number of stations 2009
+      COUNT(IF(y".end($years)." IS NOT NULL, 1, NULL)) AS No_of_stations_curr_year,		# only needed to display in title: number of stations 2010
       Prelev,
       SeaWater
     FROM bwd_stations 
-	 WHERE 1 ";
+	WHERE 1 ";
   
   if($_GET['GeoRegion'] != '')		$sql .= " AND geographic = '".$_GET['GeoRegion']."'";
 
   // CONDITION
   if($_GET['type'] == 'coast')  $sql .= " AND SeaWater = 'O'"; 
-  if($_GET['type'] == 'fresh')  $sql .= " AND SeaWater = 'N'"; 
+  if($_GET['type'] == 'inland')  $sql .= " AND SeaWater = 'N'"; 
   if($_GET['Region'] != "")   $sql .= ' AND Region LIKE "'.$_GET['Region'].'"';
   if($_GET['Province'] != "") $sql .= ' AND Province LIKE "'.$_GET['Province'].'"';
   if($_GET['BathingPlace'] != "") $sql .= ' AND Numind = "'.$_GET['BathingPlace'].'"';
@@ -76,7 +74,8 @@ foreach($compliance_values as $key=>$val) {
 
   $result = mysql_query($sql) or die($sql."<br>".mysql_error());
   $myrow = mysql_fetch_array($result);
-  
+
+
   foreach($years as $key1=>$val1) {
     // to shift 0 values a little above the bottom; disabled
     //$data[$val][] = ($myrow[$val1] < 1)?0.2:$myrow[$val1];
@@ -105,9 +104,9 @@ die;
 // **********************
 // STATUS GRAPH IF BATHING WATER IS SELECTED 
 if($_GET['BathingPlace'] != "")  {
-    // coastal or freshwater in title
+    // coastal or inland in title
     if($_GET['type'] == 'coast' || $myrow['SeaWater'] == 'O')  $title = "Coastal: ".$myrow['Prelev'];
-    if($_GET['type'] == 'fresh' || $myrow['SeaWater'] == 'N')  $title = "Freshwater: ".$myrow['Prelev'];
+    if($_GET['type'] == 'inland' || $myrow['SeaWater'] == 'N')  $title = "Inland: ".$myrow['Prelev'];
     
     // status graph for bw is smaller
     $graph_width = 500; 
@@ -131,12 +130,12 @@ else {
     //$title = $_GET['Country'];
 	 //if($_GET['GeoRegion'] != "") $title .= " (".substr($_GET['GeoRegion'],29).")";
     // 11.05.2009; mkovacic; name in bar graph starts with region
-	 if($_GET['Region'] != "") $title = $_GET['Region'];
+	if($_GET['Region'] != "") $title = $_GET['Region'];
     if($_GET['Province'] != "") $title .= ", ".$_GET['Province'];
-    $title .= ": ".$myrow['No_of_stations']." ";
+    $title .= ": ".$myrow['No_of_stations_curr_year']." ";
     if($_GET['type'] == 'coast')  $title .= "coastal BW";
-    if($_GET['type'] == 'fresh')  $title .= "freshwater BW";
-	 $title .= " (".$myrow['No_of_stations_2009']." in 2009)";
+    if($_GET['type'] == 'inland')  $title .= "inland BW";
+	$title .= " in ".end($years);
 
     // default graph dimensions
     $graph_width = 600; 
@@ -228,7 +227,6 @@ if($_GET['cc'] == 'GR')  {
 	$b6plot->SetFillColor(complianceColor('NFC'));
 	$b6plot->SetLegend($procent.complianceText('NFC'));
 }
-
 // CREATE THE GROUPED BAR PLOT
 if($_GET['cc'] == 'GR')		$gbplot = new AccBarPlot(array($b6plot,$b0plot,$b5plot,$b1plot,$b2plot,$b3plot,$b4plot));
 else						$gbplot = new AccBarPlot(array($b0plot,$b5plot,$b1plot,$b2plot,$b3plot,$b4plot));

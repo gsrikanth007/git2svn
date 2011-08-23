@@ -7,6 +7,7 @@ BWD water quality data/map viewer: MAIN FILE WITH COUNTRY LISTING, MAPS, GRAPHS,
 21.3.2008;	first version
 04/2009;	update for 2008 season
 21.4.2010;	update for 2009 season
+17.5.2011;	update for 2010 season
 */
 
 include('config.php');
@@ -126,9 +127,9 @@ echo "
 	<p>
 	<img src='images/SlanaVodaGrafX.jpg' border='0' alt='no coastal graph'/> - Indicates that there are no coastal bathing waters in selected <u>country</u>, <u>region</u> or <u>province</u>, so no graph can be displayed.
 	<br/>
-	<img src='images/SladkaVodaGraf.jpg' border='0' alt='freshwater graph'/> - Graph for <b>freshwater</b> bathing waters, same as for <b>coastal graph</b> applies here.
+	<img src='images/SladkaVodaGraf.jpg' border='0' alt='inland graph'/> - Graph for <b>inland</b> bathing waters, same as for <b>coastal graph</b> applies here.
 	<br/>
-	<img src='images/SladkaVodaGrafX.jpg' border='0' alt='no freshwater graph'/> - Indicates that there are no freshwater bathing waters in selected <u>country</u>, <u>region</u> or <u>province</u>, so no graph can be displayed.
+	<img src='images/SladkaVodaGrafX.jpg' border='0' alt='no inland graph'/> - Indicates that there are no inland bathing waters in selected <u>country</u>, <u>region</u> or <u>province</u>, so no graph can be displayed.
 	</p>
 	<div style='position: absolute; top: 0px; right: 10px;'>
 		<a onclick='javascript: document.getElementById(\"help_div\").style.display=\"none\";' style='cursor: hand; cursor: pointer; ' >[close]</a>
@@ -156,7 +157,8 @@ echo '<div style="position: relative;">';
 echo '<span id="map_font" style="font-weight: bold; color: white; "></span>';
 echo '<div style="position: absolute; top: 0px; right: 10px;"><a onclick="HideContent(\'map_div\',\'map_font\'); return true;" href="javascript:HideContent(\'map_div\',\'map_font\')">[close]</a></div><br/><br/>';
 echo '<img id="map_img" src="images/loading.gif" border="0" alt=""/>';
-echo '<br/><br/><img id="legend_img" src="provinces/legenda.png" border="0" alt="map of provinces"/>';
+// mkovacic: 20.5.2011; hide the legend
+//echo '<br/><br/><img id="legend_img" src="provinces/legenda.png" border="0" alt="map of provinces"/>';
 echo '</div>';
 echo '</div>';
 
@@ -195,20 +197,20 @@ echo "<th>Province</th>";
 echo "<th>Bathing water</th>";
 echo "<th>Visualisation</th></tr>\n";
 
-// FIRST DATA ROW: EU 27
+// FIRST DATA ROW: EUROPE
 echo "<tr id='eu_row' style='";
 if ($_GET['GeoRegion'] != '')	echo "background-color: #D7F5FF;";
 else							echo "background-color: #F7F7F7;";
 echo "'>";
 echo "  <td class='country' height='".$td_height."'>";
 if (file_exists("images/flags/Europe.jpg"))
-	echo "<img src='images/flags/Europe.jpg' border='0' alt='Europe'/> ";
-echo "EU 27";
+	echo "<img src='images/flags/Europe.jpg' border='0' alt='EUROPE'/> ";
+echo "EUROPE";
 echo "</td>\n";
 
-// EU 27-GEOGRAPHIC REGION
+// EUROPE-GEOGRAPHIC REGION
 echo "  <td>";
-echo "<select style='width: 176px;' name='EU27_georegion' id='EU27_georegion' onchange='document.location=\"index.php?cc=EU27&amp;GeoRegion=\" + this.value'>\n";
+echo "<select style='width: 176px;' name='EU27_georegion' id='EU27_georegion' onchange='document.location=\"index.php?cc=EUROPE&amp;GeoRegion=\" + this.value'>";
 $sql_georegion = "
 		SELECT geographic, COUNT(*) AS no_of_stations
 		FROM bwd_stations
@@ -221,15 +223,15 @@ while ($myrow_georegion = mysql_fetch_array($result_georegion)) {
 	if ($myrow_georegion['geographic'] != '') {
 		echo "<option value='".$myrow_georegion['geographic']."'";
 		if ($myrow_georegion['geographic'] == $_GET['GeoRegion']) 	echo " selected='selected'";
-		echo ">".substr($myrow_georegion['geographic'],29)."</option>\n";
+		echo ">".substr($myrow_georegion['geographic'],0,25)."</option>\n";
 	} // END if
 } // END while
-echo "</select>\n";
+echo "</select>";
 //  echo "&nbsp;";
   
-  // EU 27-GEOGRAPHIC REGION MAP
+  // EUROPE-GEOGRAPHIC REGION MAP
 if (file_exists("regions/geographic_region.png")) {
-	echo "<a title='Geographic region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/geographic_region.png','EU 27 - Geographic region map','725px','735px','220px','160px'); \"><img src='images/Regije.gif' alt='Geographic region map'/></a>";
+	echo "<a title='Geographic region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/geographic_region.png','EUROPE - Geographic region map for the territory of reporting countries','725px','735px','220px','160px'); \"><img src='images/Regije.gif' alt='Geographic region map'/></a>";
 }
 echo "</td>\n";
 
@@ -239,26 +241,26 @@ echo "  <td>";
 echo "<span style='color:gray'>";
 if ($_GET['GeoRegion'] != '')	echo $eu27_stations[$_GET['GeoRegion']];
 else									echo array_sum($eu27_stations);
-echo " bathing waters";
+echo " total bathing waters";
 echo "</span>";
 echo "</td>\n";
 
 echo "  <td align='right'>";
-// EU 27-GOOGLE EARTH
-if ($_GET['cc'] == 'EU27' && $_GET['GeoRegion'] != '')	{
-	$title_string = "EU 27: ".substr($_GET['GeoRegion'],29);
+// EUROPE-GOOGLE EARTH
+if ($_GET['cc'] == 'EUROPE' && $_GET['GeoRegion'] != '')	{
+	$title_string = "EUROPE: ".substr($_GET['GeoRegion'],0,25);
 } else {
-	$title_string = "EU 27";
+	$title_string = "EUROPE";
 }
 
-echo "<a title='Google Earth KML - ".$title_string."' href='kml_export.php?cc=EU27&amp;GeoRegion=".$_GET['GeoRegion']."'><img src='images/kml.gif' width='16' height='16' border='0'  alt='Google Earth KML - ".$title_string."'/></a>";
+echo "<a title='Google Earth KML - ".$title_string."' href='kml_export.php?cc=EUROPE&amp;GeoRegion=".$_GET['GeoRegion']."'><img src='images/kml.gif' width='16' height='16' border='0'  alt='Google Earth KML - ".$title_string."'/></a>";
 echo "&nbsp;";
 
-// EU 27-GRAPH COASTAL
-echo "<a title='Quality of coastal bathing waters' style='cursor:pointer; cursor:hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','line_jpgraph.php?Country=EU27&amp;GeoRegion=".$_GET['GeoRegion']."&amp;type=coast','','950px','750px','10px','160px'); return true;\"><img src='images/SlanaVodaGraf.jpg' border='0'  alt='Quality of coastal bathing waters'/></a>";
+// EUROPE-GRAPH COASTAL
+echo "<a title='Quality of coastal bathing waters' style='cursor:pointer; cursor:hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','line_jpgraph.php?Country=EUROPE&amp;GeoRegion=".$_GET['GeoRegion']."&amp;type=coast','','950px','750px','10px','160px'); return true;\"><img src='images/SlanaVodaGraf.jpg' border='0'  alt='Quality of coastal bathing waters'/></a>";
 echo "&nbsp;";
-// EU 27-GRAPH FRESHWATER
-echo "<a title='Quality of freshwater bathing waters' style='cursor:pointer; cursor:hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','line_jpgraph.php?Country=EU27&amp;GeoRegion=".$_GET['GeoRegion']."&amp;type=fresh','','950px','750px','10px','160px'); return true;\" ><img  src='images/SladkaVodaGraf.jpg' border='0' alt='Quality of freshwater bathing waters'/></a>";
+// EUROPE-GRAPH INLAND
+echo "<a title='Quality of inland bathing waters' style='cursor:pointer; cursor:hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','line_jpgraph.php?Country=EUROPE&amp;GeoRegion=".$_GET['GeoRegion']."&amp;type=inland','','950px','750px','10px','160px'); return true;\" ><img  src='images/SladkaVodaGraf.jpg' border='0' alt='Quality of inland bathing waters'/></a>";
 echo "</td>\n";
 echo "</tr>\n";
 
@@ -268,7 +270,7 @@ $sql = '
   SELECT 
       UPPER(c.Country) AS Country, s.cc, c.NationalName AS NationalName,
       COUNT(IF(SeaWater = "O",1,NULL)) AS "coast_stations",
-      COUNT(IF(SeaWater = "N",1,NULL)) AS "freshwater_stations"
+      COUNT(IF(SeaWater = "N",1,NULL)) AS "inland_stations"
   FROM bwd_stations s
   LEFT JOIN countrycodes_iso c ON s.cc = c.ISO2 ';
 
@@ -278,7 +280,7 @@ if ($_GET['GeoRegion'] != '')
 $sql .= 'GROUP BY s.cc ORDER BY c.Country';
 
 if ($_GET['GeoRegion'] == '')	
-   $sql = "SELECT UPPER(c.Country) AS Country, s.cc, c.NationalName AS NationalName, sum(coast_stations) as coast_stations, sum(freshwater_stations) as freshwater_stations from bwd_regions s LEFT JOIN countrycodes_iso c ON s.cc = c.ISO2 GROUP BY s.cc ORDER BY c.Country";
+   $sql = "SELECT UPPER(c.Country) AS Country, s.cc, c.NationalName AS NationalName, SUM(coast_stations) AS coast_stations, SUM(freshwater_stations) as inland_stations FROM bwd_regions s LEFT JOIN countrycodes_iso c ON s.cc = c.ISO2 GROUP BY s.cc ORDER BY c.Country";
 
 $result = mysql_query($sql) or die(mysql_error()."<br/>".$sql);
 
@@ -288,21 +290,21 @@ $result = mysql_query($sql) or die(mysql_error()."<br/>".$sql);
 
 // Initialise variables
 $country_coast_stations = array();
-$country_freshwater_stations = array();
-$region_freshwater_stations = array();
+$country_inland_stations = array();
+$region_inland_stations = array();
 $region_coast_stations = array();
 $province_coast_stations = array();
-$province_freshwater_stations = array();
+$province_inland_stations = array();
 
 // LOOP THROUGH COUNTRY-DATA
 while ($myrow = mysql_fetch_array($result)) {
 
 	$country_coast_stations[$counter] = 0;
-	$country_freshwater_stations[$counter] = 0;
-	$region_freshwater_stations[$counter] = 0;
+	$country_inland_stations[$counter] = 0;
+	$region_inland_stations[$counter] = 0;
 	$region_coast_stations[$counter] = 0;
 	$province_coast_stations[$counter] = 0;
-	$province_freshwater_stations[$counter] = 0;
+	$province_inland_stations[$counter] = 0;
 
 	echo "<tr id='tr_".$counter."' class='";
 	if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '')  echo "selected";
@@ -322,13 +324,13 @@ while ($myrow = mysql_fetch_array($result)) {
     
     // Number of bathing places
     $country_coast_stations[$counter] = $myrow['coast_stations'];
-    $country_freshwater_stations[$counter] = $myrow['freshwater_stations']; 
+    $country_inland_stations[$counter] = $myrow['inland_stations']; 
 
     // REGION
     echo "  <td>";
 	
 	$sql_region = "
-          SELECT Region, COUNT(IF(SeaWater = 'O',1,NULL)) AS 'coast_stations', COUNT(IF(SeaWater = 'N',1,NULL)) AS 'freshwater_stations'
+          SELECT Region, COUNT(IF(SeaWater = 'O',1,NULL)) AS 'coast_stations', COUNT(IF(SeaWater = 'N',1,NULL)) AS 'inland_stations'
           FROM bwd_stations ";
 	if ($_GET['GeoRegion'] != '')	
 		  $sql_region .= "WHERE geographic = '".$_GET['GeoRegion']."' AND ";
@@ -340,7 +342,7 @@ while ($myrow = mysql_fetch_array($result)) {
           ORDER BY Region
 	";
     if ($_GET['GeoRegion'] == '')	{
-		$sql_region = "SELECT Region, coast_stations, freshwater_stations FROM bwd_regions WHERE cc = '".$myrow['cc']."' ORDER BY Region";
+		$sql_region = "SELECT Region, coast_stations, freshwater_stations AS inland_stations FROM bwd_regions WHERE cc = '".$myrow['cc']."' ORDER BY Region";
     }
 
 	$result_region = mysql_query($sql_region);
@@ -351,23 +353,23 @@ while ($myrow = mysql_fetch_array($result)) {
 	// 7.6.2010; mkovacic: if there is only 1 region, select box has this region displayed and is disabled
 		echo "<select style='width: 176px;' name='".$myrow['cc']."_region' id='".$myrow['cc']."_region' onchange='document.location=\"index.php?cc=".$myrow['cc']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=\" + this.value' ";
 		if(mysql_num_rows($result_region) == 1)	echo "disabled";
-		echo ">\n";
-		echo "<option value='' selected='selected'>--- Region ---</option>\n";
+		echo ">";
+		echo "<option value='' selected='selected'>--- Region ---</option>";
 		$tmp_region = '';
 	
 		while ($myrow_region = mysql_fetch_array($result_region)) {
 			echo "<option value='".$myrow_region['Region']."'";
 			if (($myrow['cc'] == $_GET['cc'] && $myrow_region['Region'] == $_GET['Region']) || mysql_num_rows($result_region) == 1) {
 				echo " selected='selected'";
-				$region_freshwater_stations[$counter]  = $myrow_region['freshwater_stations'];
+				$region_inland_stations[$counter]  = $myrow_region['inland_stations'];
 				$region_coast_stations[$counter]  = $myrow_region['coast_stations'];
 			}
-			echo ">".($myrow_region['Region'])."</option>\n";
+			echo ">".($myrow_region['Region'])."</option>";
 			
 			// 7.6.2010; mkovacic: if there is only 1 region, it is passed on as $_GET
 			if(mysql_num_rows($result_region) == 1)		$tmp_region = $myrow_region['Region']; 
 		}
-		echo "</select>\n";
+		echo "</select>";
 		  
 		// SHOW BUTTON FOR REGION-MAP IF MAP EXISTS 
 		// set region-map position - shift from top 
@@ -375,7 +377,7 @@ while ($myrow = mysql_fetch_array($result)) {
 		else					$top_shift = ($counter*($td_height+5))-585;
 
 		if (file_exists("regions/pdf_".strtolower($myrow['cc'])."_regions.png")) {
-			echo "<a title='".$myrow['Country']." region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/pdf_".strtolower($myrow['cc'])."_regions.png','".$myrow['Country']." - region map','725px','735px','150px','".$top_shift."px'); \"><img src='images/Regije.gif' alt='".$myrow['Country']." - region map'/></a>";
+			echo "<a title='".$myrow['Country']." region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/pdf_".strtolower($myrow['cc'])."_regions.png','".$myrow['Country']." - region map','725px','750px','150px','".$top_shift."px'); \"><img src='images/Regije.gif' alt='".$myrow['Country']." - region map'/></a>";
 		}
 
 	echo "</td>\n";
@@ -387,7 +389,7 @@ while ($myrow = mysql_fetch_array($result)) {
 	if (($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '') || mysql_num_rows($result_region) == 1) {
 		
 		$sql_province = "
-			SELECT Province, COUNT(IF(SeaWater = 'O',1,NULL)) AS 'coast_stations', COUNT(IF(SeaWater = 'N',1,NULL)) AS 'freshwater_stations'
+			SELECT Province, COUNT(IF(SeaWater = 'O',1,NULL)) AS 'coast_stations', COUNT(IF(SeaWater = 'N',1,NULL)) AS 'inland_stations'
 			FROM bwd_stations ";
 		if ($_GET['GeoRegion'] != '')	$sql_province .= "WHERE geographic = '".$_GET['GeoRegion']."' AND ";
 		else
@@ -409,7 +411,7 @@ while ($myrow = mysql_fetch_array($result)) {
 // echo "<br>".$sql_province;
 		
 		echo "<select style='visibility: visible; width: 190px;' ";
-		echo "name='".$myrow['cc']."_province' id='".$myrow['cc']."_province' onchange='document.location=\"index.php?cc=".$myrow['cc']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=".((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region'])."&amp;Province=\" + (this.value);'>\n";
+		echo "name='".$myrow['cc']."_province' id='".$myrow['cc']."_province' onchange='document.location=\"index.php?cc=".$myrow['cc']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=".((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region'])."&amp;Province=\" + (this.value);'>";
 		echo "<option value='' selected='selected'>--- Province ---</option>\n";
 		while ($myrow_province = mysql_fetch_array($result_province)) {
 			echo "<option value='".convertUTFtoHTML($myrow_province['Province'])."'";
@@ -417,12 +419,12 @@ while ($myrow = mysql_fetch_array($result)) {
 			// 10.5.2008; če je enojni apostrof ' v stringu, tukaj vržem ven escape character: L\'AQUILA -> L'AQUILA
 			if ($myrow_province['Province'] == str_replace("\\","",$_GET['Province'])) {
 				echo " selected='selected'";
-				$province_freshwater_stations[$counter] = $myrow_province['freshwater_stations'];
+				$province_inland_stations[$counter] = $myrow_province['inland_stations'];
 				$province_coast_stations[$counter]  = $myrow_province['coast_stations'];
 			}
 			echo ">".$myrow_province['Province']."</option>\n";
 		}
-		echo "</select>\n";
+		echo "</select>";
 //      echo "&nbsp;";
 	  
 		// SHOW BUTTON FOR PROVINCE-MAP IF MAP EXISTS 
@@ -451,7 +453,7 @@ echo $file_province_map;
 				echo "style='visibility: visible; cursor:pointer; cursor: hand;'";
 			else                                                      
 				echo "style='visibility: hidden; cursor:pointer; cursor: hand;'";
-			echo "title='".$myrow['Country']." province map'  onclick=\"ShowContent('map_div','map_font','map_img','".$file_province_map ."','".$myrow['Country']." - ".((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region'])." - province map','725px','925px','150px','".$top_shift."px'); \"><img src='images/Regije.gif' border='0' alt='".$myrow['Country']." - province map'/></a>";
+			echo "title='".$myrow['Country']." province map'  onclick=\"ShowContent('map_div','map_font','map_img','".$file_province_map ."','".$myrow['Country']." - ".((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region'])." - province map','725px','750px','150px','".$top_shift."px'); \"><img src='images/Regije.gif' border='0' alt='".$myrow['Country']." - province map'/></a>";
 		}
 	}
 	else
@@ -462,11 +464,11 @@ echo $file_province_map;
     // BATHING PLACES
 	
 	if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '' && $_GET['Province'] != '')
-		$sum_bw = $province_coast_stations[$counter]+$province_freshwater_stations[$counter];
+		$sum_bw = $province_coast_stations[$counter]+$province_inland_stations[$counter];
 	elseif ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '')
-		$sum_bw = $region_coast_stations[$counter]+$region_freshwater_stations[$counter];
+		$sum_bw = $region_coast_stations[$counter]+$region_inland_stations[$counter];
 	else
-		$sum_bw = $country_coast_stations[$counter]+$country_freshwater_stations[$counter]; 
+		$sum_bw = $country_coast_stations[$counter]+$country_inland_stations[$counter]; 
 	
 	// set graph position - shift from top 
 	if ($counter < 14)		$top_shift = 190+($counter*($td_height+5));
@@ -478,7 +480,7 @@ echo $file_province_map;
 	if (($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '' && $_GET['Province'] != '') || $sum_bw <= 100 )		echo "";
 	else {
 	    echo "<span style='color:gray'>";
-		echo $sum_bw." bathing waters ";
+		echo $sum_bw." total bathing waters ";
 		if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '')        echo "in selected region";
 		echo "</span>";
 	}
@@ -515,7 +517,7 @@ echo $file_province_map;
 		echo "onchange=\"if(this.value != '') {HideContent('map_div','map_font'); ShowContent('graph_div','graph_font','graph_img','bar_jpgraph.php?cc=".$myrow['cc']."&amp;Country=".$myrow['Country']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=".convertUTFtoHTML($bp_region)."&amp;Province=".convertUTFtoHTML($bp_province)."&amp;BathingPlace=' + document.getElementById('".$myrow['cc']."_bplace').value,'','550px','270px','300px','".$top_shift."px'); return true;} else {HideContent('graph_div','graph_font');}\" ";
 		
 		echo ">\n";
-		echo "<option value='' selected='selected'>--- ".$sum_bw." bathing waters ";
+		echo "<option value='' selected='selected'>--- ".$sum_bw." total bathing waters ";
 		echo " ---</option>\n";
 		//if ($_GET['cc'] == $myrow['cc']) {
 			while ($myrow_bplace = mysql_fetch_array($result_bplace)) {
@@ -568,18 +570,18 @@ echo $file_province_map;
 	if (($_GET['Province'] != "") && $_GET['cc'] == $myrow['cc'])
         $link_za_graf = "bar_jpgraph.php?cc=".$myrow['cc']."&amp;Country=".$myrow['Country']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=".$_GET['Region']."&amp;Province=".$_GET['Province'];
 
-	// 10.5.2008; CHANGE DEFAULT ICON WITH DISABLED-ICON, IF THERE IS NO COASTAL/FRESHWATER BW IN COUNTRY/REGION/PROVINCE
+	// 10.5.2008; CHANGE DEFAULT ICON WITH DISABLED-ICON, IF THERE IS NO COASTAL/inland BW IN COUNTRY/REGION/PROVINCE
 	$coast_disabled = 0;
 	$fresh_disabled = 0;
 	if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '' && $_GET['Province'] != '') {
         if ($province_coast_stations[$counter] == 0)       $coast_disabled = 1; 
-        if ($province_freshwater_stations[$counter] == 0)  $fresh_disabled = 1;
+        if ($province_inland_stations[$counter] == 0)  $fresh_disabled = 1;
 	} elseif ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '') {
         if ($region_coast_stations[$counter] == 0)         $coast_disabled = 1; 
-        if ($region_freshwater_stations[$counter] == 0)    $fresh_disabled = 1; 
+        if ($region_inland_stations[$counter] == 0)    $fresh_disabled = 1; 
 	} else {
         if ($myrow['coast_stations'] == 0)       $coast_disabled = 1; 
-        if ($myrow['freshwater_stations'] == 0)  $fresh_disabled = 1; 
+        if ($myrow['inland_stations'] == 0)  $fresh_disabled = 1; 
 	}
 
 
@@ -622,13 +624,13 @@ echo $file_province_map;
 	}
 	echo "&nbsp;";
         
-	// IF NO FRESHWATER BW: ONLY IMG ONMOUSEOVER
+	// IF NO inland BW: ONLY IMG ONMOUSEOVER
 	if ($fresh_disabled) {
-		$title_graf = "No freshwater bathing waters in this Country/Region/Province";
+		$title_graf = "No inland bathing waters in this Country/Region/Province";
 		echo "<img alt='".$title_graf."' title='".$title_graf."' src='images/SladkaVodaGrafX.jpg' border='0'/>";
 	} else {
-		$title_graf = "Quality of freshwater bathing waters in this Country/Region/Province"; // - ".$myrow['Country'];
-		echo "<a title='".$title_graf."' style='cursor:pointer; cursor: hand;'  onclick=\"ShowContent('graph_div','graph_font','graph_img','".convertUTFtoHTML($link_za_graf)."&amp;type=fresh','','640px','500px','180px','".$top_shift."px'); \"><img src='images/SladkaVodaGraf.jpg' border='0' alt='".$title_graf."'/></a>";
+		$title_graf = "Quality of inland bathing waters in this Country/Region/Province"; // - ".$myrow['Country'];
+		echo "<a title='".$title_graf."' style='cursor:pointer; cursor: hand;'  onclick=\"ShowContent('graph_div','graph_font','graph_img','".convertUTFtoHTML($link_za_graf)."&amp;type=inland','','640px','500px','180px','".$top_shift."px'); \"><img src='images/SladkaVodaGraf.jpg' border='0' alt='".$title_graf."'/></a>";
 	}
  
     echo "</td>\n";
@@ -648,7 +650,7 @@ echo "<img src='images/kml.gif' width='16' height='16' border='0'  alt='KML icon
 <a target='_NEW_WINDOW' href='http://earth.google.com/download-earth.html'>http://earth.google.com/download-earth.html</a>";
 echo "</th>";
 echo "<th style='text-align:right; width:20%'>";
-echo "Last update: 9.6.2010";
+echo "Last update: 20.5.2011";
 echo "</th>";
 echo "</table>\n";
 

@@ -79,11 +79,11 @@ function complianceCharacter($value) {
 function complianceText($value) {
   switch($value) {
       case 'NS':	Return "Not sampled"; break;
-      case 'CG':	Return "Excellent (Compliant to guide values)"; break;
-      case 'B':	Return "Banned or closed throughout the season"; break;		
+      case 'CG':	Return "Compliant to guide values / Excellent"; break;
+      case 'B':	Return "Banned or closed"; break;		
       case 'NF':	Return "Insufficiently sampled"; break;
-      case 'NC':	Return "Poor (Not compliant with mandatory values)"; break;
-      case 'CI':	 Return "Good (Compliant to mandatory values)"; break;
+      case 'NC':	Return "Not compliant with mandatory values / Poor"; break;
+      case 'CI':	 Return "Compliant to mandatory values / Good or Sufficient"; break;
 		//case 'other':	Return "Not sampled / Insufficiently sampled"; break;
 	  
 	  // 3.6.2010; mkovacic: added new category for Greek NF data - white
