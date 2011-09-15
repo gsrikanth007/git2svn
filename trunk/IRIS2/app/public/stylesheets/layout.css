@@ -234,7 +234,7 @@ div#dqtSearch div#content select#directive, div#dqtSearch div#content select#sec
 }
 div#dqtSearch div#content select#period_start, div#dqtSearch div#content select#period_end {
     float: left; display: inline;
-    height: 26px; width: 70px;
+    height: 26px; width: 100px;
     padding: 2px 0;
 }
 div#dqtSearch div#content span.spacer {

@@ -87,7 +87,8 @@ class Application_Form_Search extends Iris_Form {
         // Set element multi options
         $this->directive->setMultiOptions($this->_model->getDirectiveOptions());
         $this->period_start->setMultiOptions($this->_model->getReportingPeriodOptions('start'));
-        $this->period_end->setMultiOptions($this->_model->getReportingPeriodOptions('end'));
+        //determine end date in controller
+        //$this->period_end->setMultiOptions($this->_model->getReportingPeriodOptions('end'));
         $this->sector->setMultiOptions($this->_model->getSectorOptions());
     }
     

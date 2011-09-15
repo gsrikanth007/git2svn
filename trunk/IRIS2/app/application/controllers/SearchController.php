@@ -47,6 +47,7 @@ class SearchController extends Iris_Controller {
         // Check whether search form submitted
         if($this->_request->isGet()) {
             // Retrieve search selections from request and pass back to form to filter only form values
+
             $this->_search->getForm()->populate($this->_request->getParams());
             $this->_search->populate();
             $this->_search->performSearch();
@@ -58,8 +59,9 @@ class SearchController extends Iris_Controller {
 
         // Retrieve request query string (where applicable) and remove submit and page params
         parse_str($_SERVER['QUERY_STRING'], $queryString);
+ 
         unset($queryString['submit'], $queryString['page']);
-        $queryString = urlencode('?' . http_build_query($queryString));
+        $queryString = http_build_query($queryString);//urlencode('?' . http_build_query($queryString));
         
         // Add results to breadcrumbs
         $this->_breadcrumbs->append(array('Results', array('action' => 'results', 'controller' => 'search')));

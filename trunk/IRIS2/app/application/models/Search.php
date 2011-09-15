@@ -74,7 +74,12 @@ class Application_Model_Search extends Iris_Model_Abstract {
             if(!empty($this->periodStart)) {
                 $select->where("DATE_FORMAT(questionnaire.period_start, '%Y') >= ?", $this->periodStart);
             }
-
+            //FM: period end date no longer passed from form so infer
+            if($this->periodStart & $this->periodStart == "2003"){
+                $this->periodEnd = "2005";
+            } else {
+                $this->periodEnd = "2008";
+            }
             // Check whether reporting period end year selected
             if(!empty($this->periodEnd)) {
                 $select->where("DATE_FORMAT(questionnaire.period_end, '%Y') <= ?", $this->periodEnd);
@@ -204,13 +209,16 @@ class Application_Model_Search extends Iris_Model_Abstract {
             ));
 
         // Get matching minimum and maximum years
-        if(($years = $select->query()->fetch())) {
+        /*if(($years = $select->query()->fetch())) {
             // Add option for each year between minimum and maximum year inclusive
             for($year = $years['minimum']; $year <= $years['maximum']; $year++) {
                 $options["{$year}"] = "{$year}";
             }
-        }
-
+        }*/
+        //FM currently as requested by COM just passing the reporting periods, end date of search will be determined by start date
+               $options["2003"] = "2003 - 2005";
+               $options["2006"] = "2006 - 2008";
+               
         return $options;
     }
 
