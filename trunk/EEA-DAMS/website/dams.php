@@ -320,6 +320,11 @@ if ($a->getAuth()) {
       }
     }
   }
+  else if( isset( $_REQUEST[ "setDamIdsOrder" ] )) {
+    $damIds = $_POST["damIds"];
+    $damIdsOrdered = split(",",$damIds);
+    $_SESSION[ "damIdsOrdered" ] = $damIdsOrdered;
+  }
   
   
   if ( $isSingleDam ) {

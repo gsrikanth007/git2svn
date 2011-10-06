@@ -229,6 +229,15 @@ var standardistaTableSorting = {
 		}
 		
 		td.appendChild(spanEl);
+        
+        hascallback = false;
+        for (i = 0; i < table.classList.length; i++)
+            if ("hascallback" == table.classList[i])
+                hascallback = true;
+            
+		if (hascallback){
+            eval(table.getAttribute('rel')+"(that, table);");
+         }
 		
 		return false;
 	},

@@ -5,8 +5,9 @@
 <script language="JavaScript" type="text/javascript"  src="js/css.js"></script>
 <script language="JavaScript" type="text/javascript"  src="js/common.js"></script>
 <script language="JavaScript" type="text/javascript"  src="js/standardista-table-sorting.js"></script>
+
 <div id="workarea">
-  <table width="100%" class="sortable">
+  <table width="100%" class="sortable hascallback" rel="setDamIdsOrder">
     <thead>
       <tr>
         <th>Name</th>

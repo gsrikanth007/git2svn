@@ -106,3 +106,24 @@ function updateComment(){
 	alert (url);
 	loadXMLDoc (url, "damUpdateComment");
 }
+
+function setDamIdsOrder(that, table){
+    var baseURL = url.substring(0, url.indexOf('/', 14));
+    damIds = "damIds=";
+    for (i = 0; i < table.tBodies[0].rows.length; i++){
+        damIds += that.getInnerText(table.tBodies[0].rows[i].cells[1])+",";
+    }
+    var damIds = damIds.substring(0, damIds.length-1);
+
+    var xmlHttpReq = false;
+    var self = this;
+    if (window.XMLHttpRequest) {
+        self.xmlHttpReq = new XMLHttpRequest();
+    }
+    else if (window.ActiveXObject) {
+        self.xmlHttpReq = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    self.xmlHttpReq.open('POST', baseURL+"/dams.php?setDamIdsOrder", true);
+    self.xmlHttpReq.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    self.xmlHttpReq.send(damIds);    
+}
