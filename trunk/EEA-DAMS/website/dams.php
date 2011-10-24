@@ -89,7 +89,7 @@ if ($a->getAuth()) {
   $i = 0;
   $isSingleDam = false;
   $singleDam = null;
-  
+
   $damIdsOrdered = array();
   // cd parameter passed -> one or more dams
   if( isset( $_REQUEST[ "cd" ] ) && $_REQUEST[ "cd" ] != '' ) {
@@ -112,7 +112,7 @@ if ($a->getAuth()) {
         $_SESSION[ "damIdsOrdered" ] = $damIdsOrdered;
         $smarty->assign('dt', $dt);
         $smarty->display('dams_list.tpl');
-        
+
         return;
       } else {
         $daml->fetch();
@@ -122,7 +122,7 @@ if ($a->getAuth()) {
     } else {
       $daml = new DataObjects_Public_user_dams_assigned();
       $whereAdd .= "";
-      $daml->query( "SELECT * FROM $daml->__table WHERE cd_dam ILIKE '%$code%' AND cd_user = $userid ORDER BY name" ); 
+      $daml->query( "SELECT * FROM $daml->__table WHERE cd_dam ILIKE '%$code%' AND cd_user = $userid ORDER BY name" );
       if( $daml->N > 1 || $daml->N == 0 ) {
         $dt = array();
         while ($daml->fetch()) {
@@ -138,7 +138,7 @@ if ($a->getAuth()) {
         $_SESSION[ "damIdsOrdered" ] = $damIdsOrdered;
         $smarty->assign_by_ref( 'dt', $dt );
         $smarty->display('dams_list.tpl');
-        
+
         return;
       } else {
         $daml->fetch();
@@ -153,7 +153,7 @@ if ($a->getAuth()) {
     $name = $_REQUEST[ "srcName" ];
     if ( $_SESSION[ "ADM" ] == 't' ) {
       $daml = new DataObjects_Public_dams();
-      $whereAdd .= "";  
+      $whereAdd .= "";
       $daml->query( "SELECT * FROM $daml->__table WHERE name ILIKE '%$name%' ORDER BY name" );
       if( $daml->N > 1 || $daml->N == 0 ) {
         $dt = array();
@@ -170,7 +170,7 @@ if ($a->getAuth()) {
         $_SESSION[ "damIdsOrdered" ] = $damIdsOrdered;
         $smarty->assign('dt', $dt);
         $smarty->display('dams_list.tpl');
-        
+
         return;
       } else {
         $daml->fetch();
@@ -180,7 +180,7 @@ if ($a->getAuth()) {
     } else {
       $daml = new DataObjects_Public_user_dams_assigned();
       $whereAdd .= " ";
-      $daml->query( "SELECT * FROM $daml->__table WHERE name ILIKE '%$name%' AND cd_user=$userid ORDER BY name" ); 
+      $daml->query( "SELECT * FROM $daml->__table WHERE name ILIKE '%$name%' AND cd_user=$userid ORDER BY name" );
       if( $daml->N > 1 || $daml->N == 0 ) {
         $dt = array();
         while ($daml->fetch()) {
@@ -196,7 +196,7 @@ if ($a->getAuth()) {
         $_SESSION[ "damIdsOrdered" ] = $damIdsOrdered;
         $smarty->assign_by_ref( 'dt', $dt );
         $smarty->display('dams_list.tpl');
-        
+
         return;
       } else {
         $daml->fetch();
@@ -231,7 +231,7 @@ if ($a->getAuth()) {
             $prevCDO = $aCDO;
           }
           if( $daml->valid == 't' )
-          { 
+          {
             $aCDO->validatedDams = $daml->count;
           }
           else
@@ -241,7 +241,7 @@ if ($a->getAuth()) {
         }
         $smarty->assign_by_ref( 'dt', $dt );
         $smarty->display('dams_country.tpl');
-        
+
         return;
       } else {
         $daml = new DataObjects_stat_country_dams_valid_user();
@@ -264,7 +264,7 @@ if ($a->getAuth()) {
             $prevCDO = $aCDO;
           }
           if( $daml->valid == 't' )
-          { 
+          {
             $aCDO->validatedDams = $daml->count;
           }
           else
@@ -274,7 +274,7 @@ if ($a->getAuth()) {
         }
         $smarty->assign_by_ref( 'dt', $dt );
         $smarty->display('dams_country.tpl');
-        
+
         return;
       }
     } else {
@@ -283,7 +283,7 @@ if ($a->getAuth()) {
         $daml->query( "SELECT * FROM $daml->__table WHERE country='$country' ORDER BY name" );
         $dt = array();
         while ($daml->fetch()) {
-          
+
           $aDam = new DamObject();
           $aDam->name = $daml->name;
           $aDam->code = $daml->noeea;
@@ -296,7 +296,7 @@ if ($a->getAuth()) {
         $_SESSION[ "damIdsOrdered" ] = $damIdsOrdered;
         $smarty->assign('dt', $dt);
         $smarty->display('dams_list.tpl');
-        
+
         return;
       } else {
         $daml = new DataObjects_Public_user_dams_assigned();
@@ -315,24 +315,24 @@ if ($a->getAuth()) {
         $_SESSION[ "damIdsOrdered" ] = $damIdsOrdered;
         $smarty->assign('dt', $dt);
         $smarty->display('dams_list.tpl');
-        
+
         return;
       }
     }
-  }
-  else if( isset( $_REQUEST[ "setDamIdsOrder" ] )) {
+  } else if( isset( $_REQUEST[ "setDamIdsOrder" ] )) {
     $damIds = $_POST["damIds"];
     $damIdsOrdered = split(",",$damIds);
     $_SESSION[ "damIdsOrdered" ] = $damIdsOrdered;
   }
-  
-  
+
+
+
   if ( $isSingleDam ) {
     $sessionDamIdsOrdered = $_SESSION[ "damIdsOrdered" ];
     if( count( $sessionDamIdsOrdered ) > 0 ) {
       $smarty->assign( 'first', $sessionDamIdsOrdered[ 0 ] );
       $idx = array_search( $singleDam, $sessionDamIdsOrdered );
-  
+
       if( $idx > 0 && $idx < count( $sessionDamIdsOrdered ) - 1 ) {
         $smarty->assign( 'next',  $sessionDamIdsOrdered[ $idx + 1 ] );
         $smarty->assign( 'previous', $sessionDamIdsOrdered[ $idx - 1 ] );
@@ -347,26 +347,26 @@ if ($a->getAuth()) {
         $smarty->assign( 'previous', $singleDam );
       }
       $smarty->assign('last', $sessionDamIdsOrdered[ sizeof( $sessionDamIdsOrdered ) - 1 ] );
-    } 
+    }
     $daml = new DataObjects_Public_dams();
     $daml->query( "SELECT * FROM $daml->__table WHERE noeea='$singleDam'" );
     $daml->fetch();
     // One dam go to validation and process
     $smarty->assign('urlFilter', $_SESSION["urlFilter"]);
-    
+
     $daml->get($_REQUEST["cd"]);
     $smarty->assign('dam', 				$daml);
     $smarty->assign('x_val', 			$daml->x_val);
     $smarty->assign('y_val', 			$daml->y_val);
     $smarty->assign('valid', 			$daml->valid);
     $i18nPage = 'dam';
-    
+
     $smarty = iniI18n ($i18nPage, $smarty, $i18n);
     // Set the outOfRange values on N/A reset button
     $dummy = new DataObjects_Public_dams();
     $smarty->assign( "outOfRangeX", $dummy->outOfRange );
     $smarty->assign( "outOfRangeY", $dummy->outOfRange );
-    
+
     // File with images ...
     if (file_exists (BASEDIR.TOPOPATH.''.strtoupper($daml->noeea).'.png') || file_exists (BASEDIR.TOPOPATH.''.strtolower($daml->noeea).'.png'))
       $smarty->assign('imgTopook',true);
@@ -400,19 +400,19 @@ if ($a->getAuth()) {
         $exclude1x = $daml->x_val;
         $exclude1y = $daml->y_val;
       }
-      
+
       $gmap = startGoogleViewport( $center[ 0 ], $center[ 1 ], $center[ 2 ], "damMapClickListener", true, $exclude0x, $exclude0y, $exclude1x, $exclude1y );
       if( $daml->isValidPosition( $daml->x_icold, $daml->y_icold ) )
       {
         $gmap .= createCrossMarker( "ICOLD", "ICOLD position", $daml->x_icold, $daml->y_icold, ICOLDICON, 1 );
         #$gmap .= createCrossMarker( "ICOLD", "ICOLD position", $center[ 0 ], $center[ 1 ], ICOLDICON, 1 );
       }
-/* See https://svn.eionet.europa.eu/projects/Zope/ticket/1300      
+/* See https://svn.eionet.europa.eu/projects/Zope/ticket/1300
       if( $daml->isValidPosition( $daml->x_prop, $daml->y_prop ) )
       {
         $gmap .= createCrossMarker( "EEA", "EEA proposed position", $daml->x_prop, $daml->y_prop, EEAICON, 2 );
       }
-*/      
+*/
       if( $daml->isValidPosition( $daml->x_val, $daml->y_val ) )
       {
         $gmap .= createCrossMarker( "VAL", "Validated position", $daml->x_val, $daml->y_val, VALIDICON, 3 );
@@ -424,7 +424,7 @@ if ($a->getAuth()) {
     {
       $smarty->assign('googleMap', 	null);
     }
-    	
+
     $smarty->display('dam.tpl');
   }
 } else {

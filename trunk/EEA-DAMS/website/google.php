@@ -21,33 +21,53 @@ function startGoogleViewport ( $x = 4, $y = 55, $z = 3,
   
   $ret = '
   <script type="text/javascript">
-  /* Copyright handling */
-  var copyrightStringEEA = "ERM v2, &#169; Eurogeographics";
-  var copyrightStringI2K = "&#169; JRC";
-  var copyrightBounds = new GLatLngBounds( new GLatLng( -90, -180 ), new GLatLng( 90, 180 ) );
-  var copyright = new GCopyright( 1, copyrightBounds, 5, copyrightStringEEA, copyrightStringI2K );
-  var copyrightCollection = new GCopyrightCollection( "" );
-  copyrightCollection.addCopyright( copyright );
-  
-  
+
   /* Image2000 tile */
-  var i2k_layer = new GTileLayer( copyrightCollection, 1, 17 );
+  // Handle copyright
+  var i2k_cc = new GCopyrightCollection("I2K data");
+  var i2k_cb = new GLatLngBounds( new GLatLng( 33.87, -14.41 ), new GLatLng( 72.23, 55.89 ) );  
+  i2k_cc.addCopyright(new GCopyright( 1, i2k_cb, 5, "&copy; JRC" ));
+  
+  
+  // var i2k_layer = new GTileLayer( i2k_cc, 1, 17 );
+  var i2k_layer = new GTileLayer( null, 10, 10 );
   i2k_layer.myLayers="0";
   i2k_layer.myFormat="image/png";
-  i2k_layer.myBaseURL="http://mapserver.jrc.it/wmsconnector/com.esri.wms.Esrimap/image2000_pan?";
+  i2k_layer.myBaseURL="http://ags-sdi-public.jrc.ec.europa.eu/arcgis/services/image2000_pan/Mapserver/WMSServer?";
   i2k_layer.getTileUrl=CustomGetTileUrl;
   i2k_layer.getOpacity = function() {return 1;}
   var i2k_overlay = new GTileLayerOverlay( i2k_layer );
+  i2k_layer.getCopyright = function(a, b) {
+    // console.log(a);
+    var ret = null;
+    if(!i2k_overlay.isHidden()) {
+      ret =  i2k_cc.getCopyrightNotice(a, b);
+    }
+    return ret;
+  }
 
   /* EEA WMS */
-  var eea_layer = new GTileLayer( copyrightCollection, 1, 17 );
+  // Handle copyright
+  var eea_cc = new GCopyrightCollection("EEA data");
+  var eea_cb = new GLatLngBounds( new GLatLng( 33.87, -14.41 ), new GLatLng( 72.23, 55.89 ) );  
+  eea_cc.addCopyright(new GCopyright( 2, eea_cc, 12, "ERM v2, (c) Eurogeographics" ));
+
+  var eea_layer = new GTileLayer( eea_cc, 1, 17 );
   eea_layer.myLayers="ERM2Water";
   eea_layer.myFormat="image/png";
   eea_layer.myBaseURL="http://dampos-demo.eionet.europa.eu/cgi-bin/wseea?";
   eea_layer.getTileUrl=CustomGetTileUrl;
   eea_layer.getOpacity = function() {return 1;}
   var eea_overlay = new GTileLayerOverlay( eea_layer );
-  
+  eea_layer.getCopyright = function(a, b) {
+    // console.log(a);
+    var ret = null;
+    if(!eea_overlay.isHidden()) {
+      ret =  eea_cc.getCopyrightNotice(a, b);
+    }
+    return ret;
+  }
+
   //var map = new GMap2( document.getElementById( "map" ), { mapTypes:[ G_SATELLITE_MAP, custommap ] } );
   var map = new GMap2( document.getElementById( "map" ) );
   map.setCenter( new GLatLng( '.$y.','.$x.'), '.$z.');
@@ -76,11 +96,15 @@ function startGoogleViewport ( $x = 4, $y = 55, $z = 3,
   GEvent.addListener( map, "moveend", function() { onMoveEnd(); } );
   //GEvent.addListener( map, "load", function() { onLoad(); } );
   
-  // Register the copyright handler
-  
   // Initially hide additional overlays
   i2k_overlay.hide();
   eea_overlay.hide();
+
+  var mt = map.getMapTypes();
+  for (var i=0; i<mt.length; i++) {
+    mt[i].getMinimumResolution = function() {return 3;}
+  }
+
 
   function onI2KClick() {
   	i2kButton.press();
@@ -152,19 +176,14 @@ function startGoogleViewport ( $x = 4, $y = 55, $z = 3,
   	  restoreOverlays();
   	}
   }
-  
-  G_SATELLITE_MAP.getCopyrights = buildCopyright;
-  G_HYBRID_MAP.getCopyrights = buildCopyright;
-  G_NORMAL_MAP.getCopyrights = buildCopyright;
-  function onZoomEnd()
-  {
+
+  function onZoomEnd() {
   	restoreOverlays();
   }
   
   var nearbyicon = "'.NEARBYICON.'";
   
-  function onLoad()
-  {
+  function onLoad() {
   ';
   if( $showNearbyDams ) {
     $ret .= '  
@@ -173,8 +192,7 @@ function startGoogleViewport ( $x = 4, $y = 55, $z = 3,
   $ret .= '
   }
   
-  function onMoveEnd()
-  {
+  function onMoveEnd() {
   ';
   
   if( $showNearbyDams ) {
@@ -232,3 +250,4 @@ function endGoogleViewport () {
 }
 
 ?>
+

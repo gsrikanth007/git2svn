@@ -328,29 +328,6 @@ function serverRequest( url, handler ) {
   return reqObj;
 }
 
-// This method builds the copyright string, by appending to the existing one build by Google, 
-// thus without causing any copyright infringement.    
-function buildCopyright( bounds, zoom ) {
-  arr = [];
-  try {
-    var myarr = this.getTileLayers();
-    for(i = 0; i < myarr.length; i++) 
-    {
-      if(myarr[i]) 
-      {
-      	cpy = myarr[i].getCopyright(map.getBounds(), map.getZoom());
-      	if(cpy) arr.push(cpy);
-      }
-    }
-    if(!eea_overlay.isHidden())
-      arr.push(copyrightStringEEA);
-    if( !i2k_overlay.isHidden() )
-      arr.push( copyrightStringI2K ); 
-  } catch (e) {}
-  return arr;
-}
-
-
 /*
  In order to see some debug action in your page, you must have the control
  <textarea id="debug_console" name="ajax_console" rows="10" cols="80"></textarea>
