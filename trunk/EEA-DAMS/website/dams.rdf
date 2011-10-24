@@ -55,6 +55,10 @@ $file = 'Dam';
 header('Content-type: application/rdf+xml');
 //	header('Content-Disposition: attachment; filename="'.$file.'.rdf"');
 echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+echo "<!DOCTYPE rdf:RDF [\n";
+echo "    <!ENTITY xsd \"http://www.w3.org/2001/XMLSchema#\" >\n";
+echo "]>\n";
+
 echo "<rdf:RDF xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\" xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\" xmlns=\"$baseurl" . "dams-schema.rdf#\">\n";
 
 // Always check that result is not an error
@@ -71,13 +75,30 @@ while ($res->fetchInto($row, DB_FETCHMODE_ASSOC)) {
 	$col = 0;
 	// Assuming DB's default fetchmode is DB_FETCHMODE_ORDERED
 	foreach ($row as $k => $v) {
-		echo "  <$k>" . htmlspecialchars($v,ENT_NOQUOTES,'UTF-8') . "</$k>\n";
+                switch ($types[$col]['type']) {
+                case "float8":
+                    echo "  <$k rdf:datatype='&xsd;decimal'>" . htmlspecialchars($v,ENT_NOQUOTES,'UTF-8') . "</$k>\n";
+                    break;
+                case "int2":
+                case "int4":
+                    echo "  <$k rdf:datatype='&xsd;integer'>" . htmlspecialchars($v,ENT_NOQUOTES,'UTF-8') . "</$k>\n";
+                    break;
+                case "bool":
+                    if ($v == "t")
+                        echo "  <$k rdf:datatype='&xsd;boolean'>true</$k>\n";
+                    else
+                        echo "  <$k rdf:datatype='&xsd;boolean'>false</$k>\n";
+                    break;
+                default:
+                    if ($v != "")
+                        echo "  <$k>" . htmlspecialchars($v,ENT_NOQUOTES,'UTF-8') . "</$k>\n";
+                }
 		$col++;
 	}
 	$i++;
         echo "<rdfs:label>". htmlspecialchars($row['name'],ENT_NOQUOTES,'UTF-8') .
                  " at " . htmlspecialchars($row['ic_city'],ENT_NOQUOTES,'UTF-8') .
-                 " in " . htmlspecialchars($row['country'],ENT_NOQUOTES,'UTF-8') . "</rdfs:label>";
+                 " in " . htmlspecialchars($row['country'],ENT_NOQUOTES,'UTF-8') . "</rdfs:label>\n";
 	echo "</$file>\n";
 }
 echo "</rdf:RDF>\n";
