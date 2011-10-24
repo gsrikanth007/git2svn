@@ -44,22 +44,117 @@ WMS for Google Maps:
 --------------------
   See:
   http://www.spatialdatalogic.com/cs/blogs/brian_flood/archive/2005/07/11/39.aspx
-  
-  Update 2008-03-13:
-  - Due to a change in Google Map API, previous version of WMS does not 
-  longer work. A new library has been installed working with 
-  Google Maps >= v2.36:
-  http://chignik.berkeley.edu/google/wms236.js. 
-  The library can be found in folder website/js/wms236.js and 
-  contains sample code too. Future updates may require replacing this 
-  file and test functionality (see below where);
-  - Due to code duplication within the project, two new files were 
-  created: google.php and js/google.js. These have the purpose of unifying the
-  calls to Google API across the project (mapit.php, dams.php and index.php)
-  from a single place.
-  
-  Update 2008-03-20:
-  - For existing installations, you'll need to patch the database in order to upgrade
-  to repository revisions > 82, please apply the patch.20080320.sql patch.
-  
-  
+
+
+               HOW TO REPLICATE THE PROJECT ON DEVEL MACHINE
+
+1. Have Apache 2.x + PHP 5.x + PostgreSQL 8.x on your machine
+
+2. Create a virtual host on Apache server to point to website/ dir
+        [cristiroma@localhost ~]$ cat /etc/httpd/conf.d/dampos.conf
+        <VirtualHost 10.0.0.25:80>
+            ServerName dampos.cristiroma
+            ServerAdmin cristian.romanescu@eaudeweb.ro
+            DocumentRoot /home/cristiroma/workspace/dampos/website
+            ErrorLog logs/dampos.cristiroma-error_log
+            CustomLog logs/dampos.cristiroma-access_log common
+        </VirtualHost>
+    and restart apache
+
+3. Add obsoleted libraries to your php.ini.
+      Dampos is using old libraries and installing via PEAR is a pain. Just:
+    - connect to production machine and retrieve the contents of
+      /usr/share/pear and add them to a local folder
+      (ex. /home/cristiroma/tmp/pear)
+    - edit php.ini and add this folder to include_path:
+        ex. include_path = "... :/home/cristiroma/workspace/dampos.pear"
+
+4. Handling database
+    - Create a database named 'dampos'
+    - export data from production
+        as postgres user do: pg_dump EEADAMSDEMO > dampos.sql
+    - import on your local file
+        as postgres user do: cat dampos.sql | psql -d dampos
+
+    - importing damsdb.pgsql might also work, haven't tested
+
+5. Configuring the app
+    - Make a copy of website/DataObjects/EEADAMS.ini or
+      website/DataObjects/EEADAMSDEMO.ini and name it
+      website/DataObjects/dampos.ini - note that "dampos" IS the same name as
+      database name from PostgreSQL, sigh :^)
+
+    - update website/DataObjects/config.ini to your local configuration,
+
+    Example:
+    database    = pgsql://postgres:@localhost/dampos
+    schema_location = /home/cristiroma/workspace/dampos/website/DataObjects
+    class_location  = /home/cristiroma/workspace/dampos/website/DataObjects
+    require_prefix  = DataObjects/
+    class_prefix    = DataObjects_
+
+    Note: Apparently 'database' key has no effect - set from inc-config.conf
+
+    - Edit website/commons/inc-config.conf to suit your local configuration
+        [PATH] and [DB] sections.
+
+
+6. Login from browser to http://dampos.cristiroma/loginpage.php?lang=en or
+   whatever domain you have set in httpd.conf
+    - If you forgot your username:
+        [cristiroma@localhost dampos]$ md5sum
+        new password CTRL+D
+        6c652fbe608efb4e3844b50f75683de0  -
+    - as postgres user:
+        - psql -d dampos
+        psql (8.4.9)
+        Type "help" for help.
+        dampos=# UPDATE users SET password='6c652fbe608efb4e3844b50f75683de0'
+                 WHERE login='adminedw';
+
+7. Trouble shooting
+    a) I get "Fatal error:  Call to undefined method DB_Error::setLang() in
+        /home/cristiroma/workspace/dampos/website/commons/config.php on line
+        177"
+
+        Check that the database information is correctly set in inc-config.conf
+
+    b) I get "DB_DataObject Error: Unable to load schema for database and
+        table (turn debugging up to 5 for full error message)"
+
+        Check that you have correctly set the BASEDIR in inc-config.conf. Also
+        it is important for BASEDIR to end with '/'.
+
+        If this error persists, you can enable debugging by going to
+        website/commons/config.php and add debugLevel(5):
+
+        [cristiroma@localhost dampos]$ svn diff website/commons/config.php
+        Index: website/commons/config.php
+        ===================================================================
+        --- website/commons/config.php    (revision 505)
+        +++ website/commons/config.php    (working copy)
+        @@ -90,6 +90,7 @@
+          *
+          */
+         function iniI18n ($i18nPage, $smarty, $i18n){
+        +        DB_DataObject::debugLevel(5);
+            $do = new DataObjects_Public_i18n();
+            $do->whereAdd("PAGE_ID = '".$i18nPage."'");
+            $do->find();
+
+        Debugging can also be enabled by editing dams.php
+        [cristiroma@localhost dampos]$ svn diff website/dams.php
+        Index: website/dams.php
+        ===================================================================
+        --- website/dams.php    (revision 505)
+        +++ website/dams.php    (working copy)
+        @@ -78,7 +78,7 @@
+           // Set the outOfRange values on N/A reset button
+           $smarty->assign( "outOfRangeX", $dummy->outOfRange );
+           $smarty->assign( "outOfRangeY", $dummy->outOfRange );
+        -  //DB_DataObject::debugLevel(5);
+        +  DB_DataObject::debugLevel(5);
+           // Process the request
+           $urlFilter = "";
+           $daml = new DataObjects_Public_dams();
+
