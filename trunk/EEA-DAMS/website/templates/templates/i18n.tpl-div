@@ -1,0 +1,84 @@
+{include file="header.tpl" bodyclass="threecolumns" pagetitle=$translationManage}
+{include file="login.tpl"}
+
+<div id="rightcolumn">
+      <b>Target language</b><br/>
+			<form method="post" action="">
+		<div>
+			<input type="hidden" name="listselect[]" value="en"/>
+			<select name="listselect[]" size="26">
+			{html_options values=$langIds selected=$selectedLang output=$langNames}
+			</select><br/>
+			<input type="submit" class="SearchButton" value="{$applyfilter}"/>
+		</div>
+			</form>
+</div>
+
+
+<div id="workarea">
+<p>Enter the translation and click on Update</p>
+{assign var="i" value=0}
+<div>
+{foreach name=outer item=term from=$selectedLang}
+	<span style="width:14em">{$term}</span>
+{/foreach}
+</div>
+{foreach name=outer item=term from=$terms}
+<form action="i18n.php" method="post">
+<div>
+			
+	<input type="hidden" name="lang" value="{$langId}"/>
+	<input type="hidden" name="action" value="update"/>
+	{foreach key=key item=item from=$term}
+  		{if $key eq 'page_id'}
+	    		{assign var="myPage" value=$item}
+	  			<input type="hidden" name="{$key}" value="{$item}"/>
+    		{elseif $key eq 'id'}
+	    		{assign var="myId" value=$item}
+	  			<input type="hidden" name="{$key}" value="{$item}"/>
+  			{else}
+  					{if $item|count_words > 5}
+  					<textarea name="{$key}" style="width:14em">{$item}</textarea>
+  					{else}
+  					<input type="text" style="width:14em" name="{$key}" value="{$item}"/>
+  					{/if}
+  			{/if}  		
+  	{/foreach}
+	{assign var="i" value=1}
+<input type="submit" value="{$update}" class="SearchButton"/>
+</div>
+</form>
+<!--<form action="i18n.php" method="post">
+	<div>
+	<input type="hidden" name="id" value="{$myId}"/>
+	<input type="hidden" name="action" value="delete"/>
+	<input type="submit" value="{$delete}" class="SearchButton"/>
+	</div>
+</form>-->
+
+{/foreach}
+<hr/><p>
+{$addnewterm}
+<table>
+<tr><td>Page</td><td>Id</td>
+{foreach name=outer item=term from=$selectedLang}
+	<td>{$term}</td>
+{/foreach}
+</tr>
+<tr>
+<form action="i18n.php" method="post">
+	<input type="hidden" name="lang" value="{$langId}"/>
+	<td><input type="text" size="5" name="page_id" value=""/></td>
+	<td><input type="text" size="5" name="id" value=""/></td>
+	{foreach name=outer item=term from=$selectedLang}
+		<td><input type="text" size="5" name="{$term}" value=""/></td>
+	{/foreach}
+	<td><input type="hidden" name="action" value="insert"/>
+	<input type="submit" value="{$insert}" class="SearchButton"/></td>
+</form>
+</tr>
+</table>
+</p>
+</div>
+
+{include file="footer.tpl"}
