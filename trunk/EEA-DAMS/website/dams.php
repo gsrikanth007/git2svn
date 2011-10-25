@@ -232,11 +232,11 @@ if ($a->getAuth()) {
           }
           if( $daml->valid == 't' )
           {
-            $aCDO->validatedDams = $daml->count;
+            $aCDO->validatedDams = $daml->dams_count;
           }
           else
           {
-            $aCDO->invalidatedDams = $daml->count;
+            $aCDO->invalidatedDams = $daml->dams_count;
           }
         }
         $smarty->assign_by_ref( 'dt', $dt );
