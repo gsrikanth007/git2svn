@@ -34,6 +34,7 @@ require_once 'commons/config.php';
 require_once 'DataObjects/Public_users.php';
 require_once 'DataObjects/Public_dams.php';
 require_once 'DataObjects/Public_user_dams.php';
+require_once 'DataObjects/Public_user_dams_assigned.php';
 
 // TODO : error SQL
 
@@ -43,6 +44,7 @@ if ($a->getAuth()) {
 	$smarty = iniI18n ($i18nPage, $smarty, $i18n);
 
 	if (isset($_REQUEST["action"])){
+                // error_log($_REQUEST['action']);
 		$smarty->assign('action', 		$_REQUEST["action"]);
 			
 		// Dam for user management
@@ -52,27 +54,27 @@ if ($a->getAuth()) {
 			$do = new DataObjects_Public_User_Dams();
 			$do->whereAdd("cd_user = ".$_REQUEST["id"]."");
 			$do->delete(DB_DATAOBJECT_WHEREADD_ONLY);	
-			$do->free();
+			// $do->free();
 			
 			// Add all new dams for this user - TODO : unique
 			if (isset($_REQUEST["listselect"])){
-				$do = new DataObjects_Public_User_Dams();
 				$lst = $_REQUEST["listselect"];
 				for ($i=0; $i<count($lst ); $i++) { 
+					$do = new DataObjects_Public_User_Dams();
 					$do->cd_dam = $lst [$i];
 					$do->cd_user = $_REQUEST["id"];
 					//echo $lst [$i]."- ". $_REQUEST["id"];
 					$do->insert();
 					/*if (PEAR::isError($do->insert()))
 						echo "error";*/
+					$do->free();
 				}
-				$do->free();
 			}
 			$do = new DataObjects_Public_Users();
 			$do->whereAdd("cd_user = ".$_REQUEST["id"]."");
 			$do->find(true);
 			$smarty->assign('user', 		$do);
-			$do->free();
+			// $do->free();
 		}elseif ($_REQUEST["action"]=='new'){ 
 			$smarty->assign('user',		 		null);
 		}elseif ($_REQUEST["action"]=='cre'){
@@ -95,7 +97,7 @@ if ($a->getAuth()) {
 			$do->insert();
 			$smarty->assign('user', 		$do);
 			$isADM = $do->roleadm;
-			$do->free();
+			// $do->free();
 
 
 		}elseif ($_REQUEST["action"]=='sav'){
@@ -117,7 +119,7 @@ if ($a->getAuth()) {
 		    $do->update(DB_DATAOBJECT_WHEREADD_ONLY);
 			$smarty->assign('user', 			$do);
 			$isADM = $do->roleadm;
-			$do->free();
+			// $do->free();
 			
 			
 		}elseif ($_REQUEST["action"]=='upd'){
@@ -126,7 +128,7 @@ if ($a->getAuth()) {
 			$do->find(true);
 			$smarty->assign('user', 			$do);
 			$isADM = $do->roleadm;
-			$do->free();
+			// $do->free();
 			
 			
 		}if ($_REQUEST["action"]=='del'){
@@ -134,21 +136,21 @@ if ($a->getAuth()) {
 			$do = new DataObjects_Public_User_Dams();
 			$do->whereAdd("cd_user = ".$_REQUEST["id"]."");
 			$do->delete(DB_DATAOBJECT_WHEREADD_ONLY);	
-			$do->free();
+			// $do->free();
 
 			// Remove user
 			$do = new DataObjects_Public_Users();
 			$do->whereAdd("ID = ".$_REQUEST["id"]."");
 			$smarty->assign('user', 		$do);
 			$do->delete(DB_DATAOBJECT_WHEREADD_ONLY);	
-			$do->free();
+			// $do->free();
 		}
 
 
 
 		/* User dam manager  */
-		if ($_REQUEST["action"]!='new'){ 
-			$do = new DataObjects_Public_User_Dams();
+		if ($_REQUEST["action"] != 'new') { 
+			$do = new DataObjects_Public_user_dams_assigned();
 			$do->whereAdd("CD_USER = ".$_REQUEST["id"].""); 	// Filter on user
 			$do->orderBy("CD_DAM");
 			$nb = $do->find();
@@ -158,11 +160,10 @@ if ($a->getAuth()) {
 
 			while ($do->fetch()) {
 				$do->getLinks();
-				$userDams[$i++] = array("noeea" => $do->_cd_dam->noeea,
-										"name" => $do->_cd_dam->name);
+				$userDams[$i++] = array("noeea" => $do->cd_dam, "name" => $do->name);
 			}
 			$smarty->assign('userDams', $userDams);
-			$do->free();
+			// $do->free();
 				
 	
 			if ($_SESSION["ADM"]) // Search for dam only if user is ADM
