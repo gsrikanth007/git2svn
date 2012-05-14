@@ -5,6 +5,7 @@
 BWD water quality data viewer: EXPORT TO RDF FILE
 
 03.8.2011; first version
+14.5.2012;	update for 2011 season
 
 */
 
@@ -45,16 +46,17 @@ $array_fields = array(
   'y2007' => 'Year 2007',
   'y2008' => 'Year 2008',
   'y2009' => 'Year 2009',
-  'y2010' => 'Year 2010'
+  'y2010' => 'Year 2010',
+  'y2011' => 'Year 2011'
 );
 
-$lastknownyear = 'y2010';
+$lastknownyear = 'y2011';
 
 $sql = "
   SELECT 
 	UPPER(c.Country) AS Country, s.cc,
 	s.numind, s.latitude, s.longitude, s.WaterType AS Type, s.Region, s.Province, s.Commune, s.Prelev,
-        s.y2000, s.y2001, s.y2002, s.y2003, s.y2004, s.y2005, s.y2006, s.y2007, s.y2008, s.y2009, s.y2010
+        s.y2000, s.y2001, s.y2002, s.y2003, s.y2004, s.y2005, s.y2006, s.y2007, s.y2008, s.y2009, s.y2010, s.y2011
   FROM bwd_stations s
   LEFT JOIN countrycodes_iso c ON s.cc = c.ISO2 ";
 $sql .= " ORDER BY Prelev";

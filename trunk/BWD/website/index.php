@@ -8,6 +8,7 @@ BWD water quality data/map viewer: MAIN FILE WITH COUNTRY LISTING, MAPS, GRAPHS,
 04/2009;	update for 2008 season
 21.4.2010;	update for 2009 season
 17.5.2011;	update for 2010 season
+14.5.2012;  update for 2011 season
 */
 
 include('config.php');
@@ -650,7 +651,7 @@ echo "<img src='images/kml.gif' width='16' height='16' border='0'  alt='KML icon
 <a target='_NEW_WINDOW' href='http://earth.google.com/download-earth.html'>http://earth.google.com/download-earth.html</a>";
 echo "</th>";
 echo "<th style='text-align:right; width:20%'>";
-echo "Last update: 20.5.2011";
+echo "Last update: 14.5.2012";
 echo "</th>";
 echo "</table>\n";
 
