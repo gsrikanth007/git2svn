@@ -209,7 +209,7 @@ if (file_exists("images/flags/Europe.jpg"))
 echo "EUROPE";
 echo "</td>\n";
 
-// EUROPE-GEOGRAPHIC REGION
+// EUROPE-hydrographic region
 echo "  <td>";
 echo "<select style='width: 176px;' name='EU27_georegion' id='EU27_georegion' onchange='document.location=\"index.php?cc=EUROPE&amp;GeoRegion=\" + this.value'>";
 $sql_georegion = "
@@ -218,7 +218,7 @@ $sql_georegion = "
 		GROUP BY geographic	
 ";
 $result_georegion = mysql_query($sql_georegion);
-echo "<option value='' selected='selected'>--- Geographic region ---</option>";
+echo "<option value='' selected='selected'>--- hydrographic region ---</option>";
 while ($myrow_georegion = mysql_fetch_array($result_georegion)) {
 	$eu27_stations[$myrow_georegion['geographic']] = $myrow_georegion['no_of_stations'];
 	if ($myrow_georegion['geographic'] != '') {
@@ -230,9 +230,9 @@ while ($myrow_georegion = mysql_fetch_array($result_georegion)) {
 echo "</select>";
 //  echo "&nbsp;";
   
-  // EUROPE-GEOGRAPHIC REGION MAP
+  // EUROPE-hydrographic region MAP
 if (file_exists("regions/geographic_region.png")) {
-	echo "<a title='Geographic region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/geographic_region.png','EUROPE - Geographic region map for the territory of reporting countries','725px','735px','220px','160px'); \"><img src='images/Regije.gif' alt='Geographic region map'/></a>";
+	echo "<a title='hydrographic region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/geographic_region.png','EUROPE - hydrographic region map for the territory of reporting countries','725px','735px','220px','160px'); \"><img src='images/Regije.gif' alt='hydrographic region map'/></a>";
 }
 echo "</td>\n";
 
@@ -651,7 +651,7 @@ echo "<img src='images/kml.gif' width='16' height='16' border='0'  alt='KML icon
 <a target='_NEW_WINDOW' href='http://earth.google.com/download-earth.html'>http://earth.google.com/download-earth.html</a>";
 echo "</th>";
 echo "<th style='text-align:right; width:20%'>";
-echo "Last update: 14.5.2012";
+echo "Last update: 22.5.2012";
 echo "</th>";
 echo "</table>\n";
 
