@@ -7,11 +7,12 @@ BWD water quality data/map viewer: FILE TO CREATE IMAGE WITH BAR GRAPH
 21.3.2008; first version
 17.5.2011;	update for 2010 season
 14.5.2012;	update for 2011 season
+17.5.2013;	update for 2012 season
 
 */
 
 // array of years for which graph is plotted | each season, additional year should be added
-$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011);
+$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012);
 
 if (!isset($_GET['GeoRegion'])) $_GET['GeoRegion'] = '';
 if (!isset($_GET['type'])) $_GET['type'] = '';
@@ -21,8 +22,10 @@ if (!isset($_GET['Province'])) $_GET['Province'] = '';
 if (!isset($_GET['BathingPlace'])) $_GET['BathingPlace'] = '';
 include('config.php');
 include('functions.php');
-include ("jpgraph-2.3/src/jpgraph.php");
-include ("jpgraph-2.3/src/jpgraph_line.php");
+//include ("jpgraph-2.3/src/jpgraph.php");
+//include ("jpgraph-2.3/src/jpgraph_line.php");
+include ("jpgraph-3.5.0b1/src/jpgraph.php");
+include ("jpgraph-3.5.0b1/src/jpgraph_line.php");
 
 // CONNECT
 $db = mysql_connect($host, $dbuser,$dbpass);
