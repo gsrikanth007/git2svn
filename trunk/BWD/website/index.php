@@ -595,7 +595,7 @@ echo $file_province_map;
 	if ($sum_bw < 200) {
 		// Google wants doubly encoded spaces (which is probably correct behaviour)
         $encoded_link = str_replace(" ","%2520", str_replace("&amp;","%26",$link_za_kml));
-		echo "<a title='Google Maps - ".$string_title_kml."' href='http://maps.google.com?q=".$baseurl.$encoded_link."'><img src='images/googlemaps.png' border='0' alt='Google Maps - ".$string_title_kml."'/></a>";
+		echo "<a title='Google Maps - ".$string_title_kml."' href='http://maps.google.com?q=".$baseurl.$encoded_link."' target='_blank'><img src='images/googlemaps.png' border='0' alt='Google Maps - ".$string_title_kml."'/></a>";
 	}
 	// GOOGLE EARTH
 	echo "<a title='Google Earth KML - ".$string_title_kml."' href='$link_za_kml'><img src='images/kml.gif' width='16' height='16' border='0' alt='Google Earth KML - ".$string_title_kml."'/></a>";
