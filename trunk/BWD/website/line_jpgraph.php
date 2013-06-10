@@ -22,10 +22,9 @@ if (!isset($_GET['Province'])) $_GET['Province'] = '';
 if (!isset($_GET['BathingPlace'])) $_GET['BathingPlace'] = '';
 include('config.php');
 include('functions.php');
-//include ("jpgraph-2.3/src/jpgraph.php");
-//include ("jpgraph-2.3/src/jpgraph_line.php");
-include ("jpgraph-3.5.0b1/src/jpgraph.php");
-include ("jpgraph-3.5.0b1/src/jpgraph_line.php");
+// 17.5.2013; on EEA server, PHP version 5.2.13, only jpgraph-2.3 version is working
+include ("jpgraph-2.3/src/jpgraph.php"); include ("jpgraph-2.3/src/jpgraph_line.php");
+//include ("jpgraph-3.5.0b1/src/jpgraph.php"); include ("jpgraph-3.5.0b1/src/jpgraph_line.php");
 
 // CONNECT
 $db = mysql_connect($host, $dbuser,$dbpass);

@@ -23,10 +23,9 @@ if (!isset($_GET['Province'])) $_GET['Province'] = '';
 if (!isset($_GET['BathingPlace'])) $_GET['BathingPlace'] = '';
 include('config.php');
 include('functions.php');
-//include ("jpgraph-2.3/src/jpgraph.php");
-//include ("jpgraph-2.3/src/jpgraph_bar.php");
-include ("jpgraph-3.5.0b1/src/jpgraph.php");
-include ("jpgraph-3.5.0b1/src/jpgraph_bar.php");
+// 17.5.2013; on EEA server, PHP version 5.2.13, only jpgraph-2.3 version is working
+include ("jpgraph-2.3/src/jpgraph.php"); include ("jpgraph-2.3/src/jpgraph_bar.php");
+//include ("jpgraph-3.5.0b1/src/jpgraph.php"); include ("jpgraph-3.5.0b1/src/jpgraph_bar.php");
 
 // CONNECT
 $db = mysql_connect($host, $dbuser,$dbpass);
@@ -58,7 +57,8 @@ foreach($compliance_values as $key=>$val) {
       COUNT(*) AS No_of_stations,													# only needed to display in title total or max. number of stations for all years
       COUNT(IF(y".end($years)." IS NOT NULL, 1, NULL)) AS No_of_stations_curr_year,		# only needed to display in title: number of stations 2010
       Prelev,
-      SeaWater
+      SeaWater,
+	  etcw_bw_profile
     FROM bwd_stations 
 	WHERE 1 ";
   
@@ -109,8 +109,10 @@ die;
 // STATUS GRAPH IF BATHING WATER IS SELECTED 
 if($_GET['BathingPlace'] != "")  {
     // coastal or inland in title
-    if($_GET['type'] == 'coast' || $myrow['SeaWater'] == 'O')  $title = "Coastal: ".$myrow['Prelev'];
-    if($_GET['type'] == 'inland' || $myrow['SeaWater'] == 'N')  $title = "Inland: ".$myrow['Prelev'];
+    if($_GET['type'] == 'coast' || $myrow['SeaWater'] == 'O')  
+		$title = "Coastal: ".$myrow['Prelev'];
+    if($_GET['type'] == 'inland' || $myrow['SeaWater'] == 'N')  
+		$title = "Inland: ".$myrow['Prelev'];
     
     // status graph for bw is smaller
     $graph_width = 500; 

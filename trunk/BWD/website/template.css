@@ -101,6 +101,7 @@ a { color: #975B0E; }
 /* DIV z grafom */
 #graph_div, #map_div {
 	/*cursor: hand; cursor: pointer;*/
+	text-align: center;
 	display:none; 
 	position:absolute; 
 	border: 1px solid black; /*#42A9E3;*/
@@ -129,5 +130,3 @@ h1 {
 	padding: 0px;
 	margin-top: 0px;
 }
-
-/*.stolpec { font-weight: bold; }*/

@@ -10,5 +10,6 @@ $host = "localhost";
 $dbuser = "root";
 $dbpass = "redhat";
 
+$online = 0;
 
 ?>

@@ -45,6 +45,7 @@ header('Content-Type: text/html; charset=utf-8');
       document.getElementById(font_id).innerHTML = "";
       // for Firefox to show "Loading ..." image by default when browsing different graphs, not closing the div
       document.getElementById(div_id).src = "images/loading.gif";
+      document.getElementById('map_div_iframe').src = "images/loading.gif";
     }
     
     // div_id- ids from div, iframe elements
@@ -53,23 +54,41 @@ header('Content-Type: text/html; charset=utf-8');
     // left - how far from the left border is positioned
 	// img_id - img element to show image for maps/graphs
 	// div_title - title text to put in id=map_font element
-    function ShowContent(div_id, font_id, img_id, src_html, div_title, width, height, left, top) {
-      if (div_id.length < 1) { return; }
-	  // 1. first set width, height, position of div and show it (block)
-      document.getElementById(div_id).style.width = width;
-      document.getElementById(div_id).style.height = height;
-      document.getElementById(div_id).style.left = left;
-      document.getElementById(div_id).style.top = top;
-      document.getElementById(div_id).style.display = "block";
-      // 2. set new headline for div (only for region/province maps)
-	  if (div_title != '') {
-		document.getElementById(font_id).innerHTML = div_title;
-	  }
-      // 3. set "Loading ..." gif in div
-      document.getElementById(img_id).src = "images/loading.gif";
-      // 4. when the source image is loaded, set this image in div
-      //document.getElementById(font_id).innerHTML = div_title;
-      document.getElementById(img_id).src = src_html;
+    function ShowContent(div_id, font_id, img_id, src_html, div_title, width, height, left, top, bw_data, html_map) {
+		
+		var bw_array = bw_data.split("|");	
+		src_html = src_html + bw_array[0];
+		if (div_id.length < 1) { return; }
+		
+		// 1. first set width, height, position of div and show it (block)
+		document.getElementById(div_id).style.width = width;
+		document.getElementById(div_id).style.height = height;
+		document.getElementById(div_id).style.left = left;
+		document.getElementById(div_id).style.top = top;
+		document.getElementById(div_id).style.display = "block";
+		
+		// 2. set new headline for div (only for region/province maps)
+		if (div_title != '') {
+			document.getElementById(font_id).innerHTML = div_title;
+		}
+		
+		// 3. when the source image is loaded, set this image in div
+		//document.getElementById(font_id).innerHTML = div_title;
+		if(html_map == 'yes')	{
+			//document.getElementById(img_id).innerHTML = "<img src='images/loading.gif' />";
+			document.getElementById('map_div_iframe').src = src_html;
+		} else {
+			// set "Loading ..." gif in div
+			document.getElementById(img_id).src = "images/loading.gif";
+			document.getElementById(img_id).src = src_html;
+		}
+
+		// 5. adds additional html on bottom of div (for bw profile links)
+		if(bw_array[1] != '')	{
+			document.getElementById('additional_html').innerHTML = "<a href='" + bw_array[1] + "' title='" + bw_array[1] + "' target='_blank'>Link to bathing water profile</a>";
+		} else {
+			document.getElementById('additional_html').innerHTML = "";
+		}
     }
 
 // ]]>
@@ -77,6 +96,7 @@ header('Content-Type: text/html; charset=utf-8');
 </head>
 
 <body>
+
 <?php
 
 //debug output
@@ -143,12 +163,13 @@ echo "
 
 // DIV, IMG to show graphs  
 // 6.6.2008; removed onclick event on div, IE freezes, but only in graph div, on map div is ok: onclick="HideContent(\'graph_div\',\'graph_font\');"
-echo '<div align="center" id="graph_div" >';
-echo '<div style="position: relative;">';
-echo '<span id="graph_font" style="font-weight: bold; color: white; "></span>';
-echo '<div style="position: absolute; top: 0px; right: 10px;"><a onclick="HideContent(\'graph_div\',\'graph_font\'); return true;" href="javascript:HideContent(\'graph_div\',\'graph_font\')">[close]</a></div><br/><br/>';
-echo '<img id="graph_img" src="images/loading.gif" border="0" alt=""/>';
-echo '</div>';
+echo '<div id="graph_div" >';
+	echo '<div style="position: relative;">';
+		echo '<span id="graph_font" style="font-weight: bold; color: white; "></span>';
+		echo '<div style="position: absolute; top: 0px; right: 10px;"><a onclick="HideContent(\'graph_div\',\'graph_font\'); return true;" href="javascript:HideContent(\'graph_div\',\'graph_font\')">[close]</a></div><br/><br/>';
+		echo '<img id="graph_img" src="images/loading.gif" border="0" alt=""/>';
+	echo '</div>';
+	echo '<p id="additional_html"></p>';
 echo '</div>';
 
 // DIV, IMG to show maps (region, province, georegion)  
@@ -157,9 +178,12 @@ echo '<div align="center" id="map_div" >';
 echo '<div style="position: relative;">';
 echo '<span id="map_font" style="font-weight: bold; color: white; "></span>';
 echo '<div style="position: absolute; top: 0px; right: 10px;"><a onclick="HideContent(\'map_div\',\'map_font\'); return true;" href="javascript:HideContent(\'map_div\',\'map_font\')">[close]</a></div><br/><br/>';
-echo '<img id="map_img" src="images/loading.gif" border="0" alt=""/>';
+//echo '<img id="map_img" src="images/loading.gif" border="0" alt="" />';
 // mkovacic: 20.5.2011; hide the legend
 //echo '<br/><br/><img id="legend_img" src="provinces/legenda.png" border="0" alt="map of provinces"/>';
+// mkovacic: 3.6.2013; added iframe for clickable maps
+echo "<iframe style='margin: 0 auto; border: 0; width: 100%; height: 710px; overflow: hidden;' id='map_div_iframe' src='images/loading.gif' >";
+echo "</iframe>";
 echo '</div>';
 echo '</div>';
 
@@ -231,8 +255,12 @@ echo "</select>";
 //  echo "&nbsp;";
   
   // EUROPE-hydrographic region MAP
-if (file_exists("regions/geographic_region.png")) {
-	echo "<a title='hydrographic region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/geographic_region.png','EUROPE - hydrographic region map for the territory of reporting countries','725px','735px','220px','160px'); \"><img src='images/Regije.gif' alt='hydrographic region map'/></a>";
+if (file_exists("maps/eu_regions.png")) {
+	//echo "<a title='hydrographic region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/geographic_region.png','EUROPE - hydrographic region map for the territory of reporting countries','725px','735px','220px','160px','',''); \"><img src='images/Regije.gif' alt='hydrographic region map'/></a>";
+	
+	// 7.6.2013; change for clickable maps
+	echo "<a title='hydrographic region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('map_div','map_font','map_img','maps/map_show.php?type=Region&cc=eu', 'EUROPE - hydrographic region map for the territory of reporting countries','725px','745px','220px','160px', '', 'yes'); \"><img src='images/Regije.gif' border='0' alt='hydrographic region map'/></a>";
+
 }
 echo "</td>\n";
 
@@ -258,10 +286,10 @@ echo "<a title='Google Earth KML - ".$title_string."' href='kml_export.php?cc=EU
 echo "&nbsp;";
 
 // EUROPE-GRAPH COASTAL
-echo "<a title='Quality of coastal bathing waters' style='cursor:pointer; cursor:hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','line_jpgraph.php?Country=EUROPE&amp;GeoRegion=".$_GET['GeoRegion']."&amp;type=coast','','950px','750px','10px','160px'); return true;\"><img src='images/SlanaVodaGraf.jpg' border='0'  alt='Quality of coastal bathing waters'/></a>";
+echo "<a title='Quality of coastal bathing waters' style='cursor:pointer; cursor:hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','line_jpgraph.php?Country=EUROPE&amp;GeoRegion=".$_GET['GeoRegion']."&amp;type=coast','','950px','750px','10px','160px','',''); return true;\"><img src='images/SlanaVodaGraf.jpg' border='0'  alt='Quality of coastal bathing waters'/></a>";
 echo "&nbsp;";
 // EUROPE-GRAPH INLAND
-echo "<a title='Quality of inland bathing waters' style='cursor:pointer; cursor:hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','line_jpgraph.php?Country=EUROPE&amp;GeoRegion=".$_GET['GeoRegion']."&amp;type=inland','','950px','750px','10px','160px'); return true;\" ><img  src='images/SladkaVodaGraf.jpg' border='0' alt='Quality of inland bathing waters'/></a>";
+echo "<a title='Quality of inland bathing waters' style='cursor:pointer; cursor:hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','line_jpgraph.php?Country=EUROPE&amp;GeoRegion=".$_GET['GeoRegion']."&amp;type=inland','','950px','750px','10px','160px','',''); return true;\" ><img  src='images/SladkaVodaGraf.jpg' border='0' alt='Quality of inland bathing waters'/></a>";
 echo "</td>\n";
 echo "</tr>\n";
 
@@ -269,7 +297,7 @@ echo "</tr>\n";
 // CREATE SQL TO GET ALL THE COUNTRY-DATA
 $sql = '
   SELECT 
-      UPPER(c.Country) AS Country, s.cc, c.NationalName AS NationalName,
+      UPPER(c.Country) AS Country, s.cc, c.NationalName AS NationalName, etcw_bw_profile,
       COUNT(IF(SeaWater = "O",1,NULL)) AS "coast_stations",
       COUNT(IF(SeaWater = "N",1,NULL)) AS "inland_stations"
   FROM bwd_stations s
@@ -280,14 +308,24 @@ if ($_GET['GeoRegion'] != '')
 
 $sql .= 'GROUP BY s.cc ORDER BY c.Country';
 
-if ($_GET['GeoRegion'] == '')	
-   $sql = "SELECT UPPER(c.Country) AS Country, s.cc, c.NationalName AS NationalName, SUM(coast_stations) AS coast_stations, SUM(freshwater_stations) as inland_stations FROM bwd_regions s LEFT JOIN countrycodes_iso c ON s.cc = c.ISO2 GROUP BY s.cc ORDER BY c.Country";
+if ($_GET['GeoRegion'] == '')	{	
+   $sql = "
+		SELECT 
+			UPPER(c.Country) AS Country, s.cc, c.NationalName AS NationalName, 
+			SUM(coast_stations) AS coast_stations, 
+			SUM(freshwater_stations) as inland_stations 
+		FROM bwd_regions s 
+		LEFT JOIN countrycodes_iso c ON s.cc = c.ISO2 
+		GROUP BY s.cc 
+		ORDER BY c.Country
+	";
+}
 
 $result = mysql_query($sql) or die(mysql_error()."<br/>".$sql);
 
 
 // debug
-// echo $sql;
+//echo $sql;
 
 // Initialise variables
 $country_coast_stations = array();
@@ -377,8 +415,11 @@ while ($myrow = mysql_fetch_array($result)) {
 		if ($counter < 20)		$top_shift = 190+($counter*($td_height+5));
 		else					$top_shift = ($counter*($td_height+5))-585;
 
-		if (file_exists("regions/pdf_".strtolower($myrow['cc'])."_regions.png")) {
-			echo "<a title='".$myrow['Country']." region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/pdf_".strtolower($myrow['cc'])."_regions.png','".$myrow['Country']." - region map','725px','750px','150px','".$top_shift."px'); \"><img src='images/Regije.gif' alt='".$myrow['Country']." - region map'/></a>";
+		if (file_exists("maps/".strtolower($myrow['cc'])."_regions.png")) {
+			//echo "<a title='".$myrow['Country']." region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','regions/pdf_".strtolower($myrow['cc'])."_regions.png','".$myrow['Country']." - region map','725px','750px','150px','".$top_shift."px','',''); \"><img src='images/Regije.gif' alt='".$myrow['Country']." - region map'/></a>";
+			
+			// 4.6.2013; change for clickable maps
+			echo "<a title='".$myrow['Country']." region map' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('map_div','map_font','map_img','maps/map_show.php?type=Region&cc=".strtolower($myrow['cc'])."&GeoRegion=".$_GET['GeoRegion']."', '".$myrow['Country']." - region map','725px','750px','150px','".$top_shift."px', '', 'yes'); \"><img src='images/Regije.gif' border='0' alt='".$myrow['Country']." - region map'/></a>";
 		}
 
 	echo "</td>\n";
@@ -386,7 +427,7 @@ while ($myrow = mysql_fetch_array($result)) {
 	// PROVINCE
 	echo "<td>";
 	
-	// 7.6.2010; mkovacic: if there is only 1 region, select box for Province is show immediately
+	// 7.6.2010; mkovacic: if there is only 1 region, select box for Province is shown immediately
 	if (($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '') || mysql_num_rows($result_region) == 1) {
 		
 		$sql_province = "
@@ -430,15 +471,20 @@ while ($myrow = mysql_fetch_array($result)) {
 	  
 		// SHOW BUTTON FOR PROVINCE-MAP IF MAP EXISTS 
 		// set region-map position - shift from top 
-		if ($counter < 24)		$top_shift = 190+($counter*($td_height+5));
-		else					$top_shift = ($counter*($td_height+5))-720;
+		if ($counter < 20)		$top_shift = 190+($counter*($td_height+5));
+		else					$top_shift = ($counter*($td_height+5))-580;
 
 		//if ($myrow_region['Region'] == $myrow['Country'])	{
+		/*
 		if ($tmp_region == $myrow['Country'])	{
-			$file_province_map = "provinces/".strtolower($myrow['cc'])."_p.png";
+			$file_province_map = "maps/".$myrow['cc']."_provinces.png";
 		} else {
-			$file_province_map = "provinces/".strtolower($myrow['cc'])."_p_".strtolower(changeChars(replaceUTFChars((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region']),"_")).".png";
+			$file_province_map = "maps/".strtolower($myrow['cc'])."_p_".strtolower(changeChars(replaceUTFChars((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region']),"_")).".png";
 		}
+		*/
+		// 4.6.2013; change for clickable maps
+		$file_province_map = "maps/".strtolower($myrow['cc'])."_provinces.png";
+
 
 // debug output
 /*
@@ -454,7 +500,12 @@ echo $file_province_map;
 				echo "style='visibility: visible; cursor:pointer; cursor: hand;'";
 			else                                                      
 				echo "style='visibility: hidden; cursor:pointer; cursor: hand;'";
-			echo "title='".$myrow['Country']." province map'  onclick=\"ShowContent('map_div','map_font','map_img','".$file_province_map ."','".$myrow['Country']." - ".((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region'])." - province map','725px','750px','150px','".$top_shift."px'); \"><img src='images/Regije.gif' border='0' alt='".$myrow['Country']." - province map'/></a>";
+			
+			//echo "title='".$myrow['Country']." province map'  onclick=\"ShowContent('map_div','map_font','map_img','".$file_province_map ."','".$myrow['Country']." - ".((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region'])." - province map','725px','750px','150px','".$top_shift."px','',''); \"><img src='images/Regije.gif' border='0' alt='".$myrow['Country']." - province map'/></a>";
+			
+			// 4.6.2013; change for clickable maps
+			echo "title='".$myrow['Country']." province map' onclick=\"ShowContent('map_div','map_font','map_img','maps/map_show.php?type=Province&cc=".strtolower($myrow['cc'])."&GeoRegion=".$_GET['GeoRegion']."&Region=".($tmp_region?$tmp_region:$_GET['Region'])."', '".$myrow['Country']." - ".((mysql_num_rows($result_region) == 1)?$tmp_region:$_GET['Region'])." - province map','725px','750px','150px','".$top_shift."px', '', 'yes'); \"><img src='images/Regije.gif' border='0' alt='".$myrow['Country']." - province map'/></a>";
+
 		}
 	}
 	else
@@ -493,7 +544,7 @@ echo $file_province_map;
 	else															$bp_province = "";
 
 	$sql_bplace = '
-	  SELECT numind, Prelev 
+	  SELECT numind, Prelev, etcw_bw_profile
 	  FROM bwd_stations ';
 	  if ($_GET['GeoRegion'] != '')	$sql_bplace .= 'WHERE geographic = "'.$_GET['GeoRegion'].'" AND ';
 	  else 							$sql_bplace .= 'WHERE ';
@@ -514,15 +565,17 @@ echo $file_province_map;
 		echo "<select style='display: block; width: 100%' ";
 		echo "name='".$myrow['cc']."_bplace' id='".$myrow['cc']."_bplace' ";
 		
-		
-		echo "onchange=\"if(this.value != '') {HideContent('map_div','map_font'); ShowContent('graph_div','graph_font','graph_img','bar_jpgraph.php?cc=".$myrow['cc']."&amp;Country=".$myrow['Country']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=".convertUTFtoHTML($bp_region)."&amp;Province=".convertUTFtoHTML($bp_province)."&amp;BathingPlace=' + document.getElementById('".$myrow['cc']."_bplace').value,'','550px','270px','300px','".$top_shift."px'); return true;} else {HideContent('graph_div','graph_font');}\" ";
+		//echo "onchange=\"if(this.value != '') {HideContent('map_div','map_font'); ShowContent('graph_div','graph_font','graph_img','bar_jpgraph.php?cc=".$myrow['cc']."&amp;Country=".$myrow['Country']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=".convertUTFtoHTML($bp_region)."&amp;Province=".convertUTFtoHTML($bp_province)."&amp;BathingPlace=' + document.getElementById('".$myrow['cc']."_bplace').value, '','550px','295px','300px','".$top_shift."px', ".($myrow['etcw_bw_profile'] != '' ? "'<a target =\'_new\' href=\'".$myrow['etcw_bw_profile']."\'>Link to bathing water profile</a>'" : "''") . ", ''); return true;} else {HideContent('graph_div','graph_font');}\" ";
+
+		// 5.6.2013; link to bathing water profile added
+		echo "onchange=\"if(this.value != '') {HideContent('map_div','map_font'); ShowContent('graph_div','graph_font','graph_img','bar_jpgraph.php?cc=".$myrow['cc']."&amp;Country=".$myrow['Country']."&amp;GeoRegion=".$_GET['GeoRegion']."&amp;Region=".convertUTFtoHTML($bp_region)."&amp;Province=".convertUTFtoHTML($bp_province)."&amp;BathingPlace=', '','550px','295px','300px','".$top_shift."px', this.value, ''); return true;} else {HideContent('graph_div','graph_font');}\" ";
 		
 		echo ">\n";
-		echo "<option value='' selected='selected'>--- ".$sum_bw." total bathing waters ";
-		echo " ---</option>\n";
+		echo "<option value='' selected='selected'>--- ".$sum_bw." total bathing waters ---</option>\n";
 		//if ($_GET['cc'] == $myrow['cc']) {
 			while ($myrow_bplace = mysql_fetch_array($result_bplace)) {
-				echo "<option value='".$myrow_bplace['numind']."'";
+				echo "<option value='".$myrow_bplace['numind']."|".($myrow_bplace['etcw_bw_profile']!=''?$myrow_bplace['etcw_bw_profile']:'')."'";
+				//echo "<option value=\"test|dvatre\"";
 				if ($myrow_bplace['numind'] == $_GET['BathingPlace'])  echo " selected='selected'";
 				echo ">".$myrow_bplace['Prelev']."</option>";           
 			}
@@ -621,7 +674,7 @@ echo $file_province_map;
 		echo "<img alt='".$title_graf."' title='".$title_graf."' src='images/SlanaVodaGrafX.jpg' border='0'/>";
 	} else {
 		$title_graf = "Quality of coastal bathing waters in this Country/Region/Province"; // - ".$myrow['Country'];
-		echo "<a title='".$title_graf."' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','".convertUTFtoHTML($link_za_graf)."&amp;type=coast','','640px','500px','180px','".$top_shift."px'); \"><img src='images/SlanaVodaGraf.jpg' border='0' alt='".$title_graf."'/></a>";
+		echo "<a title='".$title_graf."' style='cursor:pointer; cursor: hand;' onclick=\"ShowContent('graph_div','graph_font','graph_img','".convertUTFtoHTML($link_za_graf)."&amp;type=coast','','640px','500px','180px','".$top_shift."px','',''); \"><img src='images/SlanaVodaGraf.jpg' border='0' alt='".$title_graf."'/></a>";
 	}
 	echo "&nbsp;";
         
@@ -631,7 +684,7 @@ echo $file_province_map;
 		echo "<img alt='".$title_graf."' title='".$title_graf."' src='images/SladkaVodaGrafX.jpg' border='0'/>";
 	} else {
 		$title_graf = "Quality of inland bathing waters in this Country/Region/Province"; // - ".$myrow['Country'];
-		echo "<a title='".$title_graf."' style='cursor:pointer; cursor: hand;'  onclick=\"ShowContent('graph_div','graph_font','graph_img','".convertUTFtoHTML($link_za_graf)."&amp;type=inland','','640px','500px','180px','".$top_shift."px'); \"><img src='images/SladkaVodaGraf.jpg' border='0' alt='".$title_graf."'/></a>";
+		echo "<a title='".$title_graf."' style='cursor:pointer; cursor: hand;'  onclick=\"ShowContent('graph_div','graph_font','graph_img','".convertUTFtoHTML($link_za_graf)."&amp;type=inland','','640px','500px','180px','".$top_shift."px','',''); \"><img src='images/SladkaVodaGraf.jpg' border='0' alt='".$title_graf."'/></a>";
 	}
  
     echo "</td>\n";
@@ -651,7 +704,7 @@ echo "<img src='images/kml.gif' width='16' height='16' border='0'  alt='KML icon
 <a target='_NEW_WINDOW' href='http://earth.google.com/download-earth.html'>http://earth.google.com/download-earth.html</a>";
 echo "</th>";
 echo "<th style='text-align:right; width:20%'>";
-echo "Last update: 17.5.2013";
+echo "Last update: 10.6.2013";
 echo "</th>";
 echo "</table>\n";
 

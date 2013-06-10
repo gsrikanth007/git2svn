@@ -16,8 +16,8 @@ function changeChars($input_string, $changeTo) {
 
 // f. to change UTF8 chars (Č,Š,Ž,Ü,...) to (C,S,Z,U,...) - only for jpgraph, because default font is not UTF8
 function replaceUTFChars($input_string) {
-  $changeFrom  = array("Č","Š","Ž","Ü","Ä","Ö","ß","É","Õ","Ñ","Ű","Ø","\\'","Ş","Æ","Å","Ő","Ç","Ú","ľ","Ý","Á","Ř","Í","Ě","Ň","Ó","Ā","Ū","Ē","Ļ","Û","Ľ","–"); 
-  $changeTo       = array("C","S","Z","UE","AE","OE","SS","E","O","N","U","OE","'","S","AE","AA","O","C","U","L","Y","A","R","I","E","N","O","A","U","E","L","U","L","-"); 
+  $changeFrom  = array("Č","Š","Ž","Ü","Ä","Ö","ß","É","Õ","Ñ","Ű","Ø","\\'","Ş","Æ","Å","Ő","Ç","Ú","ľ","Ý","Á","Ř","Í","Ě","Ň","Ó","Ā","Ū","Ē","Ļ","Û","Ľ","–","Ć"); 
+  $changeTo       = array("C","S","Z","UE","AE","OE","SS","E","O","N","U","OE","'","S","AE","AA","O","C","U","L","Y","A","R","I","E","N","O","A","U","E","L","U","L","-","C"); 
   Return str_replace($changeFrom, $changeTo, $input_string);
 }
 
@@ -102,6 +102,34 @@ function TypeAsText($key) {
 	case 'EM': return "RESERVOIR"; break;
 	default:  return "N/A"; break;
     }
+}
+
+
+/**
+*	outputs complete error if script is offline, otherwise only line number 
+* 
+*	$line			line in code where error occured
+*	$mysql_error	mysql error description
+*	$sql			sql to output
+*/
+function error_output($line, $mysql_error, $sql) {
+	
+	global $online;
+
+	if(!$online)	{	
+		echo "<br>";
+		echo "<span class='mismatch'>";
+		echo " Line: ".$line;
+		echo "<br>MySQL Error: ";
+		echo $mysql_error;
+		echo "<br>";
+		echo "<pre onclick='selectText(this.id)'>";
+		echo $sql;
+		echo "</pre>";
+		echo "</span>";
+	} else {
+		echo "<span class='mismatch'>ERROR: ".$line."</span>";
+	}
 }
 
 
