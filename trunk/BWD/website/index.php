@@ -56,8 +56,11 @@ header('Content-Type: text/html; charset=utf-8');
 	// div_title - title text to put in id=map_font element
     function ShowContent(div_id, font_id, img_id, src_html, div_title, width, height, left, top, bw_data, html_map) {
 		
-		var bw_array = bw_data.split("|");	
-		src_html = src_html + bw_array[0];
+		if(bw_data != '')	{
+			var bw_array = bw_data.split("|");	
+			src_html = src_html + bw_array[0];
+		}
+		
 		if (div_id.length < 1) { return; }
 		
 		// 1. first set width, height, position of div and show it (block)
