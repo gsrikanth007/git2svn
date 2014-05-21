@@ -304,7 +304,8 @@ $sql = '
       COUNT(IF(SeaWater = "O",1,NULL)) AS "coast_stations",
       COUNT(IF(SeaWater = "N",1,NULL)) AS "inland_stations"
   FROM bwd_stations s
-  LEFT JOIN countrycodes_iso c ON s.cc = c.ISO2 ';
+  LEFT JOIN countrycodes_iso c ON s.cc = c.ISO2
+';
 
 if ($_GET['GeoRegion'] != '')	
 	$sql .= "WHERE geographic = '".$_GET['GeoRegion']."' ";
@@ -560,7 +561,7 @@ echo $file_province_map;
 	$result_bplace = mysql_query($sql_bplace);
 
 // debug 
-// echo $sql_bplace;
+//echo $sql_bplace;
 
     // 7.6.2010; mkovacic: if bathing places are <= 100, they are shown (even if Region/Province is not chosen)
 	//if ($myrow['cc'] == $_GET['cc'] && $_GET['Region'] != '' && $_GET['Province'] != '') {
@@ -707,7 +708,7 @@ echo "<img src='images/kml.gif' width='16' height='16' border='0'  alt='KML icon
 <a target='_NEW_WINDOW' href='http://earth.google.com/download-earth.html'>http://earth.google.com/download-earth.html</a>";
 echo "</th>";
 echo "<th style='text-align:right; width:20%'>";
-echo "Last update: 10.6.2013";
+echo "Last update: 20.5.2014";
 echo "</th>";
 echo "</table>\n";
 
