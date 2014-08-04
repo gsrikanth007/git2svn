@@ -268,26 +268,26 @@ return '
 	// Setup the map
   var map = new GMap(document.getElementById("map"));
   
-  var tile_WMS_EEA = new GTileLayer( new GCopyrightCollection("(c) Teleatlas"), 1, 17 );
+  /*var tile_WMS_EEA = new GTileLayer( new GCopyrightCollection("(c) Teleatlas"), 1, 17 );
 	tile_WMS_EEA.myLayers="ERM2_rivers";
 	tile_WMS_EEA.myFormat="image/png";
 	//tile_WMS_EEA.myBaseURL="http://dev.sandre.eaufrance.fr/eeadamsgeo?";
 	tile_WMS_EEA.myBaseURL="http://dampos-demo.eea.europa.eu/cgi-bin/wseea?";
   tile_WMS_EEA.getTileUrl=CustomGetTileUrl;
-	tile_WMS_EEA.getOpacity = function() {return 1;}
+	tile_WMS_EEA.getOpacity = function() {return 1;} */
   var layer_WMS_EEA = [G_SATELLITE_MAP.getTileLayers()[0], tile_WMS_EEA];
   var map_WMS_EEA = new GMapType(layer_WMS_EEA, G_SATELLITE_MAP.getProjection(), "EEA WMS", G_SATELLITE_MAP);
 
-  var tile_WMS_GEONODE = new GTileLayer( new GCopyrightCollection("(c) Teleatlas"), 1, 17 );
+/*  var tile_WMS_GEONODE = new GTileLayer( new GCopyrightCollection("(c) Teleatlas"), 1, 17 );
 	tile_WMS_GEONODE.myLayers="100,200,300,Counties,Capitals,ContryBorder,RiverLarge,Riverlarge_label,RiverMedium,Coastline,Villages";
 	tile_WMS_GEONODE.myFormat="image/png";
 	tile_WMS_GEONODE.myBaseURL="http://geonode.eea.europa.eu/wmsconnector/com.esri.wms.Esrimap?";
   tile_WMS_GEONODE.getTileUrl=CustomGetTileUrl;
-	tile_WMS_GEONODE.getOpacity = function() {return 0.5;}
+	tile_WMS_GEONODE.getOpacity = function() {return 0.5;}*/
   var layer_WMS_GEONODE = [tile_WMS_GEONODE];
   var map_WMS_GEONODE = new GMapType(layer_WMS_GEONODE, G_SATELLITE_MAP.getProjection(), "EEA Geonode", G_SATELLITE_MAP);
 
-  var tile_I2K = new GTileLayer( new GCopyrightCollection("(c) European Commission"), 1, 17 );
+/*  var tile_I2K = new GTileLayer( new GCopyrightCollection("(c) European Commission"), 1, 17 );
 	tile_I2K.myLayers="0";
 	tile_I2K.myFormat="image/png";
 	tile_I2K.myBaseURL="http://mapserver.jrc.it/wmsconnector/com.esri.wms.Esrimap/image2000_pan?";
@@ -301,7 +301,7 @@ return '
 	tile_test.myFormat="image/gif";
 	tile_test.myBaseURL="http://bg.berkeley.edu/cgi-bin/mapserv?map=/usr/local/apache2/htdocs/gadm.map&";
   tile_test.getTileUrl=CustomGetTileUrl;
-	tile_test.getOpacity = function() {return 0.5;}
+	tile_test.getOpacity = function() {return 0.5;}*/
   var layer_tile_test = [G_SATELLITE_MAP.getTileLayers()[0], tile_test];
   var map_tile_test = new GMapType(layer_tile_test, G_SATELLITE_MAP.getProjection(), "Test", G_SATELLITE_MAP);
   

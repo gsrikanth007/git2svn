@@ -17,7 +17,7 @@
                 {$icoldposition}<br/>
 			    <label for="xini">x:</label> <input size="10" type="text" id="xini" name="xini" value="{$dam->x_icold}"/>
                 <label for="yini">y:</label> <input size="10" type="text" id="yini" name="yini" value="{$dam->y_icold}"/>
-                <input class="SearchButton" type="button" onclick="this.form.x.value={$dam->x_icold};this.form.y.value={$dam->y_icold};" value="{$icoldistrue}"/>
+                <input class="SearchButton" type="button" onclick="this.form.x.value=this.form.xini.value;this.form.y.value=this.form.yini.value;var mk_point = new google.maps.LatLng(this.form.y.value, this.form.x.value); updateMarker(3, mk_point)" value="{$icoldistrue}"/>
 			  </li>
 <!-- See https://svn.eionet.europa.eu/projects/Zope/ticket/1300        
               <li>
@@ -68,6 +68,9 @@
 			{$clickinfo}
             <br/>
 			     <div id="map" style="width: 400px; height: 400px; "></div>
+			     <div align="center">
+    			        <div id="copyright-control" style="width: 400px; height: 16px;"></div>
+    			     </div>
 			     <input type="checkbox" checked="checked" id="setWhichPoint" name="setWhichPoint"/>{$setWhichPoint}
           </td>
         </tr>

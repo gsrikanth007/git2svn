@@ -81,40 +81,41 @@ CustomGetTileUrl=function(a,b,c) {
 	}
 
 	if (typeof(window['this.myStyles'])=="undefined") this.myStyles="";
-	var lULP = new GPoint(a.x*256,(a.y+1)*256);
-	var lLRP = new GPoint((a.x+1)*256,a.y*256);
-	var lUL = G_NORMAL_MAP.getProjection().fromPixelToLatLng(lULP,b,c);
-	var lLR = G_NORMAL_MAP.getProjection().fromPixelToLatLng(lLRP,b,c);
-
-	// switch between Mercator and DD if merczoomlevel is set
-	// NOTE -it is now safe to use Mercator exclusively for all zoom levels (if your WMS supports it)
-	// so you can just use the two lines of code below the IF (& delete the ELSE)
-	// drg & doq are topozone layers--- they don't work with epsg:54004
- 	//if (this.myLayers!="drg" && this.myLayers!="doq") {
-//		var lBbox=dd2MercMetersLng(lUL.x)+","+dd2MercMetersLat(lUL.y)+","+dd2MercMetersLng(lLR.x)+","+dd2MercMetersLat(lLR.y);
-		//Change for GeoServer - 41001 is mercator and installed by default.
-//		var lSRS="EPSG:54004";
-	//} else {
-		var lBbox=lUL.x+","+lUL.y+","+lLR.x+","+lLR.y;
-		var lSRS="EPSG:4326";
-//	} 
-	var lURL=this.myBaseURL;
-	lURL+="&REQUEST=GetMap";
-	lURL+="&SERVICE=WMS";
-	lURL+="&VERSION=1.1.1";
-	lURL+="&LAYERS="+this.myLayers;
-	lURL+="&STYLES="+this.myStyles;
-	lURL+="&FORMAT="+this.myFormat;
-	lURL+="&BGCOLOR=0xFFFFFF";
-	lURL+="&TRANSPARENT=TRUE";
-	lURL+="&SRS="+lSRS;
-	lURL+="&BBOX="+lBbox;
-	lURL+="&WIDTH=256";
-	lURL+="&HEIGHT=256";
-	lURL+="&reaspect=false";
-	//document.write(lURL + "<br/>")
-	//alert(" url is " + lURL);
-	return lURL;
+    var projection = window.map.getProjection();
+    var zpow = Math.pow(2, b);
+    var lULP = new google.maps.Point(a.x * 256.0 / zpow, (a.y + 1) * 256.0 / zpow);
+    var lLRP = new google.maps.Point((a.x + 1) * 256.0 / zpow, (a.y) * 256.0 / zpow);
+    var lUL = projection.fromPointToLatLng(lULP);
+    var lLR = projection.fromPointToLatLng(lLRP);
+    // switch between Mercator and DD if merczoomlevel is set
+    // NOTE -it is now safe to use Mercator exclusively for all zoom levels (if your WMS supports it)
+    // so you can just use the two lines of code below the IF (& delete the ELSE)
+    // drg & doq are topozone layers--- they don't work with epsg:54004
+        //if (this.myLayers!="drg" && this.myLayers!="doq") {
+        // var lBbox=dd2MercMetersLng(lUL.x)+","+dd2MercMetersLat(lUL.y)+","+dd2MercMetersLng(lLR.x)+","+dd2MercMetersLat(lLR.y);
+        //Change for GeoServer - 41001 is mercator and installed by default.
+        // var lSRS="EPSG:54004";
+    //} else {
+    var lBbox=lUL.lng()+","+lUL.lat()+","+lLR.lng()+","+lLR.lat();
+    var lSRS="EPSG:4326";
+    //	} 
+    var lURL=this.myBaseURL;
+    lURL+="&REQUEST=GetMap";
+    lURL+="&SERVICE=WMS";
+    lURL+="&VERSION=1.1.1";
+    lURL+="&LAYERS="+this.myLayers;
+    lURL+="&STYLES="+this.myStyles;
+    lURL+="&FORMAT="+this.myFormat;
+    lURL+="&BGCOLOR=0xFFFFFF";
+    lURL+="&TRANSPARENT=TRUE";
+    lURL+="&SRS="+lSRS;
+    lURL+="&BBOX="+lBbox;
+    lURL+="&WIDTH=256";
+    lURL+="&HEIGHT=256";
+    lURL+="&reaspect=false";
+    //document.write(lURL + "<br/>")
+    //alert(" url is " + lURL);
+    return lURL;
 }
 
 function customOpacity() { return this.myOpacity; }

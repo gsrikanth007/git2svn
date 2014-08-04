@@ -16,12 +16,12 @@
     <script type="text/javascript" src="js/pageops.js"></script>
     <script type="text/javascript" 	src="js/wms236.js"></script>
     <!-- TODO : Set Google on --> 
-    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={$GOOGLEMAPKEY}" type="text/javascript"></script>
-    <script src="http://gmaps-utility-library.googlecode.com/svn/trunk/markermanager/release/src/markermanager.js"></script>
+  <!--	<script src="//maps.googleapis.com/maps/api/js?v=3&amp;client={$GOOGLEMAPKEY}" type="text/javascript"></script> -->
+    <script src="http://maps.googleapis.com/maps/api/js?v=3" type="text/javascript"></script>
     <script type="text/javascript" src="js/google.js"></script>
     <title>{$Name}</title>
 </head>
-<body onunload="GUnload()" class="{$bodyclass}">
+<body class="{$bodyclass}">
     <div id="container">
       <div id="toolribbon">
         <div id="lefttools">

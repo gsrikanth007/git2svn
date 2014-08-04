@@ -2,7 +2,7 @@
  * EEA-DAMS 
  *
  * @abstract	 Javascript function.
- * @author       François-Xavier Prunayre <fx.prunayre@oieau.fr>
+ * @author       Fran?is-Xavier Prunayre <fx.prunayre@oieau.fr>
  * @copyright    2005
  * @version    	 1.0
  *
@@ -94,7 +94,7 @@ xMac=xUA.indexOf('mac')!=-1;
 
 
 ///
-/// Fonctions générales de manipulation de <SELECT>
+/// Fonctions g??ales de manipulation de <SELECT>
 ///
 
 function getIndexByValue(select,value) {
@@ -185,17 +185,17 @@ function majSel(objVar,objListe) {
 	for(i=0;i<nbobjliste;i++) {
 		selObj(objVar,objListe[i].value,objListe[i].selected);
 
-		// a-t-on selectionné une famille ?
+		// a-t-on selectionn?une famille ?
 		if (objListe[i].selected && (objListe[i].value.indexOf("FA") >= 0))
-		{	//alert("famille selectionnée : "+objListe[i].value);
+		{	//alert("famille selectionn? : "+objListe[i].value);
 			for(j=i+1;j<nbobjliste;j++)
-			{	//alert("sous-groupe selectionné : "+objListe[j].value+" ?");
+			{	//alert("sous-groupe selectionn?: "+objListe[j].value+" ?");
 					
 				// est-ce un sous-groupe ?
 				if (objListe[j].value.indexOf("GP") >= 0)
-				{	//alert("sous-groupe selectionné : "+objListe[j].text);
+				{	//alert("sous-groupe selectionn?: "+objListe[j].text);
 					
-					// on sélectionne le sous-groupe
+					// on s?ectionne le sous-groupe
 					objListe[j].selected = true;
 					selObj(objVar, objListe[j].value, true);
 				}
@@ -266,19 +266,19 @@ function unsel(objVar,objListe) {
 	// Selection des sous groupe des familles selectionnees
 	for(i=0; i<nbobjsel; i++) {
 		if(objListe[i].selected == true) {
-			// a-t-on selectionné une famille ?
-			//alert("famille selectionnée : "+objListe[i].value);
+			// a-t-on selectionn?une famille ?
+			//alert("famille selectionn? : "+objListe[i].value);
 				
 			if (objListe[i].value.indexOf("FA") >= 0)
-			{	//alert("famille selectionnée : "+objListe[i].value);
+			{	//alert("famille selectionn? : "+objListe[i].value);
 				for(j=i+1;j < nbobjliste;j++)
-				{	//alert("sous-groupe selectionné : "+objListe[j].value+" ?");
+				{	//alert("sous-groupe selectionn?: "+objListe[j].value+" ?");
 					
 					// est-ce un sous-groupe ?
 					if (objListe[j] != null)
 					if (objListe[j].value.indexOf("GP") >= 0)
-					{	//alert("sous-groupe selectionné : "+objListe[j].text);
-						// on sélectionne le sous-groupe
+					{	//alert("sous-groupe selectionn?: "+objListe[j].text);
+						// on s?ectionne le sous-groupe
 						objListe[j].selected = true;
 						selObj(objVar, objListe[j].value, true);
 					}
@@ -357,7 +357,8 @@ function xGetElementsByClassName(c,p,t,f)
   var re = new RegExp('\\b'+c+'\\b', 'i');
   var list = xGetElementsByTagName(t, p);
   for (var i = 0; i < list.length; ++i) {
-    if (list[i].className && list[i].className.search(re) != -1) {
+    var classname = list[i].className;
+    if (classname && typeof classname === 'string' && classname.search(re) != -1) {
       found[found.length] = list[i];
       if (f) f(list[i]);
     }
@@ -430,10 +431,3 @@ function ontop(id) {
     }
   }
 }
-
-
-
-
-
-
-

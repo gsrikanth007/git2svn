@@ -8,180 +8,194 @@
  * @param string $mapClickListener JavaScript function called when user clicks the map
  * @return string JS script. Please note that the script starts with <script type ... but does not append end script tag!. Do that explicitly calling endGoogleViewport()
  */
-function startGoogleViewport ( $x = 4, $y = 55, $z = 3, 
+  function startGoogleViewport ( $x = 4, $y = 55, $z = 3, 
     $mapClickListener = null, $showNearbyDams = false, 
     $exclude0x = "0", $exclude0y = "0",
     $exclude1x = "0", $exclude1y = "0" )
-{
-  $handlerStr = "";
-  if( $mapClickListener != null )
   {
-    $handlerStr = "GEvent.addListener(map, 'click', $mapClickListener )";
-  }
+    $handlerStr = "";
+    if( $mapClickListener != null )
+    {
+      $handlerStr = "google.maps.event.addListener(map, 'click', $mapClickListener )";
+    }
   
   $ret = '
   <script type="text/javascript">
+    function updateCopyrights() {
+      var copyrightNode = document.getElementById("copyright-control");
+      if (copyrightNode) {
+        copyrightNode.style.fontSize = "14px";
+        copyrightNode.style.fontFamily = "Arial, sans-serif";
+        copyrightNode.style.backgroundColor = "white";
+        var notice = "", sep="", copy1, copy2;
 
-  /* Image2000 tile */
-  // Handle copyright
-  var i2k_cc = new GCopyrightCollection("I2K data");
-  var i2k_cb = new GLatLngBounds( new GLatLng( 33.87, -14.41 ), new GLatLng( 72.23, 55.89 ) );  
-  i2k_cc.addCopyright(new GCopyright( 1, i2k_cb, 5, "&copy; JRC" ));
-  
-  
-  // var i2k_layer = new GTileLayer( i2k_cc, 1, 17 );
-  var i2k_layer = new GTileLayer( null, 10, 10 );
-  i2k_layer.myLayers="0";
-  i2k_layer.myFormat="image/png";
-  i2k_layer.myBaseURL="http://ags-sdi-public.jrc.ec.europa.eu/arcgis/services/image2000_pan/Mapserver/WMSServer?";
-  i2k_layer.getTileUrl=CustomGetTileUrl;
-  i2k_layer.getOpacity = function() {return 1;}
-  var i2k_overlay = new GTileLayerOverlay( i2k_layer );
-  i2k_layer.getCopyright = function(a, b) {
-    // console.log(a);
-    var ret = null;
-    if(!i2k_overlay.isHidden()) {
-      ret =  i2k_cc.getCopyrightNotice(a, b);
+        if (!isOverlayHidden(0)) {
+          copy1 = " &copy; JRC ";
+          sep = "|";
+        } else {
+          copy1 = "";
+        }
+
+        if (!isOverlayHidden(1)) {
+          copy2 = " ERM v2, (c) Eurogeographics ";
+        } else {
+          copy2 = "";
+          sep = "";
+        }
+
+        notice = copy1 + sep + copy2;
+        copyrightNode.innerHTML = notice;
+      }
     }
-    return ret;
-  }
 
-  /* EEA WMS */
-  // Handle copyright
-  var eea_cc = new GCopyrightCollection("EEA data");
-  var eea_cb = new GLatLngBounds( new GLatLng( 33.87, -14.41 ), new GLatLng( 72.23, 55.89 ) );  
-  eea_cc.addCopyright(new GCopyright( 2, eea_cc, 12, "ERM v2, (c) Eurogeographics" ));
+    var i2k_layer_options = {
+      myLayers: "0",
+      myFormat: "image/png",
+      isPng: false,
+      myBaseURL: "http://ags-sdi-public.jrc.ec.europa.eu/arcgis/services/image2000_pan/Mapserver/WMSServer?",
+      getTileUrl: CustomGetTileUrl,
+      tileSize: new google.maps.Size(256, 256),
+      getOpacity: function() {return 1;}
+    };
+    var i2k_layer = new google.maps.ImageMapType(i2k_layer_options);
 
-  var eea_layer = new GTileLayer( eea_cc, 1, 17 );
-  eea_layer.myLayers="ERM2Water";
-  eea_layer.myFormat="image/png";
-  eea_layer.myBaseURL="http://dampos-demo.eionet.europa.eu/cgi-bin/wseea?";
-  eea_layer.getTileUrl=CustomGetTileUrl;
-  eea_layer.getOpacity = function() {return 1;}
-  var eea_overlay = new GTileLayerOverlay( eea_layer );
-  eea_layer.getCopyright = function(a, b) {
-    // console.log(a);
-    var ret = null;
-    if(!eea_overlay.isHidden()) {
-      ret =  eea_cc.getCopyrightNotice(a, b);
+    var eea_layer_options = {
+      myLayers: "ERM2Water",
+      myFormat: "image/png",
+      isPng: false,
+      myBaseURL: "http://dampos-demo.eionet.europa.eu/cgi-bin/wseea?",
+      getTileUrl: CustomGetTileUrl,
+      tileSize: new google.maps.Size(256, 256),
+      getOpacity: function() {return 1;}
+    };
+    var eea_layer = new google.maps.ImageMapType(eea_layer_options);
+
+    var mapCenter = new google.maps.LatLng( '.$y.','.$x.');
+    var mapOptions = {
+      zoom: '.$z.',
+      center: mapCenter,
+      mapTypeControl: false,
+      overviewMapControl: true
+    };
+    var map = new google.maps.Map( document.getElementById( "map" ), mapOptions );
+
+    var markers = [];
+
+    var i2kButton = new LayerSelectControl( "I2K", onI2KClick, new google.maps.Size( 60, 5 ) );
+    i2kButton.initialize(map);
+    var eeaButton = new LayerSelectControl( "Water", onEEAClick, new google.maps.Size( 115, 5 ) );
+    eeaButton.initialize(map);
+    var hybButton = new LayerSelectControl( "Hyb", onHybClick, new google.maps.Size( 190, 5 ) );
+    hybButton.initialize(map);
+    var satButton = new LayerSelectControl( "Sat", onSatClick, new google.maps.Size( 245, 5 ) );
+    satButton.initialize(map);
+    var normalButton = new LayerSelectControl( "Normal", onNormalClick, new google.maps.Size( 300, 5 ) );
+    normalButton.initialize(map)
+
+    map.overlayMapTypes.push(null);
+    map.overlayMapTypes.push(null);
+    map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+    '.$handlerStr.'
+      
+    google.maps.event.addListener( map, "zoomend", function() { onZoomEnd(); } );
+    google.maps.event.addListener( map, "moveend", function() { onMoveEnd(); } );
+  
+//    var mt = map.getMapTypes();
+//    for (var i=0; i<mt.length; i++) {
+//      mt[i].getMinimumResolution = function() {return 3;}
+//    }
+
+    function hideOverlay(idx) {
+      map.overlayMapTypes.setAt(idx, null);
     }
-    return ret;
-  }
 
-  //var map = new GMap2( document.getElementById( "map" ), { mapTypes:[ G_SATELLITE_MAP, custommap ] } );
-  var map = new GMap2( document.getElementById( "map" ) );
-  map.setCenter( new GLatLng( '.$y.','.$x.'), '.$z.');
+    function showOverlay(idx, overlay) {
+      map.overlayMapTypes.setAt(idx, overlay);
+    }
 
-  var i2kButton = new LayerSelectControl( "I2K", onI2KClick, new GSize( 60, 5 ) );
-  var eeaButton = new LayerSelectControl( "Water", onEEAClick, new GSize( 115, 5 ) );
-
-  var hybButton = new LayerSelectControl( "Hyb", onHybClick, new GSize( 190, 5 ) );
-  var satButton = new LayerSelectControl( "Sat", onSatClick, new GSize( 245, 5 ) );
-  var normalButton = new LayerSelectControl( "Normal", onNormalClick, new GSize( 300, 5 ) );
-  
-  
-  map.addControl( i2kButton );
-  map.addControl( eeaButton );
-  map.addControl( hybButton );
-  map.addControl( satButton );
-  map.addControl( normalButton );
-  map.addControl( new GLargeMapControl() );
-  map.addOverlay( i2k_overlay );
-  map.addOverlay( eea_overlay );
-  map.setMapType( G_SATELLITE_MAP );
-  
-  '.$handlerStr.'
-    
-  GEvent.addListener( map, "zoomend", function() { onZoomEnd(); } );
-  GEvent.addListener( map, "moveend", function() { onMoveEnd(); } );
-  //GEvent.addListener( map, "load", function() { onLoad(); } );
-  
-  // Initially hide additional overlays
-  i2k_overlay.hide();
-  eea_overlay.hide();
-
-  var mt = map.getMapTypes();
-  for (var i=0; i<mt.length; i++) {
-    mt[i].getMinimumResolution = function() {return 3;}
-  }
-
+    function isOverlayHidden(idx) {
+      if (map.overlayMapTypes.getAt(idx)) {
+        return false;
+      }
+      return true;
+    }
 
   function onI2KClick() {
-  	i2kButton.press();
-  	var eea_was_hidden = eea_overlay.isHidden();
-  	if(i2k_overlay.isHidden())
-  	{
-  	  i2k_overlay.show();
+    i2kButton.press();
+    var eea_was_hidden = isOverlayHidden(1);
+    if(isOverlayHidden(0)) {
+      showOverlay(0, i2k_layer);
       // Force a refresh of the map to reload the copyright string
       map.setCenter( map.getCenter() );
-      i2k_overlay.show();
-      if( eea_was_hidden ) eea_overlay.hide();
-  	  return;
-  	}
+      if( eea_was_hidden ) hideOverlay(1);
+      updateCopyrights();
+      return;
+    }
     // Force a refresh of the map to reload the copyright string
-    i2k_overlay.hide();
+    hideOverlay(0);
     map.setCenter( map.getCenter() );
-    if( eea_was_hidden ) eea_overlay.hide();
-    i2k_overlay.hide();
+    if( eea_was_hidden ) hideOverlay(1);
+    hideOverlay(0);
+    updateCopyrights();
   }
   
   function onEEAClick() {
-  	eeaButton.press();
-  	var i2k_was_hidden = i2k_overlay.isHidden();
-  	if(eea_overlay.isHidden())
-  	{
-  	  eea_overlay.show();
+    var checked = eeaButton.isPress();
+    eeaButton.press();
+    var i2k_was_hidden = isOverlayHidden(0);
+    if(isOverlayHidden(1)) {
+      showOverlay(1, eea_layer);
       // Force a refresh of the map to reload the copyright string
       map.setCenter( map.getCenter() );
-      eea_overlay.show();
-      if( i2k_was_hidden ) i2k_overlay.hide();
-  	  return;
-  	}
+      if( i2k_was_hidden ) hideOverlay(0);
+      updateCopyrights();
+      return;
+    }
     // Force a refresh of the map to reload the copyright string
-    eea_overlay.hide();
+    hideOverlay(1);
     map.setCenter( map.getCenter() );
-    if( i2k_was_hidden ) i2k_overlay.hide();
-    eea_overlay.hide();
-}
+    if( i2k_was_hidden ) hideOverlay(0);
+    hideOverlay(1);
+    updateCopyrights();
+  }
 
   function onHybClick() {
-    if( !hybButton.isPress() )
-    {
-  	  hybButton.press();
-  	  if( satButton.isPress() ) satButton.press();
-  	  if( normalButton.isPress() ) normalButton.press();
-  	  map.setMapType(G_HYBRID_MAP);
-  	  restoreOverlays();
-  	}
+    if( !hybButton.isPress() ) {
+      hybButton.press();
+      if( satButton.isPress() ) satButton.press();
+      if( normalButton.isPress() ) normalButton.press();
+      map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+      restoreOverlays();
+    }
   }
   
   function onSatClick() {
-    if( !satButton.isPress() )
-    {
-  	  if( hybButton.isPress() ) hybButton.press();
-  	  satButton.press();
-  	  if( normalButton.isPress() ) normalButton.press();
-  	  map.setMapType(G_SATELLITE_MAP);
-  	  restoreOverlays();
-  	}
+    if( !satButton.isPress() ) {
+      if( hybButton.isPress() ) hybButton.press();
+      satButton.press();
+      if( normalButton.isPress() ) normalButton.press();
+      map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+      restoreOverlays();
+    }
   }
   
   function onNormalClick() {
-    if( !normalButton.isPress() )
-    {
-  	  if( hybButton.isPress() ) hybButton.press();
-  	  if( satButton.isPress() ) satButton.press();
-  	  normalButton.press();
-  	  map.setMapType(G_NORMAL_MAP);
-  	  restoreOverlays();
+    if( !normalButton.isPress() ) {
+      if( hybButton.isPress() ) hybButton.press();
+      if( satButton.isPress() ) satButton.press();
+      normalButton.press();
+      map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+        restoreOverlays();
   	}
   }
 
   function onZoomEnd() {
-  	restoreOverlays();
+    restoreOverlays();
   }
   
   var nearbyicon = "'.NEARBYICON.'";
+  var coldicon = "'.ICOLDICON.'";
+  var validicon = "'.VALIDICON.'";
   
   function onLoad() {
   ';
@@ -195,18 +209,13 @@ function startGoogleViewport ( $x = 4, $y = 55, $z = 3,
   function onMoveEnd() {
   ';
   
-  if( $showNearbyDams ) {
-    $ret .= '  
-  	startRequestNearbyDams();';
-  }
-  
   $ret.= '
   }
   //When changing map type (onSatClick/onHybClick), preserve overlay state of visibility 
   function restoreOverlays()
   {
-  	if(i2k_overlay.isHidden()) i2k_overlay.hide(); 
-  	if(eea_overlay.isHidden()) eea_overlay.hide();
+    if(isOverlayHidden(0)) hideOverlay(0);
+    if(isOverlayHidden(1)) hideOverlay(1);
   }
   
   satButton.press();
@@ -218,7 +227,12 @@ function startGoogleViewport ( $x = 4, $y = 55, $z = 3,
 ';
   if( $showNearbyDams ) {
     $ret .= '  
-    startRequestNearbyDams();';
+      google.maps.event.clearListeners(map, "idle");
+      google.maps.event.addListener(map, "idle", function() {
+        var bounds =  map.getBounds();
+        startRequestNearbyDams(bounds);
+      });
+';
   }
   return $ret;
 }
@@ -234,11 +248,11 @@ function startGoogleViewport ( $x = 4, $y = 55, $z = 3,
  * @return string Returs JS code which creates the marker
  */
 function googleMarkerMain ( $x, $y, $id, $name = "", $iconurl = ICOLDICON ) {
-  return "var point$id = new GPoint($x, $y); var marker$id = createMarkerMain(point$id, \"$id\", \"$iconurl\", \"$name\"); map.addOverlay(marker$id);";
+  return "var point$id = new google.maps.Point($x, $y); var marker$id = createMarkerMain(point$id, \"$id\", \"$iconurl\", \"$name\"); marker$id.setMap(map); markers.push(marker$id);";
 }
 
 function createCrossMarker( $markerID, $title, $x, $y, $icon, $markerType ) {
-  return "var point$markerID = new GPoint($x, $y); var marker$markerID = createCrossMarker(point$markerID, \"$title\", \"$icon\", $markerType); map.addOverlay(marker$markerID);";
+  return "var point$markerID = new google.maps.Point($x, $y); var marker$markerID = createCrossMarker(point$markerID, \"$title\", \"$icon\", $markerType); marker$markerID.setMap(map); markers.push(marker$markerID);";
 }
 
 /**
@@ -250,4 +264,3 @@ function endGoogleViewport () {
 }
 
 ?>
-

@@ -8,15 +8,11 @@ function LayerSelectControl(text, clickHandler, position )
   this.btnPosition = position;
 }
 
-LayerSelectControl.prototype = new GControl();
-
-
 LayerSelectControl.prototype.press = function()
 {
   this.pressed = !this.pressed;
   this.setButtonStyle_( this.buttonDiv, this.pressed );
 }
-
 
 LayerSelectControl.prototype.isPress = function()
 {
@@ -37,8 +33,8 @@ LayerSelectControl.prototype.initialize = function(map)
   this.setButtonStyle_(this.buttonDiv, false);
   container.appendChild(this.buttonDiv);
   this.buttonDiv.appendChild(document.createTextNode(this.text));
-  GEvent.addDomListener(this.buttonDiv, "click", this.onClickHandler);
-  map.getContainer().appendChild(container);
+  google.maps.event.addDomListener(this.buttonDiv, "click", this.onClickHandler);
+  map.controls[google.maps.ControlPosition.TOP_RIGHT].push(container);
   return container;
 }
 
@@ -73,96 +69,146 @@ LayerSelectControl.prototype.setButtonStyle_ = function(button, pressed)
   button.style.fontWeight = ( pressed == true ) ? "bold" : "normal";
 }
 
-
 function createMarkerMain( point, id, iconimg, damName ) {
-  var icon = new GIcon();
-  icon.image = iconimg;
-  icon.shadow = "http://www.google.com/mapfiles/shadow50.png";
-  icon.iconSize = new GSize(20, 34);
-  icon.shadowSize = new GSize(37, 34);
-  icon.iconAnchor = new GPoint(6, 20);
-  icon.infoWindowAnchor = new GPoint(5, 1);
-  var marker = new GMarker( point, {icon: icon, title: damName} );
-  GEvent.addListener(marker, "click", function() { location.replace ("dams.php?cd="+id);});
+  var icon = {
+    url: iconimg,
+    size: google.maps.Size(20, 34),
+    anchor: google.maps.Point(6, 20)
+  }
+  var position = new google.maps.LatLng(point.y, point.x);
+  var marker = new google.maps.Marker({icon: icon, title: damName, position: position});
+  google.maps.event.addListener(marker, "click", function() { location.replace ("dams.php?cd="+id);});
   return marker;
 }
 
 
 function createCrossMarker(point, desc, iconimg, mkType ) {
-  var icon = new GIcon();
-  icon.image = iconimg;
-  icon.shadow = "http://www.google.com/mapfiles/shadow50.png";
-  icon.iconSize = new GSize(37, 37);
-  icon.shadowSize = new GSize(37, 34);
-  icon.iconAnchor = new GPoint(19, 19);
-  icon.infoWindowAnchor = new GPoint(5, 1);
+  var icon = {
+    url: iconimg,
+    size: new google.maps.Size(37, 37),
+    anchor: new google.maps.Point(19, 19)
+  }
   var marker = null;
+  var position = new google.maps.LatLng(point.y, point.x);
   if( mkType == 3 ) // Green cross
   {
-    marker = new GMarker(point, {icon: icon, draggable: true, title: desc });
-    marker.enableDragging();
-    GEvent.addListener( marker, "dragend", damDragEndListener );
+    marker = new google.maps.Marker({
+      icon: icon,
+      position: position,
+      draggable: true,
+      title: desc
+    });
+    google.maps.event.addListener( marker, "dragend", damDragEndListener );
   } else {
-    marker = new GMarker(point, {icon: icon, draggable: false, title: desc });
+    marker = new google.maps.Marker({
+      icon: icon,
+      position: position,
+      draggable: false,
+      title: desc
+    });
   }
   marker.markerType = mkType;
   var html = "" + desc + " <br/>Longitude :"+ point.x+"<br/>Latitude :"+ point.y;
-  GEvent.addListener(marker, "click", function() 
+  var infowindow = new google.maps.InfoWindow({
+      content: html
+  });
+  google.maps.event.addListener(marker, "click", function() 
   {
-    marker.openInfoWindowHtml(html);
+    infowindow.open(map, marker);
   });
   return marker;
 }
 
 function createCrossMarker2(id, point, desc, iconimg, mkType ) {
-  var icon = new GIcon();
-  icon.image = iconimg;
-  icon.shadow = "http://www.google.com/mapfiles/shadow50.png";
-  icon.iconSize = new GSize(37, 37);
-  icon.shadowSize = new GSize(37, 34);
-  icon.iconAnchor = new GPoint(19, 19);
-  icon.infoWindowAnchor = new GPoint(5, 1);
+  var icon = {
+    url: iconimg,
+    size: new google.maps.Size(37, 37),
+    anchor: new google.maps.Point(19, 19),
+  }
+  var position = new google.maps.LatLng(point.y, point.x);
   var marker = null;
   if( mkType == 3 ) // Green cross
   {
-    marker = new GMarker(point, {icon: icon, draggable: true, title: desc });
+    marker = new google.maps.Marker({
+      icon: icon,
+      position: position,
+      draggable: true,
+      title: desc
+    });
     marker.enableDragging();
-    GEvent.addListener( marker, "dragend", damDragEndListener );
+    google.maps.event.addListener( marker, "dragend", damDragEndListener );
   } else {
-    marker = new GMarker(point, {icon: icon, draggable: false, title: desc });
+    marker = new google.maps.Marker({
+      icon: icon,
+      position: position,
+      draggable: false,
+      title: desc,
+      zIndex: Math.round(position.lat()*-100000)<<5
+    });
   }
   marker.markerType = mkType;
   var url = new String ( document.location );
   url = url.substr( 0, url.lastIndexOf( "/" ) );
   url += "/dams.php?cd=" + id;
   var html = "" + desc + " <br/>Longitude :"+ point.x+"<br/>Latitude :"+ point.y+"<br/><a href=\"" + url + "\">Make dam active</a>";
-  GEvent.addListener(marker, "click", function() 
+  var infowindow = new google.maps.InfoWindow({
+      content: html
+  });
+  google.maps.event.addListener(marker, "click", function() 
   {
-    marker.openInfoWindowHtml(html);
+    infowindow.open(map, marker);
   });
   return marker;
 }
 
+function updateMarker(mkType, position) {
+  var available = false;
+  for (var i=0, len=markers.length; i<len; i++) {
+    if (markers[i].markerType == mkType) {
+      markers[i].setPosition(position);
+      available = true;
+    }  
+  }
+  if (!available) {
+    var title, marker_icon;
+    if (mkType === 3) {
+      marker_icon = validicon;
+      title = "Validated position";
+    } else {
+      marker_icon = coldicon;
+      title = "ICOLD position";
+    }
+    var x = position.lng();
+    var y = position.lat();
+    var point = new google.maps.Point(x, y);
+    marker = createCrossMarker( point, title, marker_icon, mkType );
+    marker.setMap(map);
+    markers.push(marker);
+  }
+}
 
 /**
   Whenever user clicks on map, this handler is called, filling the form fields.
   This method is a click handler on the map object in google viewport of dam detail (dam.php).
 */
-function damMapClickListener( overlay, point ) {
+function damMapClickListener(event) {
   var ctrl = document.getElementById( "setWhichPoint" );
+  var position = event.latLng;
   try {
     if( ctrl != null )
     {
       if ( ctrl.checked == true ) {
+        updateMarker(3, position);
         var xCtrl = document.getElementById( "x" );
         var yCtrl = document.getElementById( "y" );
-        if( xCtrl != null ) xCtrl.value = point.x;
-        if( yCtrl != null ) yCtrl.value = point.y;
+        if( xCtrl != null ) xCtrl.value = position.lng();
+        if( yCtrl != null ) yCtrl.value = position.lat();
       } else {
+        updateMarker(1, position);
         var xIniCtrl = document.getElementById( "xini" );
         var yIniCtrl = document.getElementById( "yini" );
-        if( xIniCtrl != null ) xIniCtrl.value = point.x;
-        if( yIniCtrl != null ) yIniCtrl.value = point.y;       
+        if( xIniCtrl != null ) xIniCtrl.value = position.lng();
+        if( yIniCtrl != null ) yIniCtrl.value = position.lat();       
       }
     }
   } catch( e ) {
@@ -174,13 +220,13 @@ function damMapClickListener( overlay, point ) {
 function damDragEndListener() {
   try {
     var marker = this;
-    var position = marker.getLatLng();
+    var position = marker.getPosition();
     switch( marker.markerType ) {
       case 3: // Validated position - Green cross
         var xCtrl = document.getElementById( "x" );
         var yCtrl = document.getElementById( "y" );
-        if( xCtrl != null ) xCtrl.value = position.x;
-        if( yCtrl != null ) yCtrl.value = position.y;
+        if( xCtrl != null ) xCtrl.value = position.lng();
+        if( yCtrl != null ) yCtrl.value = position.lat();
       break;
 /*
         case 1: // Seed position - Red cross
@@ -194,7 +240,6 @@ function damDragEndListener() {
   } catch( e ) {
     alert( "Dragging exception. Reason: " + e.message );
   } 
-  startRequestNearbyDams();
 }
 
 
@@ -207,8 +252,7 @@ function resetSeed( x, y ) {
 
 var reqObj = false;
 
-function startRequestNearbyDams() {
-  var bbox = map.getBounds();
+function startRequestNearbyDams(bbox) {
   var xtop = bbox.getNorthEast().lng();
   var ytop = bbox.getNorthEast().lat();
   var xbtm = bbox.getSouthWest().lng();
@@ -217,7 +261,7 @@ function startRequestNearbyDams() {
   var url = new String ( document.location );
   url = url.substr( 0, url.lastIndexOf( "/" ) );
   url += "/ajax.php?op=displayNearbyDams&xtop=" + xtop + "&ytop=" + ytop + "&xbtm=" + xbtm + "&ybtm=" + ybtm;
-  url += "&exclude0x=" + exclude0x + "&exclude0y=" + exclude0y + "&exclude1x=" + exclude0y + "&exclude1y=";
+  url += "&exclude0x=" + exclude0x + "&exclude0y=" + exclude0y + "&exclude1x=" + exclude1x + "&exclude1y=" + exclude1y;
   web_log( "* Start requesting nearby dams" );
   web_log( "  xtop=" + xtop );
   web_log( "  ytop=" + ytop );
@@ -242,11 +286,12 @@ function endRequestNearbyDams() {
           web_log( "  Got: " + items.length + " dams" );          
           for( i = 0; i < items.length; i++ ) {
             var node = items[ i ];
-            var p = new GPoint( node.getAttribute( "x" ), node.getAttribute( "y" ) );
+            var p = new google.maps.Point( node.getAttribute( "x" ), node.getAttribute( "y" ) );
             var title = node.getAttribute( "id" ) + ": " + node.getAttribute( "n" );
             var marker = createCrossMarker2( node.getAttribute( "id" ), p, title, nearbyicon, 2 );
             {
-              map.addOverlay( marker );
+            marker.setMap(map);
+            markers.push(marker);
             }
             web_log( "  Dam: " + i + ", " + title + "(" + node.getAttribute( "x" ) + ", " + node.getAttribute( "y" ) + ")" );
           }

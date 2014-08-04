@@ -4,9 +4,12 @@
 {include file="login.tpl"}
 
 <div id="workarea">      
-	<div align="center">
-		<div id="map" style="width: 400px; height: 400px; "></div>
-	</div>
+    <div align="center">
+        <div id="map" style="width: 400px; height: 400px; "></div>
+    </div>
+    <div align="center">
+        <div id="copyright-control" style="width: 400px;"></div>
+    </div>
 </div>
 {include file="footer.tpl"}
 
