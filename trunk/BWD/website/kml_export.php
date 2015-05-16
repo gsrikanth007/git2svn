@@ -10,6 +10,7 @@ BWD water quality data/map viewer: EXPORT TO KML FILE
 14.5.2012;	update for 2011 season
 17.5.2013;	update for 2012 season
 20.5.2014;	update for 2013 season
+13.5.2015;	update for 2014 season
 
 */
 
@@ -54,9 +55,10 @@ $array_fields = array(
   'y2010' => 'Year 2010',
   'y2011' => 'Year 2011',
   'y2012' => 'Year 2012',
-  'y2013' => 'Year 2013');
+  'y2013' => 'Year 2013',
+  'y2014' => 'Year 2014');
 
-$lastknownyear = 'y2013';
+$lastknownyear = 'y2014';
 
 $sql = "
   SELECT 
@@ -64,7 +66,7 @@ $sql = "
 	s.numind, s.Latitude, s.Longitude, s.WaterType AS Type, s.Region, s.Province, s.Commune, s.Prelev, 
 	#s.y1990, s.y1991, s.y1992, s.y1993, s.y1994, s.y1995, s.y1996, s.y1997, s.y1998, s.y1999, 
 	s.y2000, s.y2001, s.y2002, s.y2003, s.y2004, s.y2005, s.y2006, s.y2007, s.y2008, s.y2009, 
-	s.y2010, s.y2011, s.y2012, s.y2013
+	s.y2010, s.y2011, s.y2012, s.y2013, s.y2014
   FROM bwd_stations s
   LEFT JOIN countrycodes_iso c ON s.cc = c.ISO2 ";
 

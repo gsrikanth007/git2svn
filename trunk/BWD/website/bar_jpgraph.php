@@ -9,11 +9,12 @@ BWD water quality data/map viewer: FILE TO CREATE IMAGE WITH BAR GRAPH
 14.5.2012;	update for 2011 season
 17.5.2013;	update for 2012 season
 20.5.2014;	update for 2013 season
+13.5.2015;	update for 2014 season
 
 */
 
 // array of years for which graph is plotted | each season, additional year should be added
-$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013);
+$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014);
 
 
 if (!isset($_GET['GeoRegion'])) $_GET['GeoRegion'] = '';
@@ -44,15 +45,23 @@ header('Content-Type: text/html; charset=utf-8');
 
 // 3.6.2010; mkovacic: added new category for Greek NF data - white
 // NFC = incompletely sampled
-if($_GET['cc'] == 'GR')		$compliance_values = array('CG','B','NC','CI','NS','NF','NFC');
-else						$compliance_values = array('CG','B','NC','CI','NS','NF');
+//if($_GET['cc'] == 'GR')		$compliance_values = array('CG','B','NC','CI','NS','NF','NFC');
+//else						$compliance_values = array('CG','B','NC','CI','NS','NF');
+
+// 16.5.2015; mkovacic; there are only 4 categories now
+$compliance_values = array(
+    'CG',
+    'CI',
+    'NC',
+    "B','NS','NF','NFC"
+);
 
 foreach($compliance_values as $key=>$val) {
   $sql = "
     SELECT
   ";
   foreach($years as $ykey=>$year) {
-	$sql .= " (COUNT(IF(y".$year." = '".$val."', 1, NULL))/COUNT(IF(y".$year." IS NOT NULL, 1, NULL)) )*100 AS '".$year."',\n";
+	$sql .= " (COUNT(IF(y".$year." IN ( '".$val."' ), 1, NULL))/COUNT(IF(y".$year." IS NOT NULL, 1, NULL)) )*100 AS '".$year."',\n";
   }
   $sql .= "
       COUNT(*) AS No_of_stations,													# only needed to display in title total or max. number of stations for all years
@@ -97,12 +106,12 @@ foreach($data['ns'] as $key=>$val) 	{
 }
 */
 
-/*
-echo "<pre>";
-print_r($data);
-echo "</pre>";
-die;
-*/
+
+//echo "<pre>";
+//print_r($data);
+//echo "</pre>";
+//die;
+
 
 // **********************
 // Create the basic graph
@@ -213,30 +222,34 @@ $b2plot->SetFillColor('#FF7F7F');
 $b2plot->SetLegend($procent.complianceText('NC'));
 
 // 4th BAR - 2=closed or banned /* before "prohibited throughout the season" */ = GRAY
-$b1plot = new BarPlot($data['B']);
+//$b1plot = new BarPlot($data['B']);
+$b1plot = new BarPlot($data["B','NS','NF','NFC"]);
 $b1plot->SetFillColor('lightgray');
 $b1plot->SetLegend($procent.complianceText('B'));
 
-// 5th BAR - not sampled = ORANGE
-$b0plot = new BarPlot($data['NS']);
-$b0plot->SetFillColor(complianceColor('NS'));
-$b0plot->SetLegend($procent.complianceText('NS'));
+// 5th BAR - not sampled = YELLOW
+//$b0plot = new BarPlot($data['NS']);
+//$b0plot->SetFillColor(complianceColor('NS'));
+//$b0plot->SetLegend($procent.complianceText('NS'));
 
 // 6th BAR - insufficiently sampled = ORANGE
-$b5plot = new BarPlot($data['NF']);
-$b5plot->SetFillColor(complianceColor('NF'));
-$b5plot->SetLegend($procent.complianceText('NF'));
+//$b5plot = new BarPlot($data['NF']);
+//$b5plot->SetFillColor(complianceColor('NF'));
+//$b5plot->SetLegend($procent.complianceText('NF'));
 
 // 3.6.2010; mkovacic: added new category for Greek NF data - white
 // 7th BAR - incompletely sampled = WHITE
-if($_GET['cc'] == 'GR')  {
-	$b6plot = new BarPlot($data['NFC']);
-	$b6plot->SetFillColor(complianceColor('NFC'));
-	$b6plot->SetLegend($procent.complianceText('NFC'));
-}
+//if($_GET['cc'] == 'GR')  {
+//	$b6plot = new BarPlot($data['NFC']);
+//	$b6plot->SetFillColor(complianceColor('NFC'));
+//	$b6plot->SetLegend($procent.complianceText('NFC'));
+//}
+
 // CREATE THE GROUPED BAR PLOT
-if($_GET['cc'] == 'GR')		$gbplot = new AccBarPlot(array($b6plot,$b0plot,$b5plot,$b1plot,$b2plot,$b3plot,$b4plot));
-else						$gbplot = new AccBarPlot(array($b0plot,$b5plot,$b1plot,$b2plot,$b3plot,$b4plot));
+//if($_GET['cc'] == 'GR')		$gbplot = new AccBarPlot(array($b6plot,$b0plot,$b5plot,$b1plot,$b2plot,$b3plot,$b4plot));
+//else						$gbplot = new AccBarPlot(array($b0plot,$b5plot,$b1plot,$b2plot,$b3plot,$b4plot));
+
+$gbplot = new AccBarPlot(array($b1plot,$b2plot,$b3plot,$b4plot));
 
 $gbplot->SetWidth($width_bar);
 $graph->Add($gbplot);

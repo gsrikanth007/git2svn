@@ -9,11 +9,12 @@ BWD water quality data/map viewer: FILE TO CREATE IMAGE WITH BAR GRAPH
 14.5.2012;	update for 2011 season
 17.5.2013;	update for 2012 season
 20.5.2014;	update for 2013 season
+13.5.2015;	update for 2014 season
 
 */
 
 // array of years for which graph is plotted | each season, additional year should be added
-$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013);
+$years = array(2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014);
 
 if (!isset($_GET['GeoRegion'])) $_GET['GeoRegion'] = '';
 if (!isset($_GET['type'])) $_GET['type'] = '';
@@ -39,7 +40,15 @@ mysql_query("SET NAMES 'utf8'");
 // 2=prohibited throughout the season = SIVA, 
 // 4=not compliant = RDEČA, 
 // 5=compliant to mandatory values = ZELENA
-$compliance_values = array('CG','B','NC','CI','NS','NF');
+//$compliance_values = array('CG','B','NC','CI','NS','NF');
+
+// 16.5.2015; mkovacic; there are only 4 categories now
+$compliance_values = array(
+    'CG',
+    'CI',
+    'NC',
+    "B','NS','NF','NFC"
+);
 
 foreach($compliance_values as $key=>$val) {
   $sql = "
@@ -47,11 +56,12 @@ foreach($compliance_values as $key=>$val) {
   ";
   foreach($years as $ykey=>$year) {
 	// exception for GR, 2009, NFC stations
-	if($year == 2009) {
-		$sql .= " (COUNT(IF(y".$year." = '".$val."', 1, NULL))/COUNT(IF(y".$year." IS NOT NULL AND y2009 != 'NFC', 1, NULL)) )*100 AS '".$year."',\n";
-	} else {
-		$sql .= " (COUNT(IF(y".$year." = '".$val."', 1, NULL))/COUNT(IF(y".$year." IS NOT NULL, 1, NULL)) )*100 AS '".$year."',\n";
-	}
+//	if($year == 2009) {
+//		$sql .= " (COUNT(IF(y".$year." = '".$val."', 1, NULL))/COUNT(IF(y".$year." IS NOT NULL AND y2009 != 'NFC', 1, NULL)) )*100 AS '".$year."',\n";
+//	} else {
+		$sql .= " (COUNT(IF(y".$year." IN ( '".$val."' ), 1, NULL))/COUNT(IF(y".$year." IS NOT NULL, 1, NULL)) )*100
+		AS '".$year."',\n";
+//	}
   }
   $sql .= "
      #COUNT(*) AS No_of_stations,														# was only needed to display in title total or max. number of stations for all years; not neede anymore
@@ -98,9 +108,9 @@ foreach($data['CI'] as $key=>$val) 	$data['CI'][$key] += $data['CG'][$key];
 // CHECK THE ARRAYS
 // 1. if all 4 arrays have values 0 means that there is no data for the year - change with '' 
 foreach($years as $key1=>$val1) {
-  if($data['CG'][$key1] == $data['B'][$key1] && $data['B'][$key1] == $data['NC'][$key1] && $data['NC'][$key1] == $data['CI'][$key1] && $data['CI'][$key1] == 0) {
+  if($data['CG'][$key1] == $data["B','NS','NF','NFC"][$key1] && $data["B','NS','NF','NFC"][$key1] == $data['NC'][$key1] && $data['NC'][$key1] == $data['CI'][$key1] && $data['CI'][$key1] == 0) {
     $data['CG'][$key1] = '';
-    $data['B'][$key1] = '';
+    $data["B','NS','NF','NFC"][$key1] = '';
     $data['NC'][$key1] = '';
     $data['CI'][$key1] = '';
   }
@@ -199,7 +209,7 @@ $p3->SetLegend("% ".complianceText('NC'));
 $graph->Add($p3);
 
 // 4th LINE - Closed or banned /*2=prohibited throughout the season*/ = GRAY
-$p4 = new LinePlot($data['B']);
+$p4 = new LinePlot($data["B','NS','NF','NFC"]);
 $p4->mark->SetType(MARK_FILLEDCIRCLE);
 $p4->mark->SetFillColor("lightgray");
 $p4->mark->SetWidth(4);

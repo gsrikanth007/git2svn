@@ -647,13 +647,16 @@ echo $file_province_map;
 	// LIVE MAPS
 	if ($sum_bw < 200) {
 		echo "<a title='Live Maps - ".$string_title_kml."' href='http://www.bing.com/maps/?mapurl=".$baseurl."$link_za_kml'><img src='images/livemaps.png' border='0' alt='Live Maps - ".$string_title_kml."'/></a>";
+		echo "&nbsp;";
 	}
 	// GOOGLE MAPS
-	if ($sum_bw < 200) {
-		// Google wants doubly encoded spaces (which is probably correct behaviour)
-        $encoded_link = str_replace(" ","%2520", str_replace("&amp;","%26",$link_za_kml));
-		echo "<a title='Google Maps - ".$string_title_kml."' href='http://maps.google.com?q=".$baseurl.$encoded_link."' target='_blank'><img src='images/googlemaps.png' border='0' alt='Google Maps - ".$string_title_kml."'/></a>";
-	}
+	// DEPRECATED 2015-05-13: From February 2015, Google Maps no longer loads KML/KMZ files from external websites (https://developers.google.com/maps/support/kmlmaps)
+//	if ($sum_bw < 200) {
+//		// Google wants doubly encoded spaces (which is probably correct behaviour)
+//        $encoded_link = str_replace(" ","%2520", str_replace("&amp;","%26",$link_za_kml));
+//		echo "<a title='Google Maps - ".$string_title_kml."' href='http://maps.google.com?q=".$baseurl.$encoded_link."' target='_blank'><img src='images/googlemaps.png' border='0' alt='Google Maps - ".$string_title_kml."'/></a>";
+//	}
+
 	// GOOGLE EARTH
 	echo "<a title='Google Earth KML - ".$string_title_kml."' href='$link_za_kml'><img src='images/kml.gif' width='16' height='16' border='0' alt='Google Earth KML - ".$string_title_kml."'/></a>";
 	echo "&nbsp;";
@@ -708,7 +711,7 @@ echo "<img src='images/kml.gif' width='16' height='16' border='0'  alt='KML icon
 <a target='_NEW_WINDOW' href='http://earth.google.com/download-earth.html'>http://earth.google.com/download-earth.html</a>";
 echo "</th>";
 echo "<th style='text-align:right; width:20%'>";
-echo "Last update: 20.5.2014";
+echo "Last update: 16.5.2015";
 echo "</th>";
 echo "</table>\n";
 
