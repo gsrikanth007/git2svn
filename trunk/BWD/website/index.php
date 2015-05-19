@@ -35,7 +35,8 @@ header('Content-Type: text/html; charset=utf-8');
   <link href="template.css" rel="stylesheet" type="text/css" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
-  
+	<meta http-equiv="X-Frame-Options" content="allow">
+
   <script type="text/javascript" language="JavaScript">
     // <![CDATA[
     // JS FUNCTIONS TO SHOW DIV WITH GRAPH, MAP 
