@@ -25,6 +25,31 @@ rebuild-tables script.
 The purpose of the rebuild-observations script is to make it possible to use the
 data in other tools. For instance DaViz. It is not used by the PHP application.
 
+Data updates:
+-------------
+Every year in May we get an update of the data and application.  Don't take too
+close a look at the table structure. You'll go blind. It is mind-blowingly bad.
+Everything is varchar(255). The application has to be updated to match the new
+data columns.
+
+To at least get the data into the database, here is what you have to do to the dump file:
+
+1. Put at the start of the file if it isn't there already:
+
+   SET NAMES utf8;
+
+2. Changes to CREATE TABLE statements
+  Change the cc column of bwd_stations to varchar(2),
+  Change the numind  of bwd_stations to varchar(200)
+  Change the ISO2 of countrycodes_iso to varchar(2)
+
+  These have to be changed in the SQL dump or it won't load. (There are restrictions
+  in MySQL on how large columns can be in indexes).
+
+3. mysql -u root -p bwd < sqldump
+
+4. Run rebuild-tables.
+
 License:
 --------
 
