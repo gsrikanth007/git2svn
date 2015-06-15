@@ -22,6 +22,9 @@ the design of the table is very very inefficient. It is not even 2nd normal form
 NOTE: Whenever bwd_stations is repopulated with data, then you need to run the
 rebuild-tables script.
 
+The purpose of the rebuild-observations script is to make it possible to use the
+data in other tools. For instance DaViz. It is not used by the PHP application.
+
 License:
 --------
 

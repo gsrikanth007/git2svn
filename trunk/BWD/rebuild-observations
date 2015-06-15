@@ -1,0 +1,42 @@
+-- Generate an observation table from the denormalised stations table
+-- The purpose is to make it possible to use the data in other tools.
+
+-- Remember to add a query for the new year every year
+
+DROP TABLE IF EXISTS bwd_observations;
+
+CREATE TABLE bwd_observations (
+  cc varchar(2) NOT NULL,
+  bwid varchar(24) NOT NULL,
+  year int NOT NULL,
+  observation varchar(6) default NULL,
+  comment varchar(255) default NULL,
+  PRIMARY KEY  (cc,bwid,year)
+);
+
+INSERT INTO bwd_observations SELECT CC, BWID,1990, UPPER(y1990), NULL FROM bwd_stations WHERE y1990 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,1991, UPPER(y1991), NULL FROM bwd_stations WHERE y1991 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,1992, UPPER(y1992), NULL FROM bwd_stations WHERE y1992 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,1993, UPPER(y1993), NULL FROM bwd_stations WHERE y1993 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,1994, UPPER(y1994), NULL FROM bwd_stations WHERE y1994 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,1995, UPPER(y1995), NULL FROM bwd_stations WHERE y1995 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,1996, UPPER(y1996), NULL FROM bwd_stations WHERE y1996 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,1997, UPPER(y1997), NULL FROM bwd_stations WHERE y1997 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,1998, UPPER(y1998), NULL FROM bwd_stations WHERE y1998 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,1999, UPPER(y1999), NULL FROM bwd_stations WHERE y1999 IS NOT NULL;
+
+SELECT '2000' AS YEAR;
+INSERT INTO bwd_observations SELECT CC, BWID,2000, UPPER(y2000), NULL FROM bwd_stations WHERE y2000 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,2001, UPPER(y2001), NULL FROM bwd_stations WHERE y2001 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,2002, UPPER(y2002), NULL FROM bwd_stations WHERE y2002 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,2003, UPPER(y2003), NULL FROM bwd_stations WHERE y2003 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,2004, UPPER(y2004), NULL FROM bwd_stations WHERE y2004 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,2005, UPPER(y2005), NULL FROM bwd_stations WHERE y2005 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,2006, UPPER(y2006), NULL FROM bwd_stations WHERE y2006 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,2007, UPPER(y2007), NULL FROM bwd_stations WHERE y2007 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,2008, UPPER(y2008), NULL FROM bwd_stations WHERE y2008 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,2009, UPPER(y2009), NULL FROM bwd_stations WHERE y2009 IS NOT NULL;
+
+INSERT INTO bwd_observations SELECT CC, BWID,2010, UPPER(y2010), NULL FROM bwd_stations WHERE y2010 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,2011, UPPER(y2011), NULL FROM bwd_stations WHERE y2011 IS NOT NULL;
+INSERT INTO bwd_observations SELECT CC, BWID,2012, UPPER(y2012), NULLIF(TRIM(y2012_comment),'') FROM bwd_stations WHERE y2012 IS NOT NULL;
