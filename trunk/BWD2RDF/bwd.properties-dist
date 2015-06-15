@@ -1,0 +1,344 @@
+
+db.database = jdbc:mysql://localhost:3306/bwd
+db.driver=com.mysql.jdbc.Driver
+
+db.user=bwduser
+db.password=password
+
+tables=countries regions provinces communes \
+      stations numind_geographic compliance observations watertypes \
+      regionstat provincestat stationsperregion stationsperprovince
+
+#
+# The prefix for all rdf:abouts and rdf:resources to make them into URLs. Follows xml:base rules.
+# It is recommended to end the string with '/'
+#
+baseurl = http://bwd.eea.europa.eu/resource/
+
+#
+# Vocabulary is added as the empty namespace the rdf:RDF element
+#
+vocabulary=http://bwd.eea.europa.eu/schema.rdf#
+
+#objectproperty.country = http://rdfdata.eionet.europa.eu/eea/countries
+objectproperty.country = countries
+objectproperty.province = provinces
+objectproperty.commune = communes
+objectproperty.inRegion = regions
+objectproperty.watertype = watertypes
+
+query = select NULL AS id \
+    ,'Bathing water data' AS 'rdfs:label'
+
+div_coordinates.query=SELECT '@' AS id \
+    , cc AS country \
+    , region AS 'region@' \
+    , province AS 'province@' \
+    , left AS 'left@' \
+    , top AS 'top@' \
+    , bathing_places AS 'bathing_places^^xsd:int' \
+    FROM bwd_div_coordinates
+
+regions.class = Region
+regions.query =SELECT CONCAT(cc, region) AS id \
+    , region AS 'rdfs:label' \
+    , cc AS country \
+    , region AS 'region' \
+    , coast_stations AS 'coast_stations^^xsd:int' \
+    , freshwater_stations AS 'freshwater_stations^^xsd:int' \
+    FROM bwd_regions
+
+stationsperregion.class = qb:DataSet
+stationsperregion.query1 = SELECT '' AS id, \
+                  "Stations per region per year" AS 'rdfs:label' \
+
+regionstat.class = qb:Observation
+regionstat.query = SELECT CONCAT(cc, ',', region, ',', CAST(YEAR AS CHAR)) AS id \
+    ,'' AS 'qb:dataSet->stationsperregion' \
+    ,CONCAT(cc, region) AS 'sdmx-dimension:refArea->regions' \
+    ,year AS 'sdmx-dimension:timePeriod^^xsd:int' \
+    ,COUNT(observation) AS 'sdmx-measure:obsValue^^xsd:int' \
+    FROM bwd_observations \
+    JOIN bwd_stations USING(cc, BWID) \
+    GROUP BY cc, region, year
+
+provinces.class = Province
+provinces.query = SELECT DISTINCT CONCAT(cc, province) AS id \
+    , province AS 'rdfs:label' \
+    , cc AS country \
+    , CONCAT(cc, region) AS inRegion \
+    FROM bwd_stations \
+    WHERE province IS NOT NULL
+
+stationsperprovince.class = qb:DataSet
+stationsperprovince.query1 = SELECT '' AS id, \
+                  "Stations per province per year" AS 'rdfs:label' \
+
+provincestat.class = qb:Observation
+provincestat.query = SELECT CONCAT(cc, ',', province, ',', CAST(YEAR AS CHAR)) AS id \
+    ,'' AS 'qb:dataSet->stationsperprovince' \
+    ,CONCAT(cc, province) AS 'sdmx-dimension:refArea->provinces' \
+    ,year AS 'sdmx-dimension:timePeriod^^xsd:int' \
+    ,COUNT(observation) AS 'sdmx-measure:obsValue^^xsd:int' \
+    FROM bwd_observations \
+    JOIN bwd_stations USING(cc, BWID) \
+    WHERE province IS NOT NULL \
+    GROUP BY cc, province, year
+
+
+communes.class = Commune
+communes.query = SELECT DISTINCT CONCAT(cc, ',', commune) AS id \
+    , commune AS 'rdfs:label' \
+    , cc AS country \
+    FROM bwd_stations \
+    WHERE commune IS NOT NULL
+
+stations.class = Station
+stations.query = SELECT CONCAT(cc , bwid) AS id \
+    , CONCAT(cc, ' ', bwid) AS 'rdfs:label' \
+    , CONCAT(cc, region) AS inRegion \
+    , cc AS country \
+    , bwid AS 'bwid@' \
+    , numind AS 'numind@' \
+    , geographic AS 'geographic@' \
+    , region AS 'region@' \
+    , CONCAT(cc, province) AS province \
+    , CONCAT(cc, ',', commune) AS commune  \
+    , prelev AS 'bwname' \
+    , watertype AS watertype \
+    , CASE TRIM(seawater) WHEN '' THEN NULL WHEN 'O' THEN 'true' ELSE 'false' END AS 'seawater^^xsd:boolean' \
+    , latitude AS 'geo:lat^^xsd:decimal' \
+    , longitude AS 'geo:long^^xsd:decimal' \
+    , NULLIF(etcw_qa_problems, '') AS 'etcw_qa_problems@' \
+    , etcw_remarks AS 'etcw_remarks@' \
+    , etcw_bw_profile AS 'etcw_bw_profile@' \
+    , ms_remarks AS 'ms_remarks@' \
+    FROM bwd_stations
+
+
+bwdataset.class = qb:DataSet
+bwdataset.query1 = SELECT NULL AS id, \
+                  "Stations per province per year" AS 'rdfs:label' \
+
+observations.class = qb:Observation
+observations.query = SELECT CONCAT(cc, ',', bwid, ',', CAST(YEAR AS CHAR)) AS id \
+    ,'' AS 'qb:dataSet->bwdataset' \
+    ,CONCAT(cc, bwid) AS 'sdmx-dimension:refArea->stations' \
+    ,year AS 'sdmx-dimension:timePeriod^^xsd:int' \
+    ,observation AS 'sdmx-measure:obsValue->compliance' \
+    ,comment AS 'sdmx-attribute:comment' \
+    FROM bwd_observations
+
+
+
+
+
+#+-------------+--------------+------+-----+---------+-------+
+#| CC          | varchar(2)   | NO   | PRI | NULL    |       | 
+#| BWID        | varchar(24)  | NO   | PRI | NULL    |       | 
+#| YEAR        | int(11)      | NO   | PRI | NULL    |       | 
+#| OBSERVATION | varchar(6)   | YES  |     | NULL    |       | 
+#| COMMENT     | varchar(255) | YES  |     | NULL    |       | 
+
+measurements.class = rdf:Description
+
+measurements.query1990 = SELECT CONCAT(cc, bwid, ',1990') AS id \
+    ,'http://purl.org/linked-data/cube#Observation' AS 'rdf:type->' \
+    ,'' AS 'qb:dataSet->' \
+    ,CONCAT(cc, region) AS 'sdmx-dimension:refArea->regions' \
+    ,'1990' AS 'sdmx-dimension:timePeriod' \
+    ,y1990 AS 'sdmx-measure:obsValue->compliance' \
+    FROM bwd_stations WHERE y1990 IS NOT NULL
+
+measurements.query2012 = SELECT CONCAT(cc, bwid, ',2012') AS id \
+    ,'http://purl.org/linked-data/cube#Observation' AS 'rdf:type->' \
+    ,'' AS 'qb:dataSet->' \
+    ,CONCAT(cc, region) AS 'sdmx-dimension:refArea->regions' \
+    ,'2012' AS 'sdmx-dimension:timePeriod' \
+    ,y2012 AS 'sdmx-measure:obsValue->compliance' \
+    ,y2012_comment AS 'sdmx-attribute:comment' \
+    FROM bwd_stations WHERE y2012 IS NOT NULL
+
+
+countries.class = Country
+countries.query=SELECT iso2 AS id \
+    , iso2 AS 'iso2@' \
+    , country AS 'rdfs:label' \
+    , nationalname AS 'nationalname@' \
+    FROM countrycodes_iso
+
+
+
+watertypes.class = rdf:Description
+watertypes.queryNULL = SELECT '' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#ConceptScheme' AS 'rdf:type->' \
+    , 'List of bathing water types' AS 'rdfs:label'
+
+watertypes.queryC = SELECT 'C' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->watertypes' \
+    , 'C' AS 'skos:notation' \
+    , 'Sea' AS 'rdfs:label'
+
+watertypes.queryT = SELECT 'T' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->watertypes' \
+    , 'T' AS 'skos:notation' \
+    , 'Sea' AS 'rdfs:label'
+
+watertypes.queryRV = SELECT 'RV' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->watertypes' \
+    , 'RV' AS 'skos:notation' \
+    , 'River' AS 'rdfs:label'
+
+watertypes.queryL = SELECT 'L' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->watertypes' \
+    , 'L' AS 'skos:notation' \
+    , 'Lake' AS 'rdfs:label'
+
+watertypes.queryE = SELECT 'estuary' AS id \
+watertypes.queryLK = SELECT 'LK' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->watertypes' \
+    , 'LK' AS 'skos:notation' \
+    , 'Lake' AS 'rdfs:label'
+
+watertypes.queryE = SELECT 'estuary' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->watertypes' \
+    , 'estuary' AS 'skos:notation' \
+    , 'Estuary' AS 'rdfs:label'
+
+watertypes.queryEM = SELECT 'EM' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->watertypes' \
+    , 'EM' AS 'skos:notation' \
+    , 'Reservoir' AS 'rdfs:label'
+
+
+
+compliance.class = rdf:Description
+
+compliance.queryNULL = SELECT '' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#ConceptScheme' AS 'rdf:type->' \
+    , 'List of compliance types' AS 'rdfs:label'
+
+compliance.query1 = SELECT 'CI' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->compliance' \
+    , 'CI' AS 'skos:notation' \
+    , 'Compliant to mandatory values / Good or Sufficient' AS 'rdfs:label' \
+    , '#98FF97' AS 'colour' \
+    , 1 AS 'order^^xsd:int'
+
+compliance.query2 = SELECT 'CG' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->compliance' \
+    , 'CG' AS 'skos:notation' \
+    , 'Compliant to guide values / Excellent' AS 'rdfs:label' \
+    , '#B9E8F7' AS 'colour' \
+    , 2 AS 'order^^xsd:int'
+
+compliance.query3 = SELECT 'NC' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->compliance' \
+    , 'NC' AS 'skos:notation' \
+    , 'Not compliant with mandatory values / Poor' AS 'rdfs:label' \
+    , '#FF7F7F' AS 'colour' \
+    , 3 AS 'order^^xsd:int'
+
+compliance.query4 = SELECT 'B' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->compliance' \
+    , 'B' AS 'skos:notation' \
+    , 'Banned or closed' AS 'rdfs:label' \
+    , '#CFCFCF' AS 'colour' \
+    , 4 AS 'order^^xsd:int'
+
+compliance.query5 = SELECT 'NF' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->compliance' \
+    , 'NF' AS 'skos:notation' \
+    , 'Insufficiently sampled' AS 'rdfs:label' \
+    , '#FFAB67' AS 'colour' \
+    , 5 AS 'order^^xsd:int'
+
+compliance.query6 = SELECT 'NFC' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->compliance' \
+    , 'NFC' AS 'skos:notation' \
+    , 'Incompletely sampled' AS 'rdfs:label' \
+    , '#FFFFFF' AS 'colour' \
+    , 6 AS 'order^^xsd:int'
+
+compliance.query7 = SELECT 'NS' AS id \
+    , 'http://www.w3.org/2004/02/skos/core#Concept' AS 'rdf:type->' \
+    , '' AS 'skos:inScheme->compliance' \
+    , 'NS' AS 'skos:notation' \
+    , 'Not sampled' AS 'rdfs:label' \
+    , '#FFEB67' AS 'colour' \
+    , 7 AS 'order^^xsd:int'
+
+
+
+
+
+#
+# Dialects
+#
+
+sqldialect.access.skiptables = VALIDATION_METADATA_DO_NOT_MODIFY \
+            MSYSACCESSOBJECTS MSYSACCESSXML MSYSACES MSYSOBJECTS MSYSQUERIES MSYSRELATIONSHIPS
+sqldialect.access.column.before = [
+sqldialect.access.column.after = ]
+
+sqldialect.jtds.column.before = [
+sqldialect.jtds.column.after = ]
+
+sqldialect.mysql.column.before = `
+sqldialect.mysql.column.after = `
+
+sqldialect.postgresql.column.before = "
+sqldialect.postgresql.column.after = "
+
+#
+# These namespaces are automatically added to the rdf:RDF element
+#
+xmlns.cc = http://creativecommons.org/ns#
+xmlns.dc = http://purl.org/dc/elements/1.1/
+xmlns.dcterms = http://purl.org/dc/terms/
+xmlns.foaf = http://xmlns.com/foaf/0.1/
+xmlns.geo = http://www.w3.org/2003/01/geo/wgs84_pos#
+xmlns.owl = http://www.w3.org/2002/07/owl#
+xmlns.qb = http://purl.org/linked-data/cube#
+xmlns.rdf = http://www.w3.org/1999/02/22-rdf-syntax-ns#
+xmlns.rdfs = http://www.w3.org/2000/01/rdf-schema#
+xmlns.sdmx-attribute = http://purl.org/linked-data/sdmx/2009/attribute#
+xmlns.sdmx-dimension = http://purl.org/linked-data/sdmx/2009/dimension#
+xmlns.sdmx-measure = http://purl.org/linked-data/sdmx/2009/measure#
+xmlns.skos = http://www.w3.org/2004/02/skos/core#
+xmlns.xsd = http://www.w3.org/2001/XMLSchema#
+
+
+datatype.bigint = xsd:long
+datatype.binary = xsd:base64Binary
+datatype.bit = xsd:short
+datatype.blob = xsd:base64Binary
+datatype.boolean = xsd:boolean
+datatype.char =
+datatype.date = xsd:date
+datatype.decimal = xsd:decimal
+datatype.double = xsd:double
+datatype.float = xsd:float
+datatype.integer = xsd:int
+datatype.longvarbinary = xsd:base64Binary
+datatype.numeric = xsd:decimal
+datatype.nvarchar =
+datatype.real = xsd:float
+datatype.smallint = xsd:short
+datatype.timestamp = xsd:dateTime
+datatype.tinyint = xsd:short
+datatype.varbinary = xsd:base64Binary
+datatype.varchar =
